@@ -8,5 +8,3 @@ compile:
 	g++ -c main.cpp menu.cpp -I $(INCLUDE)
 link:
 	g++ main.o -o main.exe -L $(LIBRARY) $(SFMLFLAGS) $(SFML_INCLUDE)
-run:
-	./main.exe
