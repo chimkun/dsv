@@ -3,6 +3,7 @@
 
 #include "button.h"
 
+
 class menuScreen {
 private:
     sf::Text title;

@@ -12,7 +12,6 @@ int main()
     window.display();
 
     sf::Font font;
-    
     if (!font.loadFromFile("src\\font\\PlatinumSignOver.ttf")) {
         std::cout << "Font file not found!\n";
         return -1;

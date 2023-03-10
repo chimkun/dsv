@@ -3,7 +3,6 @@
 
 int main()
 {
-    // create a window
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML User Interface");
     window.clear(sf::Color::Blue);
     window.display();
