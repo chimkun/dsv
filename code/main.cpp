@@ -12,8 +12,7 @@ int main()
     window.display();
 
     menuScreen mainMenu;
-    initMenuScreen(mainMenu);    
-
+    initMenuScreen(mainMenu);
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {

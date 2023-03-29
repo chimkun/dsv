@@ -3,7 +3,6 @@
     "C_Cpp.default.compilerPath": "..\\mingw64\\bin",
     "C_Cpp.default.includePath": [
         "${workspaceFolder}/**"
-        // "D:\\extra\\sfml\\SFML_codeblocks\\SFML-2.5.1\\include"
     ],
     "C_Cpp.errorSquiggles": "enabled",
     "files.associations": {
@@ -47,6 +46,7 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "iostream": "cpp"
     }
 }

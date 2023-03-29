@@ -177,11 +177,3 @@ void SLL::printList() {
     std::cout << '\n';
     pHead = cur;
 }
-
-int main() {
-    SLL mySLL;
-    mySLL.build(5);
-    mySLL.printList();
-    cout << mySLL.searchElement(69) << '\n';
-    mySLL.printList();
-}
