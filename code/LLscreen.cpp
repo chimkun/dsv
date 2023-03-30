@@ -3,7 +3,6 @@
 #include <iostream>
 
 SLL::SLL () {
-    pHead = nullptr;
     numberOfNode = 0;
 }
 
@@ -176,4 +175,23 @@ void SLL::printList() {
     }
     std::cout << '\n';
     pHead = cur;
+}
+
+void SLL::drawList(sf::RenderWindow &window) {
+    Node *cur = pHead;
+    int countColor = 0;
+    sf::Vector2f nodePosition(200.0, 200.0);
+    while (cur != nullptr) {
+        cur->drawNode(nodePosition, countColor, window);
+        nodePosition.x += 200;
+        cur = cur->pNext;
+        countColor++;
+        countColor %= 4;
+    }
+}
+
+void createList(SLL &mySLL) {
+    int numberOfNode;
+    std::cin >> numberOfNode;
+    mySLL.build(numberOfNode);
 }

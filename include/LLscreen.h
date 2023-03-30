@@ -1,10 +1,8 @@
 #ifndef LLSCREEN_H
 #define LLSCREEN_H
 
-struct Node {
-    int data;
-    Node *pNext;
-};
+#include "node.h"
+
 class SLL {
 private:
     Node *pHead;
@@ -21,8 +19,9 @@ public:
     void updateAtIndex(int newData, int idx);
     int searchElement(int searchData);
     void printList();
+    void drawList(sf::RenderWindow &window);
 };
 
-
+void createList(SLL &mySLL);
 
 #endif

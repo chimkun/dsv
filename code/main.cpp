@@ -3,25 +3,36 @@
 #include <string>
 #include "menu.h"
 #include "LLscreen.h"
+#include "node.h"
 
 int main()
 {
-    // create a window
+    // enum screenType {
+    //     Menu, Select, SinglyLinkedList;
+    // };
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "DS Visualizer");
-    window.clear(sf::Color::Blue);
-    window.display();
+    
+    // menuScreen mainMenu;
+    // initMenuScreen(mainMenu);
 
-    menuScreen mainMenu;
-    initMenuScreen(mainMenu);
+
+    SLL mySLL;
+    createList(mySLL);
+
     while (window.isOpen()) {
         sf::Event event;
+
         while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window.close();
-            
+            // if (event.type == sf::Event::Closed)
+            //     window.close();
+            switch (event.type) {
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+            }
         }
         window.clear();
-        mainMenu.drawMenu(window);
+        mySLL.drawList(window);
         window.display();    
     }
     return 0;
