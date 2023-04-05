@@ -11,6 +11,10 @@ void SLL::build(int inputNumberOfNode) {
     for (int countElement = 1; countElement <= inputNumberOfNode; countElement++) {
         int curElement;
         std::cin >> curElement;
+        if (curElement < 0 || curElement > 99) {
+            std::cout << "Please input integer in range[0, 99]" << '\n';
+            countElement--;
+        }
         if (countElement == 1) {
             pHead = new Node;
             cur = pHead;
@@ -177,17 +181,46 @@ void SLL::printList() {
     pHead = cur;
 }
 
-void SLL::drawList(sf::RenderWindow &window) {
+void SLL::drawList(sf::RenderWindow &window, int opacity, const int &nodeDistance) {
     Node *cur = pHead;
-    int countColor = 0;
-    sf::Vector2f nodePosition(200.0, 200.0);
+    int countColor = 0, countNode = 1;
+    sf::Vector2f nodePosition(0, 240.0);
     while (cur != nullptr) {
-        cur->drawNode(nodePosition, countColor, window);
-        nodePosition.x += 200;
+        if (countNode > 1)
+            cur->drawArrow(nodePosition, window, nodeDistance/2, opacity);
+        nodePosition.x += nodeDistance;
+        cur->drawNode(nodePosition, countColor, window, opacity);
+        countNode++;
         cur = cur->pNext;
         countColor++;
         countColor %= 4;
     }
+}
+
+void SLL::drawListAtInsert(sf::RenderWindow &window, int insertedIndex, int opacity, const int &nodeDistance, int insertedNodeDistanceDifference) {
+    Node *cur = pHead, *insertedNode = nullptr;
+    int countNode = 1, countColor = 0;
+    sf::Vector2f nodePosition(0, 476.0), insertedNodePosition;
+    while (cur != nullptr) {
+        if (countNode > 1 && countNode != insertedIndex && countNode != insertedIndex + 1) {
+            cur->drawArrow(nodePosition, window, nodeDistance/2, opacity);
+        }
+        nodePosition.x += nodeDistance;
+        if (countNode != insertedIndex)
+            cur->drawNode(nodePosition, countColor, window, opacity);
+        else {
+            insertedNodePosition = nodePosition;
+            insertedNodePosition.y += 300 - insertedNodeDistanceDifference;
+            insertedNode = cur;
+        }
+        countNode++;
+        cur = cur->pNext;
+        countColor++;
+        countColor %= 4;
+    }
+
+    int insertedNodeColor = rand() % 4;
+    insertedNode->drawNode(insertedNodePosition, insertedNodeColor, window, opacity);
 }
 
 void createList(SLL &mySLL) {

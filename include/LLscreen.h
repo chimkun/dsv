@@ -19,7 +19,8 @@ public:
     void updateAtIndex(int newData, int idx);
     int searchElement(int searchData);
     void printList();
-    void drawList(sf::RenderWindow &window);
+    void drawList(sf::RenderWindow &window, int opacity, const int &nodeDistance);
+    void drawListAtInsert(sf::RenderWindow &window, int insertedIndex, int opacity, const int &nodeDistance, int insertedNodeDistancDifference);
 };
 
 void createList(SLL &mySLL);
