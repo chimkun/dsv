@@ -2,10 +2,11 @@
 
 Node::Node() {
     data = -1;
+    nodeColor = rand() % 4;
     pNext = nullptr;
 }
 
-void Node::drawNode(sf::Vector2f nodePosition, int colorCode, sf::RenderWindow &window, int opacity) {
+void Node::drawNode(sf::Vector2f nodePosition, sf::RenderWindow &window, int opacity) {
     if (data < 0)
         return;
 
@@ -26,6 +27,7 @@ void Node::drawNode(sf::Vector2f nodePosition, int colorCode, sf::RenderWindow &
     nodeOutlineSprite.setOrigin(nodeOutline.getSize().x/2, nodeOutline.getSize().y/2);
     nodeOutlineSprite.setPosition(nodePosition);
 
+    int colorCode = nodeColor;
     sf::Color lightPurple(151, 42, 179), lightGreen(67, 211, 25), lightBlue(23, 153, 216), lightPink(238, 34, 145);
     switch (colorCode) {
         case 0:

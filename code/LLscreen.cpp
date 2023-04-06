@@ -60,15 +60,18 @@ void SLL::insertAtEnding(int newData) {
 }
 
 void SLL::insertAfterIndex(int newData, int idx) {
-    if (idx < 1 || idx > numberOfNode)
+    if (idx < 0 || idx > numberOfNode)
         return;
+    if (idx == 0) {
+        insertAtBeginning(newData);
+        numberOfNode++;
+        return;
+    }
     Node *cur = pHead;
     for (int i = 1; i <= numberOfNode; i++) {
         if (i == idx) {
             if (i == numberOfNode)
                 insertAtEnding(newData);
-            else if (i == 1)
-                insertAtBeginning(newData);
             else {
                 Node *leftNode = cur;
                 Node *rightNode = cur->pNext;
@@ -181,15 +184,15 @@ void SLL::printList() {
     pHead = cur;
 }
 
-void SLL::drawList(sf::RenderWindow &window, int opacity, const int &nodeDistance) {
+void SLL::drawList(sf::RenderWindow &window, int opacity, const int &nodeDistance, sf::Vector2f nodePosition) {
     Node *cur = pHead;
     int countColor = 0, countNode = 1;
-    sf::Vector2f nodePosition(0, 240.0);
+    // std::cerr << "countNode: " << numberOfNode << '\n';
     while (cur != nullptr) {
-        if (countNode > 1)
+        cur->drawNode(nodePosition, window, opacity);
+        if (countNode < numberOfNode)
             cur->drawArrow(nodePosition, window, nodeDistance/2, opacity);
         nodePosition.x += nodeDistance;
-        cur->drawNode(nodePosition, countColor, window, opacity);
         countNode++;
         cur = cur->pNext;
         countColor++;
@@ -197,30 +200,33 @@ void SLL::drawList(sf::RenderWindow &window, int opacity, const int &nodeDistanc
     }
 }
 
-void SLL::drawListAtInsert(sf::RenderWindow &window, int insertedIndex, int opacity, const int &nodeDistance, int insertedNodeDistanceDifference) {
+void SLL::drawListAtInsert(sf::RenderWindow &window, int insertedIndex, int opacity, const int &nodeDistance, 
+                           sf::Vector2f nodePosition, sf::Vector2f insertNodePosition, int nodePositionXBehindInsert, 
+                           int insertedNodeColor, int insertNodeOpacity) {
     Node *cur = pHead, *insertedNode = nullptr;
     int countNode = 1, countColor = 0;
-    sf::Vector2f nodePosition(0, 476.0), insertedNodePosition;
+    // std::cerr << "insertY, afterX: " << insertNodePosition.y << " " << nodePositionXBehindInsert << '\n';
     while (cur != nullptr) {
-        if (countNode > 1 && countNode != insertedIndex && countNode != insertedIndex + 1) {
+        if (countNode != insertedIndex) {
+            cur->drawNode(nodePosition, window, opacity);
+        }
+        else {
+            insertedNode = cur;
+            nodePosition.x += nodePositionXBehindInsert;
+            countNode++;
+            cur = cur->pNext;
+            continue;
+        }
+        if (countNode != insertedIndex && countNode != insertedIndex + 1 && countNode < numberOfNode) {
             cur->drawArrow(nodePosition, window, nodeDistance/2, opacity);
         }
         nodePosition.x += nodeDistance;
-        if (countNode != insertedIndex)
-            cur->drawNode(nodePosition, countColor, window, opacity);
-        else {
-            insertedNodePosition = nodePosition;
-            insertedNodePosition.y += 300 - insertedNodeDistanceDifference;
-            insertedNode = cur;
-        }
         countNode++;
         cur = cur->pNext;
         countColor++;
         countColor %= 4;
     }
-
-    int insertedNodeColor = rand() % 4;
-    insertedNode->drawNode(insertedNodePosition, insertedNodeColor, window, opacity);
+    insertedNode->drawNode(insertNodePosition, window, opacity);
 }
 
 void createList(SLL &mySLL) {

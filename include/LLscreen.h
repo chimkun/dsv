@@ -19,8 +19,10 @@ public:
     void updateAtIndex(int newData, int idx);
     int searchElement(int searchData);
     void printList();
-    void drawList(sf::RenderWindow &window, int opacity, const int &nodeDistance);
-    void drawListAtInsert(sf::RenderWindow &window, int insertedIndex, int opacity, const int &nodeDistance, int insertedNodeDistancDifference);
+    void drawList(sf::RenderWindow &window, int opacity, const int &nodeDistance, sf::Vector2f nodePosition);
+    void drawListAtInsert(sf::RenderWindow &window, int insertedIndex, int opacity, const int &nodeDistance, 
+                          sf::Vector2f nodePosition, sf::Vector2f insertNodePosition, int nodePositionSpeedBehindInsert, 
+                          int insertedNodeColor, int insertNodeOpacity);
 };
 
 void createList(SLL &mySLL);

@@ -5,6 +5,11 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\main.cpp"
     },
     {
+        "command": "g++ -c ..\\Menu\\code\\general.cpp -o general.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\general.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code\\LLscreen.cpp -o LLscreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreen.cpp"
@@ -13,10 +18,5 @@
         "command": "g++ -c ..\\Menu\\code\\node.cpp -o node.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\node.cpp"
-    },
-    {
-        "command": "g++ -c ..\\Menu\\code\\general.cpp -o general.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
-        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
-        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\general.cpp"
     }
 ]

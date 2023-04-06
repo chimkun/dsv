@@ -7,10 +7,10 @@
 #include <cstdlib>
 
 struct Node {
-    int data;
+    int data, nodeColor;
     Node *pNext;
     Node ();
-    void drawNode(sf::Vector2f nodePosition, int colorCode, sf::RenderWindow &window, int opacity);
+    void drawNode(sf::Vector2f nodePosition, sf::RenderWindow &window, int opacity);
     void drawArrow(sf::Vector2f nodePosition, sf::RenderWindow &window, int middleOfNodes, int opacity);
 };
 
