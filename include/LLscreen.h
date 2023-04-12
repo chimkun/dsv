@@ -21,10 +21,14 @@ public:
     void updateAtIndex(int newData, int idx);
     int searchElement(int searchData);
     void printList();
-    void drawList(sf::RenderWindow &window, int opacity, const int &nodeDistance, sf::Vector2f nodePosition);
-    void drawListAtInsert(sf::RenderWindow &window, int insertedIndex, int opacity, 
-                          sf::Vector2f nodePosition, sf::Vector2f insertNodePosition, int nodePositionXBehindInsert, 
-                          int insertNodeOpacity);
+    void drawList(sf::RenderWindow &window, int opacity, const int &nodeDistance);
+    void drawListWhenInsert(sf::RenderWindow &window, int insertIndex, 
+                            int opacity, int nodePositionXAfterInsert);
+    void drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int gotoIndex, sf::Color fadeColor);
+    void drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity, 
+                        sf::Vector2f insertNodePosition, int insertNodeOpacity);
+    void drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity, int deleteNodeOpacity);
+    void drawDeleteNodeMove(sf::RenderWindow &window, int removeIndex, int nodeOpacity, int nodePositionDiffX, int newArrowOpacity);
 };
 
 class nodeConstants {
@@ -38,7 +42,10 @@ public:
     static int fadeSpeed;
     static int nodeRadius;
     static sf::Vector2f firstNodePosition;
+    static sf::Color flashColor;
+    static sf::Color baseColor;
     static float moveDuration;
+    static sf::Time flashDuration;
     static void initializeConstants();
 };
 
@@ -59,11 +66,18 @@ public:
 
 void createList(SLL &mySLL);
 
-void insertNodeProcess(SLL &mySLL, int &insertIndex, int &insertData, sf::Vector2f &insertNodePosition, 
-                       int &nodePositionXAfterInsert, int &insertedNodeOpacity, int &insertedNodeColor);
+sf::Color getFadeColor(sf::Color startColor, sf::Color endColor, sf::Clock flashTimer);
 
-void setInsertNode(int &nodePositionXAfterInsert, sf::Vector2f &insertNodePosition, int &insertedNodeOpacity);
+void insertNodeProcess(SLL &mySLL, int &insertIndex, int &insertData, sf::Vector2f &insertNodePosition, int &gotoIndex, 
+                       int &nodePositionXAfterInsert, int &insertNodeOpacity, int &insertNodeColor, sf::Clock &flashTimer);
 
-void drawArrowBetweenNode(sf::RenderWindow &window, sf::Vector2f nodePositionLeft, sf::Vector2f nodePositionRight, int opacity);
+void setInsertNode(int &nodePositionXAfterInsert, sf::Vector2f &insertNodePosition,
+                   int &insertNodeOpacity, int insertPhase);
+
+void deleteNodeProcess(SLL &mySLL, int &deleteIndex, int &nodeOpacity, int &deleteNodeOpacity,
+                       int &nodePositionMoveSpeed, int &newArrowOpacity);
+
+void drawArrowBetweenNode(sf::RenderWindow &window, sf::Vector2f nodePositionLeft, 
+                          sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity);
 
 #endif
