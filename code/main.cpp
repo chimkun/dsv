@@ -23,6 +23,7 @@ int main()
     nodeConstants::initializeConstants();
     arrowConstants::initializeConstants();
     mathConstants::initializeConstants();
+    textConstants::initializeConstants();
 
     SLL mySLL;
     createList(mySLL);
@@ -45,18 +46,22 @@ int main()
                     window.close();
                     break;
                 case sf::Event::MouseButtonPressed:
-                    sf::FloatRect addButtonBounds = theLLscreen.getAddButtonBounds();
-                    sf::FloatRect deleteButtonBounds = theLLscreen.getDeleteButtonBounds();
-                    sf::Vector2i mousePositionInt = sf::Mouse::getPosition(window);
-                    sf::Vector2f mousePosition(mousePositionInt.x, mousePositionInt.y);
-                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && addButtonBounds.contains(mousePosition)) {
-                        drawType = insertLL0;
-                        insertNodeProcess(mySLL, insertIndex, insertData, insertNodePosition, gotoIndex,
-                                          nodePositionXAfterInsert, insertNodeOpacity, insertNodeColor, flashTimer);
-                    }
-                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && deleteButtonBounds.contains(mousePosition)) {
-                        drawType = deleteLL1;
-                        deleteNodeProcess(mySLL, deleteIndex, nodeOpacity, deleteNodeOpacity, nodePositionDiffX, newArrowOpacity);
+                    if (drawType == showcaseLL) {
+                        sf::FloatRect addButtonBounds = theLLscreen.getAddButtonBounds();
+                        sf::FloatRect deleteButtonBounds = theLLscreen.getDeleteButtonBounds();
+                        sf::Vector2i mousePositionInt = sf::Mouse::getPosition(window);
+                        sf::Vector2f mousePosition(mousePositionInt.x, mousePositionInt.y);
+                        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && addButtonBounds.contains(mousePosition)) {
+                            drawType = insertLL0;
+                            insertNodeProcess(mySLL, insertIndex, insertData, insertNodePosition, gotoIndex,
+                                            nodePositionXAfterInsert, insertNodeOpacity, insertNodeColor, flashTimer);
+                        }
+                        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && deleteButtonBounds.contains(mousePosition)) {
+                            drawType = deleteLL0;
+                            deleteNodeProcess(mySLL, deleteIndex, nodeOpacity, deleteNodeOpacity, gotoIndex,
+                                            nodePositionDiffX, newArrowOpacity, flashTimer);
+                        }
+                     
                     }
                     break;
             }
@@ -69,35 +74,51 @@ int main()
                 mySLL.drawList(window, opacity, nodeConstants::nodeDistance);
                 break;
             case insertLL0:
+                mySLL.drawInsertNodeIndicator(window, insertIndex, gotoIndex, getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));
+                if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
+                    gotoIndex++;
+                    flashTimer.restart();
+                }
                 if (gotoIndex > insertIndex) {
                     drawType = insertLL1;
                     mySLL.insertAfterIndex(insertData, insertIndex);
                     insertIndex++;
                     break;
                 }
-                mySLL.drawInsertNodeIndicator(window, insertIndex, gotoIndex, getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));
-                if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
-                    gotoIndex++;
-                    flashTimer.restart();
-                }
                 break;
             case insertLL1:
-                if (nodePositionXAfterInsert >= nodeConstants::nodeDistance)
+                mySLL.drawListWhenInsert(window, insertIndex, 
+                                         opacity, nodePositionXAfterInsert);
+                if (nodePositionXAfterInsert >= nodeConstants::nodeDistance) {
                     drawType = insertLL2;
+                    flashTimer.restart();
+                }
                 else {
                     setInsertNode(nodePositionXAfterInsert, insertNodePosition, insertNodeOpacity, 1);
                 }
-                mySLL.drawListWhenInsert(window, insertIndex, 
-                                         opacity, nodePositionXAfterInsert);
                 break;
             case insertLL2:
+                mySLL.drawInsertNode(window, insertIndex, opacity,
+                                     getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer),
+                                     insertNodePosition, insertNodeOpacity);
                 if (insertNodePosition.y == nodeConstants::firstNodePositionY)
                     drawType = showcaseLL;
                 else {
                     setInsertNode(nodePositionXAfterInsert, insertNodePosition, insertNodeOpacity, 2);
                 }
-                mySLL.drawInsertNode(window, insertIndex, 
-                                     opacity, insertNodePosition, insertNodeOpacity);
+                break;
+            case deleteLL0:
+                mySLL.drawDeleteNodeIndicator(window, deleteIndex, gotoIndex, 
+                                              getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));
+                if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
+                    gotoIndex++;
+                    flashTimer.restart();
+                }
+                if (gotoIndex > deleteIndex) {
+                    drawType = deleteLL1;
+                    insertIndex++;
+                    break;
+                }
                 break;
             case deleteLL1:
                 mySLL.drawDeleteNode(window, deleteIndex, nodeOpacity, deleteNodeOpacity);
@@ -108,13 +129,17 @@ int main()
                     mySLL.deleteAtIndex(deleteIndex);
                     nodeOpacity = 255;
                     drawType = deleteLL2;
+                    flashTimer.restart();
                 }
                 break;
             case deleteLL2:
-                mySLL.drawDeleteNodeMove(window, deleteIndex, nodeOpacity, nodePositionDiffX, newArrowOpacity);
+                mySLL.drawDeleteNodeMove(window, deleteIndex, nodeOpacity, 
+                                         nodePositionDiffX, newArrowOpacity,
+                                         getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer));
                 if (nodePositionDiffX > 0 || newArrowOpacity < 255) {
-                    nodePositionDiffX = std::max(nodePositionDiffX - nodeConstants::insertMoveSpeed, 0);
                     newArrowOpacity = std::min(255, newArrowOpacity + nodeConstants::fadeSpeed);
+                    if (newArrowOpacity == 255)
+                        nodePositionDiffX = std::max(nodePositionDiffX - nodeConstants::insertMoveSpeed, 0);
                 }
                 else 
                     drawType = showcaseLL;

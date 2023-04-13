@@ -1,5 +1,72 @@
 #include "node.h"
 
+int nodeConstants::nodeDistance;
+int nodeConstants::firstNodePositionX;
+int nodeConstants::initialInsertNodeY;
+int nodeConstants::firstNodePositionY;
+int nodeConstants::nodePositionSpeedAfterInsert;
+int nodeConstants::insertMoveSpeed;
+int nodeConstants::fadeSpeed;
+int nodeConstants::nodeRadius;
+int nodeConstants::textOpacity;
+float nodeConstants::moveDuration;
+sf::Time nodeConstants::flashDuration;
+sf::Vector2f nodeConstants::firstNodePosition;
+sf::Color nodeConstants::flashColor;
+sf::Color nodeConstants::baseColor;
+
+void nodeConstants::initializeConstants() {
+    nodeDistance = 174;
+    firstNodePositionX = 174;
+    initialInsertNodeY = 180;
+    firstNodePositionY = 240;
+    nodePositionSpeedAfterInsert = 22;
+    insertMoveSpeed = 12;
+    fadeSpeed = 25;
+    nodeRadius = 64;
+    moveDuration = 0.5;
+    textOpacity = 200;
+    flashDuration = sf::seconds(1.0f);
+    firstNodePosition.x = firstNodePositionX, firstNodePosition.y = firstNodePositionY;
+    flashColor = sf::Color::Red;
+    baseColor = sf::Color::White;
+}
+
+int arrowConstants::arrowLengthInit;
+int arrowConstants::arrowHeightInit;
+sf::Vector2i arrowConstants::arrowHeadSize;
+sf::Vector2i arrowConstants::arrowShaftSize;
+
+void arrowConstants::initializeConstants() {
+    arrowLengthInit = 52;
+    arrowHeightInit = 23;
+    arrowHeadSize.x = 19, arrowHeadSize.y = 23;
+    arrowShaftSize.x = 97, arrowShaftSize.y = 3;
+}
+
+float mathConstants::PI;
+
+void mathConstants::initializeConstants() {
+    PI = 3.14159;
+}
+
+int textConstants::typeHead;
+int textConstants::typeCur;
+int textConstants::typeTail;
+int textConstants::typeHeadAndTail;
+int textConstants::typeHeadAndCur;
+int textConstants::typeTailAndCur;
+int textConstants::typeTemp;
+int textConstants::typeNext;
+int textConstants::typeDel;
+int textConstants::typeHeadAndTemp;
+int textConstants::typeTailAndNext;
+
+void textConstants::initializeConstants() {
+    typeHead = 1, typeCur = 2, typeTail = 3, typeHeadAndTail = 4, typeHeadAndCur = 5, typeTailAndCur = 6;
+    typeTemp = 7, typeNext = 8, typeDel = 9, typeHeadAndTemp = 10, typeTailAndNext = 11;
+}
+
 Node::Node() {
     data = -1;
     nodeColor = rand() % 4;
@@ -215,7 +282,7 @@ void Node::drawNode2(sf::Vector2f nodePosition, sf::RenderWindow &window,
 void Node::drawArrow(sf::Vector2f nodePosition, sf::RenderWindow &window, int middleOfNodes, int opacity) {
     sf::Texture arrow;
     if (!arrow.loadFromFile("src//include//texture//arrow.png")) {
-        std::cout << "Texture file not found! (arrow)";
+        std::cout << "Texture file not found! (arrow)\n";
         exit(-1);
     }
     sf::Sprite arrowSprite(arrow);
@@ -226,4 +293,75 @@ void Node::drawArrow(sf::Vector2f nodePosition, sf::RenderWindow &window, int mi
     arrowSprite.setColor(arrowColor);
     
     window.draw(arrowSprite);
+}
+
+void Node::drawText(sf::RenderWindow &window, sf::Vector2f nodePosition, int textType, int opacity) {
+    sf::Font textFont;
+    if (!textFont.loadFromFile("src//font//Aller_Bd.ttf")) {
+        std::cout << "Font not found!\n";
+        exit(-1);
+    }
+    sf::Text textContent;
+    // 1 - head
+    // 2 - cur
+    // 3 - tail
+    // 4 - head/tail
+    // 5 - head/cur
+    // 6 - tail/cur
+    // 7 - temp
+    // 8 - next
+    // 9 - del
+    // 10 - head/temp
+    // 11 - tail/temp
+    switch (textType) {
+        case 1:
+            textContent.setString("head");
+            break;
+        case 2:
+            textContent.setString("cur");
+            break;
+        case 3:
+            textContent.setString("tail");
+            break;
+        case 4:
+            textContent.setString("head/tail");
+            break;
+        case 5:
+            textContent.setString("head/cur");
+            break;
+        case 6:
+            textContent.setString("tail/cur");
+            break;
+        case 7:
+            textContent.setString("temp");
+            break;
+        case 8:
+            textContent.setString("next");
+            break;
+        case 9:
+            textContent.setString("del");
+            break;
+        case 10:
+            textContent.setString("head/temp");
+        case 11:
+            textContent.setString("tail/next");
+    }
+    int extraHeight = 0;
+    std::string textString = textContent.getString();
+    for (int i = 0; i < (int) textString.size(); i++) {
+        if (textString[i] == 'g' || textString[i] == 'j' || textString[i] == 'p' || textString[i] == 'q' || textString[i] == 'y')
+            extraHeight = 10;
+    }
+    textContent.setFont(textFont);
+    textContent.setCharacterSize(44);
+    sf::Color textColor = sf::Color::White;
+    textColor.a = opacity;
+    textContent.setFillColor(textColor);
+    sf::FloatRect textRect = textContent.getLocalBounds();
+    textContent.setOrigin(textRect.left + textRect.width / 2.f, textRect.top + textRect.height);
+    sf::Vector2f textPosition = nodePosition;
+    textPosition.y += nodeConstants::nodeRadius + 40 + extraHeight;
+    textContent.setPosition(textPosition);
+
+    window.draw(textContent);
 }
