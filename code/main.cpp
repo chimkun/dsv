@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+#include "constants.h"
 #include "menu.h"
 #include "general.h"
 #include "LLscreen.h"
@@ -16,7 +17,7 @@ int main()
         deleteLL0, deleteLL1, deleteLL2
     };
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "DS Visualizer");
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(120);
     
     generalScreen theLLscreen;
 
@@ -38,6 +39,7 @@ int main()
 
     //delete data
     int deleteIndex, nodeOpacity, deleteNodeOpacity, nodePositionDiffX, newArrowOpacity;
+
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {

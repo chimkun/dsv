@@ -46,7 +46,4 @@ void setInsertNode(int &nodePositionXAfterInsert, sf::Vector2f &insertNodePositi
 void deleteNodeProcess(SLL &mySLL, int &deleteIndex, int &nodeOpacity, int &deleteNodeOpacity, int &gotoIndex,
                        int &nodePositionDiffX, int &newArrowOpacity, sf::Clock &flashTimer);
 
-void drawArrowBetweenNode(sf::RenderWindow &window, sf::Vector2f nodePositionLeft, 
-                          sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity);
-
 #endif
