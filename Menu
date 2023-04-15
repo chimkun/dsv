@@ -1,32 +1,47 @@
 [
     {
-        "command": "g++ -c ..\\Menu\\code\\main.cpp -o main.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
-        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
-        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\main.cpp"
-    },
-    {
-        "command": "g++ -c ..\\Menu\\code\\general.cpp -o general.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
-        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
-        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\general.cpp"
-    },
-    {
-        "command": "g++ -c ..\\Menu\\code\\LLscreen.cpp -o LLscreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/LLscreen.cpp -o LLscreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreen.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code\\node.cpp -o node.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/LLscreenEvent.cpp -o LLscreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
-        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\node.cpp"
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreenEvent.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code\\arrow.cpp -o arrow.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/arrow.cpp -o arrow.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\arrow.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code\\constants.cpp -o constants.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/button.cpp -o button.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\button.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/constants.cpp -o constants.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\constants.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/general.cpp -o general.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\general.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/main.cpp -o main.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\main.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/menu.cpp -o menu.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menu.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/node.cpp -o node.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\node.cpp"
     }
 ]

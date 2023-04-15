@@ -11,7 +11,7 @@ private:
     int numberOfNode;
 public:
     SLL ();
-    void build(int inputNumberOfNode);
+    void build(int inputNumberOfNode, int *a);
     void insertAtBeginning(int newData);
     void insertAtEnding(int newData);
     void insertAfterIndex(int newData, int idx);
@@ -20,8 +20,10 @@ public:
     void deleteAtIndex(int idx);
     void updateAtIndex(int newData, int idx);
     int searchElement(int searchData);
+    void deleteList();
+    int getNumberOfNode();
     void printList();
-    void drawList(sf::RenderWindow &window, int opacity, const int &nodeDistance);
+    void drawList(sf::RenderWindow &window, int opacity);
     void drawListWhenInsert(sf::RenderWindow &window, int insertIndex, 
                             int opacity, int nodePositionXAfterInsert);
     void drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int gotoIndex, sf::Color fadeColor);
@@ -31,6 +33,7 @@ public:
     void drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity, int deleteNodeOpacity);
     void drawDeleteNodeMove(sf::RenderWindow &window, int removeIndex, int nodeOpacity, 
                              int nodePositionDiffX, int newArrowOpacity, sf::Color fadeColor);
+    void drawSearchIndicator(sf::RenderWindow &window, int searchIndex, int gotoIndex, sf::Color fadeColor);
 };
 
 void createList(SLL &mySLL);

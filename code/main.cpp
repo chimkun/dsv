@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+#include "LLscreenEvent.h"
 #include "constants.h"
 #include "menu.h"
 #include "general.h"
@@ -11,31 +12,26 @@
 int main()
 {
     srand(time(NULL));
-    enum LLdrawType {
-        showcaseLL, 
-        insertLL0, insertLL1, insertLL2, 
-        deleteLL0, deleteLL1, deleteLL2
-    };
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "DS Visualizer");
     window.setFramerateLimit(120);
-    
-    generalScreen theLLscreen;
+    window.clear(sf::Color::Black);
 
     nodeConstants::initializeConstants();
     arrowConstants::initializeConstants();
     mathConstants::initializeConstants();
     textConstants::initializeConstants();
 
+/*
     SLL mySLL;
     createList(mySLL);
     int opacity = 0;
-    sf::Vector2f insertNodePosition;
     
     LLdrawType drawType = showcaseLL;
     
     //insert data
     int insertIndex, insertData, nodePositionXAfterInsert, insertNodeColor, insertNodeOpacity, gotoIndex;
     sf::Clock flashTimer;
+    sf::Vector2f insertNodePosition;
 
     //delete data
     int deleteIndex, nodeOpacity, deleteNodeOpacity, nodePositionDiffX, newArrowOpacity;
@@ -49,21 +45,16 @@ int main()
                     break;
                 case sf::Event::MouseButtonPressed:
                     if (drawType == showcaseLL) {
-                        sf::FloatRect addButtonBounds = theLLscreen.getAddButtonBounds();
-                        sf::FloatRect deleteButtonBounds = theLLscreen.getDeleteButtonBounds();
-                        sf::Vector2i mousePositionInt = sf::Mouse::getPosition(window);
-                        sf::Vector2f mousePosition(mousePositionInt.x, mousePositionInt.y);
-                        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && addButtonBounds.contains(mousePosition)) {
+                        if (theLLscreen.addButtonIsClick(window)) {
                             drawType = insertLL0;
                             insertNodeProcess(mySLL, insertIndex, insertData, insertNodePosition, gotoIndex,
                                             nodePositionXAfterInsert, insertNodeOpacity, insertNodeColor, flashTimer);
                         }
-                        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && deleteButtonBounds.contains(mousePosition)) {
+                        if (theLLscreen.deleteButtonIsClick(window)) {
                             drawType = deleteLL0;
                             deleteNodeProcess(mySLL, deleteIndex, nodeOpacity, deleteNodeOpacity, gotoIndex,
                                             nodePositionDiffX, newArrowOpacity, flashTimer);
                         }
-                     
                     }
                     break;
             }
@@ -73,7 +64,7 @@ int main()
         window.clear();
         switch (drawType) {
             case showcaseLL:
-                mySLL.drawList(window, opacity, nodeConstants::nodeDistance);
+                mySLL.drawList(window, opacity);
                 break;
             case insertLL0:
                 mySLL.drawInsertNodeIndicator(window, insertIndex, gotoIndex, getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));
@@ -150,6 +141,22 @@ int main()
         theLLscreen.drawGeneralScreen(window);
         window.display();    
     }
+*/
 
+    SLLObject mySLLObject;
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            switch (event.type) {
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+                case sf::Event::MouseButtonPressed:
+                    mySLLObject.processEvent(window);
+            }
+        }
+        mySLLObject.processType(window);
+        window.display();
+    }
     return 0;
 }

@@ -5,17 +5,14 @@
 
 SLL::SLL () {
     numberOfNode = 0;
+    int *a = new int(0);
+    pHead = nullptr;
 }
 
-void SLL::build(int inputNumberOfNode) {
+void SLL::build(int inputNumberOfNode, int *a) {
     Node *cur = pHead;
     for (int countElement = 1; countElement <= inputNumberOfNode; countElement++) {
-        int curElement;
-        std::cin >> curElement;
-        if (curElement < 0 || curElement > 99) {
-            std::cout << "Please input integer in range[0, 99]" << '\n';
-            countElement--;
-        }
+        int curElement = a[countElement - 1];
         if (countElement == 1) {
             pHead = new Node(curElement);
             cur = pHead;
@@ -95,9 +92,9 @@ void SLL::deleteAtBeginning() {
         pHead = nullptr;
         return;
     }
-    Node *newNode = pHead->pNext;
-    delete(pHead);
-    pHead = newNode;
+    Node *temp = pHead; 
+    pHead = pHead->pNext;
+    delete(temp);
     return;
 }
 
@@ -173,6 +170,16 @@ int SLL::searchElement(int searchData) {
     return -1;
 }
 
+void SLL::deleteList() {
+    while (numberOfNode > 1)
+        deleteAtEnding();
+    pHead = nullptr;
+}
+
+int SLL::getNumberOfNode() {
+    return numberOfNode;
+}
+
 void SLL::printList() {
     Node *cur = pHead;
     while (pHead != nullptr) {
@@ -183,7 +190,7 @@ void SLL::printList() {
     pHead = cur;
 }
 
-void SLL::drawList(sf::RenderWindow &window, int opacity, const int &nodeDistance) {
+void SLL::drawList(sf::RenderWindow &window, int opacity) {
     Node *cur = pHead;
     int countNode = 1;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
@@ -198,12 +205,13 @@ void SLL::drawList(sf::RenderWindow &window, int opacity, const int &nodeDistanc
         else if (countNode == numberOfNode) {
             cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
         }
+
         if (countNode < numberOfNode) {
             sf::Vector2f nodePositionRight = nodePosition;
-            nodePositionRight.x += nodeDistance;
+            nodePositionRight.x += nodeConstants::nodeDistance;
             cur->drawArrowBetweenNode(window, nodePosition, nodePositionRight, nodeConstants::baseColor, opacity);
         }
-        nodePosition.x += nodeDistance;
+        nodePosition.x += nodeConstants::nodeDistance;
         countNode++;
         cur = cur->pNext;
     }
@@ -502,10 +510,13 @@ void SLL::drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity,
         sf::Vector2f nodePositionLeft = nodePosition;
         sf::Vector2f nodePositionRight = nodePosition;    
         nodePositionRight.x += nodeConstants::nodeDistance;
-        if (countNode == removeIndex - 1 && removeIndex - 1 > 0) {
+        if (countNode == 1 && removeIndex == 1) {
+            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, deleteNodeOpacity);
+        }
+        else if (countNode == removeIndex - 1 && removeIndex - 1 > 0) {
             cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, deleteNodeOpacity);
         }
-        if (countNode == removeIndex && removeIndex < numberOfNode) {
+        else if (countNode == removeIndex && removeIndex < numberOfNode) {
             cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, deleteNodeOpacity);
         }
         else if (countNode < removeIndex - 1 && countNode < numberOfNode) {
@@ -580,10 +591,22 @@ void SLL::drawDeleteNodeMove(sf::RenderWindow &window, int removeIndex, int node
     }
 }
 
+void SLL::drawSearchIndicator(sf::RenderWindow &window, int searchIndex, int gotoIndex, sf::Color fadeColor) {
+    drawDeleteNodeIndicator(window, searchIndex, gotoIndex, fadeColor);
+}
+
 void createList(SLL &mySLL) {
     int numberOfNode;
     std::cin >> numberOfNode;
-    mySLL.build(numberOfNode);
+    int *a = new int(numberOfNode);
+    for (int i = 0; i < numberOfNode; i++) {
+        std::cin >> a[i];
+        if (a[i] < 0 || a[i] > 99) {
+            std::cout << "input integer in range [0..99]\n";
+            i--;
+        }
+    }
+    mySLL.build(numberOfNode, a);
 }
 
 sf::Color getFadeColor(sf::Color startColor, sf::Color endColor, sf::Clock flashTimer) {
@@ -621,7 +644,7 @@ void deleteNodeProcess(SLL &mySLL, int &deleteIndex, int &nodeOpacity, int &dele
 }
 
 void setInsertNode(int &nodePositionXAfterInsert, sf::Vector2f &insertNodePosition,
-                    int &insertNodeOpacity, int insertPhase) {
+                   int &insertNodeOpacity, int insertPhase) {
     if (nodePositionXAfterInsert < nodeConstants::nodeDistance)
         nodePositionXAfterInsert = std::min(nodeConstants::nodeDistance, nodePositionXAfterInsert + nodeConstants::insertMoveSpeed);
     if (insertPhase == 2)
