@@ -1,4 +1,3 @@
-#include "constants.h"
 #include "node.h"
 
 Node::Node() {
@@ -178,7 +177,7 @@ void Node::drawNode2(sf::Vector2f nodePosition, sf::RenderWindow &window,
     window.draw(nodeCircleSprite);
     window.draw(mergedNumberSprite);
 }
-
+/*
 void Node::drawText(sf::RenderWindow &window, sf::Vector2f nodePosition, int textType, int opacity) { 
     sf::Font textFont;
     if (!textFont.loadFromFile("src//font//Aller_Bd.ttf")) {
@@ -249,7 +248,7 @@ void Node::drawText(sf::RenderWindow &window, sf::Vector2f nodePosition, int tex
 
     window.draw(textContent);
 }
-
+*/
 void Node::drawArrowBetweenNode(sf::RenderWindow &window, sf::Vector2f nodePositionLeft,
                                 sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity) {
     nodeArrow.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, arrowColor, opacity);

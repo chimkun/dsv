@@ -1,19 +1,16 @@
-#include "constants.h"
 #include "LLscreen.h"
-#include "arrow.h"
 #include <iostream>
 
 SLL::SLL () {
     numberOfNode = 0;
-    int *a = new int(0);
     pHead = nullptr;
 }
 
 void SLL::build(int inputNumberOfNode, int *a) {
     Node *cur = pHead;
-    for (int countElement = 1; countElement <= inputNumberOfNode; countElement++) {
-        int curElement = a[countElement - 1];
-        if (countElement == 1) {
+    for (int countElement = 0; countElement < inputNumberOfNode; countElement++) {
+        int curElement = a[countElement];
+        if (countElement == 0) {
             pHead = new Node(curElement);
             cur = pHead;
             pHead->pNext = nullptr;
@@ -45,6 +42,10 @@ void SLL::insertAtBeginning(int newData) {
 
 void SLL::insertAtEnding(int newData) {
     numberOfNode++;
+    if (pHead == nullptr) {
+        pHead = new Node(newData);
+        return;
+    }
     Node *cur = pHead;
     while (pHead->pNext != nullptr) {
         pHead = pHead->pNext;
@@ -171,8 +172,12 @@ int SLL::searchElement(int searchData) {
 }
 
 void SLL::deleteList() {
-    while (numberOfNode > 1)
-        deleteAtEnding();
+    Node *cur = pHead;
+    while (cur != nullptr) {
+        Node *temp = cur;
+        cur = cur->pNext;
+        delete temp;
+    }
     pHead = nullptr;
 }
 
@@ -190,20 +195,23 @@ void SLL::printList() {
     pHead = cur;
 }
 
-void SLL::drawList(sf::RenderWindow &window, int opacity) {
+void SLL::drawList(sf::RenderWindow &window, int opacity, textInfo &nodeText) {
     Node *cur = pHead;
     int countNode = 1;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
         cur->drawNode(nodePosition, window, opacity);
+        
         if (countNode == 1) {
-            if (numberOfNode == 1)
-                cur->drawText(window, nodePosition, textConstants::typeHeadAndTail, nodeConstants::textOpacity);
-            else 
-                cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+            if (numberOfNode == 1) {
+                nodeText.drawText(window, nodePosition, textConstants::typeHeadAndTail, opacity);
+            }
+            else {
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, opacity);
+            }
         }
         else if (countNode == numberOfNode) {
-            cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+            nodeText.drawText(window, nodePosition, textConstants::typeTail, opacity);
         }
 
         if (countNode < numberOfNode) {
@@ -217,7 +225,7 @@ void SLL::drawList(sf::RenderWindow &window, int opacity) {
     }
 }
 
-void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int gotoIndex, sf::Color fadeColor) {
+void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int gotoIndex, sf::Color fadeColor, textInfo &nodeText) {
     Node *cur = pHead;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     int maxOpacity = 255;
@@ -232,27 +240,27 @@ void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
         
         if (insertIndex == 0) {
             if (i == 1)
-                cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             else if (i == numberOfNode)
-                cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
         }
         else {
             if (i == 1) {
                 if (numberOfNode == 1)
-                    cur->drawText(window, nodePosition, textConstants::typeHeadAndTail, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeHeadAndTail, nodeConstants::textOpacity);
                 else if (i == gotoIndex)
-                    cur->drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
                 else 
-                    cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             }
             else if (i == numberOfNode) {
                 if (i == gotoIndex)
-                    cur->drawText(window, nodePosition, textConstants::typeTailAndCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, nodeConstants::textOpacity);
                 else if (numberOfNode > 1)
-                    cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
             else if (i == gotoIndex) {
-                cur->drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
             }
         }
 
@@ -271,7 +279,7 @@ void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
 }
 
 void SLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex, 
-                             int opacity, int nodePositionXAfterInsert) {
+                             int opacity, int nodePositionXAfterInsert, textInfo &nodeText) {
     Node *cur = pHead, *insertedNode = nullptr;
     int countNode = 1, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
@@ -291,26 +299,26 @@ void SLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex,
 
         if (insertIndex == 1) {
             if (countNode == insertIndex + 1) {
-                cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             }
             else if (countNode == numberOfNode) {
-                cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
         }
         else {
             if (countNode == insertIndex - 1) {
                 if (countNode == 1)
-                    cur->drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
                 else if (countNode == numberOfNode - 1)
-                    cur->drawText(window, nodePosition, textConstants::typeTailAndCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, nodeConstants::textOpacity);
                 else 
-                    cur->drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
             }
             else if (countNode == 1) {
-                cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             }
             else if (countNode == numberOfNode) {
-                cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
         }
         
@@ -329,7 +337,7 @@ void SLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex,
 }
 
 void SLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity, sf::Color fadeColor,
-                         sf::Vector2f insertNodePosition, int insertNodeOpacity) {
+                         sf::Vector2f insertNodePosition, int insertNodeOpacity, textInfo &nodeText) {
     Node *cur = pHead;
     int countNode = 1, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
@@ -353,27 +361,27 @@ void SLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity,
 
         if (insertIndex == 1) {
             if (countNode == insertIndex + 1)
-                cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             else if (countNode == numberOfNode)
-                cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
         }
         else {
             if (countNode == insertIndex - 1) {
                 if (countNode == 1)
-                    cur->drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
                 else if (countNode == numberOfNode - 1)
-                    cur->drawText(window, nodePosition, textConstants::typeTailAndCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, nodeConstants::textOpacity);
                 else 
-                    cur->drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
             }
             else if (countNode == 1) {
-                cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             }
             else if (countNode == numberOfNode - 1 && insertIndex == numberOfNode) {
-                cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
             else if (countNode == numberOfNode && insertIndex != numberOfNode) {
-                cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
         }
 
@@ -396,7 +404,7 @@ void SLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity,
     }
 }
 
-void SLL::drawDeleteNodeIndicator(sf::RenderWindow &window, int deleteIndex, int gotoIndex, sf::Color fadeColor) {
+void SLL::drawDeleteNodeIndicator(sf::RenderWindow &window, int deleteIndex, int gotoIndex, sf::Color fadeColor, textInfo &nodeText) {
     // std::cerr << "delete index, goto index: " << deleteIndex << " " << gotoIndex << "\n";
     Node *cur = pHead;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
@@ -411,42 +419,42 @@ void SLL::drawDeleteNodeIndicator(sf::RenderWindow &window, int deleteIndex, int
         
         if (deleteIndex == 1) {
             if (numberOfNode == 1)
-                cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             else {
                 if (i == 1)
-                    cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
                 else if (i == 2) {
-                    cur->drawText(window, nodePosition, textConstants::typeTemp, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeTemp, nodeConstants::textOpacity);
                 }
                 else if (i == numberOfNode) {
-                    cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
                 }
             }
         }
         else {
             if (gotoIndex == 1) {
                 if (i == 1)
-                    cur->drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
                 else if (i == numberOfNode)
-                    cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
             else {
                 if (i == gotoIndex - 1) {
                     if (i == 1)
-                        cur->drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
+                        nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
                     else 
-                        cur->drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
+                        nodeText.drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
                 }
                 else if (i == gotoIndex) {
                     if (i == numberOfNode)
-                        cur->drawText(window, nodePosition, textConstants::typeTailAndNext, nodeConstants::textOpacity);
+                        nodeText.drawText(window, nodePosition, textConstants::typeTailAndNext, nodeConstants::textOpacity);
                     else 
-                        cur->drawText(window, nodePosition, textConstants::typeNext, nodeConstants::textOpacity);
+                        nodeText.drawText(window, nodePosition, textConstants::typeNext, nodeConstants::textOpacity);
                 }
                 else if (i == 1)
-                    cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
                 else if (i == numberOfNode) 
-                    cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
         }
         
@@ -464,7 +472,7 @@ void SLL::drawDeleteNodeIndicator(sf::RenderWindow &window, int deleteIndex, int
     }
 }
 
-void SLL::drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity, int deleteNodeOpacity) {
+void SLL::drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity, int deleteNodeOpacity, textInfo &nodeText) {
     Node *cur = pHead;
     int countNode = 1, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
@@ -483,27 +491,27 @@ void SLL::drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity,
 
         if (removeIndex == 1) {
             if (countNode == 1)
-                cur->drawText(window, nodePosition, textConstants::typeHead, deleteNodeOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, deleteNodeOpacity);
             else if (countNode == 2)
-                cur->drawText(window, nodePosition, textConstants::typeTemp, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeTemp, nodeConstants::textOpacity);
             else if (countNode == numberOfNode)
-                cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
         }
         else {
             if (countNode == removeIndex - 1) {
                 if (countNode == 1)
-                    cur->drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
                 else 
-                    cur->drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
             }
             else if (countNode == removeIndex) {
-                cur->drawText(window, nodePosition, textConstants::typeNext, deleteNodeOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeNext, deleteNodeOpacity);
             }
             else if (countNode == 1) {
-                cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             }
             else if (countNode == numberOfNode) {
-                cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
         }
 
@@ -532,7 +540,7 @@ void SLL::drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity,
 }
 
 void SLL::drawDeleteNodeMove(sf::RenderWindow &window, int removeIndex, int nodeOpacity, 
-                             int nodePositionDiffX, int newArrowOpacity, sf::Color fadeColor) {
+                             int nodePositionDiffX, int newArrowOpacity, sf::Color fadeColor, textInfo &nodeText) {
                             
     Node *cur = pHead;
     int countNode = 1, maxOpacity = 255;
@@ -549,26 +557,26 @@ void SLL::drawDeleteNodeMove(sf::RenderWindow &window, int removeIndex, int node
         if (removeIndex == 1) {
             if (countNode == 1) {
                 if (numberOfNode > 1)
-                    cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
                 else 
-                    cur->drawText(window, nodePosition, textConstants::typeHeadAndTail, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeHeadAndTail, nodeConstants::textOpacity);
             }
             else if (countNode == numberOfNode) {
-                cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
         }
         else {
             if (countNode == removeIndex - 1) {
                 if (countNode == 1)
-                    cur->drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
                 else 
-                    cur->drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
+                    nodeText.drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
             }
             else if (countNode == 1) {
-                cur->drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             }
             else if (countNode == numberOfNode) {
-                cur->drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
         }
 
@@ -591,8 +599,8 @@ void SLL::drawDeleteNodeMove(sf::RenderWindow &window, int removeIndex, int node
     }
 }
 
-void SLL::drawSearchIndicator(sf::RenderWindow &window, int searchIndex, int gotoIndex, sf::Color fadeColor) {
-    drawDeleteNodeIndicator(window, searchIndex, gotoIndex, fadeColor);
+void SLL::drawSearchIndicator(sf::RenderWindow &window, int searchIndex, int gotoIndex, sf::Color fadeColor, textInfo &nodeText) {
+    drawDeleteNodeIndicator(window, searchIndex, gotoIndex, fadeColor, nodeText);
 }
 
 void createList(SLL &mySLL) {

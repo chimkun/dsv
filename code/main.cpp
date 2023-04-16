@@ -22,6 +22,9 @@ int main()
     textConstants::initializeConstants();
 
 /*
+
+    generalScreen theLLscreen;
+
     SLL mySLL;
     createList(mySLL);
     int opacity = 0;
@@ -45,6 +48,11 @@ int main()
                     break;
                 case sf::Event::MouseButtonPressed:
                     if (drawType == showcaseLL) {
+                        if (theLLscreen.createButtonIsClick(window)) {
+                            opacity = 0;
+                            mySLL.deleteList();
+                            createList(mySLL);
+                        }
                         if (theLLscreen.addButtonIsClick(window)) {
                             drawType = insertLL0;
                             insertNodeProcess(mySLL, insertIndex, insertData, insertNodePosition, gotoIndex,
@@ -141,6 +149,7 @@ int main()
         theLLscreen.drawGeneralScreen(window);
         window.display();    
     }
+
 */
 
     SLLObject mySLLObject;
@@ -155,6 +164,7 @@ int main()
                     mySLLObject.processEvent(window);
             }
         }
+        window.clear();
         mySLLObject.processType(window);
         window.display();
     }

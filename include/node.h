@@ -21,7 +21,7 @@ struct Node {
                   int innerOpacity, int outlineOpacity, int numberOpacity,
                   sf::Color outlineColor, sf::Color numberColor);
     // void drawArrow(sf::Vector2f nodePosition, sf::RenderWindow &window, int middleOfNodes, int opacity);
-    void drawText(sf::RenderWindow &window, sf::Vector2f nodePosition, int textType, int opacity);
+    // void drawText(sf::RenderWindow &window, sf::Vector2f nodePosition, int textType, int opacity);
     void drawArrowBetweenNode(sf::RenderWindow &window, sf::Vector2f nodePositionLeft,
                               sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity);
 
