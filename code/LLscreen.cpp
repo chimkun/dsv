@@ -521,7 +521,7 @@ void SLL::drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity,
         if (countNode == 1 && removeIndex == 1) {
             cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, deleteNodeOpacity);
         }
-        else if (countNode == removeIndex - 1 && removeIndex - 1 > 0) {
+        else if (countNode == removeIndex - 1 && removeIndex - 1 > 0 && countNode < numberOfNode) {
             cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, deleteNodeOpacity);
         }
         else if (countNode == removeIndex && removeIndex < numberOfNode) {
@@ -600,8 +600,308 @@ void SLL::drawDeleteNodeMove(sf::RenderWindow &window, int removeIndex, int node
 }
 
 void SLL::drawSearchIndicator(sf::RenderWindow &window, int searchIndex, int gotoIndex, sf::Color fadeColor, textInfo &nodeText) {
-    drawDeleteNodeIndicator(window, searchIndex, gotoIndex, fadeColor, nodeText);
+    // drawDeleteNodeIndicator(window, searchIndex, gotoIndex, fadeColor, nodeText);
+    Node *cur = pHead;
+    sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    int maxOpacity = 255, tempSearchIndex = searchIndex;
+    if (searchIndex == -1)
+        tempSearchIndex = numberOfNode;
+    for (int i = 1; i <= numberOfNode; i++) {
+        if (i < gotoIndex)
+            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White);
+        else if (i == gotoIndex)
+            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, fadeColor, nodeConstants::baseColor);
+        else 
+            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor);
+        
+        if (i == gotoIndex) {
+            if (gotoIndex == 1)
+                nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, maxOpacity);
+            else if (gotoIndex == numberOfNode)
+                nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, maxOpacity);
+            else 
+                nodeText.drawText(window, nodePosition, textConstants::typeCur, maxOpacity);
+        }
+        else if (i == 1)
+            nodeText.drawText(window, nodePosition, textConstants::typeHead, maxOpacity);
+        else if (i == numberOfNode)
+            nodeText.drawText(window, nodePosition, textConstants::typeTail, maxOpacity);
+        
+        sf::Vector2f nodePositionLeft = nodePosition;
+        sf::Vector2f nodePositionRight = nodePosition;
+        nodePositionRight.x += nodeConstants::nodeDistance;
+        if (i < gotoIndex - 1 && i < numberOfNode)
+            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
+        else if (i > gotoIndex - 1 && i < numberOfNode) 
+            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+        else if (i == gotoIndex - 1 && i < numberOfNode)
+            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
+        nodePosition.x += nodeConstants::nodeDistance;
+        cur = cur->pNext;
+    }
 }
+void SLL::drawSearchHighlight(sf::RenderWindow &window, int searchIndex, sf::Color fadeColor, 
+                             sf::Color textFadeColor, int infoTextOpacity, textInfo &nodeText) {
+    Node *cur = pHead;
+    int countNode = 1, maxOpacity = 255;
+    int tempSearchIndex = searchIndex;
+    if (searchIndex == -1)
+        tempSearchIndex = numberOfNode;
+    sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    while (cur != nullptr) {
+        if (countNode < tempSearchIndex)
+            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
+                           nodeConstants::flashColor, nodeConstants::baseColor);
+        else if (countNode > tempSearchIndex)
+            cur->drawNode(nodePosition, window, maxOpacity);
+        else {
+            if (searchIndex == -1)
+                cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
+                               nodeConstants::flashColor, nodeConstants::baseColor);
+            else 
+                cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
+                               fadeColor, textFadeColor);
+        }
+
+        if (countNode == tempSearchIndex) {
+            if (countNode == 1)
+                nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, maxOpacity);
+            else if (countNode == numberOfNode) 
+                nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, maxOpacity);
+            else 
+                nodeText.drawText(window, nodePosition, textConstants::typeCur, maxOpacity);
+        }
+        else {
+            if (countNode == 1)
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, maxOpacity);
+            else if (countNode == numberOfNode)
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, maxOpacity);
+        }
+
+        sf::Vector2f nodePositionLeft = nodePosition;
+        sf::Vector2f nodePositionRight = nodePosition;
+        nodePositionRight.x += nodeConstants::nodeDistance;
+
+        if (countNode < numberOfNode) {
+            if (countNode < tempSearchIndex)
+                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
+            else 
+                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+        }
+
+        countNode++;
+        cur = cur->pNext;
+        nodePosition.x += nodeConstants::nodeDistance;
+    }
+
+    if (searchIndex == -1) {
+        std::string textStringContent = "element not found, return -1";
+        nodeText.drawOptionalText(window, textStringContent, nodeConstants::searchTextInfoPosition, infoTextOpacity);
+    }
+    else {
+        std::string searchIndexString = std::to_string(searchIndex - 1);
+        std::string textStringContent = "element found at index " + searchIndexString;
+        nodeText.drawOptionalText(window, textStringContent, nodeConstants::searchTextInfoPosition, infoTextOpacity);
+    }
+}
+void SLL::drawSearchRevert(sf::RenderWindow &window, int searchIndex, 
+                           sf::Color fadeColor, sf::Color textFadeColor, int infoTextOpacity, textInfo &nodeText) {
+    Node *cur = pHead;
+    int countNode = 1, maxOpacity = 255;
+    int tempSearchIndex = searchIndex;
+    if (searchIndex == -1)
+        tempSearchIndex = numberOfNode;
+    sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    while (cur != nullptr) {
+        if (countNode < tempSearchIndex)
+            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
+                           fadeColor, nodeConstants::baseColor);
+        else if (countNode > tempSearchIndex)
+            cur->drawNode(nodePosition, window, maxOpacity);
+        else {
+            if (searchIndex == -1)
+                cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
+                               fadeColor, nodeConstants::baseColor);
+            else 
+                cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
+                               textFadeColor, textFadeColor);
+        }
+
+        if (countNode == tempSearchIndex) {
+            if (countNode == 1)
+                nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, maxOpacity);
+            else if (countNode == numberOfNode) 
+                nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, maxOpacity);
+            else 
+                nodeText.drawText(window, nodePosition, textConstants::typeCur, maxOpacity);
+        }
+        else {
+            if (countNode == 1)
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, maxOpacity);
+            else if (countNode == numberOfNode)
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, maxOpacity);
+        }
+
+        sf::Vector2f nodePositionLeft = nodePosition;
+        sf::Vector2f nodePositionRight = nodePosition;
+        nodePositionRight.x += nodeConstants::nodeDistance;
+
+        if (countNode < numberOfNode) {
+            if (countNode < tempSearchIndex)
+                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
+            else 
+                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+        }
+
+        countNode++;
+        cur = cur->pNext;
+        nodePosition.x += nodeConstants::nodeDistance;
+    }
+
+    if (searchIndex == -1) {
+        std::string textStringContent = "element not found, return -1";
+        nodeText.drawOptionalText(window, textStringContent, nodeConstants::searchTextInfoPosition, infoTextOpacity);
+    }
+    else {
+        std::string searchIndexString = std::to_string(searchIndex - 1);
+        std::string textStringContent = "element found at index " + searchIndexString;
+        nodeText.drawOptionalText(window, textStringContent, nodeConstants::searchTextInfoPosition, infoTextOpacity);
+    }
+}
+void SLL::drawUpdateIndicator(sf::RenderWindow &window, int updateIndex, 
+                              int gotoIndex, sf::Color fadeColor, textInfo &nodeText) {
+    Node *cur = pHead;
+    sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    int maxOpacity = 255;
+    for (int i = 1; i <= numberOfNode; i++) {
+        if (i < gotoIndex)
+            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White);
+        else if (i == gotoIndex)
+            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, fadeColor, nodeConstants::baseColor);
+        else 
+            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor);
+        
+        if (i == gotoIndex) {
+            if (gotoIndex == 1)
+                nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, maxOpacity);
+            else if (gotoIndex == numberOfNode)
+                nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, maxOpacity);
+            else 
+                nodeText.drawText(window, nodePosition, textConstants::typeCur, maxOpacity);
+        }
+        else if (i == 1)
+            nodeText.drawText(window, nodePosition, textConstants::typeHead, maxOpacity);
+        else if (i == numberOfNode)
+            nodeText.drawText(window, nodePosition, textConstants::typeTail, maxOpacity);
+        
+        sf::Vector2f nodePositionLeft = nodePosition;
+        sf::Vector2f nodePositionRight = nodePosition;
+        nodePositionRight.x += nodeConstants::nodeDistance;
+        if (i < gotoIndex - 1 && i < numberOfNode)
+            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
+        else if (i > gotoIndex - 1 && i < numberOfNode) 
+            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+        else if (i == gotoIndex - 1 && i < numberOfNode)
+            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
+        nodePosition.x += nodeConstants::nodeDistance;
+        cur = cur->pNext;
+    }
+}
+void SLL::drawUpdateChangeNum(sf::RenderWindow &window, int updateIndex, int updateData, 
+                              int numberOpacity, sf::Color fadeColor, textInfo &nodeText) {
+    Node *cur = pHead;
+    int countNode = 1, maxOpacity = 255;
+    sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    while (cur != nullptr) {
+        if (countNode < updateIndex)
+            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
+                           nodeConstants::flashColor, nodeConstants::baseColor);
+        else if (countNode > updateIndex)
+            cur->drawNode(nodePosition, window, maxOpacity);
+        else {
+            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, numberOpacity,
+                           nodeConstants::flashColor, fadeColor);
+        }
+
+        if (countNode == updateIndex) {
+            if (countNode == 1)
+                nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, maxOpacity);
+            else if (countNode == numberOfNode) 
+                nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, maxOpacity);
+            else 
+                nodeText.drawText(window, nodePosition, textConstants::typeCur, maxOpacity);
+        }
+        else {
+            if (countNode == 1)
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, maxOpacity);
+            else if (countNode == numberOfNode)
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, maxOpacity);
+        }
+
+        sf::Vector2f nodePositionLeft = nodePosition;
+        sf::Vector2f nodePositionRight = nodePosition;
+        nodePositionRight.x += nodeConstants::nodeDistance;
+
+        if (countNode < numberOfNode) {
+            if (countNode < updateIndex)
+                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
+            else 
+                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+        }
+
+        countNode++;
+        cur = cur->pNext;
+        nodePosition.x += nodeConstants::nodeDistance;
+    }
+}
+void SLL::drawUpdateRevert(sf::RenderWindow &window, int updateIndex, 
+                           sf::Color fadeOutlineColor, sf::Color fadeNumberColor, textInfo &nodeText) {
+    Node *cur = pHead;
+    int countNode = 1, maxOpacity = 255;
+    sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    while (cur != nullptr) {
+        if (countNode < updateIndex)
+            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
+                           fadeOutlineColor, nodeConstants::baseColor);
+        else if (countNode > updateIndex)
+            cur->drawNode(nodePosition, window, maxOpacity);
+        else {
+            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
+                           fadeOutlineColor, fadeNumberColor);
+        }
+
+        if (countNode == updateIndex) {
+            if (countNode == 1)
+                nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, maxOpacity);
+            else if (countNode == numberOfNode) 
+                nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, maxOpacity);
+            else 
+                nodeText.drawText(window, nodePosition, textConstants::typeCur, maxOpacity);
+        }
+        else {
+            if (countNode == 1)
+                nodeText.drawText(window, nodePosition, textConstants::typeHead, maxOpacity);
+            else if (countNode == numberOfNode)
+                nodeText.drawText(window, nodePosition, textConstants::typeTail, maxOpacity);
+        }
+
+        sf::Vector2f nodePositionLeft = nodePosition;
+        sf::Vector2f nodePositionRight = nodePosition;
+        nodePositionRight.x += nodeConstants::nodeDistance;
+
+        if (countNode < numberOfNode) {
+            if (countNode < updateIndex)
+                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeOutlineColor, maxOpacity);
+            else 
+                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+        }
+
+        countNode++;
+        cur = cur->pNext;
+        nodePosition.x += nodeConstants::nodeDistance;
+    }
+}
+
 
 void createList(SLL &mySLL) {
     int numberOfNode;
@@ -625,38 +925,4 @@ sf::Color getFadeColor(sf::Color startColor, sf::Color endColor, sf::Clock flash
                                    startColor.g + (endColor.g - startColor.g) * completionPercentage,
                                    startColor.b + (endColor.b - startColor.b) * completionPercentage);
     return curColor;
-}
-
-void insertNodeProcess(SLL &mySLL, int &insertIndex, int &insertData, sf::Vector2f &insertNodePosition, int &gotoIndex,
-                       int &nodePositionXAfterInsert, int &insertNodeOpacity, int &insertNodeColor, sf::Clock &flashTimer) {
-    std::cout << "insert index <= n and data to add\n";
-    std::cin >> insertIndex >> insertData;
-    insertNodePosition.x = nodeConstants::firstNodePositionX * (insertIndex + 1);
-    insertNodePosition.y = nodeConstants::firstNodePositionY + nodeConstants::initialInsertNodeY;
-    gotoIndex = 1;
-    nodePositionXAfterInsert = 0;
-    insertNodeOpacity = 0;
-    insertNodeColor = rand() % 4;
-    flashTimer.restart();
-}
-
-void deleteNodeProcess(SLL &mySLL, int &deleteIndex, int &nodeOpacity, int &deleteNodeOpacity, int &gotoIndex,
-                       int &nodePositionDiffX, int &newArrowOpacity, sf::Clock &flashTimer) {
-    std::cout << "insert index [1..n] to delete: ";
-    std::cin >> deleteIndex;
-    nodeOpacity = deleteNodeOpacity = 255;
-    nodePositionDiffX = nodeConstants::nodeDistance;
-    newArrowOpacity = 0;
-    gotoIndex = 1;
-    flashTimer.restart();
-}
-
-void setInsertNode(int &nodePositionXAfterInsert, sf::Vector2f &insertNodePosition,
-                   int &insertNodeOpacity, int insertPhase) {
-    if (nodePositionXAfterInsert < nodeConstants::nodeDistance)
-        nodePositionXAfterInsert = std::min(nodeConstants::nodeDistance, nodePositionXAfterInsert + nodeConstants::insertMoveSpeed);
-    if (insertPhase == 2)
-        insertNodeOpacity = std::min(insertNodeOpacity + nodeConstants::fadeSpeed, 255);
-    if (insertPhase == 2 && insertNodePosition.y > nodeConstants::firstNodePositionY && insertNodeOpacity == 255)
-        insertNodePosition.y = std::max((float) insertNodePosition.y - nodeConstants::insertMoveSpeed, (float) nodeConstants::firstNodePositionY);
 }

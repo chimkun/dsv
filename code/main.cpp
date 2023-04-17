@@ -168,5 +168,6 @@ int main()
         mySLLObject.processType(window);
         window.display();
     }
+    mySLLObject.deleteSLL();
     return 0;
 }

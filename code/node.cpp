@@ -177,78 +177,7 @@ void Node::drawNode2(sf::Vector2f nodePosition, sf::RenderWindow &window,
     window.draw(nodeCircleSprite);
     window.draw(mergedNumberSprite);
 }
-/*
-void Node::drawText(sf::RenderWindow &window, sf::Vector2f nodePosition, int textType, int opacity) { 
-    sf::Font textFont;
-    if (!textFont.loadFromFile("src//font//Aller_Bd.ttf")) {
-        std::cout << "Font not found!\n";
-        exit(-1);
-    }
-    sf::Text textContent;
-    // 1 - head
-    // 2 - cur
-    // 3 - tail
-    // 4 - head/tail
-    // 5 - head/cur
-    // 6 - tail/cur
-    // 7 - temp
-    // 8 - next
-    // 9 - del
-    // 10 - head/temp
-    // 11 - tail/temp
-    switch (textType) {
-        case 1:
-            textContent.setString("head");
-            break;
-        case 2:
-            textContent.setString("cur");
-            break;
-        case 3:
-            textContent.setString("tail");
-            break;
-        case 4:
-            textContent.setString("head/tail");
-            break;
-        case 5:
-            textContent.setString("head/cur");
-            break;
-        case 6:
-            textContent.setString("tail/cur");
-            break;
-        case 7:
-            textContent.setString("temp");
-            break;
-        case 8:
-            textContent.setString("next");
-            break;
-        case 9:
-            textContent.setString("del");
-            break;
-        case 10:
-            textContent.setString("head/temp");
-        case 11:
-            textContent.setString("tail/next");
-    }
-    int extraHeight = 0;
-    std::string textString = textContent.getString();
-    for (int i = 0; i < (int) textString.size(); i++) {
-        if (textString[i] == 'g' || textString[i] == 'j' || textString[i] == 'p' || textString[i] == 'q' || textString[i] == 'y')
-            extraHeight = 10;
-    }
-    textContent.setFont(textFont);
-    textContent.setCharacterSize(44);
-    sf::Color textColor = sf::Color::White;
-    textColor.a = opacity;
-    textContent.setFillColor(textColor);
-    sf::FloatRect textRect = textContent.getLocalBounds();
-    textContent.setOrigin(textRect.left + textRect.width / 2.f, textRect.top + textRect.height);
-    sf::Vector2f textPosition = nodePosition;
-    textPosition.y += nodeConstants::nodeRadius + 40 + extraHeight;
-    textContent.setPosition(textPosition);
 
-    window.draw(textContent);
-}
-*/
 void Node::drawArrowBetweenNode(sf::RenderWindow &window, sf::Vector2f nodePositionLeft,
                                 sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity) {
     nodeArrow.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, arrowColor, opacity);
