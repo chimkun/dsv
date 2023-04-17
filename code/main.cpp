@@ -151,7 +151,6 @@ int main()
     }
 
 */
-
     SLLObject mySLLObject;
     while (window.isOpen()) {
         sf::Event event;
