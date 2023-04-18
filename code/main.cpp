@@ -164,6 +164,7 @@ int main()
             }
         }
         window.clear();
+        mySLLObject.drawBackground(window);
         mySLLObject.processType(window);
         window.display();
     }
