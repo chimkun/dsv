@@ -4,9 +4,9 @@
 #include <string>
 #include "LLscreenEvent.h"
 #include "constants.h"
-#include "menu.h"
 #include "general.h"
 #include "LLscreen.h"
+#include "button.h"
 #include "node.h"
 
 int main()
@@ -160,7 +160,11 @@ int main()
                     window.close();
                     break;
                 case sf::Event::MouseButtonPressed:
-                    mySLLObject.processEvent(window);
+                    mySLLObject.processMouseEvent(window);
+                    break;
+                case sf::Event::TextEntered:
+                    mySLLObject.processKeyboardEvent(window, event);
+                    break;
             }
         }
         window.clear();
