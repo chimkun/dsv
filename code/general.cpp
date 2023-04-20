@@ -114,9 +114,9 @@ createScreen::createScreen() {
         exit(-1);
     }
     std::string confirmString = "go!";
-    sf::Vector2f leftCursorPos = sf::Vector2f(362, 535 + 25), rightCursorPos = sf::Vector2f(362 + 448, 535 + 25);
-    userInputBox = textBox(sf::Vector2f(355, 552), userInputBoxTexture, leftCursorPos, rightCursorPos);
-    confirmInputButton.initButton(sf::Vector2f(370 + 460, 553), confirmInputButtonTexture, confirmString);
+    sf::Vector2f leftCursorPos = sf::Vector2f(385 + 7, 535 + 25), rightCursorPos = sf::Vector2f(385 + 7 + 448, 535 + 25);
+    userInputBox = textBox(sf::Vector2f(385, 552), userInputBoxTexture, leftCursorPos, rightCursorPos);
+    confirmInputButton.initButton(sf::Vector2f(385 + 480, 553), confirmInputButtonTexture, confirmString);
 }
 bool createScreen::userInputButtonIsClick(sf::RenderWindow &window) {
     return userInputButton.buttonIsClick(window);
@@ -182,6 +182,12 @@ void createScreen::offInputBoxState() {
 }
 bool createScreen::inputIsEmpty() {
     return userInputBox.inputIsEmpty();
+}
+
+void createScreen::moveButtonWhenHover(sf::RenderWindow &window) {
+    userInputButton.moveButtonWhenHover(window);
+    randomInputButton.moveButtonWhenHover(window);
+    backToModeButton.moveButtonWhenHover(window);
 }
 
 void createScreen::userInputCharacter(char inputCharacter) {

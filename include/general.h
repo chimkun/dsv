@@ -46,6 +46,8 @@ public:
     void offInputBoxState();
     bool inputIsEmpty();
 
+    void moveButtonWhenHover(sf::RenderWindow &window);
+
     void userInputCharacter(char inputCharacter);
     void userBackspaceCharacter();
     void userDeleteCharacter();

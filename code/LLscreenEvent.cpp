@@ -253,21 +253,21 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
         if (theLLscreen.theGeneralScreen.createButtonIsClick(window)) {
             drawType = chooseMakeLL;
         }
-        if (theLLscreen.theGeneralScreen.addButtonIsClick(window)) {
+        else if (theLLscreen.theGeneralScreen.addButtonIsClick(window)) {
             drawType = insertLL0;
             insertNodeProcess(mySLL, insertIndex, insertData, insertNodePosition, gotoIndex,
                               nodePositionXAfterInsert, insertNodeOpacity, insertNodeColor, flashTimer);
         }
-        if (theLLscreen.theGeneralScreen.deleteButtonIsClick(window)) {
+        else if (theLLscreen.theGeneralScreen.deleteButtonIsClick(window)) {
             drawType = deleteLL0;
             deleteNodeProcess(mySLL, deleteIndex, nodeOpacity, deleteNodeOpacity, gotoIndex,
                               nodePositionDiffX, newArrowOpacity, flashTimer);
         }
-        if (theLLscreen.theGeneralScreen.searchButtonIsClick(window)) {
+        else if (theLLscreen.theGeneralScreen.searchButtonIsClick(window)) {
             drawType = searchLL0;
             searchNodeProcess(mySLL, searchIndex, gotoIndex, infoTextOpacity, flashTimer);
         }
-        if (theLLscreen.theGeneralScreen.updateButtonIsClick(window)) {
+        else if (theLLscreen.theGeneralScreen.updateButtonIsClick(window)) {
             drawType = updateLL0;
             updateNodeProcess(mySLL, updateIndex, updateData, gotoIndex, numberOpacity, opacityMultiplier, flashTimer);
         }
@@ -328,6 +328,9 @@ void SLLObject::processKeyboardOtherActionEvent(sf::RenderWindow &window, sf::Ev
 void SLLObject::processMouseHoverEvent(sf::RenderWindow &window) {
     if (drawType == showcaseLL) {
         theLLscreen.theGeneralScreen.moveButtonWhenHover(window);
+    }
+    else if (drawType == chooseMakeLL) {
+        theLLscreen.theCreateScreen.moveButtonWhenHover(window);
     }
 }
 

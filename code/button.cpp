@@ -55,6 +55,10 @@ void button::moveButtonWhenHover(sf::RenderWindow &window) {
     }
 }
 
+void button::flipChoose() {
+    isChoose = !isChoose;
+}
+
 sf::FloatRect button::getButtonBounds()  {
     return buttonSprite.getGlobalBounds();
 }
