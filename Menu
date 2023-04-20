@@ -35,11 +35,6 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\main.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/menu.cpp -o menu.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
-        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
-        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menu.cpp"
-    },
-    {
         "command": "g++ -c ..\\Menu\\code/node.cpp -o node.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\node.cpp"

@@ -1,0 +1,97 @@
+#ifndef LLSCREENEVENT_H
+#define LLSCREENEVENT_H
+
+#include <SFML/Graphics.hpp>
+#include <SFML/Window/Keyboard.hpp>
+#include "general.h"
+#include "LLscreen.h"
+
+enum LLdrawType {
+    back,
+    chooseMakeLL, makeLL, inputLL,
+    showcaseLL, 
+    insertLL0, insertLL1, insertLL2, 
+    deleteLL0, deleteLL1, deleteLL2,
+    searchLL0, searchLL1, searchLL2,
+    updateLL0, updateLL1, updateLL2
+};
+
+class SLLObject {
+private:
+    //SLL
+        SLL mySLL;
+        //create list
+        int opacity;
+        //color transition
+        sf::Clock flashTimer;
+        //insert data
+        int insertIndex, insertData, nodePositionXAfterInsert, insertNodeColor, insertNodeOpacity, gotoIndex;
+        sf::Vector2f insertNodePosition;
+        //delete data
+        int deleteIndex, nodeOpacity, deleteNodeOpacity, nodePositionDiffX, newArrowOpacity;
+        //search data
+        int searchIndex, infoTextOpacity;
+        //update data
+        int updateIndex, updateData, numberOpacity, opacityMultiplier;
+    //LL mode
+        LLdrawType drawType;
+    // Text
+        textInfo nodeText;
+    // UI
+        allScreen theLLscreen;
+    // BG
+        background screenBackground;
+public:
+    SLLObject();
+    void createList(int numberOfNode, int *a);
+    void processCreateList(int inputType = 3);
+    void drawList(sf::RenderWindow &window);
+    void processDrawList();
+
+    void drawInsertIndicator(sf::RenderWindow &window);
+    void processInsert(sf::RenderWindow &window);
+    void drawListWhenInsert(sf::RenderWindow &window);
+    void drawInsertNode(sf::RenderWindow &window);
+
+    void drawDeleteIndicator(sf::RenderWindow &window);
+    void processDelete(sf::RenderWindow &window);
+    void drawDeleteNode(sf::RenderWindow &window);
+    void drawDeleteNodeMove(sf::RenderWindow &window);
+
+    void drawSearchIndicator(sf::RenderWindow &window);
+    void drawSearchHighlight(sf::RenderWindow &window);
+    void drawSearchRevert(sf::RenderWindow &window);
+
+    void drawUpdateIndicator(sf::RenderWindow &window);
+    void drawUpdateChangeNum(sf::RenderWindow &window);
+    void drawUpdateRevert(sf::RenderWindow &window);
+
+    void processType(sf::RenderWindow &window);
+    void processMouseEvent(sf::RenderWindow &window);
+    void processKeyboardInputEvent(sf::RenderWindow &window, sf::Event &event);
+    void processKeyboardOtherActionEvent(sf::RenderWindow &window, sf::Event &event);
+
+    void deleteSLL();
+
+    void drawBackground(sf::RenderWindow &window);
+
+    LLdrawType getType();
+};
+
+void inputValue(int &value);
+
+void insertNodeProcess(SLL &mySLL, int &insertIndex, int &insertData, sf::Vector2f &insertNodePosition, int &gotoIndex, 
+                       int &nodePositionXAfterInsert, int &insertNodeOpacity, int &insertNodeColor, sf::Clock &flashTimer);
+
+void deleteNodeProcess(SLL &mySLL, int &deleteIndex, int &nodeOpacity, int &deleteNodeOpacity, int &gotoIndex,
+                       int &nodePositionDiffX, int &newArrowOpacity, sf::Clock &flashTimer);
+
+void searchNodeProcess(SLL &mySLL, int &searchIndex, int &gotoIndex, int &infoTextOpacity, sf::Clock &flashTimer);
+
+void updateNodeProcess(SLL &mySLL, int &updateIndex, int &updateData, int &gotoIndex, 
+                       int &numberOpacity, int &opacityMultiplier, sf::Clock &flashTimer);
+
+void setInsertNode(int &nodePositionXAfterInsert, sf::Vector2f &insertNodePosition,
+                   int &insertNodeOpacity, int insertPhase);
+
+#endif

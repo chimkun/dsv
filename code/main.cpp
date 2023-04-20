@@ -163,7 +163,10 @@ int main()
                     mySLLObject.processMouseEvent(window);
                     break;
                 case sf::Event::TextEntered:
-                    mySLLObject.processKeyboardEvent(window, event);
+                    mySLLObject.processKeyboardInputEvent(window, event);
+                    break;
+                case sf::Event::KeyPressed:
+                    mySLLObject.processKeyboardOtherActionEvent(window, event);
                     break;
             }
         }
