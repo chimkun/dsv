@@ -1,10 +1,17 @@
 #include <iostream>
 #include "button.h"
 
+button::button(int moveSpeed, int maxLength) {
+    lengthDiff = 0;
+    this->moveSpeed = moveSpeed;
+    this->maxLength = maxLength;
+}
+
 void button::initButton(sf::Vector2f buttonPosition, sf::Texture &buttonTexture, std::string &buttonTextContent) {
     buttonText.setFont(1);
     buttonSprite.setOrigin(0, 0);
     buttonSprite.setPosition(buttonPosition);
+    buttonInitialPosition = buttonPosition;
     this->buttonTexture = buttonTexture;
     this->buttonTextContent = buttonTextContent;
 }
@@ -26,6 +33,26 @@ bool button::buttonIsClick(sf::RenderWindow &window) {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && buttonBounds.contains(mousePosition))
         return true;
     return false;
+}
+bool button::buttonIsHover(sf::RenderWindow &window) {
+    sf::FloatRect buttonBounds = getButtonBounds();
+    sf::Vector2i mousePositionInt = sf::Mouse::getPosition(window);
+    sf::Vector2f mousePosition(mousePositionInt.x, mousePositionInt.y);
+    if (buttonBounds.contains(mousePosition))
+        return true;
+    return false;
+}
+void button::moveButtonWhenHover(sf::RenderWindow &window) {
+    if (buttonIsHover(window)) {
+        sf::Vector2f buttonSpritePosition = buttonSprite.getPosition();
+        buttonSpritePosition.x = std::min(buttonInitialPosition.x + maxLength, buttonSpritePosition.x + moveSpeed);
+        buttonSprite.setPosition(buttonSpritePosition);
+    }
+    else {
+        sf::Vector2f buttonSpritePosition = buttonSprite.getPosition();
+        buttonSpritePosition.x = std::max(buttonInitialPosition.x, buttonSpritePosition.x - moveSpeed);
+        buttonSprite.setPosition(buttonSpritePosition);
+    }
 }
 
 sf::FloatRect button::getButtonBounds()  {

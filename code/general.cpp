@@ -22,8 +22,26 @@ generalScreen::generalScreen () {
         std::cout << "Texture file not found! (updateButton.png)\n";
         exit(-1);
     }
-    sf::Texture userInputDataTexture;
-    if (!userInputDataTexture.loadFromFile("src//include//texture//userInputData.png")) {
+
+    sf::Texture createButtonSelectTexture, addButtonSelectTexture, deleteButtonSelectTexture, 
+                searchButtonSelectTexture, updateButtonSelectTexture;
+    if (!createButtonSelectTexture.loadFromFile("src//include//texture//createButtonSelect.png")) {
+        std::cout << "Texture file not found!\n";
+        exit(-1);
+    }
+    if (!addButtonSelectTexture.loadFromFile("src//include//texture//addButtonSelect.png")) {
+        std::cout << "Texture file not found!\n";
+        exit(-1);
+    }
+    if (!deleteButtonSelectTexture.loadFromFile("src//include//texture//deleteButtonSelect.png")) {
+        std::cout << "Texture file not found!\n";
+        exit(-1);
+    }
+    if (!searchButtonSelectTexture.loadFromFile("src//include//texture//searchButtonSelect.png")) {
+        std::cout << "Texture file not found!\n";
+        exit(-1);
+    }
+    if (!updateButtonSelectTexture.loadFromFile("src//include//texture//updateButtonSelect.png")) {
         std::cout << "Texture file not found!\n";
         exit(-1);
     }
@@ -33,11 +51,11 @@ generalScreen::generalScreen () {
     std::string deleteString = "Delete";
     std::string searchString = "Search";
     std::string updateString = "Update";
-    createButton.initButton(sf::Vector2f(-40, 450), createButtonTexture, createString);
-    addButton.initButton(sf::Vector2f(-40, 535), addButtonTexture, addString);
-    deleteButton.initButton(sf::Vector2f(-40, 620), deleteButtonTexture, deleteString);
-    searchButton.initButton(sf::Vector2f(-40, 705), searchButtonTexture, searchString);
-    updateButton.initButton(sf::Vector2f(-40, 790), updateButtonTexture, updateString);
+    createButton.initButton(sf::Vector2f(-50, 450), createButtonTexture, createString);
+    addButton.initButton(sf::Vector2f(-50, 535), addButtonTexture, addString);
+    deleteButton.initButton(sf::Vector2f(-50, 620), deleteButtonTexture, deleteString);
+    searchButton.initButton(sf::Vector2f(-50, 705), searchButtonTexture, searchString);
+    updateButton.initButton(sf::Vector2f(-50, 790), updateButtonTexture, updateString);
 }
 
 bool generalScreen::createButtonIsClick(sf::RenderWindow &window) {
@@ -56,6 +74,13 @@ bool generalScreen::updateButtonIsClick(sf::RenderWindow &window) {
     return updateButton.buttonIsClick(window);
 }
 
+void generalScreen::moveButtonWhenHover(sf::RenderWindow &window) {
+    createButton.moveButtonWhenHover(window);
+    addButton.moveButtonWhenHover(window);
+    deleteButton.moveButtonWhenHover(window);
+    searchButton.moveButtonWhenHover(window);
+    updateButton.moveButtonWhenHover(window);
+}
 
 createScreen::createScreen() {
     sf::Texture randomInputTexture, userInputTexture, backToModeTexture;
@@ -71,12 +96,13 @@ createScreen::createScreen() {
         std::cout << "Texture file not found! (backToModeButton.png)\n";
         exit(-1);
     }
+
     std::string randomString = "Random";
     std::string userInputString = "User input";
     std::string backToModeString = "Back";
-    userInputButton.initButton(sf::Vector2f(-40, 535), userInputTexture, userInputString);
-    randomInputButton.initButton(sf::Vector2f(-40, 620), randomInputTexture, randomString);
-    backToModeButton.initButton(sf::Vector2f(-40, 705), backToModeTexture, backToModeString);
+    userInputButton.initButton(sf::Vector2f(-50, 535), userInputTexture, userInputString);
+    randomInputButton.initButton(sf::Vector2f(-50, 620), randomInputTexture, randomString);
+    backToModeButton.initButton(sf::Vector2f(-50, 705), backToModeTexture, backToModeString);
 
     sf::Texture userInputBoxTexture, confirmInputButtonTexture;
     if (!userInputBoxTexture.loadFromFile("src//include//texture//userInputData.png")) {
@@ -88,8 +114,9 @@ createScreen::createScreen() {
         exit(-1);
     }
     std::string confirmString = "go!";
-    userInputBox = textBox(sf::Vector2f(370, 552), userInputBoxTexture);
-    confirmInputButton.initButton(sf::Vector2f(370 + 330, 553), confirmInputButtonTexture, confirmString);
+    sf::Vector2f leftCursorPos = sf::Vector2f(362, 535 + 25), rightCursorPos = sf::Vector2f(362 + 448, 535 + 25);
+    userInputBox = textBox(sf::Vector2f(355, 552), userInputBoxTexture, leftCursorPos, rightCursorPos);
+    confirmInputButton.initButton(sf::Vector2f(370 + 460, 553), confirmInputButtonTexture, confirmString);
 }
 bool createScreen::userInputButtonIsClick(sf::RenderWindow &window) {
     return userInputButton.buttonIsClick(window);
@@ -110,9 +137,32 @@ std::string createScreen::getInputString() {
     return userInputBox.getTextBoxString();
 }
 
-void createScreen::processConfirmButton() {
+std::vector<int> createScreen::getInputData() {
     std::string theInputString = getInputString();
     std::string normalizedInput = normalize(theInputString);
+    int curNum = 0, maxNum = 0, countNum = 1, mul = 1;
+            
+    std::vector<int> inputArray;
+    for (int i = (int) normalizedInput.size() - 1; i >= 0; i--) {
+        if (normalizedInput[i] == ',') {
+            if (curNum > 99)
+                break;
+            if (countNum > 10)
+                break;
+            inputArray.push_back(curNum);
+            countNum++;
+            maxNum = std::max(maxNum, curNum);
+            curNum = 0;
+            mul = 1;
+        }
+        else {
+            curNum += mul * ((int) normalizedInput[i] - '0');
+            mul *= 10;
+        }
+    }
+    inputArray.push_back(curNum);
+    std::reverse(inputArray.begin(), inputArray.end());
+    return inputArray;
 }
 
 bool createScreen::userInputButtonGetState() {
@@ -130,6 +180,10 @@ void createScreen::flipInputBoxState() {
 void createScreen::offInputBoxState() {
     userInputBox.offTextBoxState();
 }
+bool createScreen::inputIsEmpty() {
+    return userInputBox.inputIsEmpty();
+}
+
 void createScreen::userInputCharacter(char inputCharacter) {
     userInputBox.userInputCharacter(inputCharacter);
 }
@@ -233,32 +287,4 @@ std::string normalize(std::string &inputString) {
     while (!temp.empty() && temp[(int) temp.size() - 1] == ',')
         temp.pop_back();
     return temp;
-}
-
-int checkStringData(std::string &inputString) {
-    int curNum = 0, maxNum = 0, countNum = 1, mul = 1, errorCode = 0;
-    //0 - good
-    //1 - num out of range [0..99]
-    //2 - total number > 10
-    for (int i = (int) inputString.size() - 1; i >= 0; i--) {
-        if (inputString[i] == ',') {
-            countNum++;
-            maxNum = std::max(maxNum, curNum);
-            curNum = 0;
-            mul = 1;
-            if (countNum > 10) {
-                errorCode = 2;
-                break;
-            }
-        }
-        else {
-            curNum += mul * ((int) inputString[i] - '0');
-            if (mul >= 100) {
-                errorCode = 1;
-                break;
-            }
-            mul *= 10;
-        }
-    }
-    return errorCode;
 }

@@ -20,6 +20,7 @@ int main()
     arrowConstants::initializeConstants();
     mathConstants::initializeConstants();
     textConstants::initializeConstants();
+    buttonConstants::initializeConstants();
 
 /*
 
@@ -171,6 +172,7 @@ int main()
             }
         }
         window.clear();
+        mySLLObject.processMouseHoverEvent(window);
         mySLLObject.drawBackground(window);
         mySLLObject.processType(window);
         window.display();

@@ -72,3 +72,11 @@ void textConstants::initializeConstants() {
     typeTemp = 7, typeNext = 8, typeDel = 9, typeHeadAndTemp = 10, typeTailAndNext = 11;
     textCursorTickRate = sf::milliseconds(530);
 }
+
+int buttonConstants::moveSpeed;
+int buttonConstants::moveLength;
+
+void buttonConstants::initializeConstants() {
+    moveSpeed = 3;
+    moveLength = 30;
+}

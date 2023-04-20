@@ -4,11 +4,13 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
+#include <vector>
 #include "textbox.h"
 
 class generalScreen {
 private:
     button createButton, addButton, searchButton, deleteButton, updateButton;
+    button createButtonSelect, addButtonSelect, searchButtonSelect, deleteButtonSelect, updateButtonSelect;
 public:
     generalScreen ();
     bool createButtonIsClick(sf::RenderWindow &window);
@@ -16,6 +18,8 @@ public:
     bool searchButtonIsClick(sf::RenderWindow &window);
     bool deleteButtonIsClick(sf::RenderWindow &window);
     bool updateButtonIsClick(sf::RenderWindow &window);
+    void moveButtonWhenHover(sf::RenderWindow &window);
+
     void drawGeneralScreen(sf::RenderWindow &window);
 };
 
@@ -33,13 +37,14 @@ public:
     bool confirmButtonIsClick(sf::RenderWindow &window);
 
     std::string getInputString();
-    void processConfirmButton();
+    std::vector<int> getInputData();
 
     bool userInputButtonGetState();
     bool textBoxGetState();
     void flipInputButtonState();
     void flipInputBoxState();
     void offInputBoxState();
+    bool inputIsEmpty();
 
     void userInputCharacter(char inputCharacter);
     void userBackspaceCharacter();
@@ -74,7 +79,5 @@ public:
 };
 
 std::string normalize(std::string &inputString);
-
-int checkStringData(std::string &inputString);
 
 #endif

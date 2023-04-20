@@ -4,51 +4,28 @@ SLLObject::SLLObject() {
     drawType = showcaseLL;
 }
 
-void SLLObject::createList(int numberOfNode, int *a) {
+void SLLObject::createList(int numberOfNode, int *&a) {
     mySLL.deleteList();
     mySLL.build(numberOfNode, a);
 }
-void SLLObject::processCreateList(int inputType) {
-    //1 - user input
-    //3 - random input
-    if (inputType == 1) {
-        int numberOfNode;
-        while (true) {
-            std::cout << "input number of node: ";
-            inputValue(numberOfNode);
-            if (numberOfNode < 0 || numberOfNode > 99) {
-                std::cout << "number of elements must be an integer in range [0..10]";
-            }
-            else 
-                break;
-        }
-        int *a = new int (numberOfNode);
-        std::cout << "input N elements: ";
-        for (int i = 0; i < numberOfNode; i++) {
-            std::cin >> a[i];
-            if (a[i] < 0 || a[i] > 99) {
-                std::cout << "input value must be an integer in range [0..10]";
-                i--;
-            }
-        }
-        createList(numberOfNode, a);
+void SLLObject::craeteRandomList() {
+    int numberOfNode = rand() % 10 + 1;
+    int *a = new int(numberOfNode);
+    for (int i = 0; i < numberOfNode; i++) {
+        a[i] = rand() % 99 + 1;
     }
-    else if (inputType == 2) {
-        int numberOfNode = 0;
-        int *a = new int(0);
-        createList(numberOfNode, a);
-    }
-    else if (inputType == 3) {
-        int numberOfNode = rand() % 10;
-        int *a = new int(numberOfNode);
-        for (int i = 0; i < numberOfNode; i++) {
-            a[i] = rand() % 100;
-        }
-        createList(numberOfNode, a);
-    }
-    drawType = showcaseLL;
+    createList(numberOfNode, a);
+    delete[] a;
 }
-
+void SLLObject::createDefinedList(std::vector <int> &userInput) {
+    int numberOfNode = (int) userInput.size();
+    int *a = new int(numberOfNode);
+    for (int i = 0; i < numberOfNode; i++) {
+        a[i] = userInput[i];
+    }
+    createList(numberOfNode, a);
+    delete[] a;
+}
 void SLLObject::drawList(sf::RenderWindow &window) {
     opacity = std::min(nodeConstants::fadeSpeed + opacity, 255);
     mySLL.drawList(window, opacity, nodeText);
@@ -56,6 +33,7 @@ void SLLObject::drawList(sf::RenderWindow &window) {
 }
 void SLLObject::processDrawList() {
     opacity = 0;
+    drawType = showcaseLL;
 }
 
 void SLLObject::drawInsertIndicator(sf::RenderWindow &window) {
@@ -131,7 +109,6 @@ void SLLObject::drawDeleteNodeMove(sf::RenderWindow &window) {
 }
 
 void SLLObject::drawSearchIndicator(sf::RenderWindow &window) {
-    std::cout.flush();
     int tempSearchIndex = searchIndex;
     if (searchIndex == -1)
         tempSearchIndex = mySLL.getNumberOfNode();
@@ -227,7 +204,6 @@ void SLLObject::processType(sf::RenderWindow &window) {
     }
     switch (drawType) {
         case makeLL:
-            processCreateList(1);
             processDrawList();
             break;
         case showcaseLL:
@@ -302,15 +278,21 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
         }
         else if (theLLscreen.theCreateScreen.randomButtonIsClick(window)) {
             drawType = showcaseLL;
-            processCreateList();
-            processDrawList();
+            craeteRandomList();
         }
         else if (theLLscreen.theCreateScreen.backButtonIsClick(window)) {
-            drawType = showcaseLL;
+            drawType = makeLL;
         }
         else if (theLLscreen.theCreateScreen.userInputButtonGetState()) {
             if (theLLscreen.theCreateScreen.textBoxIsClick(window) && !theLLscreen.theCreateScreen.textBoxGetState()) {
                 theLLscreen.theCreateScreen.flipInputBoxState();
+            }
+            else if (theLLscreen.theCreateScreen.confirmButtonIsClick(window)) {
+                if (!theLLscreen.theCreateScreen.inputIsEmpty()) {
+                    drawType = makeLL;
+                    std::vector <int> userInput = theLLscreen.theCreateScreen.getInputData();
+                    createDefinedList(userInput);
+                }
             }
             else {
                 theLLscreen.theCreateScreen.offInputBoxState();
@@ -341,6 +323,11 @@ void SLLObject::processKeyboardOtherActionEvent(sf::RenderWindow &window, sf::Ev
                 theLLscreen.theCreateScreen.userDeleteCharacter();
             }
         }
+    }
+}
+void SLLObject::processMouseHoverEvent(sf::RenderWindow &window) {
+    if (drawType == showcaseLL) {
+        theLLscreen.theGeneralScreen.moveButtonWhenHover(window);
     }
 }
 

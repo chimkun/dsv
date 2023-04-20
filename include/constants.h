@@ -56,4 +56,11 @@ public:
     static void initializeConstants();
 };
 
+class buttonConstants {
+public:
+    static int moveSpeed;
+    static int moveLength;
+    static void initializeConstants();
+};
+
 #endif

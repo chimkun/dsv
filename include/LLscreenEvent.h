@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window/Keyboard.hpp>
+#include <vector>
 #include "general.h"
 #include "LLscreen.h"
 
@@ -43,8 +44,9 @@ private:
         background screenBackground;
 public:
     SLLObject();
-    void createList(int numberOfNode, int *a);
-    void processCreateList(int inputType = 3);
+    void createList(int numberOfNode, int *&a);
+    void createDefinedList(std::vector <int> &userInput);
+    void craeteRandomList();
     void drawList(sf::RenderWindow &window);
     void processDrawList();
 
@@ -70,6 +72,7 @@ public:
     void processMouseEvent(sf::RenderWindow &window);
     void processKeyboardInputEvent(sf::RenderWindow &window, sf::Event &event);
     void processKeyboardOtherActionEvent(sf::RenderWindow &window, sf::Event &event);
+    void processMouseHoverEvent(sf::RenderWindow &window);
 
     void deleteSLL();
 

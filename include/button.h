@@ -10,9 +10,15 @@ struct button {
     sf::Sprite buttonSprite;
     sf::Texture buttonTexture;
     std::string buttonTextContent;
+    sf::Vector2f buttonInitialPosition;
+    float lengthDiff, maxLength, moveSpeed;
+
+    button(int moveSpeed = buttonConstants::moveSpeed, int maxLength = buttonConstants::moveLength);
     void initButton(sf::Vector2f buttonPosition, sf::Texture &buttonTexture, std::string &buttonTextContent);
     void drawButton(sf::RenderWindow &window, float xFactor = 0.33, float yFactor = 0.17, int textSize = 33);
     bool buttonIsClick(sf::RenderWindow &window);
+    bool buttonIsHover(sf::RenderWindow &window);
+    void moveButtonWhenHover(sf::RenderWindow &window);
     sf::FloatRect getButtonBounds();
 };
 

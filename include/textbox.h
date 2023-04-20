@@ -12,16 +12,20 @@ struct textCursor {
     sf::Vector2f initialCursorPosition;
     sf::Vector2f rightmostCursorPosition;
     bool tick;
+    int cursorPosition;
     sf::Clock tickTime;
     sf::Color cursorColor;
     textInfo userInputText;
     std::string inputContent;
-    int cursorPosition;
 
     textCursor();
-    textCursor(sf::Vector2f initialCursorPosition, sf::Vector2f rightMostCursorPosition);
+    textCursor(sf::Vector2f &initialLeftCursorPosition, sf::Vector2f &initialRightCursorPosition);
+
+    void setTextCursor(sf::Vector2f &initialLeftCursorPosition, sf::Vector2f &initialRightCursorPosition);
     void setInputContent(std::string &inputContent);
     std::string getInputContent();
+    sf::Vector2f getCursorPosition();
+    bool cursorOutOfBound();
 
     void userInputCharacter(char characterInput);
     void userBackspace();
@@ -41,6 +45,8 @@ private:
 public:
     textBox();
     textBox(sf::Vector2f buttonPosition, sf::Texture &buttonTexture);
+    textBox(sf::Vector2f buttonPosition, sf::Texture &buttonTexture,
+            sf::Vector2f cursorLeftPosition, sf::Vector2f cursorRightPosition);
     void userInputCharacter(char characterInput);
     void userBackspace();
     void userDelete();
@@ -51,6 +57,8 @@ public:
     void offTextBoxState();
     bool textBoxIsClick();
     bool textBoxButtonIsClick(sf::RenderWindow &window);
+    bool inputIsEmpty();
+    
     std::string getTextBoxString();
 
     void drawTextBox(sf::RenderWindow &window);
