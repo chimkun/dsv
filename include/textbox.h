@@ -55,6 +55,7 @@ public:
     void textBoxEvent(sf::RenderWindow &window);
     void flipTextBoxState();
     void offTextBoxState();
+    void onTextBoxState();
     bool textBoxIsClick();
     bool textBoxButtonIsClick(sf::RenderWindow &window);
     bool inputIsEmpty();

@@ -209,6 +209,9 @@ void SLLObject::processType(sf::RenderWindow &window) {
         case showcaseLL:
             drawList(window);
             break;
+        case chooseMakeLL:
+            drawList(window);
+            break;
         case insertLL0:
             drawInsertIndicator(window);
             break;
@@ -254,22 +257,68 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
             drawType = chooseMakeLL;
         }
         else if (theLLscreen.theGeneralScreen.addButtonIsClick(window)) {
-            drawType = insertLL0;
-            insertNodeProcess(mySLL, insertIndex, insertData, insertNodePosition, gotoIndex,
-                              nodePositionXAfterInsert, insertNodeOpacity, insertNodeColor, flashTimer);
+            theLLscreen.theGeneralScreen.turnOffAllButton();
+            theLLscreen.theGeneralScreen.addButton.flipButtonState();
         }
         else if (theLLscreen.theGeneralScreen.deleteButtonIsClick(window)) {
-            drawType = deleteLL0;
-            deleteNodeProcess(mySLL, deleteIndex, nodeOpacity, deleteNodeOpacity, gotoIndex,
-                              nodePositionDiffX, newArrowOpacity, flashTimer);
+            theLLscreen.theGeneralScreen.turnOffAllButton();
+            theLLscreen.theGeneralScreen.deleteButton.flipButtonState();
         }
         else if (theLLscreen.theGeneralScreen.searchButtonIsClick(window)) {
-            drawType = searchLL0;
-            searchNodeProcess(mySLL, searchIndex, gotoIndex, infoTextOpacity, flashTimer);
+            theLLscreen.theGeneralScreen.turnOffAllButton();
+            theLLscreen.theGeneralScreen.searchButton.flipButtonState();
         }
         else if (theLLscreen.theGeneralScreen.updateButtonIsClick(window)) {
-            drawType = updateLL0;
-            updateNodeProcess(mySLL, updateIndex, updateData, gotoIndex, numberOpacity, opacityMultiplier, flashTimer);
+            theLLscreen.theGeneralScreen.turnOffAllButton();
+            theLLscreen.theGeneralScreen.updateButton.flipButtonState();
+        }
+        else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theLLscreen.theGeneralScreen.addButton.textBoxIsClick(window)) {
+            theLLscreen.theGeneralScreen.addButton.onInputBoxState();
+        }
+        else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() && theLLscreen.theGeneralScreen.deleteButton.textBoxIsClick(window)) {
+            theLLscreen.theGeneralScreen.deleteButton.onInputBoxState();
+        }
+        else if (theLLscreen.theGeneralScreen.searchButton.buttonIsChoose() && theLLscreen.theGeneralScreen.searchButton.textBoxIsClick(window)) {
+            theLLscreen.theGeneralScreen.searchButton.onInputBoxState();
+        }
+        else if (theLLscreen.theGeneralScreen.updateButton.buttonIsChoose() && theLLscreen.theGeneralScreen.updateButton.textBoxIsClick(window)) {
+            theLLscreen.theGeneralScreen.updateButton.onInputBoxState();
+        }
+        else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
+              && theLLscreen.theGeneralScreen.addButton.confirmButtonIsClick(window)) {
+            if (!theLLscreen.theGeneralScreen.addButton.inputIsEmpty()) {
+                drawType = insertLL0;
+                std::pair <int, int> userInput = theLLscreen.theGeneralScreen.addButton.getInputDataPair();
+                int inputIndex = userInput.first, inputElement = userInput.second;
+                insertNodeProcess(inputIndex, inputElement);
+            }
+        }
+        else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
+              && theLLscreen.theGeneralScreen.deleteButton.confirmButtonIsClick(window)) {
+            if (!theLLscreen.theGeneralScreen.deleteButton.inputIsEmpty()) {
+                drawType = deleteLL0;
+                int userInput = theLLscreen.theGeneralScreen.deleteButton.getInputDataInt();
+                deleteIndex = userInput;
+                deleteNodeProcess(deleteIndex);
+            }
+        }
+        else if (theLLscreen.theGeneralScreen.searchButton.buttonIsChoose() 
+              && theLLscreen.theGeneralScreen.searchButton.confirmButtonIsClick(window)) {
+            if (!theLLscreen.theGeneralScreen.searchButton.inputIsEmpty()) {
+                drawType = searchLL0;
+                int userInput = theLLscreen.theGeneralScreen.searchButton.getInputDataInt();
+                searchData = userInput;
+                searchNodeProcess(searchData);
+            }
+        }
+        else if (theLLscreen.theGeneralScreen.updateButton.buttonIsChoose() 
+              && theLLscreen.theGeneralScreen.updateButton.confirmButtonIsClick(window)) {
+            if (!theLLscreen.theGeneralScreen.updateButton.inputIsEmpty()) {
+                drawType = updateLL0;
+                std::pair <int, int> userInput = theLLscreen.theGeneralScreen.updateButton.getInputDataPair();
+                updateIndex = userInput.first, updateData = userInput.second;
+                updateNodeProcess(updateIndex, updateData);
+            }
         }
     }
     else if (drawType == chooseMakeLL) {
@@ -281,11 +330,11 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
             craeteRandomList();
         }
         else if (theLLscreen.theCreateScreen.backButtonIsClick(window)) {
-            drawType = makeLL;
+            drawType = showcaseLL;
         }
         else if (theLLscreen.theCreateScreen.userInputButtonGetState()) {
-            if (theLLscreen.theCreateScreen.textBoxIsClick(window) && !theLLscreen.theCreateScreen.textBoxGetState()) {
-                theLLscreen.theCreateScreen.flipInputBoxState();
+            if (theLLscreen.theCreateScreen.textBoxIsClick(window)) {
+                theLLscreen.theCreateScreen.onInputBoxState();
             }
             else if (theLLscreen.theCreateScreen.confirmButtonIsClick(window)) {
                 if (!theLLscreen.theCreateScreen.inputIsEmpty()) {
@@ -309,6 +358,18 @@ void SLLObject::processKeyboardInputEvent(sf::RenderWindow &window, sf::Event &e
             }
         }
     }
+    else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theLLscreen.theGeneralScreen.addButton.textBoxIsChoose()) {
+        theLLscreen.theGeneralScreen.addButton.processKeyboardEvent(event);
+    }
+    else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() && theLLscreen.theGeneralScreen.deleteButton.textBoxIsChoose()) {
+        theLLscreen.theGeneralScreen.deleteButton.processKeyboardEvent(event);
+    }
+    else if (theLLscreen.theGeneralScreen.searchButton.buttonIsChoose() && theLLscreen.theGeneralScreen.searchButton.textBoxIsChoose()) {
+        theLLscreen.theGeneralScreen.searchButton.processKeyboardEvent(event);
+    }
+    else if (theLLscreen.theGeneralScreen.updateButton.buttonIsChoose() && theLLscreen.theGeneralScreen.updateButton.textBoxIsChoose()) {
+        theLLscreen.theGeneralScreen.updateButton.processKeyboardEvent(event);
+    }
 }
 void SLLObject::processKeyboardOtherActionEvent(sf::RenderWindow &window, sf::Event &event) {
     if (drawType == chooseMakeLL) {
@@ -324,6 +385,18 @@ void SLLObject::processKeyboardOtherActionEvent(sf::RenderWindow &window, sf::Ev
             }
         }
     }
+    else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theLLscreen.theGeneralScreen.addButton.textBoxIsChoose()) {
+        theLLscreen.theGeneralScreen.addButton.processKeyboardEvent(event);
+    }
+    else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() && theLLscreen.theGeneralScreen.deleteButton.textBoxIsChoose()) {
+        theLLscreen.theGeneralScreen.deleteButton.processKeyboardEvent(event);
+    }
+    else if (theLLscreen.theGeneralScreen.searchButton.buttonIsChoose() && theLLscreen.theGeneralScreen.searchButton.textBoxIsChoose()) {
+        theLLscreen.theGeneralScreen.searchButton.processKeyboardEvent(event);
+    }
+    else if (theLLscreen.theGeneralScreen.updateButton.buttonIsChoose() && theLLscreen.theGeneralScreen.updateButton.textBoxIsChoose()) {
+        theLLscreen.theGeneralScreen.updateButton.processKeyboardEvent(event);
+    }
 }
 void SLLObject::processMouseHoverEvent(sf::RenderWindow &window) {
     if (drawType == showcaseLL) {
@@ -333,6 +406,39 @@ void SLLObject::processMouseHoverEvent(sf::RenderWindow &window) {
         theLLscreen.theCreateScreen.moveButtonWhenHover(window);
     }
 }
+
+
+void SLLObject::insertNodeProcess(int insertIndex, int insertData) {
+    this->insertIndex = insertIndex;
+    this->insertData = insertData;
+    this->insertNodePosition.x = nodeConstants::firstNodePositionX * (insertIndex + 1);
+    this->insertNodePosition.y = nodeConstants::firstNodePositionY + nodeConstants::initialInsertNodeY;
+    this->gotoIndex = 1;
+    this->nodePositionXAfterInsert = 0;
+    this->insertNodeOpacity = 0;
+    this->insertNodeColor = rand() % 4;
+    this->flashTimer.restart();
+}
+void SLLObject::deleteNodeProcess(int deleteIndex) {
+    nodeOpacity = deleteNodeOpacity = 255;
+    nodePositionDiffX = nodeConstants::nodeDistance;
+    newArrowOpacity = 0;
+    gotoIndex = 1;
+    flashTimer.restart();
+}
+void SLLObject::searchNodeProcess(int searchData) {
+    searchIndex = mySLL.searchElement(searchData);
+    gotoIndex = 1;
+    infoTextOpacity = 0;
+    flashTimer.restart();
+}
+void SLLObject::updateNodeProcess(int updateIndex, int updateData) {
+    gotoIndex = 1;
+    numberOpacity = 255;
+    opacityMultiplier = -1;
+    flashTimer.restart();
+}
+
 
 void SLLObject::deleteSLL() {
     mySLL.deleteList();
@@ -345,51 +451,6 @@ void SLLObject::drawBackground(sf::RenderWindow &window) {
 
 void inputValue(int &value) {
     std::cin >> value;
-}
-
-void insertNodeProcess(SLL &mySLL, int &insertIndex, int &insertData, sf::Vector2f &insertNodePosition, int &gotoIndex,
-                       int &nodePositionXAfterInsert, int &insertNodeOpacity, int &insertNodeColor, sf::Clock &flashTimer) {
-    std::cout << "insert index <= n and data to add\n";
-    std::cin >> insertIndex >> insertData;
-    insertNodePosition.x = nodeConstants::firstNodePositionX * (insertIndex + 1);
-    insertNodePosition.y = nodeConstants::firstNodePositionY + nodeConstants::initialInsertNodeY;
-    gotoIndex = 1;
-    nodePositionXAfterInsert = 0;
-    insertNodeOpacity = 0;
-    insertNodeColor = rand() % 4;
-    flashTimer.restart();
-    std::cerr << "insert index, data: " << insertIndex << " " << insertData << '\n';
-}
-
-void deleteNodeProcess(SLL &mySLL, int &deleteIndex, int &nodeOpacity, int &deleteNodeOpacity, int &gotoIndex,
-                       int &nodePositionDiffX, int &newArrowOpacity, sf::Clock &flashTimer) {
-    std::cout << "insert index [1..n] to delete: ";
-    std::cin >> deleteIndex;
-    nodeOpacity = deleteNodeOpacity = 255;
-    nodePositionDiffX = nodeConstants::nodeDistance;
-    newArrowOpacity = 0;
-    gotoIndex = 1;
-    flashTimer.restart();
-}
-
-void searchNodeProcess(SLL &mySLL, int &searchIndex, int &gotoIndex, int &infoTextOpacity, sf::Clock &flashTimer) {
-    std::cout << "insert value to search: ";
-    int searchValue;
-    std::cin >> searchValue;
-    searchIndex = mySLL.searchElement(searchValue);
-    gotoIndex = 1;
-    infoTextOpacity = 0;
-    flashTimer.restart();
-}
-
-void updateNodeProcess(SLL &mySLL, int &updateIndex, int &updateData, int &gotoIndex, 
-                       int &numberOpacity, int &opacityMultiplier, sf::Clock &flashTimer) {
-    std::cout << "insert index, value to update: ";
-    std::cin >> updateIndex >> updateData;
-    gotoIndex = 1;
-    numberOpacity = 255;
-    opacityMultiplier = -1;
-    flashTimer.restart();
 }
 
 void setInsertNode(int &nodePositionXAfterInsert, sf::Vector2f &insertNodePosition,

@@ -21,7 +21,7 @@ void nodeConstants::initializeConstants() {
     nodeDistance = 174;
     firstNodePositionX = 174;
     initialInsertNodeY = 180;
-    firstNodePositionY = 240;
+    firstNodePositionY = 180;
     nodePositionSpeedAfterInsert = 10;
     insertMoveSpeed = 6;
     fadeSpeed = 13;
@@ -75,8 +75,12 @@ void textConstants::initializeConstants() {
 
 int buttonConstants::moveSpeed;
 int buttonConstants::moveLength;
+int buttonConstants::textBoxDistance;
+int buttonConstants::textCursorDistance;
 
 void buttonConstants::initializeConstants() {
     moveSpeed = 3;
     moveLength = 30;
+    textBoxDistance = 385;
+    textCursorDistance = 10;
 }

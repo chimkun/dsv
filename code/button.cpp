@@ -2,9 +2,23 @@
 #include "button.h"
 
 button::button(int moveSpeed, int maxLength) {
-    lengthDiff = 0;
     this->moveSpeed = moveSpeed;
     this->maxLength = maxLength;
+    isChoose = 0;
+    buttonText.setFont(1);
+    buttonSprite.setOrigin(0, 0);
+}
+button::button(sf::Vector2f buttonPosition, sf::Texture &buttonTexture, 
+               std::string &buttonTextContent, int moveSpeed, int maxLength) {
+    this->moveSpeed = moveSpeed;
+    this->maxLength = maxLength;
+    isChoose = 0;
+    buttonText.setFont(1);
+    buttonSprite.setOrigin(0, 0);
+    buttonSprite.setPosition(buttonPosition);
+    buttonInitialPosition = buttonPosition;
+    this->buttonTexture = buttonTexture;
+    this->buttonTextContent = buttonTextContent;     
 }
 
 void button::initButton(sf::Vector2f buttonPosition, sf::Texture &buttonTexture, std::string &buttonTextContent) {
@@ -30,8 +44,9 @@ bool button::buttonIsClick(sf::RenderWindow &window) {
     sf::FloatRect buttonBounds = getButtonBounds();
     sf::Vector2i mousePositionInt = sf::Mouse::getPosition(window);
     sf::Vector2f mousePosition(mousePositionInt.x, mousePositionInt.y);
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && buttonBounds.contains(mousePosition))
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && buttonBounds.contains(mousePosition)) {
         return true;
+    }
     return false;
 }
 bool button::buttonIsHover(sf::RenderWindow &window) {
@@ -57,6 +72,9 @@ void button::moveButtonWhenHover(sf::RenderWindow &window) {
 
 void button::flipChoose() {
     isChoose = !isChoose;
+}
+bool button::isChosen() {
+    return isChoose;
 }
 
 sf::FloatRect button::getButtonBounds()  {

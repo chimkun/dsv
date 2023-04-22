@@ -31,9 +31,10 @@ private:
         //delete data
         int deleteIndex, nodeOpacity, deleteNodeOpacity, nodePositionDiffX, newArrowOpacity;
         //search data
-        int searchIndex, infoTextOpacity;
+        int searchIndex, searchData, infoTextOpacity;
         //update data
         int updateIndex, updateData, numberOpacity, opacityMultiplier;
+        
     //LL mode
         LLdrawType drawType;
     // Text
@@ -74,6 +75,11 @@ public:
     void processKeyboardOtherActionEvent(sf::RenderWindow &window, sf::Event &event);
     void processMouseHoverEvent(sf::RenderWindow &window);
 
+
+    void insertNodeProcess(int insertIndex, int insertData);
+    void deleteNodeProcess(int deleteIndex);
+    void searchNodeProcess(int searchData);
+    void updateNodeProcess(int updateIndex, int updateData);
     void deleteSLL();
 
     void drawBackground(sf::RenderWindow &window);
@@ -82,17 +88,6 @@ public:
 };
 
 void inputValue(int &value);
-
-void insertNodeProcess(SLL &mySLL, int &insertIndex, int &insertData, sf::Vector2f &insertNodePosition, int &gotoIndex, 
-                       int &nodePositionXAfterInsert, int &insertNodeOpacity, int &insertNodeColor, sf::Clock &flashTimer);
-
-void deleteNodeProcess(SLL &mySLL, int &deleteIndex, int &nodeOpacity, int &deleteNodeOpacity, int &gotoIndex,
-                       int &nodePositionDiffX, int &newArrowOpacity, sf::Clock &flashTimer);
-
-void searchNodeProcess(SLL &mySLL, int &searchIndex, int &gotoIndex, int &infoTextOpacity, sf::Clock &flashTimer);
-
-void updateNodeProcess(SLL &mySLL, int &updateIndex, int &updateData, int &gotoIndex, 
-                       int &numberOpacity, int &opacityMultiplier, sf::Clock &flashTimer);
 
 void setInsertNode(int &nodePositionXAfterInsert, sf::Vector2f &insertNodePosition,
                    int &insertNodeOpacity, int insertPhase);

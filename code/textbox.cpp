@@ -132,6 +132,11 @@ textBox::textBox(sf::Vector2f buttonPosition, sf::Texture &buttonTexture) {
     isClicked = 0;
     std::string emptyString;
     textBoxButton.initButton(buttonPosition, buttonTexture, emptyString);
+    sf::Vector2f cursorLeftPosition = buttonPosition + sf::Vector2f(buttonConstants::textCursorDistance, 8);
+    sf::Vector2f cursorRightPosition = buttonPosition + sf::Vector2f(buttonTexture.getSize().x - 22, 8);
+    myTextCursor.setTextCursor(cursorLeftPosition, cursorRightPosition);
+    // std::cerr << "pos: " << buttonPosition.x << " " << buttonPosition.y << '\n';
+    // std::cerr << "cursor: " << cursorLeftPosition.x << " " << cursorLeftPosition.y << '\n';
 }
 textBox::textBox(sf::Vector2f buttonPosition, sf::Texture &buttonTexture,
                  sf::Vector2f cursorLeftPosition, sf::Vector2f cursorRightPosition) {
@@ -166,17 +171,14 @@ void textBox::textBoxEvent(sf::RenderWindow &window) {
         }
     }
 }
-void textBox::drawTextBox(sf::RenderWindow &window) {
-    textBoxButton.drawButton(window);
-    myTextCursor.drawTextOnBox(window);
-    if (isClicked)
-        myTextCursor.drawTextCursor(window);
-}
 void textBox::flipTextBoxState() {
     isClicked = !isClicked;
 }
 void textBox::offTextBoxState() {
     isClicked = 0;
+}
+void textBox::onTextBoxState() {
+    isClicked = 1;
 }
 bool textBox::textBoxIsClick() {
     return isClicked;
@@ -189,4 +191,12 @@ bool textBox::inputIsEmpty() {
 }
 std::string textBox::getTextBoxString() {
     return myTextCursor.getInputContent();
+}
+
+void textBox::drawTextBox(sf::RenderWindow &window) {
+    textBoxButton.drawButton(window);
+    myTextCursor.drawTextOnBox(window);
+    if (isClicked) {
+        myTextCursor.drawTextCursor(window);
+    }
 }

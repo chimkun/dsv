@@ -11,16 +11,20 @@ struct button {
     sf::Texture buttonTexture;
     std::string buttonTextContent;
     sf::Vector2f buttonInitialPosition;
-    float lengthDiff, maxLength, moveSpeed;
+    float maxLength, moveSpeed;
     float opacity, fadeSpeed;
     bool isChoose;
 
     button(int moveSpeed = buttonConstants::moveSpeed, int maxLength = buttonConstants::moveLength);
+    button(sf::Vector2f buttonPosition, sf::Texture &buttonTexture, std::string &buttonTextContent,
+           int moveSpeed = buttonConstants::moveSpeed, int maxLength = buttonConstants::moveLength);
+
     void initButton(sf::Vector2f buttonPosition, sf::Texture &buttonTexture, std::string &buttonTextContent);
     void drawButton(sf::RenderWindow &window, float xFactor = 0.31, float yFactor = 0.17, int textSize = 33);
     bool buttonIsClick(sf::RenderWindow &window);
     bool buttonIsHover(sf::RenderWindow &window);
     void flipChoose();
+    bool isChosen();
     void moveButtonWhenHover(sf::RenderWindow &window);
     sf::FloatRect getButtonBounds();
 };

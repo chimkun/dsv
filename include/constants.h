@@ -60,6 +60,8 @@ class buttonConstants {
 public:
     static int moveSpeed;
     static int moveLength;
+    static int textBoxDistance;
+    static int textCursorDistance;
     static void initializeConstants();
 };
 

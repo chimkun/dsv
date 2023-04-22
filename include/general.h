@@ -5,19 +5,35 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "textbox.h"
+#include "buttonAndTextBox.h"
 
-class generalScreen {
-private:
-    button createButton, addButton, searchButton, deleteButton, updateButton;
-    button createButtonSelect, addButtonSelect, searchButtonSelect, deleteButtonSelect, updateButtonSelect;
-public:
-    generalScreen ();
+struct generalScreen {
+    // button createButton, addButton, searchButton, deleteButton, updateButton;
+    // // textBox addInputIndexBox, addInputElementBox;
+    // // textBox searchInputElementBox;
+    // // textBox deleteInputIndexBox;
+    // // textBox updateInputIndexBox, updateInputElementBox;
+    // generalScreen ();
+    // bool createButtonIsClick(sf::RenderWindow &window);
+    // bool addButtonIsClick(sf::RenderWindow &window);
+    // bool searchButtonIsClick(sf::RenderWindow &window);
+    // bool deleteButtonIsClick(sf::RenderWindow &window);
+    // bool updateButtonIsClick(sf::RenderWindow &window);
+    // void moveButtonWhenHover(sf::RenderWindow &window);
+
+    // void drawGeneralScreen(sf::RenderWindow &window);
+
+    buttonAndTextBox addButton, searchButton, deleteButton, updateButton;
+    button createButton;
+    generalScreen();    
     bool createButtonIsClick(sf::RenderWindow &window);
     bool addButtonIsClick(sf::RenderWindow &window);
     bool searchButtonIsClick(sf::RenderWindow &window);
     bool deleteButtonIsClick(sf::RenderWindow &window);
     bool updateButtonIsClick(sf::RenderWindow &window);
+
+    void turnOffAllButton();
+    
     void moveButtonWhenHover(sf::RenderWindow &window);
 
     void drawGeneralScreen(sf::RenderWindow &window);
@@ -27,7 +43,6 @@ class createScreen {
 private:
     button randomInputButton, userInputButton, backToModeButton, confirmInputButton;
     textBox userInputBox;
-    bool userInputButtonState;
 public:
     createScreen();
     bool userInputButtonIsClick(sf::RenderWindow &window);
@@ -44,6 +59,7 @@ public:
     void flipInputButtonState();
     void flipInputBoxState();
     void offInputBoxState();
+    void onInputBoxState();
     bool inputIsEmpty();
 
     void moveButtonWhenHover(sf::RenderWindow &window);

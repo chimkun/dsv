@@ -280,7 +280,7 @@ void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
 
 void SLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex, 
                              int opacity, int nodePositionXAfterInsert, textInfo &nodeText) {
-    Node *cur = pHead, *insertedNode = nullptr;
+    Node *cur = pHead;
     int countNode = 1, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
@@ -362,7 +362,7 @@ void SLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity,
         if (insertIndex == 1) {
             if (countNode == insertIndex + 1)
                 nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
-            else if (countNode == numberOfNode)
+            else if (countNode == numberOfNode && numberOfNode > 1)
                 nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
         }
         else {
