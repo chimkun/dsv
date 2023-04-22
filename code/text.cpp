@@ -1,10 +1,31 @@
 #include "text.h"
 
-textInfo::textInfo() {
-    if (!textFont.loadFromFile("src//font//Aller_Bd.ttf")) {
-        std::cout << "font not found\n";
-        exit(-1);
+textInfo::textInfo(int fontMode) {
+    if (fontMode == 0) {
+        if (!textFont.loadFromFile("src//font//Aller_Bd.ttf")) {
+            std::cout << "font not found\n";
+            exit(-1);
+        }
     }
+    if (fontMode == 1) {
+        if (!textFont.loadFromFile("src//font//Exo2-Italic.ttf")) {
+            std::cout << "font not found\n";
+            exit(-1);
+        }
+    }
+    if (fontMode == 2) {
+        if (!textFont.loadFromFile("src//font//arial.ttf")) {
+            std::cout << "font not found\n";
+            exit(-1);
+        }
+    }
+    if (fontMode == 3) {
+        if (!textFont.loadFromFile("src//font//CONSOLA.ttf")) {
+            std::cout << "font not found\n";
+            exit(-1);
+        }
+    }
+    return;
 }
 void textInfo::setFont(int fontMode) {
     if (fontMode == 1) {
@@ -15,6 +36,12 @@ void textInfo::setFont(int fontMode) {
     }
     if (fontMode == 2) {
         if (!textFont.loadFromFile("src//font//arial.ttf")) {
+            std::cout << "font not found\n";
+            exit(-1);
+        }
+    }
+    if (fontMode == 3) {
+        if (!textFont.loadFromFile("src//font//consolas.ttf")) {
             std::cout << "font not found\n";
             exit(-1);
         }
@@ -119,7 +146,6 @@ void textInfo::drawOptionalTextSize(sf::RenderWindow &window, std::string &textS
     sf::FloatRect textRect = textContent.getLocalBounds();
     textContent.setOrigin(textOrigin);
     textContent.setPosition(textPosition);
-
     window.draw(textContent);
 }
 

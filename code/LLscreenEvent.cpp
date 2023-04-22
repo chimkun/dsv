@@ -29,7 +29,6 @@ void SLLObject::createDefinedList(std::vector <int> &userInput) {
 void SLLObject::drawList(sf::RenderWindow &window) {
     opacity = std::min(nodeConstants::fadeSpeed + opacity, 255);
     mySLL.drawList(window, opacity, nodeText);
-    // std::cerr << "drew list\n";
 }
 void SLLObject::processDrawList() {
     opacity = 0;
@@ -37,21 +36,43 @@ void SLLObject::processDrawList() {
 }
 
 void SLLObject::drawInsertIndicator(sf::RenderWindow &window) {
+    if (flashTimer.getElapsedTime().asMilliseconds() < remTime.asMilliseconds())
+        sf::sleep(sf::milliseconds(500));
+    remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds());
     mySLL.drawInsertNodeIndicator(window, insertIndex, gotoIndex, 
                                   getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer), nodeText);
-    if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
-        gotoIndex++;
+    LLCodeBlock.drawInsertCodeBlock(window);
+    if (!markFirst) {
+        if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
+            gotoIndex++;
+            flashTimer.restart();
+            LLCodeBlock.drawInsertCodeBlockSingleLine(window, 2);
+        }
+        else {
+            LLCodeBlock.drawInsertCodeBlockSingleLine(window, 1);
+        }
+    }
+    else {
+        markFirst = 0;
         flashTimer.restart();
+        LLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
     }
     if (gotoIndex > insertIndex) {
         drawType = insertLL1;
         mySLL.insertAfterIndex(insertData, insertIndex);
         insertIndex++;
+        markFirst = 1;
     }
 }
 void SLLObject::drawListWhenInsert(sf::RenderWindow &window) {
+    if (markFirst) {
+        markFirst = 0;
+        sf::sleep(sf::milliseconds(500));
+    }
     mySLL.drawListWhenInsert(window, insertIndex, 
                              opacity, nodePositionXAfterInsert, nodeText);
+    LLCodeBlock.drawInsertCodeBlock(window);
+    LLCodeBlock.drawInsertCodeBlockMultiLine(window, 3, 4);
     if (nodePositionXAfterInsert >= nodeConstants::nodeDistance) {
         drawType = insertLL2;
         flashTimer.restart();
@@ -61,6 +82,8 @@ void SLLObject::drawListWhenInsert(sf::RenderWindow &window) {
     }
 }
 void SLLObject::drawInsertNode(sf::RenderWindow &window) {
+    LLCodeBlock.drawInsertCodeBlock(window);
+    LLCodeBlock.drawInsertCodeBlockMultiLine(window, 5, 6);
     mySLL.drawInsertNode(window, insertIndex, opacity,
                          getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer),
                          insertNodePosition, insertNodeOpacity, nodeText);
@@ -73,18 +96,40 @@ void SLLObject::drawInsertNode(sf::RenderWindow &window) {
 
 
 void SLLObject::drawDeleteIndicator(sf::RenderWindow &window) {
+    if (flashTimer.getElapsedTime().asMilliseconds() < remTime.asMilliseconds())
+        sf::sleep(sf::milliseconds(500));
+    remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds());
     mySLL.drawDeleteNodeIndicator(window, deleteIndex, gotoIndex, 
                                   getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer), nodeText);
-    if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
-        gotoIndex++;
+    LLCodeBlock.drawDeleteCodeBlock(window);
+    if (!markFirst) {
+        if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
+            gotoIndex++;
+            flashTimer.restart();
+            LLCodeBlock.drawDeleteCodeBlockSingleLine(window, 2);
+        }
+        else {
+            LLCodeBlock.drawDeleteCodeBlockSingleLine(window, 1);
+        }
+    }
+    else {
+        markFirst = 0;
         flashTimer.restart();
+        LLCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
     }
     if (gotoIndex > deleteIndex) {
         drawType = deleteLL1;
+        markFirst = 1;
     }
 }
 void SLLObject::drawDeleteNode(sf::RenderWindow &window) {
+    if (markFirst) {
+        markFirst = 0;
+        sf::sleep(sf::milliseconds(500));
+    }
     mySLL.drawDeleteNode(window, deleteIndex, nodeOpacity, deleteNodeOpacity, nodeText);
+    LLCodeBlock.drawDeleteCodeBlock(window);
+    LLCodeBlock.drawDeleteCodeBlockMultiLine(window, 3, 4);
     if (deleteNodeOpacity - nodeConstants::fadeSpeed > 0) {
         deleteNodeOpacity = std::max(deleteNodeOpacity - nodeConstants::fadeSpeed, 0);
     }
@@ -99,6 +144,8 @@ void SLLObject::drawDeleteNodeMove(sf::RenderWindow &window) {
     mySLL.drawDeleteNodeMove(window, deleteIndex, nodeOpacity, 
                              nodePositionDiffX, newArrowOpacity,
                              getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer), nodeText);
+    LLCodeBlock.drawDeleteCodeBlock(window);
+    LLCodeBlock.drawDeleteCodeBlockSingleLine(window, 5);
     if (nodePositionDiffX > 0 || newArrowOpacity < 255) {
         newArrowOpacity = std::min(255, newArrowOpacity + nodeConstants::fadeSpeed);
         if (newArrowOpacity == 255)
@@ -291,6 +338,8 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
                 std::pair <int, int> userInput = theLLscreen.theGeneralScreen.addButton.getInputDataPair();
                 int inputIndex = userInput.first, inputElement = userInput.second;
                 insertNodeProcess(inputIndex, inputElement);
+                LLCodeBlock.drawInsertCodeBlock(window);
+                LLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
             }
         }
         else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
@@ -418,25 +467,33 @@ void SLLObject::insertNodeProcess(int insertIndex, int insertData) {
     this->insertNodeOpacity = 0;
     this->insertNodeColor = rand() % 4;
     this->flashTimer.restart();
+    this->remTime = sf::milliseconds(0);
+    this->markFirst = 1;
 }
 void SLLObject::deleteNodeProcess(int deleteIndex) {
-    nodeOpacity = deleteNodeOpacity = 255;
-    nodePositionDiffX = nodeConstants::nodeDistance;
-    newArrowOpacity = 0;
-    gotoIndex = 1;
-    flashTimer.restart();
+    this->nodeOpacity = this->deleteNodeOpacity = 255;
+    this->nodePositionDiffX = nodeConstants::nodeDistance;
+    this->newArrowOpacity = 0;
+    this->gotoIndex = 1;
+    this->flashTimer.restart();
+    this->remTime = sf::milliseconds(0);
+    this->markFirst = 1;
 }
 void SLLObject::searchNodeProcess(int searchData) {
-    searchIndex = mySLL.searchElement(searchData);
-    gotoIndex = 1;
-    infoTextOpacity = 0;
-    flashTimer.restart();
+    this->searchIndex = mySLL.searchElement(searchData);
+    this->gotoIndex = 1;
+    this->infoTextOpacity = 0;
+    this->flashTimer.restart();
+    this->remTime = sf::milliseconds(0);
+    this->markFirst = 1;
 }
 void SLLObject::updateNodeProcess(int updateIndex, int updateData) {
-    gotoIndex = 1;
-    numberOpacity = 255;
-    opacityMultiplier = -1;
-    flashTimer.restart();
+    this->gotoIndex = 1;
+    this->numberOpacity = 255;
+    this->opacityMultiplier = -1;
+    this->flashTimer.restart();
+    this->remTime = sf::milliseconds(0);
+    this->markFirst = 1;
 }
 
 

@@ -6,6 +6,7 @@
 #include <vector>
 #include "general.h"
 #include "LLscreen.h"
+#include "LLscreenCodeBlock.h"
 
 enum LLdrawType {
     back,
@@ -25,6 +26,7 @@ private:
         int opacity;
         //color transition
         sf::Clock flashTimer;
+        sf::Time remTime;
         //insert data
         int insertIndex, insertData, nodePositionXAfterInsert, insertNodeColor, insertNodeOpacity, gotoIndex;
         sf::Vector2f insertNodePosition;
@@ -34,7 +36,8 @@ private:
         int searchIndex, searchData, infoTextOpacity;
         //update data
         int updateIndex, updateData, numberOpacity, opacityMultiplier;
-        
+        //mark first time
+        bool markFirst;
     //LL mode
         LLdrawType drawType;
     // Text
@@ -43,6 +46,8 @@ private:
         allScreen theLLscreen;
     // BG
         background screenBackground;
+    // Code Block
+        LLscreenCodeBlock LLCodeBlock;
 public:
     SLLObject();
     void createList(int numberOfNode, int *&a);

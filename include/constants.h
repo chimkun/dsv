@@ -65,4 +65,15 @@ public:
     static void initializeConstants();
 };
 
+class codeTextConstants {
+public:
+    static int textSize;
+    static sf::Vector2f textPosition;
+    static sf::Vector2f blockPosition;
+    static sf::Vector2f highlightPosition;
+    static int baseWidth, baseHeight;
+    static int highlightWidth, highlightHeight;
+    static void initializeConstants();
+};
+
 #endif

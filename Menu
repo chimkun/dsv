@@ -5,6 +5,11 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreen.cpp"
     },
     {
+        "command": "g++ -c ..\\Menu\\code/LLscreenCodeBlock.cpp -o LLscreenCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreenCodeBlock.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/LLscreenEvent.cpp -o LLscreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreenEvent.cpp"
@@ -23,6 +28,16 @@
         "command": "g++ -c ..\\Menu\\code/buttonAndTextBox.cpp -o buttonAndTextBox.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\buttonAndTextBox.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/codeblock.cpp -o codeblock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\codeblock.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/codetext.cpp -o codetext.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\codetext.cpp"
     },
     {
         "command": "g++ -c ..\\Menu\\code/constants.cpp -o constants.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",

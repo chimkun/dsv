@@ -9,7 +9,7 @@ class textInfo {
 private:
     sf::Font textFont;
 public:
-    textInfo();
+    textInfo(int fontType = 0);
     void setFont(int fontType);
     void drawText(sf::RenderWindow &window, sf::Vector2f nodePosition, int textType, int opacity);
     void drawOptionalText(sf::RenderWindow &window, std::string &textStringContent, 

@@ -1,87 +1,5 @@
 #include "general.h"
 
-// generalScreen::generalScreen () {
-//     sf::Texture createButtonTexture, addButtonTexture, deleteButtonTexture, searchButtonTexture, updateButtonTexture;
-//     if (!createButtonTexture.loadFromFile("src//include//texture//createButton.png")) {
-//         std::cout << "Texture file not found! (createButton.png)\n";
-//         exit(-1);
-//     }
-//     if (!addButtonTexture.loadFromFile("src//include//texture//addButton.png")) {
-//         std::cout << "Texture file not found! (addButton.png)\n";
-//         exit(-1);
-//     }
-//     if (!deleteButtonTexture.loadFromFile("src//include//texture//deleteButton.png")) {
-//         std::cout << "Texture file not found! (deleteButton.png)\n";
-//         exit(-1);
-//     }
-//     if (!searchButtonTexture.loadFromFile("src//include//texture//searchButton.png")) {
-//         std::cout << "Texture file not found! (searchButton.png)\n";
-//         exit(-1);
-//     }
-//     if (!updateButtonTexture.loadFromFile("src//include//texture//updateButton.png")) {
-//         std::cout << "Texture file not found! (updateButton.png)\n";
-//         exit(-1);
-//     }
-
-//     sf::Texture createButtonSelectTexture, addButtonSelectTexture, deleteButtonSelectTexture, 
-//                 searchButtonSelectTexture, updateButtonSelectTexture;
-//     if (!createButtonSelectTexture.loadFromFile("src//include//texture//createButtonSelect.png")) {
-//         std::cout << "Texture file not found!\n";
-//         exit(-1);
-//     }
-//     if (!addButtonSelectTexture.loadFromFile("src//include//texture//addButtonSelect.png")) {
-//         std::cout << "Texture file not found!\n";
-//         exit(-1);
-//     }
-//     if (!deleteButtonSelectTexture.loadFromFile("src//include//texture//deleteButtonSelect.png")) {
-//         std::cout << "Texture file not found!\n";
-//         exit(-1);
-//     }
-//     if (!searchButtonSelectTexture.loadFromFile("src//include//texture//searchButtonSelect.png")) {
-//         std::cout << "Texture file not found!\n";
-//         exit(-1);
-//     }
-//     if (!updateButtonSelectTexture.loadFromFile("src//include//texture//updateButtonSelect.png")) {
-//         std::cout << "Texture file not found!\n";
-//         exit(-1);
-//     }
-
-//     std::string createString = "Create";
-//     std::string addString = "Add";
-//     std::string deleteString = "Delete";
-//     std::string searchString = "Search";
-//     std::string updateString = "Update";
-//     createButton.initButton(sf::Vector2f(-50, 450), createButtonTexture, createString);
-//     addButton.initButton(sf::Vector2f(-50, 535), addButtonTexture, addString);
-//     deleteButton.initButton(sf::Vector2f(-50, 620), deleteButtonTexture, deleteString);
-//     searchButton.initButton(sf::Vector2f(-50, 705), searchButtonTexture, searchString);
-//     updateButton.initButton(sf::Vector2f(-50, 790), updateButtonTexture, updateString);
-// }
-
-// bool generalScreen::createButtonIsClick(sf::RenderWindow &window) {
-//     return createButton.buttonIsClick(window);
-// }
-// bool generalScreen::addButtonIsClick(sf::RenderWindow &window) {
-//     return addButton.buttonIsClick(window);
-// }
-// bool generalScreen::deleteButtonIsClick(sf::RenderWindow &window) {
-//     return deleteButton.buttonIsClick(window);
-// }
-// bool generalScreen::searchButtonIsClick(sf::RenderWindow &window) {
-//     return searchButton.buttonIsClick(window);
-// }
-// bool generalScreen::updateButtonIsClick(sf::RenderWindow &window) {
-//     return updateButton.buttonIsClick(window);
-// }
-
-// void generalScreen::moveButtonWhenHover(sf::RenderWindow &window) {
-//     createButton.moveButtonWhenHover(window);
-//     addButton.moveButtonWhenHover(window);
-//     deleteButton.moveButtonWhenHover(window);
-//     searchButton.moveButtonWhenHover(window);
-//     updateButton.moveButtonWhenHover(window);
-// }
-
 generalScreen::generalScreen() {
     sf::Texture createButtonTexture, addButtonTexture, deleteButtonTexture, searchButtonTexture, updateButtonTexture;
     if (!createButtonTexture.loadFromFile("src//include//texture//createButton.png")) {
@@ -111,18 +29,7 @@ generalScreen::generalScreen() {
         std::cout << "Texture file not found!\n";
         exit(-1);
     }
-    if (!deleteButtonTextBoxTexture.loadFromFile("src//include//texture//deleteButtonTextBox.png")) {
-        std::cout << "Texture file not found!\n";
-        exit(-1);
-    }
-    if (!searchButtonTextBoxTexture.loadFromFile("src//include//texture//searchButtonTextBox.png")) {
-        std::cout << "Texture file not found!\n";
-        exit(-1);
-    }
-    if (!updateButtonTextBoxTexture.loadFromFile("src//include//texture//updateButtonTextBox.png")) {
-        std::cout << "Texture file not found!\n";
-        exit(-1);
-    }
+    deleteButtonTextBoxTexture = searchButtonTextBoxTexture = updateButtonTextBoxTexture = addButtonTextBoxTexture;
 
     std::string createString = "Create";
     std::string addString = "Add";

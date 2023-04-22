@@ -8,21 +8,6 @@
 #include "buttonAndTextBox.h"
 
 struct generalScreen {
-    // button createButton, addButton, searchButton, deleteButton, updateButton;
-    // // textBox addInputIndexBox, addInputElementBox;
-    // // textBox searchInputElementBox;
-    // // textBox deleteInputIndexBox;
-    // // textBox updateInputIndexBox, updateInputElementBox;
-    // generalScreen ();
-    // bool createButtonIsClick(sf::RenderWindow &window);
-    // bool addButtonIsClick(sf::RenderWindow &window);
-    // bool searchButtonIsClick(sf::RenderWindow &window);
-    // bool deleteButtonIsClick(sf::RenderWindow &window);
-    // bool updateButtonIsClick(sf::RenderWindow &window);
-    // void moveButtonWhenHover(sf::RenderWindow &window);
-
-    // void drawGeneralScreen(sf::RenderWindow &window);
-
     buttonAndTextBox addButton, searchButton, deleteButton, updateButton;
     button createButton;
     generalScreen();    

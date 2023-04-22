@@ -84,3 +84,19 @@ void buttonConstants::initializeConstants() {
     textBoxDistance = 385;
     textCursorDistance = 10;
 }
+
+sf::Vector2f codeTextConstants::textPosition;
+sf::Vector2f codeTextConstants::blockPosition;
+sf::Vector2f codeTextConstants::highlightPosition;
+int codeTextConstants::textSize;
+int codeTextConstants::baseHeight, codeTextConstants::baseWidth;
+int codeTextConstants::highlightHeight, codeTextConstants::highlightWidth;
+
+void codeTextConstants::initializeConstants() {
+    textSize = 25;
+    textPosition = sf::Vector2f(1200, 480);
+    blockPosition = sf::Vector2f(1185, 465);
+    highlightPosition = sf::Vector2f(1185, 482);
+    baseWidth = 1000, baseHeight = 600;
+    highlightWidth = 1000, highlightHeight = 29;
+};

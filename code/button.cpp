@@ -5,7 +5,7 @@ button::button(int moveSpeed, int maxLength) {
     this->moveSpeed = moveSpeed;
     this->maxLength = maxLength;
     isChoose = 0;
-    buttonText.setFont(1);
+    buttonText = textInfo(1);
     buttonSprite.setOrigin(0, 0);
 }
 button::button(sf::Vector2f buttonPosition, sf::Texture &buttonTexture, 
@@ -13,7 +13,7 @@ button::button(sf::Vector2f buttonPosition, sf::Texture &buttonTexture,
     this->moveSpeed = moveSpeed;
     this->maxLength = maxLength;
     isChoose = 0;
-    buttonText.setFont(1);
+    buttonText = textInfo(1);
     buttonSprite.setOrigin(0, 0);
     buttonSprite.setPosition(buttonPosition);
     buttonInitialPosition = buttonPosition;
@@ -22,7 +22,7 @@ button::button(sf::Vector2f buttonPosition, sf::Texture &buttonTexture,
 }
 
 void button::initButton(sf::Vector2f buttonPosition, sf::Texture &buttonTexture, std::string &buttonTextContent) {
-    buttonText.setFont(1);
+    buttonText = textInfo(1);
     buttonSprite.setOrigin(0, 0);
     buttonSprite.setPosition(buttonPosition);
     buttonInitialPosition = buttonPosition;

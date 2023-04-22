@@ -21,6 +21,16 @@ int main()
     mathConstants::initializeConstants();
     textConstants::initializeConstants();
     buttonConstants::initializeConstants();
+    codeTextConstants::initializeConstants();
+
+    // sf::Font font;
+    // if (!font.loadFromFile("src//font//CONSOLA.TTF")) {
+    //     exit(-1);
+    // }
+    // std::string content = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    // sf::Text text(content, font, 25);
+    // std::cerr << "size: " << text.getGlobalBounds().height << '\n';
+
     SLLObject mySLLObject;
     while (window.isOpen()) {
         sf::Event event;
@@ -41,8 +51,8 @@ int main()
             }
         }
         window.clear();
-        mySLLObject.processMouseHoverEvent(window);
         mySLLObject.drawBackground(window);
+        mySLLObject.processMouseHoverEvent(window);
         mySLLObject.processType(window);
         window.display();
     }
