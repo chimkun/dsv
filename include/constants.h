@@ -76,4 +76,13 @@ public:
     static void initializeConstants();
 };
 
+class logoConstants {
+public:
+    static int minMoveDistance;
+    static int logoRadius;
+    static int logoMoveSpeed;
+    static sf::Vector2f logoCenter;
+    static void initializeConstants();
+};
+
 #endif

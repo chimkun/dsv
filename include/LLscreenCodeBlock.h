@@ -19,6 +19,14 @@ public:
     void drawDeleteCodeBlock(sf::RenderWindow &window);
     void drawDeleteCodeBlockSingleLine(sf::RenderWindow &window, int lineNumber);
     void drawDeleteCodeBlockMultiLine(sf::RenderWindow &window, int lineNumberLow, int lineNumberHigh);
+
+    void drawSearchCodeBlock(sf::RenderWindow &window);
+    void drawSearchCodeBlockSingleLine(sf::RenderWindow &window, int lineNumber);
+    void drawSearchCodeBlockMultiLine(sf::RenderWindow &window, int lineNumberLow, int lineNumberHigh);
+
+    void drawUpdateCodeBlock(sf::RenderWindow &window);
+    void drawUpdateCodeBlockSingleLine(sf::RenderWindow &window, int lineNumber);
+    void drawUpdateCodeBlockMultiLine(sf::RenderWindow &window, int lineNumberLow, int lineNumberHigh);
 };
 
 #endif

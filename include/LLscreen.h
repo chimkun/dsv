@@ -50,8 +50,6 @@ public:
                           sf::Color fadeOutlineColor, sf::Color fadeNumberColor, textInfo &nodeText);
 };
 
-void createList(SLL &mySLL);
-
 sf::Color getFadeColor(sf::Color startColor, sf::Color endColor, sf::Clock flashTimer);
 
 #endif

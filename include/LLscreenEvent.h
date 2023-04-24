@@ -89,6 +89,10 @@ public:
 
     void drawBackground(sf::RenderWindow &window);
 
+    
+    void processAllEvent(sf::RenderWindow &window, sf::Event &event);
+    void drawLLScreen(sf::RenderWindow &window);
+
     LLdrawType getType();
 };
 

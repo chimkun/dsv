@@ -693,16 +693,6 @@ void SLL::drawSearchHighlight(sf::RenderWindow &window, int searchIndex, sf::Col
         cur = cur->pNext;
         nodePosition.x += nodeConstants::nodeDistance;
     }
-
-    if (searchIndex == -1) {
-        std::string textStringContent = "element not found, return -1";
-        nodeText.drawOptionalText(window, textStringContent, nodeConstants::searchTextInfoPosition, infoTextOpacity);
-    }
-    else {
-        std::string searchIndexString = std::to_string(searchIndex - 1);
-        std::string textStringContent = "element found at index " + searchIndexString;
-        nodeText.drawOptionalText(window, textStringContent, nodeConstants::searchTextInfoPosition, infoTextOpacity);
-    }
 }
 void SLL::drawSearchRevert(sf::RenderWindow &window, int searchIndex, 
                            sf::Color fadeColor, sf::Color textFadeColor, int infoTextOpacity, textInfo &nodeText) {
@@ -756,16 +746,6 @@ void SLL::drawSearchRevert(sf::RenderWindow &window, int searchIndex,
         countNode++;
         cur = cur->pNext;
         nodePosition.x += nodeConstants::nodeDistance;
-    }
-
-    if (searchIndex == -1) {
-        std::string textStringContent = "element not found, return -1";
-        nodeText.drawOptionalText(window, textStringContent, nodeConstants::searchTextInfoPosition, infoTextOpacity);
-    }
-    else {
-        std::string searchIndexString = std::to_string(searchIndex - 1);
-        std::string textStringContent = "element found at index " + searchIndexString;
-        nodeText.drawOptionalText(window, textStringContent, nodeConstants::searchTextInfoPosition, infoTextOpacity);
     }
 }
 void SLL::drawUpdateIndicator(sf::RenderWindow &window, int updateIndex, 
@@ -900,21 +880,6 @@ void SLL::drawUpdateRevert(sf::RenderWindow &window, int updateIndex,
         cur = cur->pNext;
         nodePosition.x += nodeConstants::nodeDistance;
     }
-}
-
-
-void createList(SLL &mySLL) {
-    int numberOfNode;
-    std::cin >> numberOfNode;
-    int *a = new int(numberOfNode);
-    for (int i = 0; i < numberOfNode; i++) {
-        std::cin >> a[i];
-        if (a[i] < 0 || a[i] > 99) {
-            std::cout << "input integer in range [0..99]\n";
-            i--;
-        }
-    }
-    mySLL.build(numberOfNode, a);
 }
 
 sf::Color getFadeColor(sf::Color startColor, sf::Color endColor, sf::Clock flashTimer) {

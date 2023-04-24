@@ -8,6 +8,7 @@
 #include "LLscreen.h"
 #include "button.h"
 #include "node.h"
+#include "menu.h"
 
 int main()
 {
@@ -22,6 +23,14 @@ int main()
     textConstants::initializeConstants();
     buttonConstants::initializeConstants();
     codeTextConstants::initializeConstants();
+    logoConstants::initializeConstants();
+
+    enum screenType {
+        menu,
+        LL
+    };
+
+    screenType ScreenType = menu;
 
     // sf::Font font;
     // if (!font.loadFromFile("src//font//CONSOLA.TTF")) {
@@ -31,29 +40,29 @@ int main()
     // sf::Text text(content, font, 25);
     // std::cerr << "size: " << text.getGlobalBounds().height << '\n';
 
+    menuScreen myMenuScreen;
     SLLObject mySLLObject;
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
-            switch (event.type) {
-                case sf::Event::Closed:
-                    window.close();
+            switch (ScreenType) {
+                case menu:
+                    myMenuScreen.processAllEvent(window, event);
                     break;
-                case sf::Event::MouseButtonPressed:
-                    mySLLObject.processMouseEvent(window);
-                    break;
-                case sf::Event::TextEntered:
-                    mySLLObject.processKeyboardInputEvent(window, event);
-                    break;
-                case sf::Event::KeyPressed:
-                    mySLLObject.processKeyboardOtherActionEvent(window, event);
+                case LL:
+                    mySLLObject.processAllEvent(window, event);
                     break;
             }
         }
         window.clear();
-        mySLLObject.drawBackground(window);
-        mySLLObject.processMouseHoverEvent(window);
-        mySLLObject.processType(window);
+        switch (ScreenType) {
+            case menu:
+                myMenuScreen.drawMenuScreen(window);
+                break;
+            case LL:
+                mySLLObject.drawLLScreen(window);
+                break;
+        }
         window.display();
     }
     mySLLObject.deleteSLL();

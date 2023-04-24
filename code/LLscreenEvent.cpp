@@ -156,18 +156,36 @@ void SLLObject::drawDeleteNodeMove(sf::RenderWindow &window) {
 }
 
 void SLLObject::drawSearchIndicator(sf::RenderWindow &window) {
+    if (flashTimer.getElapsedTime().asMilliseconds() < remTime.asMilliseconds()) {
+        sf::sleep(sf::milliseconds(500));
+    }
     int tempSearchIndex = searchIndex;
     if (searchIndex == -1)
         tempSearchIndex = mySLL.getNumberOfNode();
     mySLL.drawSearchIndicator(window, searchIndex, gotoIndex, 
-                              getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer), nodeText);
-    if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
-        gotoIndex++;
+                              getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer), nodeText);   
+    remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds()); 
+    LLCodeBlock.drawSearchCodeBlock(window);
+    if (!markFirst) {
+        if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
+            gotoIndex++;
+            flashTimer.restart();
+            if (gotoIndex <= tempSearchIndex)
+                LLCodeBlock.drawInsertCodeBlockSingleLine(window, 4);
+        }
+        else {
+            LLCodeBlock.drawInsertCodeBlockSingleLine(window, 1);
+        }
+    }
+    else {
+        markFirst = 0;
         flashTimer.restart();
+        LLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
     }
     if (gotoIndex > tempSearchIndex) {
         drawType = searchLL1;
         flashTimer.restart();
+        markFirst = 1;
     }
 }
 void SLLObject::drawSearchHighlight(sf::RenderWindow &window) {
@@ -176,6 +194,13 @@ void SLLObject::drawSearchHighlight(sf::RenderWindow &window) {
                               getFadeColor(nodeConstants::baseColor, nodeConstants::searchFoundColor, flashTimer),
                               infoTextOpacity, nodeText);
     infoTextOpacity = std::min(255, infoTextOpacity + nodeConstants::fadeSpeed);
+    LLCodeBlock.drawSearchCodeBlock(window);
+    if (searchIndex == -1) {
+        LLCodeBlock.drawSearchCodeBlockSingleLine(window, 5);
+    }
+    else {
+        LLCodeBlock.drawSearchCodeBlockMultiLine(window, 2, 3);
+    }
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = searchLL2;
         sf::sleep(sf::seconds(3.0f));
@@ -187,6 +212,13 @@ void SLLObject::drawSearchRevert(sf::RenderWindow &window) {
                            getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer),
                            getFadeColor(nodeConstants::searchFoundColor, nodeConstants::baseColor, flashTimer),
                            infoTextOpacity, nodeText);
+    LLCodeBlock.drawSearchCodeBlock(window);
+    if (searchIndex == -1) {
+        LLCodeBlock.drawSearchCodeBlockSingleLine(window, 5);
+    }
+    else {
+        LLCodeBlock.drawSearchCodeBlockMultiLine(window, 2, 3);
+    }
     infoTextOpacity = std::max(0, infoTextOpacity - nodeConstants::fadeSpeed);
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = showcaseLL;
@@ -194,11 +226,28 @@ void SLLObject::drawSearchRevert(sf::RenderWindow &window) {
     }
 }
 void SLLObject::drawUpdateIndicator(sf::RenderWindow &window) {
+    if (flashTimer.getElapsedTime().asMilliseconds() < remTime.asMilliseconds()) {
+        sf::sleep(sf::milliseconds(500));
+    }
     mySLL.drawUpdateIndicator(window, updateIndex, gotoIndex, 
                               getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer), nodeText);
-    if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
-        gotoIndex++;
+    remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds()); 
+    LLCodeBlock.drawUpdateCodeBlock(window);
+    if (!markFirst) {
+        if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
+            gotoIndex++;
+            flashTimer.restart();
+            if (gotoIndex <= updateIndex)
+                LLCodeBlock.drawInsertCodeBlockSingleLine(window, 5);
+        }
+        else {
+            LLCodeBlock.drawInsertCodeBlockSingleLine(window, 1);
+        }
+    }
+    else {
+        markFirst = 0;
         flashTimer.restart();
+        LLCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
     }
     if (gotoIndex > updateIndex) {
         drawType = updateLL1;
@@ -212,6 +261,8 @@ void SLLObject::drawUpdateChangeNum(sf::RenderWindow &window) {
     else 
         fadeColor = nodeConstants::searchFoundColor;
     mySLL.drawUpdateChangeNum(window, updateIndex, updateData, numberOpacity, fadeColor, nodeText);
+    LLCodeBlock.drawUpdateCodeBlock(window);
+    LLCodeBlock.drawUpdateCodeBlockMultiLine(window, 2, 4);
     if (opacityMultiplier == -1) {
         numberOpacity = std::max(0, numberOpacity - nodeConstants::fadeSpeed);
         if (numberOpacity == 0) {
@@ -237,6 +288,8 @@ void SLLObject::drawUpdateRevert(sf::RenderWindow &window) {
     fadeOutlineColor = getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer);
     fadeNumberColor = getFadeColor(nodeConstants::searchFoundColor, nodeConstants::baseColor, flashTimer);
     mySLL.drawUpdateRevert(window, updateIndex, fadeOutlineColor, fadeNumberColor, nodeText);
+    LLCodeBlock.drawUpdateCodeBlock(window);
+    LLCodeBlock.drawUpdateCodeBlockMultiLine(window, 2, 4);
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = showcaseLL;
         flashTimer.restart();
@@ -504,6 +557,28 @@ void SLLObject::deleteSLL() {
 
 void SLLObject::drawBackground(sf::RenderWindow &window) {
     screenBackground.drawBackground(window);
+}
+
+void SLLObject::processAllEvent(sf::RenderWindow &window, sf::Event &event) {
+    switch (event.type) {
+        case sf::Event::Closed:
+            window.close();
+            break;
+        case sf::Event::MouseButtonPressed:
+            processMouseEvent(window);
+            break;
+        case sf::Event::TextEntered:
+            processKeyboardInputEvent(window, event);
+            break;
+        case sf::Event::KeyPressed:
+            processKeyboardOtherActionEvent(window, event);
+            break;
+    }
+}
+void SLLObject::drawLLScreen(sf::RenderWindow &window) {
+    drawBackground(window);
+    processMouseHoverEvent(window);
+    processType(window);
 }
 
 void inputValue(int &value) {

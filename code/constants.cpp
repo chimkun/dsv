@@ -100,3 +100,15 @@ void codeTextConstants::initializeConstants() {
     baseWidth = 1000, baseHeight = 600;
     highlightWidth = 1000, highlightHeight = 29;
 };
+
+int logoConstants::minMoveDistance;
+int logoConstants::logoRadius;
+int logoConstants::logoMoveSpeed;
+sf::Vector2f logoConstants::logoCenter;
+
+void logoConstants::initializeConstants() {
+    minMoveDistance = 300;
+    logoRadius = 350;
+    logoMoveSpeed = 10;
+    logoCenter = sf::Vector2f(1920/2, 1000/2);
+}

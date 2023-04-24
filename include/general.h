@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include "buttonAndTextBox.h"
+#include "background.h"
 
 struct generalScreen {
     buttonAndTextBox addButton, searchButton, deleteButton, updateButton;
@@ -70,16 +71,16 @@ public:
     void drawCreateScreen(sf::RenderWindow &window);
 };
 
-class background {
-private:
-    sf::Texture bgTexture;
-    sf::Sprite bgSprite;
-    int bgCode;
-public:
-    background();
-    void setBackground();
-    void drawBackground(sf::RenderWindow &window, int bgOpacity = 50);
-};
+// class background {
+// private:
+//     sf::Texture bgTexture;
+//     sf::Sprite bgSprite;
+//     int bgCode;
+// public:
+//     background();
+//     void setBackground();
+//     void drawBackground(sf::RenderWindow &window, int bgOpacity = 50);
+// };
 
 std::string normalize(std::string &inputString);
 
