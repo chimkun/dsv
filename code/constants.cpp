@@ -104,11 +104,51 @@ void codeTextConstants::initializeConstants() {
 int logoConstants::minMoveDistance;
 int logoConstants::logoRadius;
 int logoConstants::logoMoveSpeed;
+int logoConstants::logoFloatSpeed;
+int logoConstants::backgroundFadeSpeed;
+int logoConstants::backgroundMinOpacity;
 sf::Vector2f logoConstants::logoCenter;
 
 void logoConstants::initializeConstants() {
-    minMoveDistance = 300;
-    logoRadius = 350;
-    logoMoveSpeed = 10;
+    minMoveDistance = 270;
+    logoRadius = 370;
+    logoMoveSpeed = 20;
+    logoFloatSpeed = 6;
+    backgroundFadeSpeed = 5, backgroundMinOpacity = 130;
     logoCenter = sf::Vector2f(1920/2, 1000/2);
+}
+
+int menuButtonConstants::maxMoveDistance;
+int menuButtonConstants::maxHoverDistance;
+int menuButtonConstants::hoverMoveSpeed;
+int menuButtonConstants::moveSpeed;
+int menuButtonConstants::moveOutSpeed;
+int menuButtonConstants::buttonFadeInSpeed;
+int menuButtonConstants::buttonFadeOutSpeed;
+int menuButtonConstants::hoverFloatBackSpeed;
+sf::Vector2f menuButtonConstants::buttonPos3Button[3];
+sf::Vector2f menuButtonConstants::buttonPos4Button[4];
+
+void menuButtonConstants::initializeConstants() {
+    maxMoveDistance = 180;
+    maxHoverDistance = 30;
+    hoverMoveSpeed = 6;
+    hoverFloatBackSpeed = 3;
+    moveSpeed = 12;
+    moveOutSpeed = 8;
+    buttonFadeInSpeed = 17;
+    buttonFadeOutSpeed = 8;
+    sf::Vector2f positionButtonGroupOf3 = sf::Vector2f(600, 280);
+    for (int i = 0; i < 3; i++) {
+        buttonPos3Button[i] = positionButtonGroupOf3;
+        buttonPos3Button[i].y += 155 * i;
+    }
+    buttonPos3Button[1].x += 20;
+    sf::Vector2f positionButtonGroupOf4 = sf::Vector2f(600, 250); 
+    for (int i = 0; i < 4; i++) {
+        buttonPos4Button[i] = positionButtonGroupOf4;
+        buttonPos4Button[i].y += 150 * i;
+    }
+    buttonPos4Button[1].x += 20;
+    buttonPos4Button[2].x += 20;
 }

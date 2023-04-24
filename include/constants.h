@@ -81,7 +81,24 @@ public:
     static int minMoveDistance;
     static int logoRadius;
     static int logoMoveSpeed;
+    static int logoFloatSpeed;
+    static int backgroundFadeSpeed, backgroundMinOpacity;
     static sf::Vector2f logoCenter;
+    static void initializeConstants();
+};
+
+class menuButtonConstants {
+public:
+    static int maxMoveDistance;
+    static int maxHoverDistance;
+    static int moveSpeed;
+    static int moveOutSpeed;
+    static int hoverMoveSpeed;
+    static int buttonFadeInSpeed;
+    static int buttonFadeOutSpeed;
+    static int hoverFloatBackSpeed;
+    static sf::Vector2f buttonPos4Button[4];
+    static sf::Vector2f buttonPos3Button[3];
     static void initializeConstants();
 };
 

@@ -39,6 +39,20 @@ void button::drawButton(sf::RenderWindow &window, float xFactor, float yFactor, 
     sf::Vector2f textPosition(globalBound.left + (int) buttonBound.width * xFactor, globalBound.top + (int) buttonBound.height * yFactor);
     buttonText.drawOptionalTextSize(window, buttonTextContent, textOrigin, textPosition, 255, textSize);
 }
+void button::drawButtonOptional(sf::RenderWindow &window, float xFactor, float yFactor, int textSize, int buttonOpacity) {
+    buttonSprite.setTexture(this->buttonTexture);
+    sf::Color spriteColor = buttonSprite.getColor();
+    spriteColor.a = buttonOpacity;
+    buttonSprite.setColor(spriteColor);
+    window.draw(buttonSprite);
+
+    sf::IntRect buttonBound = buttonSprite.getTextureRect();
+    sf::FloatRect globalBound = buttonSprite.getGlobalBounds();
+    sf::Vector2f textOrigin(0, 0);
+    sf::Vector2f textPosition(globalBound.left + (int) buttonBound.width * xFactor, globalBound.top + (int) buttonBound.height * yFactor);
+    buttonText.drawOptionalTextSize(window, buttonTextContent, textOrigin, textPosition, buttonOpacity, textSize);
+
+}
 
 bool button::buttonIsClick(sf::RenderWindow &window) {
     sf::FloatRect buttonBounds = getButtonBounds();
@@ -58,6 +72,7 @@ bool button::buttonIsHover(sf::RenderWindow &window) {
     return false;
 }
 void button::moveButtonWhenHover(sf::RenderWindow &window) {
+    std::cerr << "hover: " << buttonIsHover(window) << '\n';
     if (buttonIsHover(window)) {
         sf::Vector2f buttonSpritePosition = buttonSprite.getPosition();
         buttonSpritePosition.x = std::min(buttonInitialPosition.x + maxLength, buttonSpritePosition.x + moveSpeed);

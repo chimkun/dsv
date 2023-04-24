@@ -24,6 +24,7 @@ int main()
     buttonConstants::initializeConstants();
     codeTextConstants::initializeConstants();
     logoConstants::initializeConstants();
+    menuButtonConstants::initializeConstants();
 
     enum screenType {
         menu,
@@ -31,14 +32,6 @@ int main()
     };
 
     screenType ScreenType = menu;
-
-    // sf::Font font;
-    // if (!font.loadFromFile("src//font//CONSOLA.TTF")) {
-    //     exit(-1);
-    // }
-    // std::string content = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    // sf::Text text(content, font, 25);
-    // std::cerr << "size: " << text.getGlobalBounds().height << '\n';
 
     menuScreen myMenuScreen;
     SLLObject mySLLObject;

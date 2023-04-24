@@ -21,6 +21,7 @@ struct button {
 
     void initButton(sf::Vector2f buttonPosition, sf::Texture &buttonTexture, std::string &buttonTextContent);
     void drawButton(sf::RenderWindow &window, float xFactor = 0.31, float yFactor = 0.17, int textSize = 33);
+    void drawButtonOptional(sf::RenderWindow &window, float xFactor = 0.31, float yFactor = 0.17, int textSize = 33, int buttonOpacity = 255);
     bool buttonIsClick(sf::RenderWindow &window);
     bool buttonIsHover(sf::RenderWindow &window);
     void flipChoose();

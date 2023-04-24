@@ -20,6 +20,11 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\arrow.cpp"
     },
     {
+        "command": "g++ -c ..\\Menu\\code/background.cpp -o background.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\background.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/button.cpp -o button.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\button.cpp"
