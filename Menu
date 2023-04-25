@@ -35,6 +35,11 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\buttonAndTextBox.cpp"
     },
     {
+        "command": "g++ -c ..\\Menu\\code/chooseDataStructureScreen.cpp -o chooseDataStructureScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\chooseDataStructureScreen.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/codeblock.cpp -o codeblock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\codeblock.cpp"
@@ -63,6 +68,16 @@
         "command": "g++ -c ..\\Menu\\code/menu.cpp -o menu.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menu.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/menuChooseLLScreen.cpp -o menuChooseLLScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menuChooseLLScreen.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/menuInitialScreen.cpp -o menuInitialScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menuInitialScreen.cpp"
     },
     {
         "command": "g++ -c ..\\Menu\\code/node.cpp -o node.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",

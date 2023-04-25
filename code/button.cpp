@@ -72,7 +72,6 @@ bool button::buttonIsHover(sf::RenderWindow &window) {
     return false;
 }
 void button::moveButtonWhenHover(sf::RenderWindow &window) {
-    std::cerr << "hover: " << buttonIsHover(window) << '\n';
     if (buttonIsHover(window)) {
         sf::Vector2f buttonSpritePosition = buttonSprite.getPosition();
         buttonSpritePosition.x = std::min(buttonInitialPosition.x + maxLength, buttonSpritePosition.x + moveSpeed);

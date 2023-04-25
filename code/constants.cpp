@@ -128,6 +128,7 @@ int menuButtonConstants::buttonFadeOutSpeed;
 int menuButtonConstants::hoverFloatBackSpeed;
 sf::Vector2f menuButtonConstants::buttonPos3Button[3];
 sf::Vector2f menuButtonConstants::buttonPos4Button[4];
+sf::Vector2f menuButtonConstants::backButtonPosition;
 
 void menuButtonConstants::initializeConstants() {
     maxMoveDistance = 180;
@@ -144,11 +145,24 @@ void menuButtonConstants::initializeConstants() {
         buttonPos3Button[i].y += 155 * i;
     }
     buttonPos3Button[1].x += 20;
-    sf::Vector2f positionButtonGroupOf4 = sf::Vector2f(600, 250); 
+    sf::Vector2f positionButtonGroupOf4 = sf::Vector2f(600, 220); 
     for (int i = 0; i < 4; i++) {
         buttonPos4Button[i] = positionButtonGroupOf4;
         buttonPos4Button[i].y += 150 * i;
     }
-    buttonPos4Button[1].x += 20;
-    buttonPos4Button[2].x += 20;
+    buttonPos4Button[1].x += 34;
+    buttonPos4Button[2].x += 34;
+    backButtonPosition = sf::Vector2f(1650, 800);
+}
+
+
+void initializeConstants() {
+    nodeConstants::initializeConstants();
+    arrowConstants::initializeConstants();
+    mathConstants::initializeConstants();
+    textConstants::initializeConstants();
+    buttonConstants::initializeConstants();
+    codeTextConstants::initializeConstants();
+    logoConstants::initializeConstants();
+    menuButtonConstants::initializeConstants();
 }

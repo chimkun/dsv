@@ -28,6 +28,7 @@ struct generalScreen {
 class createScreen {
 private:
     button randomInputButton, userInputButton, backToModeButton, confirmInputButton;
+    button browseButton;
     textBox userInputBox;
 public:
     createScreen();

@@ -99,7 +99,10 @@ public:
     static int hoverFloatBackSpeed;
     static sf::Vector2f buttonPos4Button[4];
     static sf::Vector2f buttonPos3Button[3];
+    static sf::Vector2f backButtonPosition;
     static void initializeConstants();
 };
+
+void initializeConstants();
 
 #endif

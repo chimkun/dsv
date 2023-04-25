@@ -3,49 +3,41 @@
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
+#include "chooseDataStructureScreen.h"
+#include "menuInitialScreen.h"
+#include "menuChooseLLScreen.h"
 #include "button.h"
 #include "background.h"
-
-class chooseDataStructureScreen {
-
-};
-
-class initialScreen {
-private:
-    button startButton, aboutButton, exitButton;
-    int buttonOpacity, moveDistance;
-    int startHoverDistance;
-    int aboutHoverDistance;
-    int exitHoverDistance;
-    bool initialScreenIsChosen;
-public:
-    initialScreen();
-    void onScreen();
-    void offScreen();
-
-    bool startButtonIsClick(sf::RenderWindow &window);
-    bool aboutButtonIsClick(sf::RenderWindow &window);
-    bool exitButtonIsClick(sf::RenderWindow &window);
-
-    void buttonIsHover(sf::RenderWindow &window);
-
-    void drawInitialScreen(sf::RenderWindow &window);
-};
 
 class menuScreen {
 private:
     enum menuButtonType {
         initial,
-        chooseDataStructure
+        chooseDataStructure,
+        chooseLL
     };
+    enum dataStructureType {
+        none, SLL, DLL, CLL,
+        array, dArray,
+        stack, queue
+    };
+    button backButton;
+
     menuButtonType MenuType;
+    dataStructureType DSType;
+
     initialScreen MenuInitialScreen;
+    chooseDataStructureScreen MenuChooseDSScreen;
+    chooseLinkedListScreen MenuChooseLLScreen;
+
     sf::Texture logoTexture;
     sf::Sprite logoSprite;
     int logoDistance, backgroundOpacity;
     bool isChosen;
     background menuBackground;
     sf::Clock offTimer;
+    sf::RectangleShape backHighlight;
+
 public:
     menuScreen();
     bool logoIsClick(sf::RenderWindow &window);
@@ -53,7 +45,13 @@ public:
 
     void onLogo();
     void offLogo();
+    void offAllScreen();
     void processMouseEvent(sf::RenderWindow &window);
+
+    void backButtonHover(sf::RenderWindow &window);
+
+    void menuTypeSetInitial();
+    int getDSType();
 
     void processAllEvent(sf::RenderWindow &window, sf::Event &event);
     void drawMenuScreen(sf::RenderWindow &window);

@@ -11,24 +11,22 @@
 #include "menu.h"
 
 int main()
-{
+{   
+    // menu DS Type
+    // none (0), SLL (1), DLL (2), CLL (3),
+    // array (4), dArray (5),
+    // stack (6), queue (7)
+
     srand(time(NULL));
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "DS Visualizer");
     window.setFramerateLimit(60);
     window.clear(sf::Color::Black);
 
-    nodeConstants::initializeConstants();
-    arrowConstants::initializeConstants();
-    mathConstants::initializeConstants();
-    textConstants::initializeConstants();
-    buttonConstants::initializeConstants();
-    codeTextConstants::initializeConstants();
-    logoConstants::initializeConstants();
-    menuButtonConstants::initializeConstants();
+    initializeConstants();
 
     enum screenType {
         menu,
-        LL
+        SLL
     };
 
     screenType ScreenType = menu;
@@ -42,17 +40,26 @@ int main()
                 case menu:
                     myMenuScreen.processAllEvent(window, event);
                     break;
-                case LL:
+                case SLL:
                     mySLLObject.processAllEvent(window, event);
                     break;
             }
         }
         window.clear();
+        int dsType = myMenuScreen.getDSType();
+        switch (dsType) {
+            case 1:
+                ScreenType = SLL;
+                break;
+            default:
+                ScreenType = menu;
+                break;
+        }
         switch (ScreenType) {
             case menu:
                 myMenuScreen.drawMenuScreen(window);
                 break;
-            case LL:
+            case SLL:
                 mySLLObject.drawLLScreen(window);
                 break;
         }
