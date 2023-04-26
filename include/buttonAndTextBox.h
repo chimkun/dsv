@@ -10,6 +10,7 @@ class buttonAndTextBox {
 private:
     button myButton, confirmButton;
     textBox myTextBox;
+    std::string textBoxContent;
 public:
     buttonAndTextBox();
     buttonAndTextBox(sf::Vector2f buttonPosition, sf::Texture &buttonTexture, std::string buttonTextContent);
@@ -28,6 +29,7 @@ public:
 
     bool inputIsEmpty();
     std::string getInputString();
+    void setInputString(std::string &inputString);
     std::pair<int, int> getInputDataPair();
     int getInputDataInt();
     

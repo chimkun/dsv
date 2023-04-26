@@ -2,8 +2,13 @@
 #include <iostream>
 
 SLL::SLL () {
-    numberOfNode = 0;
     pHead = nullptr;
+    numberOfNode = rand() % 5 + 3;
+    int *a = new (int) (numberOfNode);
+    for (int i = 0; i < numberOfNode; i++) 
+        a[i] = rand() % 100;
+    build(numberOfNode, a);
+    delete[] a;
 }
 
 void SLL::build(int inputNumberOfNode, int *a) {

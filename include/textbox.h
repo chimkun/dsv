@@ -61,6 +61,7 @@ public:
     bool inputIsEmpty();
     
     std::string getTextBoxString();
+    void setTextBoxString(std::string &inputString);
 
     void drawTextBox(sf::RenderWindow &window);
 };

@@ -153,6 +153,11 @@ bool createScreen::textBoxIsClick(sf::RenderWindow &window) {
 bool createScreen::confirmButtonIsClick(sf::RenderWindow &window) {
     return confirmInputButton.buttonIsClick(window);
 }
+
+void createScreen::initData() {
+
+}
+
 std::string createScreen::getInputString() {
     return userInputBox.getTextBoxString();
 }

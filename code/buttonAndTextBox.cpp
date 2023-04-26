@@ -52,6 +52,11 @@ bool buttonAndTextBox::inputIsEmpty() {
 std::string buttonAndTextBox::getInputString() {
     return myTextBox.getTextBoxString();
 }
+void buttonAndTextBox::setInputString(std::string &inputString) {
+    textBoxContent = inputString;
+    myTextBox.setTextBoxString(inputString);
+}
+
 std::pair <int, int> buttonAndTextBox::getInputDataPair() {
     std::string inputString = myTextBox.getTextBoxString();
     inputString.push_back(',');

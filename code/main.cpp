@@ -12,6 +12,7 @@
 
 int main()
 {   
+
     // menu DS Type
     // none (0), SLL (1), DLL (2), CLL (3),
     // array (4), dArray (5),
@@ -29,10 +30,12 @@ int main()
         SLL
     };
 
-    screenType ScreenType = menu;
+    screenType ScreenType = SLL;
 
     menuScreen myMenuScreen;
+    std::cerr << "start\n";
     SLLObject mySLLObject;
+    std::cerr << "sll\n";
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -46,15 +49,15 @@ int main()
             }
         }
         window.clear();
-        int dsType = myMenuScreen.getDSType();
-        switch (dsType) {
-            case 1:
-                ScreenType = SLL;
-                break;
-            default:
-                ScreenType = menu;
-                break;
-        }
+        // int dsType = myMenuScreen.getDSType();
+        // switch (dsType) {
+        //     case 1:
+        //         ScreenType = SLL;
+        //         break;
+        //     default:
+        //         ScreenType = menu;
+        //         break;
+        // }
         switch (ScreenType) {
             case menu:
                 myMenuScreen.drawMenuScreen(window);

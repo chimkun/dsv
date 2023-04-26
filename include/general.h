@@ -38,6 +38,8 @@ public:
     bool textBoxIsClick(sf::RenderWindow &window);
     bool confirmButtonIsClick(sf::RenderWindow &window);
 
+    void initData();
+
     std::string getInputString();
     std::vector<int> getInputData();
 

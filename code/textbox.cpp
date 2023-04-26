@@ -192,6 +192,9 @@ bool textBox::inputIsEmpty() {
 std::string textBox::getTextBoxString() {
     return myTextCursor.getInputContent();
 }
+void textBox::setTextBoxString(std::string &inputString) {
+    myTextCursor.inputContent = inputString;
+}
 
 void textBox::drawTextBox(sf::RenderWindow &window) {
     textBoxButton.drawButton(window);
