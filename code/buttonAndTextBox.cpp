@@ -11,7 +11,7 @@ buttonAndTextBox::buttonAndTextBox(sf::Vector2f buttonPosition, sf::Texture &but
     this->myButton = button(buttonPosition, buttonTexture, buttonTextContent);
     this->myTextBox = textBox(textBoxButtonPosition, textBoxTexture);
     std::string confirmString = "go!";
-    sf::Vector2f diffDistance(textBoxTexture.getSize().x + 20, 1);
+    sf::Vector2f diffDistance(textBoxTexture.getSize().x + 10, 1);
     this->confirmButton = button(textBoxButtonPosition + diffDistance, textBoxTexture, confirmString);
 }
 

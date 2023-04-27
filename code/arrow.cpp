@@ -4,10 +4,12 @@
 Arrow::Arrow () {
     sf::Texture arrowShaftTexture, arrowHeadTexture;
     // 19 x 23
+    std::cerr << "here\n";
     if (!arrowShaftTexture.loadFromFile("src//include//texture//arrowShaft.png")) {
         std::cout << "Texture file not found! (arrowShaft)";
         exit(-1);
     }
+    std::cerr << "shaft\n";
     if (!arrowHeadTexture.loadFromFile("src//include//texture//arrowHead.png")) {
         std::cout << "Texture file not found! (arrowHead)";
         exit(-1);

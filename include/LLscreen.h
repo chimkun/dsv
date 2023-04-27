@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <algorithm>
+#include <vector>
 #include "node.h"
 #include "text.h"
 
@@ -12,7 +13,7 @@ private:
     int numberOfNode;
 public:
     SLL ();
-    void build(int inputNumberOfNode, int *a);
+    void build(int inputNumberOfNode, std::vector <int> &a);
     void insertAtBeginning(int newData);
     void insertAtEnding(int newData);
     void insertAfterIndex(int newData, int idx);

@@ -13,7 +13,7 @@ private:
 public:
     background();
     void setBackground();
-    void drawBackground(sf::RenderWindow &window, int bgOpacity = 50);
+    void drawBackground(sf::RenderWindow &window, int bgOpacity = 40);
 };
 
 #endif

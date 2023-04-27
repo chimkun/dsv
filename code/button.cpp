@@ -84,6 +84,12 @@ void button::moveButtonWhenHover(sf::RenderWindow &window) {
     }
 }
 
+void button::offButton() {
+    isChoose = 0;
+}
+void button::onButton() {
+    isChoose = 1;
+}
 void button::flipChoose() {
     isChoose = !isChoose;
 }

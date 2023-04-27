@@ -7,6 +7,7 @@
 #include "general.h"
 #include "LLscreen.h"
 #include "LLscreenCodeBlock.h"
+#include "browse.h"
 
 enum LLdrawType {
     back,
@@ -50,9 +51,9 @@ private:
         LLscreenCodeBlock LLCodeBlock;
 public:
     SLLObject();
-    void createList(int numberOfNode, int *&a);
+    void createList(int numberOfNode, std::vector <int> &a);
     void createDefinedList(std::vector <int> &userInput);
-    void craeteRandomList();
+    void createRandomList();
     void drawList(sf::RenderWindow &window);
     void processDrawList();
 
@@ -100,5 +101,7 @@ void inputValue(int &value);
 
 void setInsertNode(int &nodePositionXAfterInsert, sf::Vector2f &insertNodePosition,
                    int &insertNodeOpacity, int insertPhase);
+
+std::vector<int> getInputData(std::string &inputString);
 
 #endif

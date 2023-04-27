@@ -2,29 +2,26 @@
 
 SLLObject::SLLObject() {
     drawType = showcaseLL;
+    createRandomList();
 }
 
-void SLLObject::createList(int numberOfNode, int *&a) {
+void SLLObject::createList(int numberOfNode, std::vector <int> &a) {
     mySLL.deleteList();
     mySLL.build(numberOfNode, a);
+    theLLscreen.theGeneralScreen.initData(numberOfNode);
 }
-void SLLObject::craeteRandomList() {
+void SLLObject::createRandomList() {
     int numberOfNode = rand() % 10 + 1;
-    int *a = new int(numberOfNode);
+    std::vector <int> a;
     for (int i = 0; i < numberOfNode; i++) {
-        a[i] = rand() % 99 + 1;
+        int value = rand() % 100;
+        a.push_back(value);
     }
     createList(numberOfNode, a);
-    delete[] a;
 }
 void SLLObject::createDefinedList(std::vector <int> &userInput) {
     int numberOfNode = (int) userInput.size();
-    int *a = new int(numberOfNode);
-    for (int i = 0; i < numberOfNode; i++) {
-        a[i] = userInput[i];
-    }
-    createList(numberOfNode, a);
-    delete[] a;
+    createList(numberOfNode, userInput);
 }
 void SLLObject::drawList(sf::RenderWindow &window) {
     opacity = std::min(nodeConstants::fadeSpeed + opacity, 255);
@@ -351,14 +348,19 @@ void SLLObject::processType(sf::RenderWindow &window) {
     }
 }
 
+
 void SLLObject::processMouseEvent(sf::RenderWindow &window) {
+    // std::cerr << "event\n";
     if (drawType == showcaseLL) {
         if (theLLscreen.theGeneralScreen.createButtonIsClick(window)) {
+            theLLscreen.theGeneralScreen.turnOffAllButton();
             drawType = chooseMakeLL;
         }
         else if (theLLscreen.theGeneralScreen.addButtonIsClick(window)) {
             theLLscreen.theGeneralScreen.turnOffAllButton();
             theLLscreen.theGeneralScreen.addButton.flipButtonState();
+            // theLLscreen.theGeneralScreen.addBeginning.flipButtonState();
+            // theLLscreen.theGeneralScreen.addEnding.flipButtonState();
         }
         else if (theLLscreen.theGeneralScreen.deleteButtonIsClick(window)) {
             theLLscreen.theGeneralScreen.turnOffAllButton();
@@ -373,7 +375,16 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
             theLLscreen.theGeneralScreen.updateButton.flipButtonState();
         }
         else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theLLscreen.theGeneralScreen.addButton.textBoxIsClick(window)) {
+            theLLscreen.theGeneralScreen.turnOffAddTextBox();
             theLLscreen.theGeneralScreen.addButton.onInputBoxState();
+        }
+        else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theLLscreen.theGeneralScreen.addBeginningText.textBoxButtonIsClick(window)) {
+            theLLscreen.theGeneralScreen.turnOffAddTextBox();
+            theLLscreen.theGeneralScreen.addBeginningText.onTextBoxState();
+        }
+        else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theLLscreen.theGeneralScreen.addEndingText.textBoxButtonIsClick(window)) {
+            theLLscreen.theGeneralScreen.turnOffAddTextBox();
+            theLLscreen.theGeneralScreen.addEndingText.onTextBoxState();
         }
         else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() && theLLscreen.theGeneralScreen.deleteButton.textBoxIsClick(window)) {
             theLLscreen.theGeneralScreen.deleteButton.onInputBoxState();
@@ -395,6 +406,17 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
                 LLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
             }
         }
+        else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
+              && theLLscreen.theGeneralScreen.addBeginning.buttonIsClick(window)) {
+            if (!theLLscreen.theGeneralScreen.addBeginningText.inputIsEmpty()) {
+                drawType = insertLL0;
+                int userInput = theLLscreen.theGeneralScreen.addBeginningText.getInputDataInt();
+                int inputIndex = 0, inputElement = userInput;
+                insertNodeProcess(inputIndex, inputElement);
+                LLCodeBlock.drawInsertCodeBlock(window);
+                LLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+            }
+        }
         else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theLLscreen.theGeneralScreen.deleteButton.confirmButtonIsClick(window)) {
             if (!theLLscreen.theGeneralScreen.deleteButton.inputIsEmpty()) {
@@ -403,6 +425,18 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
                 deleteIndex = userInput;
                 deleteNodeProcess(deleteIndex);
             }
+        }
+        else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
+              && theLLscreen.theGeneralScreen.delBeginning.buttonIsClick(window)) {
+            drawType = deleteLL0;
+            deleteIndex = 1;
+            deleteNodeProcess(deleteIndex);
+        }
+        else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
+              && theLLscreen.theGeneralScreen.delEnding.buttonIsClick(window)) {
+            drawType = deleteLL0;
+            deleteIndex = mySLL.getNumberOfNode();
+            deleteNodeProcess(deleteIndex);
         }
         else if (theLLscreen.theGeneralScreen.searchButton.buttonIsChoose() 
               && theLLscreen.theGeneralScreen.searchButton.confirmButtonIsClick(window)) {
@@ -429,7 +463,7 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
         }
         else if (theLLscreen.theCreateScreen.randomButtonIsClick(window)) {
             drawType = showcaseLL;
-            craeteRandomList();
+            createRandomList();
         }
         else if (theLLscreen.theCreateScreen.backButtonIsClick(window)) {
             drawType = showcaseLL;
@@ -443,6 +477,16 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
                     drawType = makeLL;
                     std::vector <int> userInput = theLLscreen.theCreateScreen.getInputData();
                     createDefinedList(userInput);
+                }
+            }
+            else if (theLLscreen.theCreateScreen.browseButtonIsClick(window)) {
+                std::string fileRead;
+                if (browseForFile(fileRead)) {
+                    std::vector <int> userInput = getInputData(fileRead);
+                    if ((int) userInput.size() > 0) {
+                        drawType = makeLL;
+                        createDefinedList(userInput);
+                    }
                 }
             }
             else {
@@ -462,6 +506,12 @@ void SLLObject::processKeyboardInputEvent(sf::RenderWindow &window, sf::Event &e
     }
     else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theLLscreen.theGeneralScreen.addButton.textBoxIsChoose()) {
         theLLscreen.theGeneralScreen.addButton.processKeyboardEvent(event);
+    }
+    else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theLLscreen.theGeneralScreen.addBeginningText.textBoxIsClick()) {
+        theLLscreen.theGeneralScreen.addBeginningText.processKeyboardEvent(event);
+    }
+    else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theLLscreen.theGeneralScreen.addEndingText.textBoxIsClick()) {
+        theLLscreen.theGeneralScreen.addEndingText.processKeyboardEvent(event);
     }
     else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() && theLLscreen.theGeneralScreen.deleteButton.textBoxIsChoose()) {
         theLLscreen.theGeneralScreen.deleteButton.processKeyboardEvent(event);
@@ -593,4 +643,32 @@ void setInsertNode(int &nodePositionXAfterInsert, sf::Vector2f &insertNodePositi
         insertNodeOpacity = std::min(insertNodeOpacity + nodeConstants::fadeSpeed, 255);
     if (insertPhase == 2 && insertNodePosition.y > nodeConstants::firstNodePositionY && insertNodeOpacity == 255)
         insertNodePosition.y = std::max((float) insertNodePosition.y - nodeConstants::insertMoveSpeed, (float) nodeConstants::firstNodePositionY);
+}
+
+std::vector<int> getInputData(std::string &inputString) {
+    std::string theInputString = inputString;
+    std::string normalizedInput = normalize(theInputString);
+    int curNum = 0, maxNum = 0, countNum = 1, mul = 1;
+            
+    std::vector<int> inputArray;
+    for (int i = (int) normalizedInput.size() - 1; i >= 0; i--) {
+        if (normalizedInput[i] == ',') {
+            if (curNum > 99)
+                break;
+            if (countNum > 10)
+                break;
+            inputArray.push_back(curNum);
+            countNum++;
+            maxNum = std::max(maxNum, curNum);
+            curNum = 0;
+            mul = 1;
+        }
+        else {
+            curNum += mul * ((int) normalizedInput[i] - '0');
+            mul *= 10;
+        }
+    }
+    inputArray.push_back(curNum);
+    std::reverse(inputArray.begin(), inputArray.end());
+    return inputArray;
 }

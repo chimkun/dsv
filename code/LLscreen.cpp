@@ -1,19 +1,21 @@
 #include "LLscreen.h"
 #include <iostream>
 
-SLL::SLL () {
+SLL::SLL() {
     pHead = nullptr;
-    numberOfNode = rand() % 5 + 3;
-    int *a = new (int) (numberOfNode);
-    for (int i = 0; i < numberOfNode; i++) 
-        a[i] = rand() % 100;
-    build(numberOfNode, a);
-    delete[] a;
+    numberOfNode = 0;
+    // numberOfNode = rand() % 5 + 3;
+    // std::vector <int> data;
+    // for (int i = 0; i < numberOfNode; i++) {
+    //     int value = rand() % 10;
+    //     data.push_back(value);
+    // }
+    // build(numberOfNode, data);
 }
 
-void SLL::build(int inputNumberOfNode, int *a) {
+void SLL::build(int inputNumberOfNode, std::vector<int> &a) {
     Node *cur = pHead;
-    for (int countElement = 0; countElement < inputNumberOfNode; countElement++) {
+    for (int countElement = 0; countElement < (int) a.size(); countElement++) {
         int curElement = a[countElement];
         if (countElement == 0) {
             pHead = new Node(curElement);

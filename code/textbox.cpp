@@ -76,21 +76,25 @@ bool textCursor::cursorOutOfBound() {
 void textCursor::userInputCharacter(char inputCharacter) {
     if ((int) inputContent.size() >= 120)
         return;
-    if ('0' <= inputCharacter && inputCharacter <= '9') {
-        inputContent.push_back(inputCharacter);
-        cursorPosition++;
-        if (cursorOutOfBound()) {
-            cursorPosition--;
-            inputContent.pop_back();
+    if ('0' <= inputCharacter && inputCharacter <= '9' || inputCharacter == ',') {
+        std::string temp = inputContent + inputCharacter;
+        sf::FloatRect inputTextBound = userInputText.getTextBound(temp, initialCursorPosition, 21);
+        if (inputTextBound.width > rightmostCursorPosition.x - initialCursorPosition.x)
+            return;
+        if (cursorPosition == 0) {
+            inputContent = inputCharacter + inputContent;
         }
-    }
-    else if (inputCharacter == ',') {
-        inputContent.push_back(inputCharacter);
-        cursorPosition++;
-        if (cursorOutOfBound()) {
-            cursorPosition--;
-            inputContent.pop_back();
+        else {
+            std::string newString;
+            for (int i = 0; i < cursorPosition; i++)
+                newString.push_back(inputContent[i]);
+            newString.push_back(inputCharacter);
+            for (int i = cursorPosition; i < (int) inputContent.size(); i++) {
+                newString.push_back(inputContent[i]);
+            }
+            inputContent = newString;
         }
+        cursorPosition++;
     }
 }
 void textCursor::userBackspace() {
@@ -194,7 +198,75 @@ std::string textBox::getTextBoxString() {
 }
 void textBox::setTextBoxString(std::string &inputString) {
     myTextCursor.inputContent = inputString;
+    myTextCursor.cursorPosition = (int) inputString.size();
 }
+
+std::pair <int, int> textBox::getInputDataPair() {
+    std::string inputString = myTextCursor.getInputContent();
+    inputString.push_back(',');
+    std::string inputValue;
+    int n = 2, countNum = 0, index = 0, element = 0;
+    for (int i = 0; i < (int) inputString.size(); i++) {
+        if (inputString[i] == ',') {
+            countNum++;
+            std::reverse(inputValue.begin(), inputValue.end());
+            int input = 0, mul10 = 1;
+            if ((int) inputValue.size() > 2)
+                break;
+            for (int i = 0; i < (int) inputValue.size(); i++) {
+                input += mul10 * ((int) inputValue[i] - '0');
+                mul10 *= 10;
+            }
+            if (countNum == 1)
+                index = input;
+            else if (countNum == 2)
+                element = input;
+            else if (countNum > 2)
+                break;       
+            while(!inputValue.empty())
+                inputValue.pop_back();
+        }
+        else {
+            inputValue.push_back(inputString[i]);
+        }
+    }
+    return std::pair<int, int> (index, element);
+}
+int textBox::getInputDataInt() {
+    std::string inputString = myTextCursor.getInputContent();
+    std::string inputValue = inputString;
+    std::reverse(inputValue.begin(), inputValue.end());
+    int mul = 1, value = 0;
+    if ((int) inputValue.size() > 2)
+        return value;
+    for (int i = 0; i < (int) inputValue.size(); i++) {
+        value += mul * ((int) inputValue[i] - '0');
+        mul *= 10;
+    }
+    return value;
+}
+
+
+void textBox::processKeyboardEvent(sf::Event &event) {
+    if (event.type == sf::Event::TextEntered) {
+        if (event.text.unicode == 44 || (event.text.unicode >= 48 && event.text.unicode <= 57)){
+            char inputCharacter = (char) event.text.unicode;
+            userInputCharacter(inputCharacter);
+        }
+    }
+    else if (event.type == sf::Event::KeyPressed) {
+        if (event.key.code == sf::Keyboard::Backspace) {
+            userBackspace();
+        }
+        else if (event.key.code == sf::Keyboard::Left || event.key.code == sf::Keyboard::Right) {
+            userMoveCursor(event.key.code);
+        }
+        else if (event.key.code == sf::Keyboard::Delete) {
+            userDelete();
+        }
+    }
+}
+
 
 void textBox::drawTextBox(sf::RenderWindow &window) {
     textBoxButton.drawButton(window);

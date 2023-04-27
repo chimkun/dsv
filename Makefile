@@ -16,4 +16,4 @@ compile: $(OBJS)
 	g++ -c $< -o $@ -I $(INCLUDE) -I $(INCLUDE_DIR)
 
 link:
-	g++ $(OBJS) -o main.exe -L $(LIBRARY) $(SFMLFLAGS) $(SFML_INCLUDE)
+	g++ $(OBJS) -o main.exe -L $(LIBRARY) $(SFMLFLAGS) $(SFML_INCLUDE) -mwindows

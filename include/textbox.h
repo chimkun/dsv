@@ -59,9 +59,14 @@ public:
     bool textBoxIsClick();
     bool textBoxButtonIsClick(sf::RenderWindow &window);
     bool inputIsEmpty();
+
+    void processKeyboardEvent(sf::Event &event);
     
     std::string getTextBoxString();
     void setTextBoxString(std::string &inputString);
+
+    std::pair <int, int> getInputDataPair();
+    int getInputDataInt();
 
     void drawTextBox(sf::RenderWindow &window);
 };

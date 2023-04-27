@@ -10,7 +10,10 @@
 
 struct generalScreen {
     buttonAndTextBox addButton, searchButton, deleteButton, updateButton;
+    button addBeginning, addEnding, delBeginning, delEnding;
+    textBox addBeginningText, addEndingText;
     button createButton;
+    textInfo noteText;
     generalScreen();    
     bool createButtonIsClick(sf::RenderWindow &window);
     bool addButtonIsClick(sf::RenderWindow &window);
@@ -18,7 +21,10 @@ struct generalScreen {
     bool deleteButtonIsClick(sf::RenderWindow &window);
     bool updateButtonIsClick(sf::RenderWindow &window);
 
+    void initData(int numberOfNode);
+
     void turnOffAllButton();
+    void turnOffAddTextBox();
     
     void moveButtonWhenHover(sf::RenderWindow &window);
 
@@ -37,8 +43,7 @@ public:
     bool backButtonIsClick(sf::RenderWindow &window);
     bool textBoxIsClick(sf::RenderWindow &window);
     bool confirmButtonIsClick(sf::RenderWindow &window);
-
-    void initData();
+    bool browseButtonIsClick(sf::RenderWindow &window);
 
     std::string getInputString();
     std::vector<int> getInputData();
