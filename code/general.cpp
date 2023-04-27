@@ -325,6 +325,10 @@ void createScreen::userMoveCursor(int arrowKeyCode) {
     userInputBox.userMoveCursor(arrowKeyCode);
 }
 
+void createScreen::setInputBoxString(std::string &inputString) {
+    userInputBox.setTextBoxString(inputString);
+}
+
 
 void createScreen::drawChooseCreateScreen(sf::RenderWindow &window) {
     userInputButton.drawButton(window);

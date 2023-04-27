@@ -98,6 +98,7 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                 if (MenuInitialScreen.startButtonIsClick(window)) {
                     MenuType = chooseDataStructure;
                     offAllScreen();
+                    onLogo();
                     MenuChooseDSScreen.onScreen();
                 }
                 if (MenuInitialScreen.exitButtonIsClick(window)) {
@@ -109,11 +110,13 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                 if (backButton.buttonIsClick(window)) {
                     MenuType = initial;
                     offAllScreen();
+                    onLogo();
                     MenuInitialScreen.onScreen();
                 }
                 if (MenuChooseDSScreen.linkedListButtonIsClick(window)) {
                     MenuType = chooseLL;
                     offAllScreen();
+                    onLogo();
                     MenuChooseLLScreen.onScreen();
                 }
                 break;
@@ -121,11 +124,13 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                 if (backButton.buttonIsClick(window)) {
                     MenuType = chooseDataStructure;
                     offAllScreen();
+                    onLogo();
                     MenuChooseDSScreen.onScreen();
                 }
                 else if (MenuChooseLLScreen.SLLButtonIsClick(window)) {
                     MenuType = initial;
                     offAllScreen();
+                    onLogo();
                     DSType = SLL;
                 }
                 break;

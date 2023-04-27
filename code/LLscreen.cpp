@@ -837,7 +837,7 @@ void SLL::drawUpdateChangeNum(sf::RenderWindow &window, int updateIndex, int upd
         }
 
         countNode++;
-        cur = cur->pNext;
+        cur = cur->pNext;   
         nodePosition.x += nodeConstants::nodeDistance;
     }
 }

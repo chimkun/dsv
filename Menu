@@ -1,5 +1,20 @@
 [
     {
+        "command": "g++ -c ..\\Menu\\code/DLLNode.cpp -o DLLNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\DLLNode.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/DLLScreen.cpp -o DLLScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\DLLScreen.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/DLLScreenEvent.cpp -o DLLScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\DLLScreenEvent.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/LLscreen.cpp -o LLscreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreen.cpp"

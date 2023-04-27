@@ -62,6 +62,9 @@ public:
     void userBackspaceCharacter();
     void userDeleteCharacter();
     void userMoveCursor(int arrowKeyCode);
+
+    void setInputBoxString(std::string &inputString);
+    
     void drawChooseCreateScreen(sf::RenderWindow &window);
 };
 

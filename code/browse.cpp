@@ -8,15 +8,13 @@
 #include <tchar.h>
 
 bool browseForFile(std::string &fileContent) {
-    char cwd[MAX_PATH];
-    GetCurrentDirectory(MAX_PATH, cwd);
+    char curPath[MAX_PATH];
+    GetCurrentDirectory(MAX_PATH, curPath);
 
     TCHAR szFileName[MAX_PATH] = { 0 };
-
     OPENFILENAME ofn;
     ZeroMemory(&ofn, sizeof(ofn));
     ofn.lStructSize = sizeof(ofn);
-    // ofn.hwndOwner = hwnd;
     ofn.lpstrFilter = _T("Text Files (*.txt)\0*.txt\0All Files (*.*)\0*.*\0");
     ofn.lpstrFile = szFileName;
     ofn.nMaxFile = MAX_PATH;
@@ -24,18 +22,15 @@ bool browseForFile(std::string &fileContent) {
     ofn.lpstrDefExt = _T("txt");
 
     if (GetOpenFileName(&ofn) == TRUE) {
-        // User selected a file
-        // selectedFile = std::string(szFileName);
         std::ifstream file(ofn.lpstrFile);
         std::string line;
         std::getline(file, line);
         fileContent = line;
 
-        SetCurrentDirectory(cwd);
+        SetCurrentDirectory(curPath);
         return true;
     }
     else {
-        // User cancelled the dialog
         return false;
     }
 }

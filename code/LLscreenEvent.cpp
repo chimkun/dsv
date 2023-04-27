@@ -13,10 +13,16 @@ void SLLObject::createList(int numberOfNode, std::vector <int> &a) {
 void SLLObject::createRandomList() {
     int numberOfNode = rand() % 10 + 1;
     std::vector <int> a;
+    std::string sampleInput;
     for (int i = 0; i < numberOfNode; i++) {
         int value = rand() % 100;
         a.push_back(value);
+        sampleInput += std::to_string(value);
+        sampleInput += ',';
     }
+    if (!sampleInput.empty())
+        sampleInput.pop_back();
+    theLLscreen.theCreateScreen.setInputBoxString(sampleInput);
     createList(numberOfNode, a);
 }
 void SLLObject::createDefinedList(std::vector <int> &userInput) {
