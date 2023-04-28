@@ -50,6 +50,8 @@ private:
         background screenBackground;
     // Code Block
         LLscreenCodeBlock LLCodeBlock;
+    // exit
+        bool backToMenu;
 public:
     SLLObject();
     void createList(int numberOfNode, std::vector <int> &a);
@@ -91,7 +93,8 @@ public:
 
     void drawBackground(sf::RenderWindow &window);
 
-    
+    bool exitSLLScreen();
+    void setExitToFalse();
     void processAllEvent(sf::RenderWindow &window, sf::Event &event);
     void drawLLScreen(sf::RenderWindow &window);
 

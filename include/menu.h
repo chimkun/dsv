@@ -52,6 +52,7 @@ public:
 
     void menuTypeSetInitial();
     int getDSType();
+    void backToMenu();
 
     void processAllEvent(sf::RenderWindow &window, sf::Event &event);
     void drawMenuScreen(sf::RenderWindow &window);

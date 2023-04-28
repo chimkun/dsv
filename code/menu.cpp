@@ -130,8 +130,14 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                 else if (MenuChooseLLScreen.SLLButtonIsClick(window)) {
                     MenuType = initial;
                     offAllScreen();
-                    onLogo();
+                    offLogo();
                     DSType = SLL;
+                }
+                else if (MenuChooseLLScreen.DLLButtonIsClick(window)) {
+                    MenuType = initial;
+                    offAllScreen();
+                    offLogo();
+                    DSType = DLL;
                 }
                 break;
         }
@@ -153,6 +159,10 @@ void menuScreen::menuTypeSetInitial() {
 }
 int menuScreen::getDSType() {
     return DSType;
+}
+void menuScreen::backToMenu() {
+    MenuType = initial;
+    DSType = none;
 }
 
 void menuScreen::processAllEvent(sf::RenderWindow &window, sf::Event &event) {

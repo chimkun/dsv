@@ -1,7 +1,7 @@
 #include "general.h"
 
 generalScreen::generalScreen() {
-    sf::Texture createButtonTexture, addButtonTexture, deleteButtonTexture, searchButtonTexture, updateButtonTexture;
+    sf::Texture createButtonTexture, addButtonTexture, deleteButtonTexture, searchButtonTexture, updateButtonTexture, backToMenuTexture;
     if (!createButtonTexture.loadFromFile("src//include//texture//createButton.png")) {
         std::cout << "Texture file not found! (createButton.png)\n";
         exit(-1);
@@ -22,6 +22,10 @@ generalScreen::generalScreen() {
         std::cout << "Texture file not found! (updateButton.png)\n";
         exit(-1);
     }
+    if (!backToMenuTexture.loadFromFile("src//include//texture//backToMenuButton.png")) {
+        std::cout << "Texture file not found! (backToMenu.png)\n";
+        exit(-1);
+    }
 
     sf::Texture addButtonTextBoxTexture, deleteButtonTextBoxTexture, 
                 searchButtonTextBoxTexture, updateButtonTextBoxTexture;
@@ -36,12 +40,14 @@ generalScreen::generalScreen() {
     std::string deleteString = "Delete";
     std::string searchString = "Search";
     std::string updateString = "Update";
+    std::string menuString = "Return";
 
     sf::Vector2f createButtonPosition(-40.0, 450),
                  addButtonPosition(-40.0, 450 + 85),
                  deleteButtonPosition(-40.0, 450 + 85 * 2),
                  searchButtonPosition(-40.0, 450 + 85 * 3),
-                 updateButtonPosition(-40.0, 450 + 85 * 4);
+                 updateButtonPosition(-40.0, 450 + 85 * 4),
+                 menuButtonPosition(-40.0, 450 + 85 * 5);
     sf::Vector2f addButtonTextBoxPosition(buttonConstants::textBoxDistance, 565),
                  deleteButtonTextBoxPosition(buttonConstants::textBoxDistance, 565 + 85),
                  searchButtonTextBoxPosition(buttonConstants::textBoxDistance, 552 + 85 * 2),
@@ -52,7 +58,7 @@ generalScreen::generalScreen() {
     this->deleteButton = buttonAndTextBox(deleteButtonPosition, deleteButtonTexture, deleteString, deleteButtonTextBoxPosition, deleteButtonTextBoxTexture);
     this->searchButton = buttonAndTextBox(searchButtonPosition, searchButtonTexture, searchString, searchButtonTextBoxPosition, searchButtonTextBoxTexture);
     this->updateButton = buttonAndTextBox(updateButtonPosition, updateButtonTexture, updateString, updateButtonTextBoxPosition, updateButtonTextBoxTexture);
-
+    backToMenu = button(menuButtonPosition, backToMenuTexture, menuString);
     sf::Texture delButtonSpec;
     if (!delButtonSpec.loadFromFile("src//include//texture//deleteButtonSpec.png")) {
         std::cout << "texture file not found\n";
@@ -95,12 +101,15 @@ bool generalScreen::searchButtonIsClick(sf::RenderWindow &window) {
 bool generalScreen::updateButtonIsClick(sf::RenderWindow &window) {
     return updateButton.buttonIsClick(window);
 }
+bool generalScreen::backToMenuIsClick(sf::RenderWindow &window) {
+    return backToMenu.buttonIsClick(window);
+}
 
 void generalScreen::initData(int numberOfNode) {
-    int addIndex = rand() % numberOfNode + 1, addData = rand() % 100;
+    int addIndex = rand() % (numberOfNode - 1) + 1, addData = rand() % 100;
     int deleteIndex = rand() % numberOfNode;
     int searchData = rand() % 100;
-    int updateIndex = rand() % numberOfNode + 1, updateData = rand() % 100;
+    int updateIndex = rand() % (numberOfNode - 1) + 1, updateData = rand() % 100;
     std::string addString = std::to_string(addIndex) + ',' + std::to_string(addData);
     std::string deleteString = std::to_string(deleteIndex);
     std::string searchString = std::to_string(searchData);
@@ -133,6 +142,9 @@ void generalScreen::turnOffAllButton() {
         
     if (updateButton.buttonIsChoose())
         updateButton.flipButtonState();
+    
+    if (backToMenu.isChosen())
+        backToMenu.flipChoose();
 }
 void generalScreen::turnOffAddTextBox() {
     addButton.offInputBoxState();
@@ -146,6 +158,7 @@ void generalScreen::moveButtonWhenHover(sf::RenderWindow &window) {
     this->deleteButton.moveButtonWhenHover(window);
     this->searchButton.moveButtonWhenHover(window);
     this->updateButton.moveButtonWhenHover(window);
+    this->backToMenu.moveButtonWhenHover(window);
 }
 void generalScreen::drawGeneralScreen(sf::RenderWindow &window) {
     createButton.drawButton(window);
@@ -192,6 +205,7 @@ void generalScreen::drawGeneralScreen(sf::RenderWindow &window) {
     }
     searchButton.drawButton(window);
     updateButton.drawButton(window);
+    backToMenu.drawButton(window);
 }
 
 
@@ -349,6 +363,12 @@ void createScreen::drawChooseCreateScreen(sf::RenderWindow &window) {
 
 allScreen::allScreen() {
     currentScreenType = general;
+}
+
+bool allScreen::isGeneralScreen() {
+    if (currentScreenType == general)
+        return true;
+    return false;
 }
 void allScreen::drawGeneralScreen(sf::RenderWindow &window) {
     theGeneralScreen.drawGeneralScreen(window);

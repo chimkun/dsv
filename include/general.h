@@ -14,12 +14,15 @@ struct generalScreen {
     textBox addBeginningText, addEndingText;
     button createButton;
     textInfo noteText;
+
+    button backToMenu;
     generalScreen();    
     bool createButtonIsClick(sf::RenderWindow &window);
     bool addButtonIsClick(sf::RenderWindow &window);
     bool searchButtonIsClick(sf::RenderWindow &window);
     bool deleteButtonIsClick(sf::RenderWindow &window);
     bool updateButtonIsClick(sf::RenderWindow &window);
+    bool backToMenuIsClick(sf::RenderWindow &window);
 
     void initData(int numberOfNode);
 
@@ -78,6 +81,7 @@ public:
     generalScreen theGeneralScreen;
     createScreen theCreateScreen;
     allScreen();
+    bool isGeneralScreen();
     void drawGeneralScreen(sf::RenderWindow &window);
     void drawCreateScreen(sf::RenderWindow &window);
 };

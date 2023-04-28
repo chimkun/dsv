@@ -8,18 +8,18 @@ DLLscreenCodeBlock::DLLscreenCodeBlock() {
                                    "Node vtx = new Node(v)\n"
                                    "vtx->next = aft, aft->prev = vtx\n"
                                    "pre->next = vtx, vtx->prev = pre\n";
-    std::string deleteCodeString = "Node cur = head\n"
+    std::string deleteCodeString = "Node pre = head\n"
                                    "for (k = 0; k < i-1; k++)\n"
-                                   "   cur = cur->next\n"
-                                   "Node del = cur->next, rightNode = del->next\n"
-                                   "delete del\n"
-                                   "cur->next = rightNode\n";
-    std::string searchCodeString = "Node cur = head\n"
-                                   "for (i = 0; i < n; i++) \n"
-                                   "    if cur->data = searchValue\n"
+                                   "    pre = pre->next\n"
+                                   "Node del = pre->next, aft = del->next\n"
+                                   "pre.next = aft, aft.prev = pre\n"
+                                   "delete del\n";
+    std::string searchCodeString = "Node *cur = head\n"
+                                   "for (i = 0; i < n; i++)\n"
+                                   "    if (cur->data == searchData)\n"
                                    "        return i\n"
-                                   "    cur = cur->next\n"
-                                   "return NOT_FOUND\n";
+                                   "    cur = cur->nxt\n"
+                                   "return -1\n";
     std::string updateCodeString = "Node cur = head\n"
                                    "for (i = 0; i < n; i++)\n"
                                    "    if (i = updateIndex)\n"

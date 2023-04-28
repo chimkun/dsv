@@ -50,6 +50,8 @@ private:
         background screenBackground;
     // Code Block
         DLLscreenCodeBlock DLLCodeBlock;
+    // exit
+        bool backToMenu;
 public:
     DLLObject();
     void createList(int numberOfNode, std::vector <int> &a);
@@ -90,7 +92,8 @@ public:
     void deleteDLL();
 
     void drawBackground(sf::RenderWindow &window);
-
+    bool exitDLLScreen();
+    void setExitToFalse();
     
     void processAllEvent(sf::RenderWindow &window, sf::Event &event);
     void drawLLScreen(sf::RenderWindow &window);

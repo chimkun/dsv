@@ -2,6 +2,7 @@
 
 SLLObject::SLLObject() {
     drawType = showcaseLL;
+    backToMenu = 0;
     createRandomList();
 }
 
@@ -380,6 +381,10 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
             theLLscreen.theGeneralScreen.turnOffAllButton();
             theLLscreen.theGeneralScreen.updateButton.flipButtonState();
         }
+        else if (theLLscreen.theGeneralScreen.backToMenuIsClick(window)) {
+            this->backToMenu = true;
+            theLLscreen.theGeneralScreen.turnOffAllButton();
+        }
         else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theLLscreen.theGeneralScreen.addButton.textBoxIsClick(window)) {
             theLLscreen.theGeneralScreen.turnOffAddTextBox();
             theLLscreen.theGeneralScreen.addButton.onInputBoxState();
@@ -615,6 +620,13 @@ void SLLObject::drawBackground(sf::RenderWindow &window) {
     screenBackground.drawBackground(window);
 }
 
+
+bool SLLObject::exitSLLScreen() {
+    return this->backToMenu;
+}
+void SLLObject::setExitToFalse() {
+    this->backToMenu = 0;
+}
 void SLLObject::processAllEvent(sf::RenderWindow &window, sf::Event &event) {
     switch (event.type) {
         case sf::Event::Closed:
