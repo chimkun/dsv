@@ -26,10 +26,10 @@ public:
     int getNumberOfNode();
     void printList();
     void drawList(sf::RenderWindow &window, int opacity, textInfo &nodeText);
-    void drawListWhenInsert(sf::RenderWindow &window, int insertIndex, 
-                            int opacity, int nodePositionXAfterInsert, textInfo &nodeText);
     
     void drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int gotoIndex, sf::Color fadeColor, textInfo &nodeText);
+    void drawListWhenInsert(sf::RenderWindow &window, int insertIndex, 
+                            int opacity, int nodePositionXAfterInsert, textInfo &nodeText);
     void drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity, sf::Color fadeColor,
                         sf::Vector2f insertNodePosition, int insertNodeOpacity, textInfo &nodeText);
     
@@ -50,7 +50,5 @@ public:
     void drawUpdateRevert(sf::RenderWindow &window, int updateIndex, 
                           sf::Color fadeOutlineColor, sf::Color fadeNumberColor, textInfo &nodeText);
 };
-
-sf::Color getFadeColor(sf::Color startColor, sf::Color endColor, sf::Clock flashTimer);
 
 #endif

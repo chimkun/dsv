@@ -11,7 +11,7 @@ void SLLObject::createList(int numberOfNode, std::vector <int> &a) {
     theLLscreen.theGeneralScreen.initData(numberOfNode);
 }
 void SLLObject::createRandomList() {
-    int numberOfNode = rand() % 10 + 1;
+    int numberOfNode = rand() % 5 + 1;
     std::vector <int> a;
     std::string sampleInput;
     for (int i = 0; i < numberOfNode; i++) {

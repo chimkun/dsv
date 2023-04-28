@@ -110,6 +110,12 @@ void generalScreen::initData(int numberOfNode) {
     deleteButton.setInputString(deleteString);
     searchButton.setInputString(searchString);
     updateButton.setInputString(updateString);
+
+    int addBeginningData = rand() % 100, addEndingData = rand() % 100;
+    std::string addBeginningDataStr = std::to_string(addBeginningData);
+    std::string addEndingDataStr = std::to_string(addEndingData);
+    addBeginningText.setTextBoxString(addBeginningDataStr);
+    addEndingText.setTextBoxString(addEndingDataStr);
 }
 
 void generalScreen::turnOffAllButton() {

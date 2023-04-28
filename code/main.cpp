@@ -109,6 +109,7 @@
 #include "button.h"
 #include "node.h"
 #include "menu.h"
+#include "DLLscreenEvent.h"
 #include "DLLScreen.h"
 
 int main()
@@ -134,14 +135,29 @@ int main()
     std::vector <int> input = {2, 3, 4, 5};
     myDLL.build(input);
 
+    enum screenType {
+        menu,
+        SLL,
+        DLL
+    };
+
+    screenType ScreenType = DLL;
+    DLLObject myDLLObject;
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window.close();
+            switch (ScreenType) {
+                case DLL:
+                    myDLLObject.processAllEvent(window, event);
+                    break;
+            }
         }
         window.clear();
-        myDLL.drawList(window, 255);
+        switch (ScreenType) {
+            case DLL:
+                myDLLObject.drawLLScreen(window);
+                break;
+        }
         window.display();
     }
 

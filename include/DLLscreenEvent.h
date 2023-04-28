@@ -4,18 +4,20 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <vector>
+#include "DLLCodeBlock.h"
 #include "general.h"
 #include "DLLscreen.h"
+#include "fadecolor.h"
 #include "browse.h"
 
-enum LLdrawType {
-    back,
-    chooseMakeLL, makeLL, inputLL,
-    showcaseLL, 
-    insertLL0, insertLL1, insertLL2, 
-    deleteLL0, deleteLL1, deleteLL2,
-    searchLL0, searchLL1, searchLL2,
-    updateLL0, updateLL1, updateLL2
+enum DLLdrawType {
+    DLLback,
+    chooseMakeDLL, makeDLL, inputDLL,
+    showcaseDLL, 
+    insertDLL0, insertDLL1, insertDLL2, 
+    deleteDLL0, deleteDLL1, deleteDLL2,
+    searchDLL0, searchDLL1, searchDLL2,
+    updateDLL0, updateDLL1, updateDLL2
 };
 
 class DLLObject {
@@ -39,15 +41,15 @@ private:
         //mark first time
         bool markFirst;
     //LL mode
-        LLdrawType drawType;
+        DLLdrawType drawType;
     // Text
         textInfo nodeText;
     // UI
-        allScreen theLLscreen;
+        allScreen theDLLscreen;
     // BG
         background screenBackground;
     // Code Block
-        // will add uwu
+        DLLscreenCodeBlock DLLCodeBlock;
 public:
     DLLObject();
     void createList(int numberOfNode, std::vector <int> &a);
@@ -93,7 +95,7 @@ public:
     void processAllEvent(sf::RenderWindow &window, sf::Event &event);
     void drawLLScreen(sf::RenderWindow &window);
 
-    LLdrawType getType();
+    DLL getType();
 };
 
 void inputValue(int &value);

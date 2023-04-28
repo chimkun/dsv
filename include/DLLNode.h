@@ -18,13 +18,17 @@ struct DLLNode {
 
     DLLNode ();
     DLLNode (int data);
+    void updateNumberTexture(int data);
     void drawNode(sf::Vector2f nodePosition, sf::RenderWindow &window, int opacity);
     void drawNode2(sf::Vector2f nodePosition, sf::RenderWindow &window, 
                   int innerOpacity, int outlineOpacity, int numberOpacity,
                   sf::Color outlineColor, sf::Color numberColor);
     void drawArrowBetweenNode(sf::RenderWindow &window, sf::Vector2f nodePositionLeft,
                               sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity);
-
+    void drawFwArrowBetweenNode(sf::RenderWindow& window, sf::Vector2f nodePositionLeft,
+                                     sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity);
+    void drawBwArrowBetweenNode(sf::RenderWindow& window, sf::Vector2f nodePositionLeft,
+                                     sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity);
 };
 
 #endif

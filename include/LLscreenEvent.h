@@ -8,6 +8,7 @@
 #include "LLscreen.h"
 #include "LLscreenCodeBlock.h"
 #include "browse.h"
+#include "fadecolor.h"
 
 enum LLdrawType {
     back,

@@ -1,5 +1,10 @@
 [
     {
+        "command": "g++ -c ..\\Menu\\code/DLLCodeBlock.cpp -o DLLCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\DLLCodeBlock.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/DLLNode.cpp -o DLLNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\DLLNode.cpp"
@@ -73,6 +78,11 @@
         "command": "g++ -c ..\\Menu\\code/constants.cpp -o constants.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\constants.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/fadecolor.cpp -o fadecolor.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\fadecolor.cpp"
     },
     {
         "command": "g++ -c ..\\Menu\\code/general.cpp -o general.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",

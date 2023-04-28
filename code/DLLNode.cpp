@@ -71,6 +71,55 @@ DLLNode::DLLNode(int data) {
     this->numberTexture = numberOnNode.getTexture();
 }
 
+void DLLNode::updateNumberTexture(int data) {
+    int digit1 = -1, digit2 = -1;
+    digit1 = data % 10;
+    if (data > 9)
+        digit2 = (data / 10) % 10;
+
+    sf::Texture unitDigitImg, tensDigitImg;
+    char unitDigitChar = (char)(digit1 + '0'), tensDigitChar = (char)(digit2 + '0');
+    std::string unitDigitFile = "default-", tensDigitFile = "default-", pngExtension = ".png";
+    unitDigitFile.push_back(unitDigitChar);
+    tensDigitFile.push_back(tensDigitChar);
+    unitDigitFile += pngExtension;
+    tensDigitFile += pngExtension;
+    sf::Texture tensDigit;
+    sf::Texture unitDigit;
+    if (!unitDigit.loadFromFile("src//include//texture//" + unitDigitFile)) {
+        std::cout << "Texture file not found! (digit)\n";
+        exit(-1);
+    }
+
+    sf::Vector2u numberSize = unitDigit.getSize();
+    sf::RenderTexture numberOnNode;
+    numberOnNode.create(numberSize.x, numberSize.y);
+
+    if (digit2 != -1) {
+        if (!tensDigit.loadFromFile("src//include//texture//" + tensDigitFile)) {
+            std::cout << "Texture file not found! (digit)";
+            exit(-1);
+        }
+        numberSize.x;
+        numberOnNode.create(numberSize.x * 2 - 8, numberSize.y);
+        sf::Sprite unitDigitSprite(unitDigit);
+        sf::Sprite tensDigitSprite(tensDigit);
+        unitDigitSprite.setPosition(numberSize.x - 8, 0);
+        int unitSizeY = unitDigit.getSize().y, tensSizeY = tensDigit.getSize().y;
+        unitDigitSprite.setTextureRect(sf::IntRect(0, unitDigit.getSize().y, unitDigit.getSize().x, -unitSizeY));
+        tensDigitSprite.setTextureRect(sf::IntRect(0, tensDigit.getSize().y, tensDigit.getSize().x, -tensSizeY));
+        numberOnNode.draw(tensDigitSprite);
+        numberOnNode.draw(unitDigitSprite);
+    }
+    else {
+        sf::Sprite unitDigitSprite(unitDigit);
+        int unitSizeY = unitDigit.getSize().y;
+        unitDigitSprite.setTextureRect(sf::IntRect(0, unitDigit.getSize().y, unitDigit.getSize().x, -unitSizeY));
+        numberOnNode.draw(unitDigitSprite);
+    }
+    this->numberTexture = numberOnNode.getTexture();
+}
+
 void DLLNode::drawNode(sf::Vector2f nodePosition, sf::RenderWindow &window, int opacity) {
     if (data < 0)
         return;
@@ -186,4 +235,20 @@ void DLLNode::drawArrowBetweenNode(sf::RenderWindow& window, sf::Vector2f nodePo
     bwArrowLeft.x -= 5, bwArrowLeft.y += 17;
     bwArrowRight.x += 5, bwArrowRight.y += 18;
     bwArrow.drawArrowBetweenNode(window, bwArrowRight, bwArrowLeft, arrowColor, opacity);
+}
+
+void DLLNode::drawFwArrowBetweenNode(sf::RenderWindow& window, sf::Vector2f nodePositionLeft,
+                                     sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity) {
+    sf::Vector2f fwArrowLeft = nodePositionLeft, fwArrowRight = nodePositionRight;
+    fwArrowLeft.x -= 5, fwArrowLeft.y -= 18;
+    fwArrowRight.x += 5, fwArrowRight.y -= 17;
+    fwArrow.drawArrowBetweenNode(window, fwArrowLeft, fwArrowRight, arrowColor, opacity);
+}
+
+void DLLNode::drawBwArrowBetweenNode(sf::RenderWindow& window, sf::Vector2f nodePositionLeft,
+                                     sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity) {
+    sf::Vector2f bwArrowLeft = nodePositionLeft, bwArrowRight = nodePositionRight;
+    bwArrowLeft.x -= 5, bwArrowLeft.y += 17;
+    bwArrowRight.x += 5, bwArrowRight.y += 18;
+    bwArrow.drawArrowBetweenNode(window, bwArrowRight, bwArrowLeft, arrowColor, opacity);;
 }
