@@ -35,6 +35,11 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreenEvent.cpp"
     },
     {
+        "command": "g++ -c ..\\Menu\\code/arrayScreen.cpp -o arrayScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\arrayScreen.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/arrow.cpp -o arrow.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\arrow.cpp"
@@ -100,6 +105,11 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menu.cpp"
     },
     {
+        "command": "g++ -c ..\\Menu\\code/menuChooseArray.cpp -o menuChooseArray.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menuChooseArray.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/menuChooseLLScreen.cpp -o menuChooseLLScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menuChooseLLScreen.cpp"
@@ -113,6 +123,26 @@
         "command": "g++ -c ..\\Menu\\code/node.cpp -o node.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\node.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/stackNode.cpp -o stackNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\stackNode.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/stackScreen.cpp -o stackScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\stackScreen.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/stackScreenEvent.cpp -o stackScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\stackScreenEvent.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/stackUI.cpp -o stackUI.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\stackUI.cpp"
     },
     {
         "command": "g++ -c ..\\Menu\\code/text.cpp -o text.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",

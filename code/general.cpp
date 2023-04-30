@@ -107,7 +107,7 @@ bool generalScreen::backToMenuIsClick(sf::RenderWindow &window) {
 
 void generalScreen::initData(int numberOfNode) {
     int addIndex = rand() % (numberOfNode - 1) + 1, addData = rand() % 100;
-    int deleteIndex = rand() % numberOfNode;
+    int deleteIndex = rand() % (numberOfNode - 1) + 1;
     int searchData = rand() % 100;
     int updateIndex = rand() % (numberOfNode - 1) + 1, updateData = rand() % 100;
     std::string addString = std::to_string(addIndex) + ',' + std::to_string(addData);

@@ -1,7 +1,6 @@
 #ifndef BACKGROUND_H
 #define BACKGROUND_H
 
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include "constants.h"
 

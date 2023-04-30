@@ -1,7 +1,6 @@
 #ifndef LLSCREENCODEBLOCK_H
 #define LLSCREENCODEBLOCK_H
 
-#include <SFML/Graphics.hpp>
 #include "codeblock.h"
 
 class LLscreenCodeBlock{

@@ -1,11 +1,11 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include <SFML/Graphics.hpp>
 #include <cmath>
 #include "chooseDataStructureScreen.h"
 #include "menuInitialScreen.h"
 #include "menuChooseLLScreen.h"
+#include "menuChooseArray.h"
 #include "button.h"
 #include "background.h"
 
@@ -14,14 +14,14 @@ private:
     enum menuButtonType {
         initial,
         chooseDataStructure,
-        chooseLL
+        chooseLL,
+        chooseArray
     };
     enum dataStructureType {
         none, SLL, DLL, CLL,
-        array, dArray,
+        array, sArray, dArray,
         stack, queue
     };
-    button backButton;
 
     menuButtonType MenuType;
     dataStructureType DSType;
@@ -29,6 +29,7 @@ private:
     initialScreen MenuInitialScreen;
     chooseDataStructureScreen MenuChooseDSScreen;
     chooseLinkedListScreen MenuChooseLLScreen;
+    chooseArrayScreen MenuChooseArrayScreen;
 
     sf::Texture logoTexture;
     sf::Sprite logoSprite;
@@ -47,8 +48,6 @@ public:
     void offLogo();
     void offAllScreen();
     void processMouseEvent(sf::RenderWindow &window);
-
-    void backButtonHover(sf::RenderWindow &window);
 
     void menuTypeSetInitial();
     int getDSType();

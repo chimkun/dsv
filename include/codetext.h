@@ -1,7 +1,6 @@
 #ifndef CODETEXT_H
 #define CODETEXT_H
 
-#include <SFML/Graphics.hpp>
 #include <string>
 #include "constants.h"
 #include "text.h"

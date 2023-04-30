@@ -103,6 +103,13 @@ public:
     static void initializeConstants();
 };
 
+class stackConstants {
+public:
+    static sf::Vector2f bottomStack;
+    static int yDistance;
+    static void initializeConstants();
+};
+
 void initializeConstants();
 
 #endif

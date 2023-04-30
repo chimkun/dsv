@@ -1,7 +1,6 @@
 #ifndef TEXT_H
 #define TEXT_H
 
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include "constants.h"
 
@@ -16,6 +15,8 @@ public:
                           sf::Vector2f &textPosition, int opacity);
     void drawOptionalTextSize(sf::RenderWindow &window, std::string &textStringContent, sf::Vector2f &textOrigin,
                               sf::Vector2f &textPosition, int opacity, int textSize);
+    void drawOptionalTextMid(sf::RenderWindow &window, std::string &textStringContent, 
+                             sf::Vector2f &textPosition, int opacity = 255, int textSize = 60);
     sf::FloatRect getTextBound(std::string &textStringContent, sf::Vector2f &textPosition, int textSize);
 };
 

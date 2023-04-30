@@ -21,8 +21,6 @@ menuScreen::menuScreen() {
         std::cout << "texture file not found!\n";
         exit(-1);
     }
-    std::string emptyString = "";
-    backButton = button(menuButtonConstants::backButtonPosition, backButtonTexture, emptyString);
     backHighlight.setPosition(menuButtonConstants::backButtonPosition);
     backHighlight.setSize(sf::Vector2f(311.523, 148.574));
     sf::Color backHighlightColor = sf::Color(130, 130, 130, 100);
@@ -107,7 +105,7 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                 }
                 break;
             case chooseDataStructure:
-                if (backButton.buttonIsClick(window)) {
+                if (MenuChooseDSScreen.backButtonIsClick(window)) {
                     MenuType = initial;
                     offAllScreen();
                     onLogo();
@@ -119,9 +117,15 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                     onLogo();
                     MenuChooseLLScreen.onScreen();
                 }
+                if (MenuChooseDSScreen.arrayButtonIsClick(window)) {
+                    MenuType = chooseArray;
+                    offAllScreen();
+                    onLogo();
+                    MenuChooseArrayScreen.onScreen();
+                }
                 break;
             case chooseLL:
-                if (backButton.buttonIsClick(window)) {
+                if (MenuChooseLLScreen.backButtonIsClick(window)) {
                     MenuType = chooseDataStructure;
                     offAllScreen();
                     onLogo();
@@ -140,18 +144,32 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                     DSType = DLL;
                 }
                 break;
+            case chooseArray:
+                if (MenuChooseArrayScreen.backButtonIsClick(window)) {
+                    MenuType = chooseDataStructure;
+                    offAllScreen();
+                    onLogo();
+                    MenuChooseDSScreen.onScreen();
+                }
+                else if (MenuChooseArrayScreen.staticButtonIsClick(window)) {
+                    MenuType = initial;
+                    offAllScreen();
+                    offLogo();
+                    DSType = sArray;
+                }
+                else if (MenuChooseArrayScreen.staticButtonIsClick(window)) {
+                    MenuType = initial;
+                    offAllScreen();
+                    offLogo();
+                    DSType = dArray;
+                }
+                break;
         }
     }
 }
 void menuScreen::offAllScreen() {
     MenuInitialScreen.offScreen();
     MenuChooseDSScreen.offScreen();
-}
-
-void menuScreen::backButtonHover(sf::RenderWindow &window) {
-    if (backButton.buttonIsHover(window) && MenuType != initial) {
-        window.draw(backHighlight);
-    }
 }
 
 void menuScreen::menuTypeSetInitial() {
@@ -187,18 +205,14 @@ void menuScreen::drawMenuScreen(sf::RenderWindow &window) {
         case chooseDataStructure:
             MenuChooseDSScreen.buttonIsHover(window);
             MenuChooseDSScreen.drawChooseDSScreen(window);
-            if (isChosen) {
-                backButtonHover(window);
-                backButton.drawButton(window);
-            }
             break;
         case chooseLL:
             MenuChooseLLScreen.buttonIsHover(window);
             MenuChooseLLScreen.drawChooseLLScreen(window);
-            if (isChosen) {
-                backButtonHover(window);
-                backButton.drawButton(window);
-            }
+            break;
+        case chooseArray:
+            MenuChooseArrayScreen.buttonIsHover(window);
+            MenuChooseArrayScreen.drawChooseArrayScreen(window);
             break;
     }
     drawLogo(window);

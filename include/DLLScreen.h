@@ -1,7 +1,6 @@
 #ifndef DLLSCREEN_H
 #define DLLSCREEN_H
 
-#include <SFML/Graphics.hpp>
 #include <vector>
 #include <iostream>
 #include <cmath>

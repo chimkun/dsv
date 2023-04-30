@@ -1,7 +1,6 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
 #include <cstdlib>

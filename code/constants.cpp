@@ -155,6 +155,13 @@ void menuButtonConstants::initializeConstants() {
     backButtonPosition = sf::Vector2f(1650, 800);
 }
 
+int stackConstants::yDistance;
+sf::Vector2f stackConstants::bottomStack;
+
+void stackConstants::initializeConstants() {
+    yDistance = 170;
+    bottomStack = sf::Vector2f(1920/2.0, 950);
+}
 
 void initializeConstants() {
     nodeConstants::initializeConstants();

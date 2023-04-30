@@ -1,7 +1,6 @@
 #ifndef LLSCREENEVENT_H
 #define LLSCREENEVENT_H
 
-#include <SFML/Graphics.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <vector>
 #include "general.h"

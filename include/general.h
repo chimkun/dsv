@@ -1,7 +1,6 @@
 #ifndef GENERAL_H
 #define GENERAL_H
 
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
 #include <vector>

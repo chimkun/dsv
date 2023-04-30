@@ -1,7 +1,6 @@
 #ifndef DLLNODE_H
 #define DLLNODE_H
 
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
 #include <cstdlib>

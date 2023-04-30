@@ -1,7 +1,6 @@
 #ifndef CODEBLOCK_H
 #define CODEBLOCK_H
 
-#include <SFML/Graphics.hpp>
 #include "codetext.h"
 
 class codeBlock {

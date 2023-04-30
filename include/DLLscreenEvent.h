@@ -1,7 +1,6 @@
 #ifndef DLLSCREENEVENT_H
 #define DLLSCREENEVENT_H
 
-#include <SFML/Graphics.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <vector>
 #include "DLLCodeBlock.h"

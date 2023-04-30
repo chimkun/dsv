@@ -1,7 +1,6 @@
 #ifndef DLLCODEBLOCK_H
 #define DLLCODEBLOCK_H
 
-#include <SFML/Graphics.hpp>
 #include "codeblock.h"
 
 class DLLscreenCodeBlock{

@@ -1,7 +1,6 @@
 #ifndef BUTTONANDTEXTBOX_H
 #define BUTTONANDTEXTBOX_H
 
-#include <SFML/Graphics.hpp>
 #include <string>
 #include "button.h"
 #include "textbox.h"

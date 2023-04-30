@@ -1,7 +1,6 @@
 #ifndef ARROW_H
 #define ARROW_H
 
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include "constants.h"
 

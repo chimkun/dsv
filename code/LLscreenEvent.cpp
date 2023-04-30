@@ -40,6 +40,14 @@ void SLLObject::processDrawList() {
 }
 
 void SLLObject::drawInsertIndicator(sf::RenderWindow &window) {
+    if (insertIndex == mySLL.getNumberOfNode()) {
+        mySLL.drawInsertNodeIndicator(window, insertIndex, gotoIndex, 
+                                      nodeConstants::baseColor, nodeText);
+        drawType = insertLL2;
+        mySLL.insertAfterIndex(insertData, insertIndex);
+        insertIndex++;
+        return;
+    }
     if (flashTimer.getElapsedTime().asMilliseconds() < remTime.asMilliseconds())
         sf::sleep(sf::milliseconds(500));
     remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds());
@@ -88,9 +96,14 @@ void SLLObject::drawListWhenInsert(sf::RenderWindow &window) {
 void SLLObject::drawInsertNode(sf::RenderWindow &window) {
     LLCodeBlock.drawInsertCodeBlock(window);
     LLCodeBlock.drawInsertCodeBlockMultiLine(window, 5, 6);
-    mySLL.drawInsertNode(window, insertIndex, opacity,
-                         getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer),
-                         insertNodePosition, insertNodeOpacity, nodeText);
+    if (insertIndex == mySLL.getNumberOfNode())
+        mySLL.drawInsertNode(window, insertIndex, opacity,
+                            nodeConstants::baseColor,
+                            insertNodePosition, insertNodeOpacity, nodeText);
+    else
+        mySLL.drawInsertNode(window, insertIndex, opacity,
+                            getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer),
+                            insertNodePosition, insertNodeOpacity, nodeText);
     if (insertNodePosition.y == nodeConstants::firstNodePositionY)
         drawType = showcaseLL;
     else {
@@ -413,8 +426,10 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
                 std::pair <int, int> userInput = theLLscreen.theGeneralScreen.addButton.getInputDataPair();
                 int inputIndex = userInput.first, inputElement = userInput.second;
                 insertNodeProcess(inputIndex, inputElement);
-                LLCodeBlock.drawInsertCodeBlock(window);
-                LLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+                if (!inputIndex == mySLL.getNumberOfNode()) {
+                    LLCodeBlock.drawInsertCodeBlock(window);
+                    LLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+                }
             }
         }
         else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
@@ -428,12 +443,23 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
                 LLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
             }
         }
+        else if (theLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
+              && theLLscreen.theGeneralScreen.addEnding.buttonIsClick(window)) {
+            if (!theLLscreen.theGeneralScreen.addEndingText.inputIsEmpty()) {
+                drawType = insertLL0;
+                int userInput = theLLscreen.theGeneralScreen.addBeginningText.getInputDataInt();
+                int inputIndex = mySLL.getNumberOfNode(), inputElement = userInput;
+                insertNodeProcess(inputIndex, inputElement);
+                LLCodeBlock.drawInsertCodeBlock(window);
+                LLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+            }
+        }
         else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theLLscreen.theGeneralScreen.deleteButton.confirmButtonIsClick(window)) {
             if (!theLLscreen.theGeneralScreen.deleteButton.inputIsEmpty()) {
                 drawType = deleteLL0;
                 int userInput = theLLscreen.theGeneralScreen.deleteButton.getInputDataInt();
-                deleteIndex = userInput;
+                deleteIndex = userInput + 1;
                 deleteNodeProcess(deleteIndex);
             }
         }

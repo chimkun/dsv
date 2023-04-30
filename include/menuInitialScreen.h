@@ -1,7 +1,6 @@
 #ifndef MENUINITIALSCREEN_H
 #define MENUINITIALSCREEN_H
 
-#include <SFML/Graphics.hpp>
 #include "button.h"
 
 class initialScreen {

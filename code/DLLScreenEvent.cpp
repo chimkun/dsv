@@ -41,6 +41,14 @@ void DLLObject::processDrawList() {
 }
 
 void DLLObject::drawInsertIndicator(sf::RenderWindow &window) {
+    if (insertIndex == myDLL.getNumberOfNode()) {
+        drawType = insertDLL2;
+        myDLL.drawInsertNodeIndicator(window, insertIndex, gotoIndex, 
+                                     nodeConstants::baseColor);
+        myDLL.insertAfterIndex(insertIndex, insertData);
+        insertIndex++;
+        return;
+    }
     if (flashTimer.getElapsedTime().asMilliseconds() < remTime.asMilliseconds())
         sf::sleep(sf::milliseconds(500));
     remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds());
@@ -90,9 +98,14 @@ void DLLObject::drawListWhenInsert(sf::RenderWindow &window) {
 void DLLObject::drawInsertNode(sf::RenderWindow &window) {
     DLLCodeBlock.drawInsertCodeBlock(window);
     DLLCodeBlock.drawInsertCodeBlockMultiLine(window, 5, 6);
-    myDLL.drawInsertNode(window, insertIndex, opacity,
-                         getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer),
-                         insertNodePosition, insertNodeOpacity);
+    if (insertIndex == myDLL.getNumberOfNode())
+        myDLL.drawInsertNode(window, insertIndex, opacity,
+                            nodeConstants::baseColor,
+                            insertNodePosition, insertNodeOpacity);
+    else
+        myDLL.drawInsertNode(window, insertIndex, opacity,
+                            getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer),
+                            insertNodePosition, insertNodeOpacity);
     if (insertNodePosition.y == nodeConstants::firstNodePositionY)
         drawType = showcaseDLL;
     else {
@@ -632,12 +645,6 @@ void DLLObject::updateNodeProcess(int updateIndex, int updateData) {
     this->markFirst = 1;
 }
 
-
-// void DLLObject::deleteDLL() {
-//     myDLL.deleteList();
-//     return;
-// }
-
 void DLLObject::drawBackground(sf::RenderWindow &window) {
     screenBackground.drawBackground(window);
 }
@@ -669,46 +676,4 @@ void DLLObject::drawLLScreen(sf::RenderWindow &window) {
     processMouseHoverEvent(window);
     processType(window);
 }
-
-// void inputValue(int &value) {
-//     std::cin >> value;
-// }
-
-// void setInsertNode(int &nodePositionXAfterInsert, sf::Vector2f &insertNodePosition,
-//                    int &insertNodeOpacity, int insertPhase) {
-//     if (nodePositionXAfterInsert < nodeConstants::nodeDistance)
-//         nodePositionXAfterInsert = std::min(nodeConstants::nodeDistance, nodePositionXAfterInsert + nodeConstants::insertMoveSpeed);
-//     if (insertPhase == 2)
-//         insertNodeOpacity = std::min(insertNodeOpacity + nodeConstants::fadeSpeed, 255);
-//     if (insertPhase == 2 && insertNodePosition.y > nodeConstants::firstNodePositionY && insertNodeOpacity == 255)
-//         insertNodePosition.y = std::max((float) insertNodePosition.y - nodeConstants::insertMoveSpeed, (float) nodeConstants::firstNodePositionY);
-// }
-
-// std::vector<int> getInputData(std::string &inputString) {
-//     std::string theInputString = inputString;
-//     std::string normalizedInput = normalize(theInputString);
-//     int curNum = 0, maxNum = 0, countNum = 1, mul = 1;
-            
-//     std::vector<int> inputArray;
-//     for (int i = (int) normalizedInput.size() - 1; i >= 0; i--) {
-//         if (normalizedInput[i] == ',') {
-//             if (curNum > 99)
-//                 break;
-//             if (countNum > 10)
-//                 break;
-//             inputArray.push_back(curNum);
-//             countNum++;
-//             maxNum = std::max(maxNum, curNum);
-//             curNum = 0;
-//             mul = 1;
-//         }
-//         else {
-//             curNum += mul * ((int) normalizedInput[i] - '0');
-//             mul *= 10;
-//         }
-//     }
-//     inputArray.push_back(curNum);
-//     std::reverse(inputArray.begin(), inputArray.end());
-//     return inputArray;
-// }
 

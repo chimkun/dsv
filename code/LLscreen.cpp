@@ -245,7 +245,7 @@ void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
         else 
             cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor);
         
-        if (insertIndex == 0) {
+        if (insertIndex == 0 || insertIndex == numberOfNode) {
             if (i == 1)
                 nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             else if (i == numberOfNode)

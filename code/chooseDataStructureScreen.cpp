@@ -2,7 +2,7 @@
 
 
 chooseDataStructureScreen::chooseDataStructureScreen() {
-    sf::Texture linkedListButtonTexture, arrayButtonTexture, stackButtonTexture, queueButtonTexture;
+    sf::Texture linkedListButtonTexture, arrayButtonTexture, otherButtonTexture, returnButtonTexture;
     if (!linkedListButtonTexture.loadFromFile("src//include//texture//menuChooseLLButton.png")) {
         std::cout << "texture file not found!\n";
         exit(-1);
@@ -11,21 +11,21 @@ chooseDataStructureScreen::chooseDataStructureScreen() {
         std::cout << "texture file not found!\n";
         exit(-1);
     }
-    if (!stackButtonTexture.loadFromFile("src//include//texture//menuChooseStackButton.png")) {
+    if (!otherButtonTexture.loadFromFile("src//include//texture//menuChooseOtherButton.png")) {
         std::cout << "texture file not found!\n";
         exit(-1);
     }
-    if (!queueButtonTexture.loadFromFile("src//include//texture//menuChooseQueueButton.png")) {
+    if (!returnButtonTexture.loadFromFile("src//include//texture//menuChooseReturnButton.png")) {
         std::cout << "texture file not found!\n";
         exit(-1);
     }
-    std::string linkedListString = "Linked list", arrayString = "Array", stackString = "Stack", queueString = "Queue";
+    std::string linkedListString = "Linked list", arrayString = "Array", otherString = "Other", returnString = "Back";
     linkedListButton = button(menuButtonConstants::buttonPos4Button[0], linkedListButtonTexture, linkedListString);
     arrayButton = button(menuButtonConstants::buttonPos4Button[1], arrayButtonTexture, arrayString);
-    stackButton = button(menuButtonConstants::buttonPos4Button[2], stackButtonTexture, stackString);
-    queueButton = button(menuButtonConstants::buttonPos4Button[3], queueButtonTexture, queueString);
+    otherButton = button(menuButtonConstants::buttonPos4Button[2], otherButtonTexture, otherString);
+    backButton = button(menuButtonConstants::buttonPos4Button[3], returnButtonTexture, returnString);
     buttonOpacity = 0;
-    moveDistance = linkedListHoverDistance = arrayHoverDistance = stackHoverDistance = queueHoverDistance = 0;
+    moveDistance = linkedListHoverDistance = arrayHoverDistance = otherHoverDistance = backHoverDistance = 0;
     chooseDataStructureScreenIsChosen = 0;
 }
 void chooseDataStructureScreen::onScreen() {
@@ -33,7 +33,7 @@ void chooseDataStructureScreen::onScreen() {
 }
 void chooseDataStructureScreen::offScreen() {
     chooseDataStructureScreenIsChosen = 0;
-    linkedListHoverDistance = arrayHoverDistance = stackHoverDistance = queueHoverDistance = 0;
+    linkedListHoverDistance = arrayHoverDistance = otherHoverDistance = backHoverDistance = 0;
 }
 
 bool chooseDataStructureScreen::linkedListButtonIsClick(sf::RenderWindow &window) {
@@ -42,11 +42,11 @@ bool chooseDataStructureScreen::linkedListButtonIsClick(sf::RenderWindow &window
 bool chooseDataStructureScreen::arrayButtonIsClick(sf::RenderWindow &window) {
     return arrayButton.buttonIsClick(window);
 }
-bool chooseDataStructureScreen::stackButtonIsClick(sf::RenderWindow &window) {
-    return stackButton.buttonIsClick(window);
+bool chooseDataStructureScreen::otherButtonIsClick(sf::RenderWindow &window) {
+    return otherButton.buttonIsClick(window);
 }
-bool chooseDataStructureScreen::queueButtonIsClick(sf::RenderWindow &window) {
-    return queueButton.buttonIsClick(window);
+bool chooseDataStructureScreen::backButtonIsClick(sf::RenderWindow &window) {
+    return backButton.buttonIsClick(window);
 }
 
 void chooseDataStructureScreen::buttonIsHover(sf::RenderWindow &window) {
@@ -64,18 +64,18 @@ void chooseDataStructureScreen::buttonIsHover(sf::RenderWindow &window) {
         arrayHoverDistance = std::max(0, arrayHoverDistance - menuButtonConstants::hoverFloatBackSpeed);
     }
 
-    if (stackButton.buttonIsHover(window)) {
-        stackHoverDistance = std::min(menuButtonConstants::maxHoverDistance, stackHoverDistance + menuButtonConstants::hoverMoveSpeed);
+    if (otherButton.buttonIsHover(window)) {
+        otherHoverDistance = std::min(menuButtonConstants::maxHoverDistance, otherHoverDistance + menuButtonConstants::hoverMoveSpeed);
     }
     else {
-        stackHoverDistance = std::max(0, stackHoverDistance - menuButtonConstants::hoverFloatBackSpeed);
+        otherHoverDistance = std::max(0, otherHoverDistance - menuButtonConstants::hoverFloatBackSpeed);
     }
     
-    if (queueButton.buttonIsHover(window)) {
-        queueHoverDistance = std::min(menuButtonConstants::maxHoverDistance, queueHoverDistance + menuButtonConstants::hoverMoveSpeed);
+    if (backButton.buttonIsHover(window)) {
+        backHoverDistance = std::min(menuButtonConstants::maxHoverDistance, backHoverDistance + menuButtonConstants::hoverMoveSpeed);
     }
     else {
-        queueHoverDistance = std::max(0, queueHoverDistance - menuButtonConstants::hoverFloatBackSpeed);
+        backHoverDistance = std::max(0, backHoverDistance - menuButtonConstants::hoverFloatBackSpeed);
     }
 }
 
@@ -96,13 +96,12 @@ void chooseDataStructureScreen::drawChooseDSScreen(sf::RenderWindow &window) {
                                          menuButtonConstants::buttonPos4Button[1].y);
     arrayButton.drawButtonOptional(window, 0.41, 0.15, 62, buttonOpacity);
     
-    stackButton.buttonSprite.setPosition(menuButtonConstants::buttonPos4Button[2].x + moveDistance + stackHoverDistance, 
+    otherButton.buttonSprite.setPosition(menuButtonConstants::buttonPos4Button[2].x + moveDistance + otherHoverDistance, 
                                         menuButtonConstants::buttonPos4Button[2].y);
-    stackButton.drawButtonOptional(window, 0.41, 0.15, 62, buttonOpacity);
+    otherButton.drawButtonOptional(window, 0.41, 0.15, 62, buttonOpacity);
 
-    queueButton.buttonSprite.setPosition(menuButtonConstants::buttonPos4Button[3].x + moveDistance + queueHoverDistance, 
+    backButton.buttonSprite.setPosition(menuButtonConstants::buttonPos4Button[3].x + moveDistance + backHoverDistance, 
                                         menuButtonConstants::buttonPos4Button[3].y);
-    queueButton.drawButtonOptional(window, 0.41, 0.15, 62, buttonOpacity);
-
+    backButton.drawButtonOptional(window, 0.41, 0.15, 62, buttonOpacity);
 }
 
