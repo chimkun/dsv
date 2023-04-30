@@ -13,7 +13,7 @@ stackNode::stackNode() {
     numberText.setFont(0);
 }
 
-void stackNode::drawStackNode(sf::RenderWindow &window, sf::Vector2f nodePosition, int data, int opacity) {
+void stackNode::drawStackNode(sf::RenderWindow &window, sf::Vector2f nodePosition, int data, int opacity, sf::Color nodeColor) {
     sf::Sprite circleSprite(nodeCircleTexture), outlineSprite(nodeOutlineTexture);
     sf::IntRect circleBound = circleSprite.getTextureRect(), outlineBound = outlineSprite.getTextureRect();
 
@@ -38,6 +38,7 @@ void stackNode::drawStackNode(sf::RenderWindow &window, sf::Vector2f nodePositio
     outlineSprite.setOrigin(outlineBound.width/2, outlineBound.height/2);
     circleSprite.setPosition(nodePosition);
     outlineSprite.setPosition(nodePosition);
+    outlineSprite.setColor(nodeColor);
     sf::Color circleCol = circleSprite.getColor(), outlineCol = outlineSprite.getColor();
     circleCol.a = opacity, outlineCol.a = opacity;
     circleSprite.setColor(circleCol);

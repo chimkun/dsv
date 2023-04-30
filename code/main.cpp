@@ -133,8 +133,7 @@
 #include "DLLscreenEvent.h"
 #include "DLLScreen.h"
 #include "arrow.h"
-#include "stackScreen.h"
-#include "stackUI.h"
+#include "stackScreenEvent.h"
 
 int main()
 {   
@@ -164,21 +163,22 @@ int main()
     };
 
     screenType ScreenType = Stack;
-    stackClass myStack;
+    StackObject myStackObject;
+    std::cerr << "my pc is fucked\n";
 
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
             switch (ScreenType) {
                 case Stack:
-                    // myDLLObject.processAllEvent(window, event);
+                    myStackObject.processAllEvent(window, event);
                     break;
             }
         }
         window.clear();
         switch (ScreenType) {
-            case DLL:
-                // myDLLObject.drawLLScreen(window);
+            case Stack:
+                myStackObject.drawStackScreen(window);
                 break;
         }
         window.display();

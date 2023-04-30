@@ -6,19 +6,19 @@ stackGeneralScreen::stackGeneralScreen() {
         std::cout << "Texture file not found! (createButton.png)\n";
         exit(-1);
     }
-    if (!peekButtonTexture.loadFromFile("src//include//texture//addButton.png")) {
+    if (!peekButtonTexture.loadFromFile("src//include//texture//peekStackButton.png")) {
         std::cout << "Texture file not found! (addButton.png)\n";
         exit(-1);
     }
-    if (!pushButtonTexture.loadFromFile("src//include//texture//deleteButton.png")) {
+    if (!pushButtonTexture.loadFromFile("src//include//texture//pushStackButton.png")) {
         std::cout << "Texture file not found! (deleteButton.png)\n";
         exit(-1);
     }
-    if (!popButtonTexture.loadFromFile("src//include//texture//searchButton.png")) {
+    if (!popButtonTexture.loadFromFile("src//include//texture//popStackButton.png")) {
         std::cout << "Texture file not found! (searchButton.png)\n";
         exit(-1);
     }
-    if (!clearButtonTexture.loadFromFile("src//include//texture//updateButton.png")) {
+    if (!clearButtonTexture.loadFromFile("src//include//texture//clearStackButton.png")) {
         std::cout << "Texture file not found! (updateButton.png)\n";
         exit(-1);
     }
@@ -55,8 +55,10 @@ stackGeneralScreen::stackGeneralScreen() {
 
     std::string confirmString = "go!";
     sf::Vector2f pushTextBoxPos = sf::Vector2f(buttonConstants::textBoxDistance, 450 + 85 * 2 + 10);
+    sf::Vector2f pushConfirmButtonPos = pushTextBoxPos + sf::Vector2f(100, 0);
     pushTextBox = textBox(pushTextBoxPos, pushTextBoxTexture, 
                           pushTextBoxPos + sf::Vector2f(9, 8), pushTextBoxPos + sf::Vector2f(85, 8));
+    this->pushConfirmButton.initButton(pushConfirmButtonPos, pushTextBoxTexture, confirmString);
 }
 
 bool stackGeneralScreen::createButtonIsClick(sf::RenderWindow &window) {
@@ -67,6 +69,9 @@ bool stackGeneralScreen::peekButtonIsClick(sf::RenderWindow &window) {
 }
 bool stackGeneralScreen::pushButtonIsClick(sf::RenderWindow &window) {
     return pushButton.buttonIsClick(window);
+}
+bool stackGeneralScreen::confirmPushIsClick(sf::RenderWindow &window) {
+    return pushConfirmButton.buttonIsClick(window);
 }
 bool stackGeneralScreen::popButtonIsClick(sf::RenderWindow &window) {
     return popButton.buttonIsClick(window);
@@ -108,11 +113,28 @@ void stackGeneralScreen::turnOnBackButton() {
     backButton.onButton();
 }
 
+bool stackGeneralScreen::pushTextBoxIsClick(sf::RenderWindow &window) {
+    return pushTextBox.textBoxButtonIsClick(window);
+}
 bool stackGeneralScreen::pushTextBoxIsChoose() {
     return pushTextBox.textBoxIsClick();
 }
+bool stackGeneralScreen::pushTextBoxIsEmpty() {
+    return pushTextBox.inputIsEmpty();
+}
+void stackGeneralScreen::onTextBoxState() {
+    pushTextBox.onTextBoxState();
+}
 void stackGeneralScreen::pushTextBoxKeyboardEvent(sf::Event &event) {
     pushTextBox.processKeyboardEvent(event);
+}
+int stackGeneralScreen::getInputData() {
+    return pushTextBox.getInputDataInt();
+}
+void stackGeneralScreen::initData() {
+    int pushData = rand() % 100;
+    std::string dataString = std::to_string(pushData);
+    pushTextBox.setTextBoxString(dataString);
 }
 
 void stackGeneralScreen::moveButtonWhenHover(sf::RenderWindow &window) {
@@ -128,6 +150,10 @@ void stackGeneralScreen::drawGeneralScreen(sf::RenderWindow &window) {
     createButton.drawButton(window);
     peekButton.drawButton(window);
     pushButton.drawButton(window);
+    if (pushButton.isChosen()) {
+        pushTextBox.drawTextBox(window);
+        pushConfirmButton.drawButton(window, 0.31, 0.17, 21);
+    }
     popButton.drawButton(window);
     clearButton.drawButton(window);
     backButton.drawButton(window);
@@ -158,7 +184,7 @@ stackCreateScreen::stackCreateScreen() {
     backToModeButton.initButton(sf::Vector2f(-50, 705), backToModeTexture, backToModeString);
 
     sf::Texture userInputBoxTexture, confirmInputButtonTexture, browseButtonTexture;
-    if (!userInputBoxTexture.loadFromFile("src//include//texture//userInputData.png")) {
+    if (!userInputBoxTexture.loadFromFile("src//include//texture//userInputStack.png")) {
         std::cout << "Texture file not found!\n";
         exit(-1);
     }
@@ -172,12 +198,12 @@ stackCreateScreen::stackCreateScreen() {
     }
     std::string confirmString = "go!", browseString = "browse";
     sf::Vector2f leftCursorPos = sf::Vector2f(buttonConstants::textBoxDistance + buttonConstants::textCursorDistance, 535 + 25);
-    sf::Vector2f rightCursorPos = sf::Vector2f(buttonConstants::textBoxDistance + buttonConstants::textCursorDistance + 348, 535 + 25);
+    sf::Vector2f rightCursorPos = sf::Vector2f(buttonConstants::textBoxDistance + buttonConstants::textCursorDistance + 254, 535 + 25);
     userInputBox = textBox(sf::Vector2f(buttonConstants::textBoxDistance, 552), userInputBoxTexture, leftCursorPos, rightCursorPos);
     // left = textPos + (textCursorDistance, 8)
     // right = textPos + (texture_length, 8)
-    browseButton.initButton(sf::Vector2f(buttonConstants::textBoxDistance + 480, 553), browseButtonTexture, browseString);
-    confirmInputButton.initButton(sf::Vector2f(buttonConstants::textBoxDistance + 380, 553), confirmInputButtonTexture, confirmString);
+    browseButton.initButton(sf::Vector2f(buttonConstants::textBoxDistance + 380, 553), browseButtonTexture, browseString);
+    confirmInputButton.initButton(sf::Vector2f(buttonConstants::textBoxDistance + 280, 553), confirmInputButtonTexture, confirmString);
 }
 bool stackCreateScreen::userInputButtonIsClick(sf::RenderWindow &window) {
     return userInputButton.buttonIsClick(window);
@@ -296,6 +322,13 @@ bool stackAllScreen::isGeneralScreen() {
         return true;
     return false;
 }
+void stackAllScreen::setToGeneral() {
+    currentScreenType = general;
+}
+void stackAllScreen::setToCreate() {
+    currentScreenType = create;
+}
+
 void stackAllScreen::drawGeneralScreen(sf::RenderWindow &window) {
     theGeneralScreen.drawGeneralScreen(window);
 }

@@ -11,11 +11,13 @@ class stackGeneralScreen {
 private:
     button createButton, peekButton, pushButton, popButton, clearButton, backButton;
     textBox pushTextBox;
+    button pushConfirmButton;
 public:
     stackGeneralScreen();
     bool createButtonIsClick(sf::RenderWindow &window);
     bool peekButtonIsClick(sf::RenderWindow &window);
     bool pushButtonIsClick(sf::RenderWindow &window);
+    bool confirmPushIsClick(sf::RenderWindow &window);
     bool popButtonIsClick(sf::RenderWindow &window);
     bool clearButtonIsClick(sf::RenderWindow &window);
     bool backButtonIsClick(sf::RenderWindow &window);
@@ -30,8 +32,13 @@ public:
     void turnOnClearButton();
     void turnOnBackButton();
 
+    bool pushTextBoxIsClick(sf::RenderWindow &window);
     bool pushTextBoxIsChoose();
+    bool pushTextBoxIsEmpty();
+    void onTextBoxState();
     void pushTextBoxKeyboardEvent(sf::Event &event);
+    int getInputData();
+    void initData();
 
     void moveButtonWhenHover(sf::RenderWindow &window);
 
@@ -39,7 +46,6 @@ public:
 };
 
 class stackCreateScreen {
-
 private:
     button randomInputButton, userInputButton, backToModeButton, confirmInputButton;
     button browseButton;
@@ -86,6 +92,9 @@ struct stackAllScreen {
 
     stackAllScreen();
     bool isGeneralScreen();
+    void setToGeneral();
+    void setToCreate();
+
     void drawGeneralScreen(sf::RenderWindow &window);
     void drawCreateScreen(sf::RenderWindow &window);
 };

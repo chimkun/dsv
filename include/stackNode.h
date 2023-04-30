@@ -10,7 +10,7 @@ private:
     textInfo numberText;
 public:
     stackNode();
-    void drawStackNode(sf::RenderWindow &window, sf::Vector2f nodePosition, int data, int opacity = 255);
+    void drawStackNode(sf::RenderWindow &window, sf::Vector2f nodePosition, int data, int opacity = 255, sf::Color nodeColor = sf::Color::White);
 };
 
 #endif

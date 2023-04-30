@@ -7,6 +7,7 @@
 #include "stackScreen.h"
 #include "background.h"
 #include "stackUI.h"
+#include "fadecolor.h"
 
 enum StackDrawType {
     stackBack,
@@ -24,6 +25,13 @@ private:
         stackClass myStack;
         // create stack
         int opacity;
+        // push stack
+        int newNodeOpacity, extraYDistance;
+        // pop stack
+        int popOpacity;
+        bool isPop;
+        // peek stack
+        sf::Clock colorClock;
     // Text
         textInfo nodeText;
     // UI
@@ -45,7 +53,7 @@ public:
 
     void drawPush(sf::RenderWindow &window);
 
-    void drawPopStack(sf::RenderWindow &window);
+    void drawPop(sf::RenderWindow &window);
 
     void drawPeek(sf::RenderWindow &window);
 
@@ -58,8 +66,9 @@ public:
     void processMouseHoverEvent(sf::RenderWindow &window);
 
     void createStackProcess();
-    void insertNodeProcess(int insertIndex, int insertData);
-    void deleteNodeProcess(int deleteIndex);
+    void peekStackProcess();
+    void pushStackProcess(int userInput);
+    void popStackProcess();
     void searchNodeProcess(int searchData);
     void updateNodeProcess(int updateIndex, int updateData);
     void deleteDLL();
@@ -69,7 +78,7 @@ public:
     void setExitToFalse();
     
     void processAllEvent(sf::RenderWindow &window, sf::Event &event);
-    void drawLLScreen(sf::RenderWindow &window);
+    void drawStackScreen(sf::RenderWindow &window);
 };
 
 void inputValue(int &value);

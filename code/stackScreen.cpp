@@ -27,7 +27,34 @@ void stackClass::pushStack(int data) {
 void stackClass::clearStack() {
     Stack.clear();
 }
+int stackClass::getStackSize() {
+    return (int) Stack.size();
+}
 
+std::vector <int> stackClass::getStack() {
+    return Stack;
+}
+
+void stackClass::drawStack(sf::RenderWindow &window, int opacity) {
+    for (int i = 0; i < (int) Stack.size(); i++) {
+        sf::Vector2f nodePosition = stackConstants::bottomStack;
+        nodePosition -= sf::Vector2f(0, stackConstants::yDistance * i);
+        node.drawStackNode(window, nodePosition, Stack[i], opacity);
+    }
+}
+void stackClass::drawStackPeek(sf::RenderWindow &window, sf::Color peekColor) {
+    if (Stack.empty())
+        return;
+    for (int i = 0; i < (int) Stack.size() - 1; i++) {
+        sf::Vector2f nodePosition = stackConstants::bottomStack;
+        nodePosition -= sf::Vector2f(0, stackConstants::yDistance * i);
+        node.drawStackNode(window, nodePosition, Stack[i]);
+    }
+    sf::Vector2f addPosition = stackConstants::bottomStack;
+    addPosition -= sf::Vector2f(0, stackConstants::yDistance * ((int) Stack.size() - 1));
+    node.drawStackNode(window, addPosition, Stack[(int) Stack.size() - 1], 255, peekColor);
+    
+}
 void stackClass::drawStackPush(sf::RenderWindow &window, int extraYDistance, int opacity) {
     for (int i = 0; i < (int) Stack.size() - 1; i++) {
         sf::Vector2f nodePosition = stackConstants::bottomStack;
@@ -37,4 +64,14 @@ void stackClass::drawStackPush(sf::RenderWindow &window, int extraYDistance, int
     sf::Vector2f addPosition = stackConstants::bottomStack;
     addPosition -= sf::Vector2f(0, stackConstants::yDistance * ((int) Stack.size() - 1) + extraYDistance);
     node.drawStackNode(window, addPosition, Stack[(int) Stack.size() - 1], opacity);
+}
+void stackClass::drawStackPop(sf::RenderWindow &window, int popNodeOpacity) {
+    for (int i = 0; i < (int) Stack.size() - 1; i++) {
+        sf::Vector2f nodePosition = stackConstants::bottomStack;
+        nodePosition -= sf::Vector2f(0, stackConstants::yDistance * i);
+        node.drawStackNode(window, nodePosition, Stack[i]);
+    }
+    sf::Vector2f addPosition = stackConstants::bottomStack;
+    addPosition -= sf::Vector2f(0, stackConstants::yDistance * ((int) Stack.size() - 1));
+    node.drawStackNode(window, addPosition, Stack[(int) Stack.size() - 1], popNodeOpacity);
 }

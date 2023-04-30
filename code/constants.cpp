@@ -157,10 +157,16 @@ void menuButtonConstants::initializeConstants() {
 
 int stackConstants::yDistance;
 sf::Vector2f stackConstants::bottomStack;
+int stackConstants::fadeInSpeed;
+int stackConstants::yMoveSpeed;
+int stackConstants::fadeOutSpeed;
 
 void stackConstants::initializeConstants() {
-    yDistance = 170;
-    bottomStack = sf::Vector2f(1920/2.0, 950);
+    yDistance = 130;
+    fadeInSpeed = 6;
+    fadeOutSpeed = 6;
+    yMoveSpeed = 3;
+    bottomStack = sf::Vector2f(1920/2.0, 900);
 }
 
 void initializeConstants() {
@@ -172,4 +178,5 @@ void initializeConstants() {
     codeTextConstants::initializeConstants();
     logoConstants::initializeConstants();
     menuButtonConstants::initializeConstants();
+    stackConstants::initializeConstants();
 }

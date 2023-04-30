@@ -107,6 +107,9 @@ class stackConstants {
 public:
     static sf::Vector2f bottomStack;
     static int yDistance;
+    static int yMoveSpeed;
+    static int fadeInSpeed;
+    static int fadeOutSpeed;
     static void initializeConstants();
 };
 
