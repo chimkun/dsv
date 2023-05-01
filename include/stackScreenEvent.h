@@ -6,6 +6,7 @@
 #include "browse.h"
 #include "stackScreen.h"
 #include "background.h"
+#include "stackCodeBlock.h"
 #include "stackUI.h"
 #include "fadecolor.h"
 
@@ -39,10 +40,11 @@ private:
     // BG
         background screenBackground;
     // Code Block
-        
+        stackScreenCodeBlock StackCodeBlock;
     // others
         bool backToMenu;
         StackDrawType drawType;
+        StackDrawType prevType;
 public:
     StackObject();
     void createStack(std::vector <int> &a);

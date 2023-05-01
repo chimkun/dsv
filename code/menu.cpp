@@ -84,6 +84,10 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                     offAllScreen();
                     MenuChooseLLScreen.onScreen();
                     break;
+                case chooseOther:
+                    offAllScreen();
+                    MenuChooseOtherScreen.onScreen();
+                    break;
             }
         }
         else {
@@ -122,6 +126,12 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                     offAllScreen();
                     onLogo();
                     MenuChooseArrayScreen.onScreen();
+                }
+                if (MenuChooseDSScreen.otherButtonIsClick(window)) {
+                    MenuType = chooseOther;
+                    offAllScreen();
+                    onLogo();
+                    MenuChooseOtherScreen.onScreen();
                 }
                 break;
             case chooseLL:
@@ -162,6 +172,20 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                     offAllScreen();
                     offLogo();
                     DSType = dArray;
+                }
+                break;
+            case chooseOther:
+                if (MenuChooseOtherScreen.stackButtonIsClick(window)) {
+                    MenuType = initial;
+                    offAllScreen();
+                    offLogo();
+                    DSType = Stack;
+                }
+                if (MenuChooseOtherScreen.backButtonIsClick(window)) {
+                    MenuType = chooseDataStructure;
+                    offAllScreen();
+                    onLogo();
+                    MenuChooseDSScreen.onScreen();
                 }
                 break;
         }
@@ -213,6 +237,10 @@ void menuScreen::drawMenuScreen(sf::RenderWindow &window) {
         case chooseArray:
             MenuChooseArrayScreen.buttonIsHover(window);
             MenuChooseArrayScreen.drawChooseArrayScreen(window);
+            break;
+        case chooseOther:
+            MenuChooseOtherScreen.buttonIsHover(window);
+            MenuChooseOtherScreen.drawChooseOtherScreen(window);
             break;
     }
     drawLogo(window);

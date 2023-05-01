@@ -39,16 +39,16 @@ int main()
     std::cerr << "init\n";
 
     enum screenType {
-        menu,
-        SLL,
-        DLL,
-        Stack
+        menu, SLL, DLL, CLL,
+        array, sArray, dArray,
+        Stack, Queue
     };
 
     screenType ScreenType = menu;
     menuScreen myMenuScreen;
     SLLObject mySLLObject;
     DLLObject myDLLObject;
+    std::cerr << "DSAJKFL\n";
     StackObject myStackObject;
     std::cout.flush();
     while (window.isOpen()) {
@@ -86,6 +86,7 @@ int main()
         }
         window.clear();
         int dsType = myMenuScreen.getDSType();
+        std::cerr << "dsType: " << dsType << '\n';
         switch (dsType) {
             case 1:
                 ScreenType = SLL;
@@ -93,8 +94,9 @@ int main()
             case 2:
                 ScreenType = DLL;
                 break;
-            case 3:
+            case 7:
                 ScreenType = Stack;
+                break;
             default:
                 ScreenType = menu;
                 break;

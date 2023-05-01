@@ -1,1379 +1,6336 @@
 init
-file:src//include//texture//default-0.png
-file:src//include//texture//default-1.png
-file:src//include//texture//default-2.png
-file:src//include//texture//default-3.png
-file:src//include//texture//default-4.png
-file:src//include//texture//default-5.png
-file:src//include//texture//default-6.png
-file:src//include//texture//default-7.png
-file:src//include//texture//default-8.png
-file:src//include//texture//default-9.png
-return texture 141 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 141 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 154 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 154 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 167 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 167 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 180 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 180 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 193 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 193 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 206 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 206 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 219 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 219 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 232 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 232 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 245 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 245 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 0 41 60
-return texture 255 128
-outline texture 128 128
-texture size: 0 0
-digit, siz: 9 0 1065353216
-digit, siz: 1 209202928 0
+DSAJKFL
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+dsType: 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+dsType: 2
+angle REV: 0.523599 2.61799
+init: 174 180
+new: 165.426 148
+right: 348 354
+new right: 356.574 322
+
+angle REV: -1.0472 4.18879
+init: 348 354
+new: 316 409.426
+right: 522 180
+new right: 554 235.426
+
+dsType: 2
+angle REV: 0.506057 2.63553
+init: 174 180
+new: 165.978 148.977
+right: 348 348
+new right: 356.022 316.977
+
+angle REV: -1.02966 4.17125
+init: 348 348
+new: 316.967 402.856
+right: 522 180
+new right: 553.033 234.856
+
+dsType: 2
+angle REV: 0.4879 2.65369
+init: 174 180
+new: 166.532 149.999
+right: 348 342
+new right: 355.468 311.998
+
+angle REV: -1.0115 4.15309
+init: 348 342
+new: 317.958 396.248
+right: 522 180
+new right: 552.042 234.248
+
+dsType: 2
+angle REV: 0.469108 2.67248
+init: 174 180
+new: 167.086 151.066
+right: 348 336
+new right: 354.914 307.066
+
+angle REV: -0.992706 4.1343
+init: 348 336
+new: 318.971 389.6
+right: 522 180
+new right: 551.029 233.6
+
+dsType: 2
+angle REV: 0.44966 2.69193
+init: 174 180
+new: 167.638 152.182
+right: 348 330
+new right: 354.362 302.182
+
+angle REV: -0.973258 4.11485
+init: 348 330
+new: 320.007 382.91
+right: 522 180
+new right: 549.993 232.91
+
+dsType: 2
+angle REV: 0.429538 2.71205
+init: 174 180
+new: 168.186 153.347
+right: 348 324
+new right: 353.814 297.347
+
+angle REV: -0.953136 4.09473
+init: 348 324
+new: 321.064 376.175
+right: 522 180
+new right: 548.936 232.175
+
+dsType: 2
+angle REV: 0.408722 2.73287
+init: 174 180
+new: 168.728 154.564
+right: 348 318
+new right: 353.272 292.564
+
+angle REV: -0.932321 4.07391
+init: 348 318
+new: 322.142 369.392
+right: 522 180
+new right: 547.858 231.392
+
+dsType: 2
+angle REV: 0.387196 2.75439
+init: 174 180
+new: 169.262 155.834
+right: 348 312
+new right: 352.738 287.834
+
+angle REV: -0.910795 4.05238
+init: 348 312
+new: 323.24 362.559
+right: 522 180
+new right: 546.76 230.559
+
+dsType: 2
+angle REV: 0.364944 2.77665
+init: 174 180
+new: 169.785 157.159
+right: 348 306
+new right: 352.215 283.158
+
+angle REV: -0.888542 4.03013
+init: 348 306
+new: 324.355 355.674
+right: 522 180
+new right: 545.645 229.674
+
+dsType: 2
+angle REV: 0.34195 2.79964
+init: 174 180
+new: 170.295 158.539
+right: 348 300
+new right: 351.706 278.539
+
+angle REV: -0.865548 4.00714
+init: 348 300
+new: 325.486 348.733
+right: 522 180
+new right: 544.514 228.733
+
+dsType: 2
+angle REV: 0.318204 2.82339
+init: 174 180
+new: 170.787 159.977
+right: 348 294
+new right: 351.213 273.977
+
+angle REV: -0.841802 3.98339
+init: 348 294
+new: 326.632 341.734
+right: 522 180
+new right: 543.368 227.734
+
+dsType: 2
+angle REV: 0.293695 2.8479
+init: 174 180
+new: 171.26 161.473
+right: 348 288
+new right: 350.74 269.472
+
+angle REV: -0.817293 3.95888
+init: 348 288
+new: 327.789 334.675
+right: 522 180
+new right: 542.211 226.675
+
+dsType: 2
+angle REV: 0.268417 2.87317
+init: 174 180
+new: 171.708 163.027
+right: 348 282
+new right: 350.292 265.027
+
+angle REV: -0.792015 3.93361
+init: 348 282
+new: 328.954 327.553
+right: 522 180
+new right: 541.045 225.553
+
+dsType: 2
+angle REV: 0.242367 2.89922
+init: 174 180
+new: 172.129 164.64
+right: 348 276
+new right: 349.871 260.64
+
+angle REV: -0.765965 3.90756
+init: 348 276
+new: 330.126 320.367
+right: 522 180
+new right: 539.874 224.367
+
+dsType: 2
+angle REV: 0.215546 2.92604
+init: 174 180
+new: 172.519 166.312
+right: 348 270
+new right: 349.481 256.311
+
+angle REV: -0.739145 3.88073
+init: 348 270
+new: 331.299 313.114
+right: 522 180
+new right: 538.701 223.114
+
+dsType: 2
+angle REV: 0.18796 2.95363
+init: 174 180
+new: 172.873 168.041
+right: 348 264
+new right: 349.127 252.041
+
+angle REV: -0.711559 3.85315
+init: 348 264
+new: 332.47 305.793
+right: 522 180
+new right: 537.53 221.793
+
+dsType: 2
+angle REV: 0.15962 2.98197
+init: 174 180
+new: 173.186 169.828
+right: 348 258
+new right: 348.814 247.827
+
+angle REV: -0.683218 3.82481
+init: 348 258
+new: 333.635 298.403
+right: 522 180
+new right: 536.365 220.403
+
+dsType: 2
+angle REV: 0.130541 3.01105
+init: 174 180
+new: 173.455 171.669
+right: 348 252
+new right: 348.545 243.669
+
+angle REV: -0.654139 3.79573
+init: 348 252
+new: 334.789 290.943
+right: 522 180
+new right: 535.211 218.942
+
+dsType: 2
+angle REV: 0.100745 3.04085
+init: 174 180
+new: 173.675 173.563
+right: 348 246
+new right: 348.325 239.563
+
+angle REV: -0.624343 3.76593
+init: 348 246
+new: 335.926 283.412
+right: 522 180
+new right: 534.074 217.412
+
+dsType: 2
+angle REV: 0.0702603 3.07133
+init: 174 180
+new: 173.842 175.507
+right: 348 240
+new right: 348.158 235.507
+
+angle REV: -0.593859 3.73545
+init: 348 240
+new: 337.042 275.812
+right: 522 180
+new right: 532.958 215.812
+
+dsType: 2
+angle REV: 0.039121 3.10247
+init: 174 180
+new: 173.951 177.497
+right: 348 234
+new right: 348.049 231.497
+
+angle REV: -0.562719 3.70431
+init: 348 234
+new: 338.132 268.143
+right: 522 180
+new right: 531.868 214.143
+
+dsType: 2
+angle REV: 0.00736831 3.13422
+init: 174 180
+new: 173.998 179.528
+right: 348 228
+new right: 348.002 227.528
+
+angle REV: -0.530967 3.67256
+init: 348 228
+new: 339.188 260.408
+right: 522 180
+new right: 530.812 212.407
+
+dsType: 2
+angle REV: -0.0249504 3.16654
+init: 174 180
+new: 173.98 181.597
+right: 348 222
+new right: 348.02 223.597
+
+angle REV: -0.498648 3.64024
+init: 348 222
+new: 340.207 252.607
+right: 522 180
+new right: 529.793 210.607
+
+dsType: 2
+angle REV: -0.0577812 3.19937
+init: 174 180
+new: 173.893 183.696
+right: 348 216
+new right: 348.107 219.696
+
+angle REV: -0.465817 3.60741
+init: 348 216
+new: 341.181 244.746
+right: 522 180
+new right: 528.819 208.746
+
+dsType: 2
+angle REV: -0.091064 3.23265
+init: 174 180
+new: 173.735 185.82
+right: 348 210
+new right: 348.265 215.82
+
+angle REV: -0.432534 3.57412
+init: 348 210
+new: 342.106 236.827
+right: 522 180
+new right: 527.894 206.827
+
+dsType: 2
+angle REV: -0.124733 3.26632
+init: 174 180
+new: 173.503 187.962
+right: 348 204
+new right: 348.497 211.962
+
+angle REV: -0.398865 3.54046
+init: 348 204
+new: 342.976 228.856
+right: 522 180
+new right: 527.024 204.856
+
+dsType: 2
+angle REV: -0.158718 3.30031
+init: 174 180
+new: 173.196 190.115
+right: 348 198
+new right: 348.804 208.115
+
+angle REV: -0.364881 3.50647
+init: 348 198
+new: 343.787 220.838
+right: 522 180
+new right: 526.213 202.837
+
+dsType: 2
+angle REV: -0.192943 3.33453
+init: 174 180
+new: 172.812 192.272
+right: 348 192
+new right: 349.188 204.272
+
+angle REV: -0.330656 3.47225
+init: 348 192
+new: 344.533 212.778
+right: 522 180
+new right: 525.467 200.778
+
+dsType: 2
+angle REV: -0.22733 3.36892
+init: 174 180
+new: 172.353 194.424
+right: 348 186
+new right: 349.647 200.424
+
+angle REV: -0.296268 3.43786
+init: 348 186
+new: 345.212 204.685
+right: 522 180
+new right: 524.788 198.685
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dsType: 2
+
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 354 180
+new: 351.819 196.564
+right: 528 180
+new right: 530.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 360 180
+new: 357.819 196.564
+right: 534 180
+new right: 536.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 366 180
+new: 363.819 196.564
+right: 540 180
+new right: 542.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 372 180
+new: 369.819 196.564
+right: 546 180
+new right: 548.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 378 180
+new: 375.819 196.564
+right: 552 180
+new right: 554.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 384 180
+new: 381.819 196.564
+right: 558 180
+new right: 560.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 390 180
+new: 387.819 196.564
+right: 564 180
+new right: 566.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 396 180
+new: 393.819 196.564
+right: 570 180
+new right: 572.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 402 180
+new: 399.819 196.564
+right: 576 180
+new right: 578.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 408 180
+new: 405.819 196.564
+right: 582 180
+new right: 584.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 414 180
+new: 411.819 196.564
+right: 588 180
+new right: 590.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 420 180
+new: 417.819 196.564
+right: 594 180
+new right: 596.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 426 180
+new: 423.819 196.564
+right: 600 180
+new right: 602.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 432 180
+new: 429.819 196.564
+right: 606 180
+new right: 608.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 438 180
+new: 435.819 196.564
+right: 612 180
+new right: 614.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 444 180
+new: 441.819 196.564
+right: 618 180
+new right: 620.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 450 180
+new: 447.819 196.564
+right: 624 180
+new right: 626.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 456 180
+new: 453.819 196.564
+right: 630 180
+new right: 632.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 462 180
+new: 459.819 196.564
+right: 636 180
+new right: 638.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 468 180
+new: 465.819 196.564
+right: 642 180
+new right: 644.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 474 180
+new: 471.819 196.564
+right: 648 180
+new right: 650.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 480 180
+new: 477.819 196.564
+right: 654 180
+new right: 656.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 486 180
+new: 483.819 196.564
+right: 660 180
+new right: 662.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 492 180
+new: 489.819 196.564
+right: 666 180
+new right: 668.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 498 180
+new: 495.819 196.564
+right: 672 180
+new right: 674.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 504 180
+new: 501.819 196.564
+right: 678 180
+new right: 680.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 510 180
+new: 507.819 196.564
+right: 684 180
+new right: 686.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 516 180
+new: 513.819 196.564
+right: 690 180
+new right: 692.181 196.564
+
+dsType: 2
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+dsType: 2
+angle REV: 0.523599 2.61799
+init: 174 180
+new: 165.426 148
+right: 348 354
+new right: 356.574 322
+
+angle REV: -1.0472 4.18879
+init: 348 354
+new: 316 409.426
+right: 522 180
+new right: 554 235.426
+
+
+dsType: 2
+angle REV: 0.506057 2.63553
+init: 174 180
+new: 165.978 148.977
+right: 348 348
+new right: 356.022 316.977
+
+angle REV: -1.02966 4.17125
+init: 348 348
+new: 316.967 402.856
+right: 522 180
+new right: 553.033 234.856
+
+
+dsType: 2
+angle REV: 0.4879 2.65369
+init: 174 180
+new: 166.532 149.999
+right: 348 342
+new right: 355.468 311.998
+
+angle REV: -1.0115 4.15309
+init: 348 342
+new: 317.958 396.248
+right: 522 180
+new right: 552.042 234.248
+
+
+dsType: 2
+angle REV: 0.469108 2.67248
+init: 174 180
+new: 167.086 151.066
+right: 348 336
+new right: 354.914 307.066
+
+angle REV: -0.992706 4.1343
+init: 348 336
+new: 318.971 389.6
+right: 522 180
+new right: 551.029 233.6
+
+
+dsType: 2
+angle REV: 0.44966 2.69193
+init: 174 180
+new: 167.638 152.182
+right: 348 330
+new right: 354.362 302.182
+
+angle REV: -0.973258 4.11485
+init: 348 330
+new: 320.007 382.91
+right: 522 180
+new right: 549.993 232.91
+
+
+dsType: 2
+angle REV: 0.429538 2.71205
+init: 174 180
+new: 168.186 153.347
+right: 348 324
+new right: 353.814 297.347
+
+angle REV: -0.953136 4.09473
+init: 348 324
+new: 321.064 376.175
+right: 522 180
+new right: 548.936 232.175
+
+
+dsType: 2
+angle REV: 0.408722 2.73287
+init: 174 180
+new: 168.728 154.564
+right: 348 318
+new right: 353.272 292.564
+
+angle REV: -0.932321 4.07391
+init: 348 318
+new: 322.142 369.392
+right: 522 180
+new right: 547.858 231.392
+
+
+dsType: 2
+angle REV: 0.387196 2.75439
+init: 174 180
+new: 169.262 155.834
+right: 348 312
+new right: 352.738 287.834
+
+angle REV: -0.910795 4.05238
+init: 348 312
+new: 323.24 362.559
+right: 522 180
+new right: 546.76 230.559
+
+
+dsType: 2
+angle REV: 0.364944 2.77665
+init: 174 180
+new: 169.785 157.159
+right: 348 306
+new right: 352.215 283.158
+
+angle REV: -0.888542 4.03013
+init: 348 306
+new: 324.355 355.674
+right: 522 180
+new right: 545.645 229.674
+
+
+dsType: 2
+angle REV: 0.34195 2.79964
+init: 174 180
+new: 170.295 158.539
+right: 348 300
+new right: 351.706 278.539
+
+angle REV: -0.865548 4.00714
+init: 348 300
+new: 325.486 348.733
+right: 522 180
+new right: 544.514 228.733
+
+
+dsType: 2
+angle REV: 0.318204 2.82339
+init: 174 180
+new: 170.787 159.977
+right: 348 294
+new right: 351.213 273.977
+
+angle REV: -0.841802 3.98339
+init: 348 294
+new: 326.632 341.734
+right: 522 180
+new right: 543.368 227.734
+
+
+dsType: 2
+angle REV: 0.293695 2.8479
+init: 174 180
+new: 171.26 161.473
+right: 348 288
+new right: 350.74 269.472
+
+angle REV: -0.817293 3.95888
+init: 348 288
+new: 327.789 334.675
+right: 522 180
+new right: 542.211 226.675
+
+
+dsType: 2
+angle REV: 0.268417 2.87317
+init: 174 180
+new: 171.708 163.027
+right: 348 282
+new right: 350.292 265.027
+
+angle REV: -0.792015 3.93361
+init: 348 282
+new: 328.954 327.553
+right: 522 180
+new right: 541.045 225.553
+
+
+dsType: 2
+angle REV: 0.242367 2.89922
+init: 174 180
+new: 172.129 164.64
+right: 348 276
+new right: 349.871 260.64
+
+angle REV: -0.765965 3.90756
+init: 348 276
+new: 330.126 320.367
+right: 522 180
+new right: 539.874 224.367
+
+
+dsType: 2
+angle REV: 0.215546 2.92604
+init: 174 180
+new: 172.519 166.312
+right: 348 270
+new right: 349.481 256.311
+
+angle REV: -0.739145 3.88073
+init: 348 270
+new: 331.299 313.114
+right: 522 180
+new right: 538.701 223.114
+
+
+dsType: 2
+angle REV: 0.18796 2.95363
+init: 174 180
+new: 172.873 168.041
+right: 348 264
+new right: 349.127 252.041
+
+angle REV: -0.711559 3.85315
+init: 348 264
+new: 332.47 305.793
+right: 522 180
+new right: 537.53 221.793
+
+
+dsType: 2
+angle REV: 0.15962 2.98197
+init: 174 180
+new: 173.186 169.828
+right: 348 258
+new right: 348.814 247.827
+
+angle REV: -0.683218 3.82481
+init: 348 258
+new: 333.635 298.403
+right: 522 180
+new right: 536.365 220.403
+
+
+dsType: 2
+angle REV: 0.130541 3.01105
+init: 174 180
+new: 173.455 171.669
+right: 348 252
+new right: 348.545 243.669
+
+angle REV: -0.654139 3.79573
+init: 348 252
+new: 334.789 290.943
+right: 522 180
+new right: 535.211 218.942
+
+
+dsType: 2
+angle REV: 0.100745 3.04085
+init: 174 180
+new: 173.675 173.563
+right: 348 246
+new right: 348.325 239.563
+
+angle REV: -0.624343 3.76593
+init: 348 246
+new: 335.926 283.412
+right: 522 180
+new right: 534.074 217.412
+
+
+dsType: 2
+angle REV: 0.0702603 3.07133
+init: 174 180
+new: 173.842 175.507
+right: 348 240
+new right: 348.158 235.507
+
+angle REV: -0.593859 3.73545
+init: 348 240
+new: 337.042 275.812
+right: 522 180
+new right: 532.958 215.812
+
+
+dsType: 2
+angle REV: 0.039121 3.10247
+init: 174 180
+new: 173.951 177.497
+right: 348 234
+new right: 348.049 231.497
+
+angle REV: -0.562719 3.70431
+init: 348 234
+new: 338.132 268.143
+right: 522 180
+new right: 531.868 214.143
+
+
+dsType: 2
+angle REV: 0.00736831 3.13422
+init: 174 180
+new: 173.998 179.528
+right: 348 228
+new right: 348.002 227.528
+
+angle REV: -0.530967 3.67256
+init: 348 228
+new: 339.188 260.408
+right: 522 180
+new right: 530.812 212.407
+
+
+dsType: 2
+angle REV: -0.0249504 3.16654
+init: 174 180
+new: 173.98 181.597
+right: 348 222
+new right: 348.02 223.597
+
+angle REV: -0.498648 3.64024
+init: 348 222
+new: 340.207 252.607
+right: 522 180
+new right: 529.793 210.607
+
+
+dsType: 2
+angle REV: -0.0577812 3.19937
+init: 174 180
+new: 173.893 183.696
+right: 348 216
+new right: 348.107 219.696
+
+angle REV: -0.465817 3.60741
+init: 348 216
+new: 341.181 244.746
+right: 522 180
+new right: 528.819 208.746
+
+
+dsType: 2
+angle REV: -0.091064 3.23265
+init: 174 180
+new: 173.735 185.82
+right: 348 210
+new right: 348.265 215.82
+
+angle REV: -0.432534 3.57412
+init: 348 210
+new: 342.106 236.827
+right: 522 180
+new right: 527.894 206.827
+
+
+dsType: 2
+angle REV: -0.124733 3.26632
+init: 174 180
+new: 173.503 187.962
+right: 348 204
+new right: 348.497 211.962
+
+angle REV: -0.398865 3.54046
+init: 348 204
+new: 342.976 228.856
+right: 522 180
+new right: 527.024 204.856
+
+
+dsType: 2
+angle REV: -0.158718 3.30031
+init: 174 180
+new: 173.196 190.115
+right: 348 198
+new right: 348.804 208.115
+
+angle REV: -0.364881 3.50647
+init: 348 198
+new: 343.787 220.838
+right: 522 180
+new right: 526.213 202.837
+
+
+dsType: 2
+angle REV: -0.192943 3.33453
+init: 174 180
+new: 172.812 192.272
+right: 348 192
+new right: 349.188 204.272
+
+angle REV: -0.330656 3.47225
+init: 348 192
+new: 344.533 212.778
+right: 522 180
+new right: 525.467 200.778
+
+
+dsType: 2
+angle REV: -0.22733 3.36892
+init: 174 180
+new: 172.353 194.424
+right: 348 186
+new right: 349.647 200.424
+
+angle REV: -0.296268 3.43786
+init: 348 186
+new: 345.212 204.685
+right: 522 180
+new right: 524.788 198.685
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dsType: 2
+
+
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 354 180
+new: 351.819 196.564
+right: 528 180
+new right: 530.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 528 180
+new: 525.819 196.564
+right: 702 180
+new right: 704.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 360 180
+new: 357.819 196.564
+right: 534 180
+new right: 536.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 534 180
+new: 531.819 196.564
+right: 708 180
+new right: 710.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 366 180
+new: 363.819 196.564
+right: 540 180
+new right: 542.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 540 180
+new: 537.819 196.564
+right: 714 180
+new right: 716.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 372 180
+new: 369.819 196.564
+right: 546 180
+new right: 548.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 546 180
+new: 543.819 196.564
+right: 720 180
+new right: 722.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 378 180
+new: 375.819 196.564
+right: 552 180
+new right: 554.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 552 180
+new: 549.819 196.564
+right: 726 180
+new right: 728.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 384 180
+new: 381.819 196.564
+right: 558 180
+new right: 560.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 558 180
+new: 555.819 196.564
+right: 732 180
+new right: 734.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 390 180
+new: 387.819 196.564
+right: 564 180
+new right: 566.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 564 180
+new: 561.819 196.564
+right: 738 180
+new right: 740.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 396 180
+new: 393.819 196.564
+right: 570 180
+new right: 572.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 570 180
+new: 567.819 196.564
+right: 744 180
+new right: 746.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 402 180
+new: 399.819 196.564
+right: 576 180
+new right: 578.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 576 180
+new: 573.819 196.564
+right: 750 180
+new right: 752.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 408 180
+new: 405.819 196.564
+right: 582 180
+new right: 584.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 582 180
+new: 579.819 196.564
+right: 756 180
+new right: 758.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 414 180
+new: 411.819 196.564
+right: 588 180
+new right: 590.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 588 180
+new: 585.819 196.564
+right: 762 180
+new right: 764.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 420 180
+new: 417.819 196.564
+right: 594 180
+new right: 596.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 594 180
+new: 591.819 196.564
+right: 768 180
+new right: 770.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 426 180
+new: 423.819 196.564
+right: 600 180
+new right: 602.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 600 180
+new: 597.819 196.564
+right: 774 180
+new right: 776.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 432 180
+new: 429.819 196.564
+right: 606 180
+new right: 608.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 606 180
+new: 603.819 196.564
+right: 780 180
+new right: 782.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 438 180
+new: 435.819 196.564
+right: 612 180
+new right: 614.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 612 180
+new: 609.819 196.564
+right: 786 180
+new right: 788.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 444 180
+new: 441.819 196.564
+right: 618 180
+new right: 620.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 618 180
+new: 615.819 196.564
+right: 792 180
+new right: 794.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 450 180
+new: 447.819 196.564
+right: 624 180
+new right: 626.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 624 180
+new: 621.819 196.564
+right: 798 180
+new right: 800.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 456 180
+new: 453.819 196.564
+right: 630 180
+new right: 632.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 630 180
+new: 627.819 196.564
+right: 804 180
+new right: 806.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 462 180
+new: 459.819 196.564
+right: 636 180
+new right: 638.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 636 180
+new: 633.819 196.564
+right: 810 180
+new right: 812.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 468 180
+new: 465.819 196.564
+right: 642 180
+new right: 644.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 642 180
+new: 639.819 196.564
+right: 816 180
+new right: 818.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 474 180
+new: 471.819 196.564
+right: 648 180
+new right: 650.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 648 180
+new: 645.819 196.564
+right: 822 180
+new right: 824.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 480 180
+new: 477.819 196.564
+right: 654 180
+new right: 656.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 654 180
+new: 651.819 196.564
+right: 828 180
+new right: 830.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 486 180
+new: 483.819 196.564
+right: 660 180
+new right: 662.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 660 180
+new: 657.819 196.564
+right: 834 180
+new right: 836.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 492 180
+new: 489.819 196.564
+right: 666 180
+new right: 668.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 666 180
+new: 663.819 196.564
+right: 840 180
+new right: 842.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 498 180
+new: 495.819 196.564
+right: 672 180
+new right: 674.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 672 180
+new: 669.819 196.564
+right: 846 180
+new right: 848.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 504 180
+new: 501.819 196.564
+right: 678 180
+new right: 680.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 678 180
+new: 675.819 196.564
+right: 852 180
+new right: 854.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 510 180
+new: 507.819 196.564
+right: 684 180
+new right: 686.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 684 180
+new: 681.819 196.564
+right: 858 180
+new right: 860.181 196.564
+
+dsType: 2
+angle REV: -0.261799 3.40339
+init: 516 180
+new: 513.819 196.564
+right: 690 180
+new right: 692.181 196.564
+
+angle REV: -0.261799 3.40339
+init: 690 180
+new: 687.819 196.564
+right: 864 180
+new right: 866.181 196.564
+
+dsType: 2
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.540547 2.60104
+init: 174 180
+new: 164.875 147.065
+right: 348 360
+new right: 357.125 327.065
+
+angle REV: -1.06414 4.20574
+init: 348 360
+new: 315.056 415.96
+right: 522 180
+new right: 554.944 235.96
+
+
+
+
+dsType: 2
+angle REV: 0.523599 2.61799
+init: 174 180
+new: 165.426 148
+right: 348 354
+new right: 356.574 322
+
+angle REV: -1.0472 4.18879
+init: 348 354
+new: 316 409.426
+right: 522 180
+new right: 554 235.426
+
+
+
+
+dsType: 2
+angle REV: 0.506057 2.63553
+init: 174 180
+new: 165.978 148.977
+right: 348 348
+new right: 356.022 316.977
+
+angle REV: -1.02966 4.17125
+init: 348 348
+new: 316.967 402.856
+right: 522 180
+new right: 553.033 234.856
+
+
+
+
+dsType: 2
+angle REV: 0.4879 2.65369
+init: 174 180
+new: 166.532 149.999
+right: 348 342
+new right: 355.468 311.998
+
+angle REV: -1.0115 4.15309
+init: 348 342
+new: 317.958 396.248
+right: 522 180
+new right: 552.042 234.248
+
+
+
+
+dsType: 2
+angle REV: 0.469108 2.67248
+init: 174 180
+new: 167.086 151.066
+right: 348 336
+new right: 354.914 307.066
+
+angle REV: -0.992706 4.1343
+init: 348 336
+new: 318.971 389.6
+right: 522 180
+new right: 551.029 233.6
+
+
+
+
+dsType: 2
+angle REV: 0.44966 2.69193
+init: 174 180
+new: 167.638 152.182
+right: 348 330
+new right: 354.362 302.182
+
+angle REV: -0.973258 4.11485
+init: 348 330
+new: 320.007 382.91
+right: 522 180
+new right: 549.993 232.91
+
+
+
+
+dsType: 2
+angle REV: 0.429538 2.71205
+init: 174 180
+new: 168.186 153.347
+right: 348 324
+new right: 353.814 297.347
+
+angle REV: -0.953136 4.09473
+init: 348 324
+new: 321.064 376.175
+right: 522 180
+new right: 548.936 232.175
+
+
+
+
+dsType: 2
+angle REV: 0.408722 2.73287
+init: 174 180
+new: 168.728 154.564
+right: 348 318
+new right: 353.272 292.564
+
+angle REV: -0.932321 4.07391
+init: 348 318
+new: 322.142 369.392
+right: 522 180
+new right: 547.858 231.392
+
+
+
+
+dsType: 2
+angle REV: 0.387196 2.75439
+init: 174 180
+new: 169.262 155.834
+right: 348 312
+new right: 352.738 287.834
+
+angle REV: -0.910795 4.05238
+init: 348 312
+new: 323.24 362.559
+right: 522 180
+new right: 546.76 230.559
+
+
+
+
+dsType: 2
+angle REV: 0.364944 2.77665
+init: 174 180
+new: 169.785 157.159
+right: 348 306
+new right: 352.215 283.158
+
+angle REV: -0.888542 4.03013
+init: 348 306
+new: 324.355 355.674
+right: 522 180
+new right: 545.645 229.674
+
+
+
+
+dsType: 2
+angle REV: 0.34195 2.79964
+init: 174 180
+new: 170.295 158.539
+right: 348 300
+new right: 351.706 278.539
+
+angle REV: -0.865548 4.00714
+init: 348 300
+new: 325.486 348.733
+right: 522 180
+new right: 544.514 228.733
+
+
+
+
+dsType: 2
+angle REV: 0.318204 2.82339
+init: 174 180
+new: 170.787 159.977
+right: 348 294
+new right: 351.213 273.977
+
+angle REV: -0.841802 3.98339
+init: 348 294
+new: 326.632 341.734
+right: 522 180
+new right: 543.368 227.734
+
+
+
+
+dsType: 2
+angle REV: 0.293695 2.8479
+init: 174 180
+new: 171.26 161.473
+right: 348 288
+new right: 350.74 269.472
+
+angle REV: -0.817293 3.95888
+init: 348 288
+new: 327.789 334.675
+right: 522 180
+new right: 542.211 226.675
+
+
+
+
+dsType: 2
+angle REV: 0.268417 2.87317
+init: 174 180
+new: 171.708 163.027
+right: 348 282
+new right: 350.292 265.027
+
+angle REV: -0.792015 3.93361
+init: 348 282
+new: 328.954 327.553
+right: 522 180
+new right: 541.045 225.553
+
+
+
+
+dsType: 2
+angle REV: 0.242367 2.89922
+init: 174 180
+new: 172.129 164.64
+right: 348 276
+new right: 349.871 260.64
+
+angle REV: -0.765965 3.90756
+init: 348 276
+new: 330.126 320.367
+right: 522 180
+new right: 539.874 224.367
+
+
+
+
+dsType: 2
+angle REV: 0.215546 2.92604
+init: 174 180
+new: 172.519 166.312
+right: 348 270
+new right: 349.481 256.311
+
+angle REV: -0.739145 3.88073
+init: 348 270
+new: 331.299 313.114
+right: 522 180
+new right: 538.701 223.114
+
+
+
+
+dsType: 2
+angle REV: 0.18796 2.95363
+init: 174 180
+new: 172.873 168.041
+right: 348 264
+new right: 349.127 252.041
+
+angle REV: -0.711559 3.85315
+init: 348 264
+new: 332.47 305.793
+right: 522 180
+new right: 537.53 221.793
+
+
+
+
+dsType: 2
+angle REV: 0.15962 2.98197
+init: 174 180
+new: 173.186 169.828
+right: 348 258
+new right: 348.814 247.827
+
+angle REV: -0.683218 3.82481
+init: 348 258
+new: 333.635 298.403
+right: 522 180
+new right: 536.365 220.403
+
+
+
+
+dsType: 2
+angle REV: 0.130541 3.01105
+init: 174 180
+new: 173.455 171.669
+right: 348 252
+new right: 348.545 243.669
+
+angle REV: -0.654139 3.79573
+init: 348 252
+new: 334.789 290.943
+right: 522 180
+new right: 535.211 218.942
+
+
+
+
+dsType: 2
+angle REV: 0.100745 3.04085
+init: 174 180
+new: 173.675 173.563
+right: 348 246
+new right: 348.325 239.563
+
+angle REV: -0.624343 3.76593
+init: 348 246
+new: 335.926 283.412
+right: 522 180
+new right: 534.074 217.412
+
+
+
+
+dsType: 2
+angle REV: 0.0702603 3.07133
+init: 174 180
+new: 173.842 175.507
+right: 348 240
+new right: 348.158 235.507
+
+angle REV: -0.593859 3.73545
+init: 348 240
+new: 337.042 275.812
+right: 522 180
+new right: 532.958 215.812
+
+
+
+
+dsType: 2
+angle REV: 0.039121 3.10247
+init: 174 180
+new: 173.951 177.497
+right: 348 234
+new right: 348.049 231.497
+
+angle REV: -0.562719 3.70431
+init: 348 234
+new: 338.132 268.143
+right: 522 180
+new right: 531.868 214.143
+
+
+
+
+dsType: 2
+angle REV: 0.00736831 3.13422
+init: 174 180
+new: 173.998 179.528
+right: 348 228
+new right: 348.002 227.528
+
+angle REV: -0.530967 3.67256
+init: 348 228
+new: 339.188 260.408
+right: 522 180
+new right: 530.812 212.407
+
+
+
+
+dsType: 2
+angle REV: -0.0249504 3.16654
+init: 174 180
+new: 173.98 181.597
+right: 348 222
+new right: 348.02 223.597
+
+angle REV: -0.498648 3.64024
+init: 348 222
+new: 340.207 252.607
+right: 522 180
+new right: 529.793 210.607
+
+
+
+
+dsType: 2
+angle REV: -0.0577812 3.19937
+init: 174 180
+new: 173.893 183.696
+right: 348 216
+new right: 348.107 219.696
+
+angle REV: -0.465817 3.60741
+init: 348 216
+new: 341.181 244.746
+right: 522 180
+new right: 528.819 208.746
+
+
+
+
+dsType: 2
+angle REV: -0.091064 3.23265
+init: 174 180
+new: 173.735 185.82
+right: 348 210
+new right: 348.265 215.82
+
+angle REV: -0.432534 3.57412
+init: 348 210
+new: 342.106 236.827
+right: 522 180
+new right: 527.894 206.827
+
+
+
+
+dsType: 2
+angle REV: -0.124733 3.26632
+init: 174 180
+new: 173.503 187.962
+right: 348 204
+new right: 348.497 211.962
+
+angle REV: -0.398865 3.54046
+init: 348 204
+new: 342.976 228.856
+right: 522 180
+new right: 527.024 204.856
+
+
+
+
+dsType: 2
+angle REV: -0.158718 3.30031
+init: 174 180
+new: 173.196 190.115
+right: 348 198
+new right: 348.804 208.115
+
+angle REV: -0.364881 3.50647
+init: 348 198
+new: 343.787 220.838
+right: 522 180
+new right: 526.213 202.837
+
+
+
+
+dsType: 2
+angle REV: -0.192943 3.33453
+init: 174 180
+new: 172.812 192.272
+right: 348 192
+new right: 349.188 204.272
+
+angle REV: -0.330656 3.47225
+init: 348 192
+new: 344.533 212.778
+right: 522 180
+new right: 525.467 200.778
+
+
+
+
+dsType: 2
+angle REV: -0.22733 3.36892
+init: 174 180
+new: 172.353 194.424
+right: 348 186
+new right: 349.647 200.424
+
+angle REV: -0.296268 3.43786
+init: 348 186
+new: 345.212 204.685
+right: 522 180
+new right: 524.788 198.685
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -252,3 +252,59 @@ void DLLNode::drawBwArrowBetweenNode(sf::RenderWindow& window, sf::Vector2f node
     bwArrowRight.x += 5, bwArrowRight.y += 18;
     bwArrow.drawArrowBetweenNode(window, bwArrowRight, bwArrowLeft, arrowColor, opacity);;
 }
+
+// void DLLNode::drawArrowBetweenNode(sf::RenderWindow& window, sf::Vector2f nodePositionLeft,
+//                                    sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity) {
+//     // sf::Vector2f fwArrowLeft = nodePositionLeft, fwArrowRight = nodePositionRight;
+//     // fwArrowLeft.x -= 5, fwArrowLeft.y -= 18;
+//     // fwArrowRight.x += 5, fwArrowRight.y -= 17;
+//     // fwArrow.drawArrowBetweenNode(window, fwArrowLeft, fwArrowRight, arrowColor, opacity);
+//     // sf::Vector2f bwArrowLeft = nodePositionLeft, bwArrowRight = nodePositionRight;
+//     // bwArrowLeft.x -= 5, bwArrowLeft.y += 17;
+//     // bwArrowRight.x += 5, bwArrowRight.y += 18;
+//     // // std::cerr << "what it was: " << fwArrowLeft.x << " " << fwArrowLeft.y << "    " << fwArrowLeft
+//     // bwArrow.drawArrowBetweenNode(window, bwArrowRight, bwArrowLeft, arrowColor, opacity);
+//     drawFwArrowBetweenNode(window, nodePositionLeft, nodePositionRight, arrowColor, opacity);
+//     drawBwArrowBetweenNode(window, nodePositionLeft, nodePositionRight, arrowColor, opacity);
+// }
+
+// void DLLNode::drawFwArrowBetweenNode(sf::RenderWindow& window, sf::Vector2f nodePositionLeft,
+//                                      sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity) {
+//     float rotateAngleL = atan2(nodePositionRight.y - nodePositionLeft.y, nodePositionRight.x - nodePositionLeft.x) + mathConstants::PI / 12;
+//     float rotateAngleR = (mathConstants::PI - atan2(nodePositionRight.y - nodePositionLeft.y, nodePositionRight.x - nodePositionLeft.x)) - mathConstants::PI / 12;
+//     float newLeftX = nodePositionLeft.x + cos(rotateAngleL) * nodeConstants::nodeRadius - nodeConstants::nodeRadius;
+//     float newLeftY = nodePositionLeft.y - sin(rotateAngleL) * nodeConstants::nodeRadius;
+//     float newRightX = nodePositionRight.x + cos(rotateAngleR) * nodeConstants::nodeRadius + nodeConstants::nodeRadius;
+//     float newRightY = nodePositionRight.y - sin(rotateAngleR) * nodeConstants::nodeRadius;
+
+//     sf::Vector2f fwArrowLeft = sf::Vector2f(newLeftX, newLeftY), fwArrowRight = sf::Vector2f(newRightX, newRightY);
+//     // if (nodePositionLeft.y != nodePositionRight.y) {
+//         // std::cerr << "angle: " << rotateAngleL << ' ' << rotateAngleR << '\n';
+//         // std::cerr << "init: " << nodePositionLeft.x << " " << nodePositionLeft.y << '\n';
+//         // std::cerr << "new: " << newLeftX << " " << newLeftY << "\n";
+//         // std::cerr << "right: " << nodePositionRight.x << " " << nodePositionRight.y << '\n';
+//         // std::cerr << "new right: " << newRightX << " " << newRightY << '\n' << '\n';
+//     // }
+//     // fwArrowLeft.x -= 5, fwArrowLeft.y -= 18;
+//     // fwArrowRight.x += 5, fwArrowRight.y -= 17;
+//     fwArrow.drawArrowBetweenNode(window, fwArrowLeft, fwArrowRight, arrowColor, opacity);
+// }
+
+// void DLLNode::drawBwArrowBetweenNode(sf::RenderWindow& window, sf::Vector2f nodePositionLeft,
+//                                      sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity) {
+//     float rotateAngleL = atan2(nodePositionRight.y - nodePositionLeft.y, nodePositionRight.x - nodePositionLeft.x) - mathConstants::PI / 12;
+//     float rotateAngleR = (mathConstants::PI - atan2(nodePositionRight.y - nodePositionLeft.y, nodePositionRight.x - nodePositionLeft.x)) + mathConstants::PI / 12;
+//     float newLeftX = nodePositionLeft.x + cos(rotateAngleL) * nodeConstants::nodeRadius - nodeConstants::nodeRadius;
+//     float newLeftY = nodePositionLeft.y - sin(rotateAngleL) * nodeConstants::nodeRadius;
+//     float newRightX = nodePositionRight.x + cos(rotateAngleR) * nodeConstants::nodeRadius + nodeConstants::nodeRadius;
+//     float newRightY = nodePositionRight.y - sin(rotateAngleR) * nodeConstants::nodeRadius;
+//     // if (nodePositionLeft.y != nodePositionRight.y) {
+//         // std::cerr << "angle REV: " << rotateAngleL << " " << rotateAngleR << '\n';
+//         // std::cerr << "init: " << nodePositionLeft.x << " " << nodePositionLeft.y << '\n';
+//         // std::cerr << "new: " << newLeftX << " " << newLeftY << "\n";
+//         // std::cerr << "right: " << nodePositionRight.x << " " << nodePositionRight.y << '\n';
+//         // std::cerr << "new right: " << newRightX << " " << newRightY << '\n' << '\n';
+//     // }
+//     sf::Vector2f fwArrowLeft = sf::Vector2f(newLeftX, newLeftY), fwArrowRight = sf::Vector2f(newRightX, newRightY);
+//     bwArrow.drawArrowBetweenNode(window, fwArrowRight, fwArrowLeft, arrowColor, opacity);;
+// }

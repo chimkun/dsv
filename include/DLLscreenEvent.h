@@ -41,6 +41,7 @@ private:
         bool markFirst;
     //LL mode
         DLLdrawType drawType;
+        DLLdrawType prevType;
     // Text
         textInfo nodeText;
     // UI

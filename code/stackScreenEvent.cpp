@@ -2,6 +2,7 @@
 
 StackObject::StackObject() {
     drawType = stackShowcase;
+    prevType = stackShowcase;
     backToMenu = opacity = 0;
     createRandomStack();
     std::vector <int> curStack = myStack.getStack();
@@ -40,6 +41,14 @@ void StackObject::drawStack(sf::RenderWindow &window) {
 void StackObject::drawPeek(sf::RenderWindow &window) {
     sf::Color fadeColor = getFadeColor(nodeConstants::baseColor, nodeConstants::searchFoundColor, colorClock);
     myStack.drawStackPeek(window, fadeColor);
+    // StackCodeBlock.drawPeekCodeBlock(window);
+    if (myStack.getStackSize() == 0) {
+        StackCodeBlock.drawPeekCodeBlockSingleLine(window, 0);
+        StackCodeBlock.drawPeekCodeBlockSingleLine(window, 1);
+    }
+    else {
+        StackCodeBlock.drawPeekCodeBlockSingleLine(window, 2);
+    }
 }
 void StackObject::drawPush(sf::RenderWindow &window) {
     myStack.drawStackPush(window, extraYDistance, newNodeOpacity);
@@ -49,9 +58,23 @@ void StackObject::drawPush(sf::RenderWindow &window) {
         extraYDistance = std::max(0, extraYDistance - stackConstants::yMoveSpeed);
         newNodeOpacity = std::min(255, newNodeOpacity + stackConstants::fadeInSpeed);
     }
+    // StackCodeBlock.drawPushCodeBlock(window);
+    StackCodeBlock.drawPushCodeBlockSingleLine(window, 0);
 }
 void StackObject::drawPop(sf::RenderWindow &window) {
     myStack.drawStackPop(window, popOpacity);
+    if (myStack.getStackSize() > 0) {
+        if (drawType == stackPop) {
+            // StackCodeBlock.drawPopCodeBlock(window);
+            StackCodeBlock.drawPopCodeBlockSingleLine(window, 0);
+            StackCodeBlock.drawPopCodeBlockSingleLine(window, 1);
+        }
+        else {
+            // StackCodeBlock.drawClearCodeBlock(window);
+            StackCodeBlock.drawClearCodeBlockSingleLine(window, 0);
+            StackCodeBlock.drawClearCodeBlockSingleLine(window, 1);
+        }
+    }
     if (popOpacity == 0) {
         if (drawType == stackPop) {
             drawType = stackShowcase;
@@ -78,6 +101,20 @@ void StackObject::processType(sf::RenderWindow &window) {
         theStackScreen.drawGeneralScreen(window);
     else {
         theStackScreen.drawCreateScreen(window);
+    }
+    switch (prevType) {
+        case stackPeek:
+            StackCodeBlock.drawPeekCodeBlock(window);
+            break;
+        case stackPush:
+            StackCodeBlock.drawPushCodeBlock(window);
+            break;
+        case stackPop:
+            StackCodeBlock.drawPopCodeBlock(window);
+            break;
+        case stackClear:
+            StackCodeBlock.drawClearCodeBlock(window);
+            break;
     }
     switch (drawType) {
         case stackShowcase:
@@ -110,7 +147,7 @@ void StackObject::processMouseEvent(sf::RenderWindow &window) {
         }
         else if (theStackScreen.theGeneralScreen.peekButtonIsClick(window)) {
             theStackScreen.theGeneralScreen.turnOffAllButton();
-            drawType = stackPeek;
+            drawType = prevType = stackPeek;
             // theStackScreen.theGeneralScreen.turnOnPeekButton();
             // theStackScreen.theGeneralScreen.addBeginning.flipButtonState();
             // theStackScreen.theGeneralScreen.addEnding.flipButtonState();
@@ -121,13 +158,13 @@ void StackObject::processMouseEvent(sf::RenderWindow &window) {
         }
         else if (theStackScreen.theGeneralScreen.popButtonIsClick(window)) {
             theStackScreen.theGeneralScreen.turnOffAllButton();
-            drawType = stackPop;
+            drawType = prevType = stackPop;
             isPop = 1;
             popStackProcess();
         }
         else if (theStackScreen.theGeneralScreen.clearButtonIsClick(window)) {
             theStackScreen.theGeneralScreen.turnOffAllButton();
-            drawType = stackClear;
+            drawType = prevType = stackClear;
             isPop = 1;
             popStackProcess();
         }
@@ -141,7 +178,7 @@ void StackObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theStackScreen.theGeneralScreen.pushButtonIsChoose() 
               && theStackScreen.theGeneralScreen.confirmPushIsClick(window)) {
             if (!theStackScreen.theGeneralScreen.pushTextBoxIsEmpty()) {
-                drawType = stackPush;
+                drawType = prevType = stackPush;
                 int userInput = theStackScreen.theGeneralScreen.getInputData();
                 pushStackProcess(userInput);
             }
@@ -165,7 +202,7 @@ void StackObject::processMouseEvent(sf::RenderWindow &window) {
             }
             else if (theStackScreen.theCreateScreen.confirmButtonIsClick(window)) {
                 if (!theStackScreen.theCreateScreen.inputIsEmpty()) {
-                    drawType = stackShowcase;
+                    drawType = prevType = stackShowcase;
                     std::vector <int> userInput = theStackScreen.theCreateScreen.getInputData();
                     createStack(userInput);
                     processDrawList();
@@ -176,7 +213,7 @@ void StackObject::processMouseEvent(sf::RenderWindow &window) {
                 if (browseForFile(fileRead)) {
                     std::vector <int> userInput = getInputData(fileRead);
                     if ((int) userInput.size() > 0) {
-                        drawType = stackShowcase;
+                        drawType = prevType = stackShowcase;
                         createStack(userInput);
                         processDrawList();
                     }

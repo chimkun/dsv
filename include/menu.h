@@ -6,6 +6,7 @@
 #include "menuInitialScreen.h"
 #include "menuChooseLLScreen.h"
 #include "menuChooseArray.h"
+#include "menuChooseOther.h"
 #include "button.h"
 #include "background.h"
 
@@ -15,12 +16,13 @@ private:
         initial,
         chooseDataStructure,
         chooseLL,
-        chooseArray
+        chooseArray,
+        chooseOther
     };
     enum dataStructureType {
         none, SLL, DLL, CLL,
         array, sArray, dArray,
-        stack, queue
+        Stack, Queue
     };
 
     menuButtonType MenuType;
@@ -30,6 +32,7 @@ private:
     chooseDataStructureScreen MenuChooseDSScreen;
     chooseLinkedListScreen MenuChooseLLScreen;
     chooseArrayScreen MenuChooseArrayScreen;
+    chooseOtherScreen MenuChooseOtherScreen;
 
     sf::Texture logoTexture;
     sf::Sprite logoSprite;

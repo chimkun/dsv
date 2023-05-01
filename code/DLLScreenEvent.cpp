@@ -54,7 +54,7 @@ void DLLObject::drawInsertIndicator(sf::RenderWindow &window) {
     remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds());
     myDLL.drawInsertNodeIndicator(window, insertIndex, gotoIndex, 
                                   getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));
-    DLLCodeBlock.drawInsertCodeBlock(window);
+    // DLLCodeBlock.drawInsertCodeBlock(window);
     if (!markFirst) {
         if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
             gotoIndex++;
@@ -85,7 +85,7 @@ void DLLObject::drawListWhenInsert(sf::RenderWindow &window) {
     // std::cout << "opacity: " << opacity << '\n';
     myDLL.drawListWhenInsert(window, insertIndex, 
                              opacity, nodePositionXAfterInsert);
-    DLLCodeBlock.drawInsertCodeBlock(window);
+    // DLLCodeBlock.drawInsertCodeBlock(window);
     DLLCodeBlock.drawInsertCodeBlockMultiLine(window, 3, 4);
     if (nodePositionXAfterInsert >= nodeConstants::nodeDistance) {
         drawType = insertDLL2;
@@ -96,7 +96,7 @@ void DLLObject::drawListWhenInsert(sf::RenderWindow &window) {
     }
 }
 void DLLObject::drawInsertNode(sf::RenderWindow &window) {
-    DLLCodeBlock.drawInsertCodeBlock(window);
+    // DLLCodeBlock.drawInsertCodeBlock(window);
     DLLCodeBlock.drawInsertCodeBlockMultiLine(window, 5, 6);
     if (insertIndex == myDLL.getNumberOfNode())
         myDLL.drawInsertNode(window, insertIndex, opacity,
@@ -120,7 +120,7 @@ void DLLObject::drawDeleteIndicator(sf::RenderWindow &window) {
     remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds());
     myDLL.drawDeleteNodeIndicator(window, deleteIndex, gotoIndex, 
                                   getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));
-    DLLCodeBlock.drawDeleteCodeBlock(window);
+    // DLLCodeBlock.drawDeleteCodeBlock(window);
     if (!markFirst) {
         if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
             gotoIndex++;
@@ -147,7 +147,7 @@ void DLLObject::drawDeleteNode(sf::RenderWindow &window) {
         sf::sleep(sf::milliseconds(500));
     }
     myDLL.drawDeleteNode(window, deleteIndex, nodeOpacity, deleteNodeOpacity);
-    DLLCodeBlock.drawDeleteCodeBlock(window);
+    // DLLCodeBlock.drawDeleteCodeBlock(window);
     DLLCodeBlock.drawDeleteCodeBlockMultiLine(window, 3, 4);
     if (deleteNodeOpacity - nodeConstants::fadeSpeed > 0) {
         deleteNodeOpacity = std::max(deleteNodeOpacity - nodeConstants::fadeSpeed, 0);
@@ -163,7 +163,7 @@ void DLLObject::drawDeleteNodeMove(sf::RenderWindow &window) {
     myDLL.drawDeleteNodeMove(window, deleteIndex, nodeOpacity, 
                              nodePositionDiffX, newArrowOpacity,
                              getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer));
-    DLLCodeBlock.drawDeleteCodeBlock(window);
+    // DLLCodeBlock.drawDeleteCodeBlock(window);
     DLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 5);
     if (nodePositionDiffX > 0 || newArrowOpacity < 255) {
         newArrowOpacity = std::min(255, newArrowOpacity + nodeConstants::fadeSpeed);
@@ -184,7 +184,7 @@ void DLLObject::drawSearchIndicator(sf::RenderWindow &window) {
     myDLL.drawSearchIndicator(window, searchIndex, gotoIndex, 
                               getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));   
     remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds()); 
-    DLLCodeBlock.drawSearchCodeBlock(window);
+    // DLLCodeBlock.drawSearchCodeBlock(window);
     if (!markFirst) {
         if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
             gotoIndex++;
@@ -213,7 +213,7 @@ void DLLObject::drawSearchHighlight(sf::RenderWindow &window) {
                               getFadeColor(nodeConstants::baseColor, nodeConstants::searchFoundColor, flashTimer),
                               infoTextOpacity);
     infoTextOpacity = std::min(255, infoTextOpacity + nodeConstants::fadeSpeed);
-    DLLCodeBlock.drawSearchCodeBlock(window);
+    // DLLCodeBlock.drawSearchCodeBlock(window);
     if (searchIndex == -1) {
         DLLCodeBlock.drawSearchCodeBlockSingleLine(window, 5);
     }
@@ -222,7 +222,6 @@ void DLLObject::drawSearchHighlight(sf::RenderWindow &window) {
     }
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = searchDLL2;
-        sf::sleep(sf::seconds(3.0f));
         flashTimer.restart();
     }
 }
@@ -231,7 +230,7 @@ void DLLObject::drawSearchRevert(sf::RenderWindow &window) {
                            getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer),
                            getFadeColor(nodeConstants::searchFoundColor, nodeConstants::baseColor, flashTimer),
                            infoTextOpacity);
-    DLLCodeBlock.drawSearchCodeBlock(window);
+    // DLLCodeBlock.drawSearchCodeBlock(window);
     if (searchIndex == -1) {
         DLLCodeBlock.drawSearchCodeBlockSingleLine(window, 5);
     }
@@ -251,7 +250,7 @@ void DLLObject::drawUpdateIndicator(sf::RenderWindow &window) {
     myDLL.drawUpdateIndicator(window, updateIndex, gotoIndex, 
                               getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));
     remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds()); 
-    DLLCodeBlock.drawUpdateCodeBlock(window);
+    // DLLCodeBlock.drawUpdateCodeBlock(window);
     if (!markFirst) {
         if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
             gotoIndex++;
@@ -280,7 +279,7 @@ void DLLObject::drawUpdateChangeNum(sf::RenderWindow &window) {
     else 
         fadeColor = nodeConstants::searchFoundColor;
     myDLL.drawUpdateChangeNum(window, updateIndex, updateData, numberOpacity, fadeColor);
-    DLLCodeBlock.drawUpdateCodeBlock(window);
+    // DLLCodeBlock.drawUpdateCodeBlock(window);
     DLLCodeBlock.drawUpdateCodeBlockMultiLine(window, 2, 4);
     if (opacityMultiplier == -1) {
         numberOpacity = std::max(0, numberOpacity - nodeConstants::fadeSpeed);
@@ -306,7 +305,7 @@ void DLLObject::drawUpdateRevert(sf::RenderWindow &window) {
     fadeOutlineColor = getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer);
     fadeNumberColor = getFadeColor(nodeConstants::searchFoundColor, nodeConstants::baseColor, flashTimer);
     myDLL.drawUpdateRevert(window, updateIndex, fadeOutlineColor, fadeNumberColor);
-    DLLCodeBlock.drawUpdateCodeBlock(window);
+    // DLLCodeBlock.drawUpdateCodeBlock(window);
     DLLCodeBlock.drawUpdateCodeBlockMultiLine(window, 2, 4);
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = showcaseDLL;
@@ -319,6 +318,20 @@ void DLLObject::processType(sf::RenderWindow &window) {
         theDLLscreen.drawGeneralScreen(window);
     else {
         theDLLscreen.drawCreateScreen(window);
+    }
+    switch (prevType) {
+        case insertDLL0:
+            DLLCodeBlock.drawInsertCodeBlock(window);
+            break;
+        case deleteDLL0:
+            DLLCodeBlock.drawDeleteCodeBlock(window);
+            break;
+        case searchDLL0:
+            DLLCodeBlock.drawSearchCodeBlock(window);
+            break;
+        case updateDLL0:
+            DLLCodeBlock.drawUpdateCodeBlock(window);
+            break;
     }
     switch (drawType) {
         case makeDLL:
@@ -423,7 +436,7 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theDLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.addButton.confirmButtonIsClick(window)) {
             if (!theDLLscreen.theGeneralScreen.addButton.inputIsEmpty()) {
-                drawType = insertDLL0;
+                drawType = prevType = insertDLL0;
                 std::pair <int, int> userInput = theDLLscreen.theGeneralScreen.addButton.getInputDataPair();
                 int inputIndex = userInput.first, inputElement = userInput.second;
                 insertNodeProcess(inputIndex, inputElement);
@@ -434,7 +447,7 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theDLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.addBeginning.buttonIsClick(window)) {
             if (!theDLLscreen.theGeneralScreen.addBeginningText.inputIsEmpty()) {
-                drawType = insertDLL0;
+                drawType = prevType = insertDLL0;
                 int userInput = theDLLscreen.theGeneralScreen.addBeginningText.getInputDataInt();
                 int inputIndex = 0, inputElement = userInput;
                 insertNodeProcess(inputIndex, inputElement);
@@ -445,7 +458,7 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theDLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.addEnding.buttonIsClick(window)) {
             if (!theDLLscreen.theGeneralScreen.addEndingText.inputIsEmpty()) {
-                drawType = insertDLL0;
+                drawType = prevType = insertDLL0;
                 int userInput = theDLLscreen.theGeneralScreen.addEndingText.getInputDataInt();
                 int inputIndex = myDLL.getNumberOfNode(), inputElement = userInput;
                 insertNodeProcess(inputIndex, inputElement);
@@ -456,7 +469,7 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theDLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.deleteButton.confirmButtonIsClick(window)) {
             if (!theDLLscreen.theGeneralScreen.deleteButton.inputIsEmpty()) {
-                drawType = deleteDLL0;
+                drawType = prevType = deleteDLL0;
                 int userInput = theDLLscreen.theGeneralScreen.deleteButton.getInputDataInt();
                 deleteIndex = userInput + 1;
                 deleteNodeProcess(deleteIndex);
@@ -466,7 +479,7 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
         }
         else if (theDLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.delBeginning.buttonIsClick(window)) {
-            drawType = deleteDLL0;
+            drawType = prevType = deleteDLL0;
             deleteIndex = 1;
             deleteNodeProcess(deleteIndex);
             DLLCodeBlock.drawDeleteCodeBlock(window);
@@ -474,7 +487,7 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
         }
         else if (theDLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.delEnding.buttonIsClick(window)) {
-            drawType = deleteDLL0;
+            drawType = prevType = deleteDLL0;
             deleteIndex = myDLL.getNumberOfNode();
             deleteNodeProcess(deleteIndex);
             DLLCodeBlock.drawDeleteCodeBlock(window);
@@ -483,7 +496,7 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theDLLscreen.theGeneralScreen.searchButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.searchButton.confirmButtonIsClick(window)) {
             if (!theDLLscreen.theGeneralScreen.searchButton.inputIsEmpty()) {
-                drawType = searchDLL0;
+                drawType = prevType = searchDLL0;
                 int userInput = theDLLscreen.theGeneralScreen.searchButton.getInputDataInt();
                 searchData = userInput;
                 searchNodeProcess(searchData);
@@ -494,7 +507,7 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theDLLscreen.theGeneralScreen.updateButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.updateButton.confirmButtonIsClick(window)) {
             if (!theDLLscreen.theGeneralScreen.updateButton.inputIsEmpty()) {
-                drawType = updateDLL0;
+                drawType = prevType = updateDLL0;
                 std::pair <int, int> userInput = theDLLscreen.theGeneralScreen.updateButton.getInputDataPair();
                 updateIndex = userInput.first, updateData = userInput.second;
                 updateNodeProcess(updateIndex, updateData);
@@ -508,11 +521,11 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
             theDLLscreen.theCreateScreen.flipInputButtonState();
         }
         else if (theDLLscreen.theCreateScreen.randomButtonIsClick(window)) {
-            drawType = showcaseDLL;
+            drawType = prevType = showcaseDLL;
             createRandomList();
         }
         else if (theDLLscreen.theCreateScreen.backButtonIsClick(window)) {
-            drawType = showcaseDLL;
+            drawType = prevType = showcaseDLL;
         }
         else if (theDLLscreen.theCreateScreen.userInputButtonGetState()) {
             if (theDLLscreen.theCreateScreen.textBoxIsClick(window)) {
