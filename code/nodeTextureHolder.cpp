@@ -22,10 +22,6 @@ nodeTexture::nodeTexture() {
     }
 }
 
-void nodeTexture::initNodeTexture() {
-    
-}
-
 sf::Texture nodeTexture::getBaseTexture() {
     std::cerr << "return texture " << baseTexture.getSize().x << " " << baseTexture.getSize().y << '\n';
     return baseTexture;
