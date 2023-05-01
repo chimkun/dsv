@@ -207,7 +207,7 @@ void SLL::drawList(sf::RenderWindow &window, int opacity, textInfo &nodeText) {
     int countNode = 1;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
-        cur->drawNode(nodePosition, window, opacity);
+        NodeDrawer.drawNode(nodePosition, window, opacity, cur->data);
         
         if (countNode == 1) {
             if (numberOfNode == 1) {
@@ -224,7 +224,7 @@ void SLL::drawList(sf::RenderWindow &window, int opacity, textInfo &nodeText) {
         if (countNode < numberOfNode) {
             sf::Vector2f nodePositionRight = nodePosition;
             nodePositionRight.x += nodeConstants::nodeDistance;
-            cur->drawArrowBetweenNode(window, nodePosition, nodePositionRight, nodeConstants::baseColor, opacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePosition, nodePositionRight, nodeConstants::baseColor, opacity);
         }
         nodePosition.x += nodeConstants::nodeDistance;
         countNode++;
@@ -239,11 +239,11 @@ void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
     gotoIndex = std::min(gotoIndex, insertIndex);
     for (int i = 1; i <= numberOfNode; i++) {
         if (i < gotoIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White, cur->data);
         else if (i == gotoIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, fadeColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, fadeColor, nodeConstants::baseColor, cur->data);
         else 
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor, cur->data);
         
         if (insertIndex == 0 || insertIndex == numberOfNode) {
             if (i == 1)
@@ -275,11 +275,11 @@ void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
         sf::Vector2f nodePositionRight = nodePosition;
         nodePositionRight.x += nodeConstants::nodeDistance;
         if (i < gotoIndex - 1 && i < numberOfNode)
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
         else if (i > gotoIndex - 1 && i < numberOfNode) 
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
         else if (i == gotoIndex - 1 && i < numberOfNode)
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
         nodePosition.x += nodeConstants::nodeDistance;
         cur = cur->pNext;
     }
@@ -292,7 +292,7 @@ void SLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex,
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
         if (countNode < insertIndex) {
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, nodeConstants::baseColor, cur->data);
         }
         else if (countNode == insertIndex) {
             nodePosition.x += nodePositionXAfterInsert;
@@ -301,7 +301,7 @@ void SLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex,
             continue;
         }
         else {
-            cur->drawNode(nodePosition, window, opacity);
+            NodeDrawer.drawNode(nodePosition, window, opacity, cur->data);
         }
 
         if (insertIndex == 1) {
@@ -333,9 +333,9 @@ void SLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex,
             sf::Vector2f nodePositionRight = nodePosition;
             nodePositionRight.x += nodeConstants::nodeDistance;
             if (countNode >= insertIndex)
-                cur->drawArrowBetweenNode(window, nodePosition, nodePositionRight, nodeConstants::baseColor, opacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePosition, nodePositionRight, nodeConstants::baseColor, opacity);
             else 
-                cur->drawArrowBetweenNode(window, nodePosition, nodePositionRight, nodeConstants::flashColor, opacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePosition, nodePositionRight, nodeConstants::flashColor, opacity);
         }
         nodePosition.x += nodeConstants::nodeDistance;
         countNode++;
@@ -350,19 +350,19 @@ void SLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity,
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
         if (countNode < insertIndex) {
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
-                           fadeColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
+                           fadeColor, nodeConstants::baseColor, cur->data);
         }
         else if (countNode > insertIndex)
-            cur->drawNode(nodePosition, window, opacity);
+            NodeDrawer.drawNode(nodePosition, window, opacity, cur->data);
         else {
-            cur->drawNode2(insertNodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
-                           fadeColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(insertNodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
+                           fadeColor, nodeConstants::baseColor, cur->data);
             if (insertIndex < numberOfNode) {
                 sf::Vector2f nodePositionLeft = insertNodePosition;
                 sf::Vector2f nodePositionRight = nodePosition;
                 nodePositionRight.x += nodeConstants::nodeDistance;
-                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, insertNodeOpacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, insertNodeOpacity);
             }
         }
 
@@ -396,14 +396,14 @@ void SLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity,
             sf::Vector2f nodePositionRight = nodePosition;
             nodePositionRight.x += nodeConstants::nodeDistance;
             if (countNode > insertIndex)
-                cur->drawArrowBetweenNode(window, nodePosition, nodePositionRight, nodeConstants::baseColor, opacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePosition, nodePositionRight, nodeConstants::baseColor, opacity);
             else 
-                cur->drawArrowBetweenNode(window, nodePosition, nodePositionRight, fadeColor, opacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePosition, nodePositionRight, fadeColor, opacity);
         }
         else if (countNode == insertIndex - 1 && insertIndex > 1) {
             sf::Vector2f nodePositionLeft = nodePosition;
             sf::Vector2f nodePositionRight = insertNodePosition;
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, insertNodeOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, insertNodeOpacity);
         }
         nodePosition.x += nodeConstants::nodeDistance;
         countNode++;
@@ -418,11 +418,11 @@ void SLL::drawDeleteNodeIndicator(sf::RenderWindow &window, int deleteIndex, int
     int maxOpacity = 255;
     for (int i = 1; i <= numberOfNode; i++) {
         if (i < gotoIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White, cur->data);
         else if (i == gotoIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, fadeColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, fadeColor, nodeConstants::baseColor, cur->data);
         else 
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor, cur->data);
         
         if (deleteIndex == 1) {
             if (numberOfNode == 1)
@@ -469,11 +469,11 @@ void SLL::drawDeleteNodeIndicator(sf::RenderWindow &window, int deleteIndex, int
         sf::Vector2f nodePositionRight = nodePosition;
         nodePositionRight.x += nodeConstants::nodeDistance;
         if (i < gotoIndex - 1 && i < numberOfNode)
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
         else if (i > gotoIndex - 1 && i < numberOfNode) 
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
         else if (i == gotoIndex - 1 && i < numberOfNode)
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
         nodePosition.x += nodeConstants::nodeDistance;
         cur = cur->pNext;
     }
@@ -485,15 +485,15 @@ void SLL::drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity,
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
         if (countNode < removeIndex) {
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
-                           nodeConstants::flashColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
+                           nodeConstants::flashColor, nodeConstants::baseColor, cur->data);
         }
         else if (countNode > removeIndex) {
-            cur->drawNode(nodePosition, window, opacity);
+            NodeDrawer.drawNode(nodePosition, window, opacity, cur->data);
         }
         else {
-            cur->drawNode2(nodePosition, window, deleteNodeOpacity, deleteNodeOpacity, deleteNodeOpacity, 
-                           nodeConstants::flashColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, deleteNodeOpacity, deleteNodeOpacity, deleteNodeOpacity, 
+                           nodeConstants::flashColor, nodeConstants::baseColor, cur->data);
         }
 
         if (removeIndex == 1) {
@@ -526,19 +526,19 @@ void SLL::drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity,
         sf::Vector2f nodePositionRight = nodePosition;    
         nodePositionRight.x += nodeConstants::nodeDistance;
         if (countNode == 1 && removeIndex == 1) {
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, deleteNodeOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, deleteNodeOpacity);
         }
         else if (countNode == removeIndex - 1 && removeIndex - 1 > 0 && countNode < numberOfNode) {
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, deleteNodeOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, deleteNodeOpacity);
         }
         else if (countNode == removeIndex && removeIndex < numberOfNode) {
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, deleteNodeOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, deleteNodeOpacity);
         }
         else if (countNode < removeIndex - 1 && countNode < numberOfNode) {
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, opacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, opacity);
         }
         else if (countNode > removeIndex && countNode < numberOfNode) {
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, opacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, opacity);
         }
         nodePosition.x += nodeConstants::nodeDistance;
         cur = cur->pNext;
@@ -556,10 +556,10 @@ void SLL::drawDeleteNodeMove(sf::RenderWindow &window, int removeIndex, int node
         nodePosition.x += nodePositionDiffX;
     while (cur != nullptr) {
         if (countNode < removeIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
-                           fadeColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
+                           fadeColor, nodeConstants::baseColor, cur->data);
         else 
-            cur->drawNode(nodePosition, window, nodeOpacity);
+            NodeDrawer.drawNode(nodePosition, window, nodeOpacity, cur->data);
 
         if (removeIndex == 1) {
             if (countNode == 1) {
@@ -594,11 +594,11 @@ void SLL::drawDeleteNodeMove(sf::RenderWindow &window, int removeIndex, int node
         nodePositionRight.x += nodeConstants::nodeDistance;    
         if (countNode < numberOfNode) {
             if (countNode == removeIndex - 1)
-                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, newArrowOpacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, newArrowOpacity);
             else if (countNode < removeIndex)
-                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, nodeOpacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, nodeOpacity);
             else 
-                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, nodeOpacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, nodeOpacity);
         }
         nodePosition.x += nodeConstants::nodeDistance;
         cur = cur->pNext;
@@ -615,11 +615,11 @@ void SLL::drawSearchIndicator(sf::RenderWindow &window, int searchIndex, int got
         tempSearchIndex = numberOfNode;
     for (int i = 1; i <= numberOfNode; i++) {
         if (i < gotoIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White, cur->data);
         else if (i == gotoIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, fadeColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, fadeColor, nodeConstants::baseColor, cur->data);
         else 
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor, cur->data);
         
         if (i == gotoIndex) {
             if (gotoIndex == 1)
@@ -638,11 +638,11 @@ void SLL::drawSearchIndicator(sf::RenderWindow &window, int searchIndex, int got
         sf::Vector2f nodePositionRight = nodePosition;
         nodePositionRight.x += nodeConstants::nodeDistance;
         if (i < gotoIndex - 1 && i < numberOfNode)
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
         else if (i > gotoIndex - 1 && i < numberOfNode) 
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
         else if (i == gotoIndex - 1 && i < numberOfNode)
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
         nodePosition.x += nodeConstants::nodeDistance;
         cur = cur->pNext;
     }
@@ -657,17 +657,17 @@ void SLL::drawSearchHighlight(sf::RenderWindow &window, int searchIndex, sf::Col
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
         if (countNode < tempSearchIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
-                           nodeConstants::flashColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
+                           nodeConstants::flashColor, nodeConstants::baseColor, cur->data);
         else if (countNode > tempSearchIndex)
-            cur->drawNode(nodePosition, window, maxOpacity);
+            NodeDrawer.drawNode(nodePosition, window, maxOpacity, cur->data);
         else {
             if (searchIndex == -1)
-                cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
-                               nodeConstants::flashColor, nodeConstants::baseColor);
+                NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
+                               nodeConstants::flashColor, nodeConstants::baseColor, cur->data);
             else 
-                cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
-                               fadeColor, textFadeColor);
+                NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
+                               fadeColor, textFadeColor, cur->data);
         }
 
         if (countNode == tempSearchIndex) {
@@ -691,9 +691,9 @@ void SLL::drawSearchHighlight(sf::RenderWindow &window, int searchIndex, sf::Col
 
         if (countNode < numberOfNode) {
             if (countNode < tempSearchIndex)
-                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
             else 
-                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
         }
 
         countNode++;
@@ -711,17 +711,17 @@ void SLL::drawSearchRevert(sf::RenderWindow &window, int searchIndex,
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
         if (countNode < tempSearchIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
-                           fadeColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
+                           fadeColor, nodeConstants::baseColor, cur->data);
         else if (countNode > tempSearchIndex)
-            cur->drawNode(nodePosition, window, maxOpacity);
+            NodeDrawer.drawNode(nodePosition, window, maxOpacity, cur->data);
         else {
             if (searchIndex == -1)
-                cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
-                               fadeColor, nodeConstants::baseColor);
+                NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
+                               fadeColor, nodeConstants::baseColor, cur->data);
             else 
-                cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
-                               textFadeColor, textFadeColor);
+                NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
+                               textFadeColor, textFadeColor, cur->data);
         }
 
         if (countNode == tempSearchIndex) {
@@ -745,9 +745,9 @@ void SLL::drawSearchRevert(sf::RenderWindow &window, int searchIndex,
 
         if (countNode < numberOfNode) {
             if (countNode < tempSearchIndex)
-                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
             else 
-                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
         }
 
         countNode++;
@@ -762,11 +762,11 @@ void SLL::drawUpdateIndicator(sf::RenderWindow &window, int updateIndex,
     int maxOpacity = 255;
     for (int i = 1; i <= numberOfNode; i++) {
         if (i < gotoIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White, cur->data);
         else if (i == gotoIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, fadeColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, fadeColor, nodeConstants::baseColor, cur->data);
         else 
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor, cur->data);
         
         if (i == gotoIndex) {
             if (gotoIndex == 1)
@@ -785,11 +785,11 @@ void SLL::drawUpdateIndicator(sf::RenderWindow &window, int updateIndex,
         sf::Vector2f nodePositionRight = nodePosition;
         nodePositionRight.x += nodeConstants::nodeDistance;
         if (i < gotoIndex - 1 && i < numberOfNode)
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
         else if (i > gotoIndex - 1 && i < numberOfNode) 
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
         else if (i == gotoIndex - 1 && i < numberOfNode)
-            cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
+            NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
         nodePosition.x += nodeConstants::nodeDistance;
         cur = cur->pNext;
     }
@@ -801,13 +801,13 @@ void SLL::drawUpdateChangeNum(sf::RenderWindow &window, int updateIndex, int upd
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
         if (countNode < updateIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
-                           nodeConstants::flashColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
+                           nodeConstants::flashColor, nodeConstants::baseColor, cur->data);
         else if (countNode > updateIndex)
-            cur->drawNode(nodePosition, window, maxOpacity);
+            NodeDrawer.drawNode(nodePosition, window, maxOpacity, cur->data);
         else {
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, numberOpacity,
-                           nodeConstants::flashColor, fadeColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, numberOpacity,
+                           nodeConstants::flashColor, fadeColor, cur->data);
         }
 
         if (countNode == updateIndex) {
@@ -831,9 +831,9 @@ void SLL::drawUpdateChangeNum(sf::RenderWindow &window, int updateIndex, int upd
 
         if (countNode < numberOfNode) {
             if (countNode < updateIndex)
-                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
             else 
-                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
         }
 
         countNode++;
@@ -848,13 +848,13 @@ void SLL::drawUpdateRevert(sf::RenderWindow &window, int updateIndex,
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
         if (countNode < updateIndex)
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
-                           fadeOutlineColor, nodeConstants::baseColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
+                           fadeOutlineColor, nodeConstants::baseColor, cur->data);
         else if (countNode > updateIndex)
-            cur->drawNode(nodePosition, window, maxOpacity);
+            NodeDrawer.drawNode(nodePosition, window, maxOpacity, cur->data);
         else {
-            cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
-                           fadeOutlineColor, fadeNumberColor);
+            NodeDrawer.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity,
+                           fadeOutlineColor, fadeNumberColor, cur->data);
         }
 
         if (countNode == updateIndex) {
@@ -878,9 +878,9 @@ void SLL::drawUpdateRevert(sf::RenderWindow &window, int updateIndex,
 
         if (countNode < numberOfNode) {
             if (countNode < updateIndex)
-                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeOutlineColor, maxOpacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, fadeOutlineColor, maxOpacity);
             else 
-                cur->drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
+                NodeDrawer.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
         }
 
         countNode++;

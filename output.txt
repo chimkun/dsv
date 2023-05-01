@@ -1,1 +1,1379 @@
-my pc is fucked
+init
+file:src//include//texture//default-0.png
+file:src//include//texture//default-1.png
+file:src//include//texture//default-2.png
+file:src//include//texture//default-3.png
+file:src//include//texture//default-4.png
+file:src//include//texture//default-5.png
+file:src//include//texture//default-6.png
+file:src//include//texture//default-7.png
+file:src//include//texture//default-8.png
+file:src//include//texture//default-9.png
+return texture 141 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 141 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 154 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 154 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 167 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 167 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 180 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 180 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 193 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 193 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 206 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 206 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 219 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 219 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 232 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 232 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 245 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 245 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 0 41 60
+return texture 255 128
+outline texture 128 128
+texture size: 0 0
+digit, siz: 9 0 1065353216
+digit, siz: 1 209202928 0

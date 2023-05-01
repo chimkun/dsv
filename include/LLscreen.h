@@ -11,6 +11,7 @@ class SLL {
 private:
     Node *pHead;
     int numberOfNode;
+    drawListNode NodeDrawer;
 public:
     SLL ();
     void build(int inputNumberOfNode, std::vector <int> &a);

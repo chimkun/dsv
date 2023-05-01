@@ -125,6 +125,11 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\node.cpp"
     },
     {
+        "command": "g++ -c ..\\Menu\\code/nodeTextureHolder.cpp -o nodeTextureHolder.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\nodeTextureHolder.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/stackNode.cpp -o stackNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\stackNode.cpp"
