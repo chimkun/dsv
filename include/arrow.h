@@ -10,6 +10,8 @@ struct Arrow {
     Arrow ();
     void drawArrowBetweenNode(sf::RenderWindow &window, sf::Vector2f nodePositionLeft,
                               sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity);
+    void drawArrowDLLNode(sf::RenderWindow &window, sf::Vector2f nodePositionLeft,
+                              sf::Vector2f nodePositionRight, sf::Color arrowColor, int opacity);
 };
 
 #endif
