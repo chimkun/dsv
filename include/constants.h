@@ -113,6 +113,15 @@ public:
     static void initializeConstants();
 };
 
+class queueConstants {
+public:
+    static sf::Vector2f leftQueue;
+    static int xDistance;
+    static int xMoveSpeed;
+    static int fadeSpeed;
+    static void initializeConstants();
+};
+
 void initializeConstants();
 
 #endif

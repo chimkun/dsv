@@ -135,6 +135,31 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\nodeTextureHolder.cpp"
     },
     {
+        "command": "g++ -c ..\\Menu\\code/queueCodeBlock.cpp -o queueCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\queueCodeBlock.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/queueNode.cpp -o queueNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\queueNode.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/queueScreen.cpp -o queueScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\queueScreen.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/queueScreenEvent.cpp -o queueScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\queueScreenEvent.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/queueUI.cpp -o queueUI.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\queueUI.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/stackCodeBlock.cpp -o stackCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\stackCodeBlock.cpp"

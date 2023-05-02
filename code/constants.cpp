@@ -169,6 +169,18 @@ void stackConstants::initializeConstants() {
     bottomStack = sf::Vector2f(1920/2.0, 900);
 }
 
+int queueConstants::xDistance;
+int queueConstants::fadeSpeed;
+sf::Vector2f queueConstants::leftQueue;
+int queueConstants::xMoveSpeed;
+
+void queueConstants::initializeConstants() {
+    xDistance = 130;
+    fadeSpeed = 6;
+    leftQueue = sf::Vector2f(174, 180);
+    xMoveSpeed = 3;
+}
+
 void initializeConstants() {
     nodeConstants::initializeConstants();
     arrowConstants::initializeConstants();
@@ -179,4 +191,6 @@ void initializeConstants() {
     logoConstants::initializeConstants();
     menuButtonConstants::initializeConstants();
     stackConstants::initializeConstants();
+    queueConstants::initializeConstants();
 }
+
