@@ -2,6 +2,7 @@
 #define ARROW_H
 
 #include <iostream>
+#include <cmath>
 #include "constants.h"
 
 struct Arrow {

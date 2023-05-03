@@ -96,13 +96,13 @@ void SLL::deleteAtBeginning() {
         return;
     numberOfNode--;
     if (pHead->pNext == nullptr) {
-        delete(pHead);
+        delete pHead;
         pHead = nullptr;
         return;
     }
     Node *temp = pHead; 
     pHead = pHead->pNext;
-    delete(temp);
+    delete temp;
     return;
 }
 
@@ -144,7 +144,7 @@ void SLL::deleteAtIndex(int idx) {
             Node *deleteNode = cur->pNext;
             Node *rightNode = deleteNode->pNext;
             leftNode->pNext = rightNode;
-            delete(deleteNode);
+            delete deleteNode;
             deleteNode = nullptr;
             break;
         }

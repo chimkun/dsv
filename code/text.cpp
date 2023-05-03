@@ -165,6 +165,22 @@ void textInfo::drawOptionalTextMid(sf::RenderWindow &window, std::string &textSt
     window.draw(textContent);
 }
 
+void textInfo::drawOptionalTextMidCol(sf::RenderWindow &window, std::string &textStringContent, 
+                            sf::Vector2f &textPosition, sf::Color textCol, int opacity, int textSize) {
+    sf::Text textContent;
+    textContent.setFont(textFont);
+    textContent.setString(textStringContent);
+    textContent.setCharacterSize(textSize);
+    sf::Color textColor = textCol;
+    textColor.a = opacity;
+    textContent.setFillColor(textColor);
+    sf::FloatRect textRect = textContent.getLocalBounds();
+    textContent.setOrigin(textRect.left + textRect.width / 2.f, textRect.top + textRect.height / 2.f);
+    textContent.setPosition(textPosition);
+
+    window.draw(textContent);
+}
+
 sf::FloatRect textInfo::getTextBound(std::string &textStringContent, sf::Vector2f &textPosition, int textSize) {
     sf::Text textContent;
     textContent.setFont(textFont);

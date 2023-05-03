@@ -1,5 +1,20 @@
 [
     {
+        "command": "g++ -c ..\\Menu\\code/CLLNode.cpp -o CLLNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\CLLNode.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/CLLScreen.cpp -o CLLScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\CLLScreen.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/CLLScreenEvent.cpp -o CLLScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\CLLScreenEvent.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/DLLCodeBlock.cpp -o DLLCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\DLLCodeBlock.cpp"
@@ -158,6 +173,11 @@
         "command": "g++ -c ..\\Menu\\code/queueUI.cpp -o queueUI.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\queueUI.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/reverseArrow.cpp -o reverseArrow.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\reverseArrow.cpp"
     },
     {
         "command": "g++ -c ..\\Menu\\code/stackCodeBlock.cpp -o stackCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",

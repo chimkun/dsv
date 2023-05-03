@@ -1,5 +1,4 @@
 #include "arrow.h"
-#include <cmath>
 
 Arrow::Arrow () {
     sf::Texture arrowShaftTexture, arrowHeadTexture;

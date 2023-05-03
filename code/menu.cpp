@@ -153,6 +153,12 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                     offLogo();
                     DSType = DLL;
                 }
+                else if (MenuChooseLLScreen.CLLButtonIsClick(window)) {
+                    MenuType = initial;
+                    offAllScreen();
+                    offLogo();
+                    DSType = CLL;
+                }
                 break;
             case chooseArray:
                 if (MenuChooseArrayScreen.backButtonIsClick(window)) {

@@ -17,6 +17,8 @@ public:
                               sf::Vector2f &textPosition, int opacity, int textSize);
     void drawOptionalTextMid(sf::RenderWindow &window, std::string &textStringContent, 
                              sf::Vector2f &textPosition, int opacity = 255, int textSize = 60);
+    void drawOptionalTextMidCol(sf::RenderWindow &window, std::string &textStringContent, 
+                             sf::Vector2f &textPosition, sf::Color textCol = sf::Color::White, int opacity = 255, int textSize = 60);
     sf::FloatRect getTextBound(std::string &textStringContent, sf::Vector2f &textPosition, int textSize);
 };
 
