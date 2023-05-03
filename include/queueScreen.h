@@ -4,11 +4,13 @@
 #include <vector>
 #include "constants.h"
 #include "queueNode.h"
+#include "text.h"
 
 class queueClass {
 private:
     std::vector <int> Queue;
-    queueNode node;    
+    queueNode node;
+    textInfo nodeText;    
 public:
     queueClass();
 

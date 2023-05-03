@@ -30,7 +30,7 @@ generalScreen::generalScreen() {
     sf::Texture addButtonTextBoxTexture, deleteButtonTextBoxTexture, 
                 searchButtonTextBoxTexture, updateButtonTextBoxTexture;
     if (!addButtonTextBoxTexture.loadFromFile("src//include//texture//addButtonTextBox.png")) {
-        std::cout << "Texture file not found!\n";
+        std::cout << "\n";
         exit(-1);
     }
     deleteButtonTextBoxTexture = searchButtonTextBoxTexture = updateButtonTextBoxTexture = addButtonTextBoxTexture;

@@ -2,11 +2,11 @@
 
 queueNode::queueNode() {
     if (!nodeCircleTexture.loadFromFile("src//include//texture//circle.png")) {
-        std::cout << "texture file not found\n";
+        std::cout << "texture file not found (circle)\n";
         exit(-1);
     }
     if (!nodeOutlineTexture.loadFromFile("src//include//texture//circle-outline.png")) {
-        std::cout << "texture file not found\n";
+        std::cout << "texture file not found (circle outline)\n";
         exit(-1);
     }
 

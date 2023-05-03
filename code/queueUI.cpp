@@ -18,7 +18,7 @@ queueGeneralScreen::queueGeneralScreen() {
         std::cout << "Texture file not found! (searchButton.png)\n";
         exit(-1);
     }
-    if (!clearButtonTexture.loadFromFile("src//include//texture//clearQueueButton.png")) {
+    if (!clearButtonTexture.loadFromFile("src//include//texture//clearStackButton.png")) {
         std::cout << "Texture file not found! (updateButton.png)\n";
         exit(-1);
     }
@@ -183,7 +183,7 @@ queueCreateScreen::queueCreateScreen() {
     backToModeButton.initButton(sf::Vector2f(-50, 705), backToModeTexture, backToModeString);
 
     sf::Texture userInputBoxTexture, confirmInputButtonTexture, browseButtonTexture;
-    if (!userInputBoxTexture.loadFromFile("src//include//texture//userInputQueue.png")) {
+    if (!userInputBoxTexture.loadFromFile("src//include//texture//userInputStack.png")) {
         std::cout << "Texture file not found!\n";
         exit(-1);
     }

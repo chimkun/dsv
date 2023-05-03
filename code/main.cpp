@@ -14,6 +14,7 @@
 #include "LLscreenEvent.h"
 #include "DLLscreenEvent.h"
 #include "stackScreenEvent.h"
+#include "queueScreenEvent.h"
 #include "LLscreen.h"
 #include "menu.h"
 
@@ -47,9 +48,12 @@ int main()
     screenType ScreenType = menu;
     menuScreen myMenuScreen;
     SLLObject mySLLObject;
+    std::cerr << "SLL\n";
     DLLObject myDLLObject;
     std::cerr << "DSAJKFL\n";
     StackObject myStackObject;
+    QueueObject myQueueObject;
+    
     std::cout.flush();
     while (window.isOpen()) {
         sf::Event event;
@@ -82,11 +86,18 @@ int main()
                         myMenuScreen.backToMenu();
                     }
                     break;
+                case Queue:
+                    myQueueObject.processAllEvent(window, event);
+                    if (myQueueObject.exitQueueScreen()) {
+                        ScreenType = menu;
+                        myQueueObject.setExitToFalse();
+                        myMenuScreen.backToMenu();
+                    }
             }
         }
         window.clear();
         int dsType = myMenuScreen.getDSType();
-        std::cerr << "dsType: " << dsType << '\n';
+        // std::cerr << "dsType: " << dsType << '\n';
         switch (dsType) {
             case 1:
                 ScreenType = SLL;
@@ -96,6 +107,9 @@ int main()
                 break;
             case 7:
                 ScreenType = Stack;
+                break;
+            case 8:
+                ScreenType = Queue;
                 break;
             default:
                 ScreenType = menu;
@@ -114,6 +128,8 @@ int main()
             case Stack:
                 myStackObject.drawStackScreen(window);
                 break;
+            case Queue:
+                myQueueObject.drawQueueScreen(window);
         }
         window.display();
     }

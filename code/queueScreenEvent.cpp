@@ -52,7 +52,7 @@ void QueueObject::drawPeek(sf::RenderWindow &window) {
 }
 void QueueObject::drawPush(sf::RenderWindow &window) {
     myQueue.drawQueuePush(window, extraXDistance, newNodeOpacity);
-    if (extraXDistance == queueConstants::xDistance && newNodeOpacity == 255)
+    if (extraXDistance == 0 && newNodeOpacity == 255)
         drawType = queueShowcase;
     else {
         extraXDistance = std::max(0, extraXDistance - queueConstants::xMoveSpeed);
@@ -292,7 +292,7 @@ void QueueObject::peekQueueProcess() {
     this->colorClock.restart();
 }
 void QueueObject::pushQueueProcess(int userInput) {
-    if (this->myQueue.getQueueSize() >= 7) {
+    if (this->myQueue.getQueueSize() >= 12) {
         return;
     }
     this->myQueue.pushQueue(userInput);

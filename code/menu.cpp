@@ -181,6 +181,12 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                     offLogo();
                     DSType = Stack;
                 }
+                if (MenuChooseOtherScreen.queueButtonIsClick(window)) {
+                    MenuType = initial;
+                    offAllScreen();
+                    offLogo();
+                    DSType = Queue;
+                }
                 if (MenuChooseOtherScreen.backButtonIsClick(window)) {
                     MenuType = chooseDataStructure;
                     offAllScreen();
