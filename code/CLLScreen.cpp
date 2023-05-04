@@ -191,7 +191,7 @@ void CLL::drawList(sf::RenderWindow &window, int opacity) {
         countNode++;
         cur = cur->nxt;
     } while (cur != pHead);
-    NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);
+    NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos, sf::Color::White, opacity);
 }
 
 void CLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int gotoIndex, sf::Color fadeColor) {

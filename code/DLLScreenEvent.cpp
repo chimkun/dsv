@@ -437,7 +437,7 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
               && theDLLscreen.theGeneralScreen.addButton.confirmButtonIsClick(window)) {
             if (!theDLLscreen.theGeneralScreen.addButton.inputIsEmpty()) {
                 std::pair <int, int> userInput = theDLLscreen.theGeneralScreen.addButton.getInputDataPair();
-                if (insertIsValid(userInput.first, userInput.second)) {
+                if (insertIsValid(userInput.first, userInput.second) && userInput.first > 0) {
                     drawType = prevType = insertDLL0;
                     int inputIndex = userInput.first, inputElement = userInput.second;
                     inputIndex++;
@@ -450,51 +450,61 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theDLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.addBeginning.buttonIsClick(window)) {
             if (!theDLLscreen.theGeneralScreen.addBeginningText.inputIsEmpty()) {
-                drawType = prevType = insertDLL0;
                 int userInput = theDLLscreen.theGeneralScreen.addBeginningText.getInputDataInt();
-                int inputIndex = 0, inputElement = userInput;
-                insertNodeProcess(inputIndex, inputElement);
-                DLLCodeBlock.drawInsertCodeBlock(window);
-                DLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+                if (insertIsValid(0, userInput)) {
+                    drawType = prevType = insertDLL0;
+                    int inputIndex = 0, inputElement = userInput;
+                    insertNodeProcess(inputIndex, inputElement);
+                    DLLCodeBlock.drawInsertCodeBlock(window);
+                    DLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+                }
             }
         }
         else if (theDLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.addEnding.buttonIsClick(window)) {
             if (!theDLLscreen.theGeneralScreen.addEndingText.inputIsEmpty()) {
-                drawType = prevType = insertDLL0;
                 int userInput = theDLLscreen.theGeneralScreen.addEndingText.getInputDataInt();
-                int inputIndex = myDLL.getNumberOfNode(), inputElement = userInput;
-                insertNodeProcess(inputIndex, inputElement);
-                DLLCodeBlock.drawInsertCodeBlock(window);
-                DLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+                if (insertIsValid(myDLL.getNumberOfNode(), userInput)) {
+                    drawType = prevType = insertDLL0;
+                    int inputIndex = myDLL.getNumberOfNode(), inputElement = userInput;
+                    insertNodeProcess(inputIndex, inputElement);
+                    DLLCodeBlock.drawInsertCodeBlock(window);
+                    DLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+                }
             }
         }
         else if (theDLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.deleteButton.confirmButtonIsClick(window)) {
             if (!theDLLscreen.theGeneralScreen.deleteButton.inputIsEmpty()) {
-                drawType = prevType = deleteDLL0;
                 int userInput = theDLLscreen.theGeneralScreen.deleteButton.getInputDataInt();
-                deleteIndex = userInput + 1;
+                if (deleteIsValid(userInput)) {
+                    drawType = prevType = deleteDLL0;
+                    deleteIndex = userInput + 1;
+                    deleteNodeProcess(deleteIndex);
+                    DLLCodeBlock.drawDeleteCodeBlock(window);
+                    DLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
+                }
+            }
+        }
+        else if (theDLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
+              && theDLLscreen.theGeneralScreen.delBeginning.buttonIsClick(window)) {
+            if (deleteIsValid(0)) {
+                drawType = prevType = deleteDLL0;
+                deleteIndex = 1;
                 deleteNodeProcess(deleteIndex);
                 DLLCodeBlock.drawDeleteCodeBlock(window);
                 DLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
             }
         }
         else if (theDLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
-              && theDLLscreen.theGeneralScreen.delBeginning.buttonIsClick(window)) {
-            drawType = prevType = deleteDLL0;
-            deleteIndex = 1;
-            deleteNodeProcess(deleteIndex);
-            DLLCodeBlock.drawDeleteCodeBlock(window);
-            DLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
-        }
-        else if (theDLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.delEnding.buttonIsClick(window)) {
-            drawType = prevType = deleteDLL0;
-            deleteIndex = myDLL.getNumberOfNode();
-            deleteNodeProcess(deleteIndex);
-            DLLCodeBlock.drawDeleteCodeBlock(window);
-            DLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
+            if (deleteIsValid((int) myDLL.getNumberOfNode() - 1)) {
+                drawType = prevType = deleteDLL0;
+                deleteIndex = myDLL.getNumberOfNode();
+                deleteNodeProcess(deleteIndex);
+                DLLCodeBlock.drawDeleteCodeBlock(window);
+                DLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
+            }
         }
         else if (theDLLscreen.theGeneralScreen.searchButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.searchButton.confirmButtonIsClick(window)) {
@@ -510,12 +520,15 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theDLLscreen.theGeneralScreen.updateButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.updateButton.confirmButtonIsClick(window)) {
             if (!theDLLscreen.theGeneralScreen.updateButton.inputIsEmpty()) {
-                drawType = prevType = updateDLL0;
                 std::pair <int, int> userInput = theDLLscreen.theGeneralScreen.updateButton.getInputDataPair();
-                updateIndex = userInput.first, updateData = userInput.second;
-                updateNodeProcess(updateIndex, updateData);
-                DLLCodeBlock.drawUpdateCodeBlock(window);
-                DLLCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
+                if (updateIsValid(userInput.first, userInput.second)) {
+                    drawType = prevType = updateDLL0;
+                    updateIndex = userInput.first, updateData = userInput.second;
+                    updateIndex++;
+                    updateNodeProcess(updateIndex, updateData);
+                    DLLCodeBlock.drawUpdateCodeBlock(window);
+                    DLLCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
+                }
             }
         }
     }

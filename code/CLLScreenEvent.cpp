@@ -34,7 +34,6 @@ void CLLObject::createDefinedList(std::vector <int> &userInput) {
     createList(numberOfNode, userInput);
 }
 void CLLObject::drawList(sf::RenderWindow &window) {
-    std::cerr << "draw list\n";
     opacity = std::min(nodeConstants::fadeSpeed + opacity, 255);
     myCLL.drawList(window, opacity);
 }
@@ -149,21 +148,28 @@ void CLLObject::drawDeleteIndicator(sf::RenderWindow &window) {
     remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds());
     myCLL.drawDeleteNodeIndicator(window, deleteIndex, gotoIndex, 
                                   getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));
-    // CLLCodeBlock.drawDeleteCodeBlock(window);
+    if (deleteIndex == 1) {
+        CLLCodeBlock.drawDeleteBeginCodeBlock(window);
+        CLLCodeBlock.drawDeleteBeginCodeBlockSingleLine(window, 2);
+    }
+    else
+        CLLCodeBlock.drawDeleteCodeBlock(window);
     if (!markFirst) {
         if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
             gotoIndex++;
             flashTimer.restart();
-            // CLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 2);
+            if (deleteIndex > 1)    
+                CLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 2);
         }
         else {
-            // CLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 1);
+            if (deleteIndex > 1)
+                CLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 1);
         }
     }
     else {
         markFirst = 0;
         flashTimer.restart();
-        // CLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
+        CLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
     }
     if (gotoIndex > deleteIndex) {
         drawType = deleteCLL1;
@@ -176,14 +182,20 @@ void CLLObject::drawDeleteNode(sf::RenderWindow &window) {
         sf::sleep(sf::milliseconds(500));
     }
     myCLL.drawDeleteNode(window, deleteIndex, nodeOpacity, deleteNodeOpacity);
-    // CLLCodeBlock.drawDeleteCodeBlock(window);
-    // CLLCodeBlock.drawDeleteCodeBlockMultiLine(window, 3, 4);
+    if (deleteIndex == 1) {
+        CLLCodeBlock.drawDeleteBeginCodeBlock(window);
+        CLLCodeBlock.drawDeleteBeginCodeBlockMultiLine(window, 3, 4);
+    }
+    else {
+        CLLCodeBlock.drawDeleteCodeBlock(window);
+        CLLCodeBlock.drawDeleteCodeBlockMultiLine(window, 3, 4);
+    }
     if (deleteNodeOpacity - nodeConstants::fadeSpeed > 0) {
         deleteNodeOpacity = std::max(deleteNodeOpacity - nodeConstants::fadeSpeed, 0);
     }
     else {
         myCLL.deleteAtMiddle(deleteIndex);
-        std::cerr << "num node: " << myCLL.getNumberOfNode() << '\n';
+        // std::cerr << "num node: " << myCLL.getNumberOfNode() << '\n';
         nodeOpacity = 255;
         if (myCLL.getNumberOfNode() == 0)
             drawType = showcaseCLL;
@@ -197,8 +209,14 @@ void CLLObject::drawDeleteNodeMove(sf::RenderWindow &window) {
     myCLL.drawDeleteNodeMove(window, deleteIndex, nodeOpacity, 
                              nodePositionDiffX, newArrowOpacity,
                              getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer));
-    // CLLCodeBlock.drawDeleteCodeBlock(window);
-    // CLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 5);
+    if (deleteIndex == 1) {
+        CLLCodeBlock.drawDeleteBeginCodeBlock(window);
+        CLLCodeBlock.drawDeleteBeginCodeBlockMultiLine(window, 3, 4);
+    }
+    else {
+        CLLCodeBlock.drawDeleteCodeBlock(window);
+        CLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 5);
+    }
     if (nodePositionDiffX > 0 || newArrowOpacity < 255) {
         if (deleteIndex != 1) {
             newArrowOpacity = std::min(255, newArrowOpacity + nodeConstants::fadeSpeed);
@@ -226,22 +244,22 @@ void CLLObject::drawSearchIndicator(sf::RenderWindow &window) {
     myCLL.drawSearchIndicator(window, searchIndex, gotoIndex, 
                               getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));   
     remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds()); 
-    // CLLCodeBlock.drawSearchCodeBlock(window);
+    CLLCodeBlock.drawSearchCodeBlock(window);
     if (!markFirst) {
         if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
             gotoIndex++;
             flashTimer.restart();
-            // if (gotoIndex <= tempSearchIndex)
-                // CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 4);
+            if (gotoIndex <= tempSearchIndex)
+                CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 4);
         }
         else {
-            // CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 1);
+            CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 1);
         }
     }
     else {
         markFirst = 0;
         flashTimer.restart();
-        // CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+        CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
     }
     if (gotoIndex > tempSearchIndex) {
         drawType = searchCLL1;
@@ -255,12 +273,12 @@ void CLLObject::drawSearchHighlight(sf::RenderWindow &window) {
                               getFadeColor(nodeConstants::baseColor, nodeConstants::searchFoundColor, flashTimer),
                               infoTextOpacity);
     infoTextOpacity = std::min(255, infoTextOpacity + nodeConstants::fadeSpeed);
-    // CLLCodeBlock.drawSearchCodeBlock(window);
+    CLLCodeBlock.drawSearchCodeBlock(window);
     if (searchIndex == -1) {
-        // CLLCodeBlock.drawSearchCodeBlockSingleLine(window, 5);
+        CLLCodeBlock.drawSearchCodeBlockSingleLine(window, 5);
     }
     else {
-        // CLLCodeBlock.drawSearchCodeBlockMultiLine(window, 2, 3);
+        CLLCodeBlock.drawSearchCodeBlockMultiLine(window, 2, 3);
     }
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = searchCLL2;
@@ -273,12 +291,12 @@ void CLLObject::drawSearchRevert(sf::RenderWindow &window) {
                            getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer),
                            getFadeColor(nodeConstants::searchFoundColor, nodeConstants::baseColor, flashTimer),
                            infoTextOpacity);
-    // CLLCodeBlock.drawSearchCodeBlock(window);
+    CLLCodeBlock.drawSearchCodeBlock(window);
     if (searchIndex == -1) {
-        // CLLCodeBlock.drawSearchCodeBlockSingleLine(window, 5);
+        CLLCodeBlock.drawSearchCodeBlockSingleLine(window, 5);
     }
     else {
-        // CLLCodeBlock.drawSearchCodeBlockMultiLine(window, 2, 3);
+        CLLCodeBlock.drawSearchCodeBlockMultiLine(window, 2, 3);
     }
     infoTextOpacity = std::max(0, infoTextOpacity - nodeConstants::fadeSpeed);
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
@@ -294,22 +312,22 @@ void CLLObject::drawUpdateIndicator(sf::RenderWindow &window) {
     myCLL.drawUpdateIndicator(window, updateIndex, gotoIndex, 
                               getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));
     remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds()); 
-    // CLLCodeBlock.drawUpdateCodeBlock(window);
+    CLLCodeBlock.drawUpdateCodeBlock(window);
     if (!markFirst) {
         if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
             gotoIndex++;
             flashTimer.restart();
-            // if (gotoIndex <= updateIndex)
-                // CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 5);
+            if (gotoIndex <= updateIndex)
+                CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 5);
         }
         else {
-            // CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 1);
+            CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 1);
         }
     }
     else {
         markFirst = 0;
         flashTimer.restart();
-        // CLLCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
+        CLLCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
     }
     if (gotoIndex > updateIndex) {
         drawType = updateCLL1;
@@ -323,8 +341,8 @@ void CLLObject::drawUpdateChangeNum(sf::RenderWindow &window) {
     else 
         fadeColor = nodeConstants::searchFoundColor;
     myCLL.drawUpdateChangeNum(window, updateIndex, updateData, numberOpacity, fadeColor);
-    // CLLCodeBlock.drawUpdateCodeBlock(window);
-    // CLLCodeBlock.drawUpdateCodeBlockMultiLine(window, 2, 4);
+    CLLCodeBlock.drawUpdateCodeBlock(window);
+    CLLCodeBlock.drawUpdateCodeBlockMultiLine(window, 2, 4);
     if (opacityMultiplier == -1) {
         numberOpacity = std::max(0, numberOpacity - nodeConstants::fadeSpeed);
         if (numberOpacity == 0) {
@@ -349,8 +367,8 @@ void CLLObject::drawUpdateRevert(sf::RenderWindow &window) {
     fadeOutlineColor = getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer);
     fadeNumberColor = getFadeColor(nodeConstants::searchFoundColor, nodeConstants::baseColor, flashTimer);
     myCLL.drawUpdateRevert(window, updateIndex, fadeOutlineColor, fadeNumberColor);
-    // CLLCodeBlock.drawUpdateCodeBlock(window);
-    // CLLCodeBlock.drawUpdateCodeBlockMultiLine(window, 2, 4);
+    CLLCodeBlock.drawUpdateCodeBlock(window);
+    CLLCodeBlock.drawUpdateCodeBlockMultiLine(window, 2, 4);
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = showcaseCLL;
         flashTimer.restart();
@@ -469,7 +487,7 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
               && theCLLscreen.theGeneralScreen.addButton.confirmButtonIsClick(window)) {
             if (!theCLLscreen.theGeneralScreen.addButton.inputIsEmpty()) {
                 std::pair <int, int> userInput = theCLLscreen.theGeneralScreen.addButton.getInputDataPair();
-                if (insertIsValid(userInput.first, userInput.second)) {
+                if (insertIsValid(userInput.first, userInput.second) && userInput.first > 0) {
                     drawType = insertCLL0;
                     int inputIndex = userInput.first, inputElement = userInput.second;
                     inputIndex++;

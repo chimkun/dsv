@@ -74,11 +74,11 @@ void chooseArrayScreen::drawChooseArrayScreen(sf::RenderWindow &window) {
     }
     staticButton.buttonSprite.setPosition(menuButtonConstants::buttonPos3Button[0].x + moveDistance + staticHoverDistance, 
                                          menuButtonConstants::buttonPos3Button[0].y);
-    staticButton.drawButtonOptional(window, 0.41, 0.2, 48, buttonOpacity);
+    staticButton.drawButtonOptional(window, 0.41, 0.15, 62, buttonOpacity);
 
     dynamicButton.buttonSprite.setPosition(menuButtonConstants::buttonPos3Button[1].x + moveDistance + dynamicHoverDistance, 
                                          menuButtonConstants::buttonPos3Button[1].y);
-    dynamicButton.drawButtonOptional(window, 0.41, 0.15, 62, buttonOpacity);
+    dynamicButton.drawButtonOptional(window, 0.41, 0.20, 50, buttonOpacity);
 
     backButton.buttonSprite.setPosition(menuButtonConstants::buttonPos3Button[2].x + moveDistance + backHoverDistance, 
                                         menuButtonConstants::buttonPos3Button[2].y);

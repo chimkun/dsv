@@ -32,9 +32,9 @@ CLLscreenCodeBlock::CLLscreenCodeBlock() {
                                     "else if (head != null)\n"
                                     "    Node temp = new Node(data)\n"
                                     "    temp->nxt = head, head = tail->nxt = temp";
-    std::string deleteBeginString = "if (pHead = null)\n"
+    std::string deleteBeginString = "if (head = null)\n"
                                    "    do nothing\n"
-                                   "else\n"
+                                   "else if (head != null)\n"
                                    "    temp = head, head = head->nxt, tail->nxt = head\n"
                                    "    delete temp";
     insertCodeBlock = codeBlock(insertCodeString);
