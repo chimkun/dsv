@@ -95,3 +95,9 @@ void CLLNodeTexture::drawArrowBetweenNode(sf::RenderWindow& window, sf::Vector2f
     nodePositionRight.y += 1;
     arrow.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, arrowColor, opacity);
 }
+
+
+void CLLNodeTexture::drawReverseArrow(sf::RenderWindow &window, sf::Vector2f firstNode, sf::Vector2f lastNode, 
+                                      sf::Color arrowColor, int opacity) {
+    rArrow.drawReverseArrow(window, firstNode, lastNode, arrowColor, opacity);
+}

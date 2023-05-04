@@ -7,12 +7,15 @@ CLLObject::CLLObject() {
 }
 
 void CLLObject::createList(int numberOfNode, std::vector <int> &a) {
+    // std::cerr << "del list\n";
     myCLL.deleteList();
+    // std::cerr << "build: "; for(auto u:a) std::cerr << u << " "; std::cerr << '\n';
     myCLL.build(a);
+    // std::cerr << "done: "; myCLL.printList();
     theCLLscreen.theGeneralScreen.initData(numberOfNode);
 }
 void CLLObject::createRandomList() {
-    int numberOfNode = rand() % 5 + 1;
+    int numberOfNode = rand() % 4 + 2;  
     std::vector <int> a;
     std::string sampleInput;
     for (int i = 0; i < numberOfNode; i++) {
@@ -31,6 +34,7 @@ void CLLObject::createDefinedList(std::vector <int> &userInput) {
     createList(numberOfNode, userInput);
 }
 void CLLObject::drawList(sf::RenderWindow &window) {
+    std::cerr << "draw list\n";
     opacity = std::min(nodeConstants::fadeSpeed + opacity, 255);
     myCLL.drawList(window, opacity);
 }
@@ -44,7 +48,10 @@ void CLLObject::drawInsertIndicator(sf::RenderWindow &window) {
         myCLL.drawInsertNodeIndicator(window, insertIndex, gotoIndex, 
                                       nodeConstants::baseColor);
         drawType = insertCLL2;
-        myCLL.insertAtMiddle(insertData, insertIndex);
+        myCLL.insertAtEnding(insertData);
+        // std::cerr << "list: "; myCLL.printList();
+        // myCLL.insertAtMiddle(insertIndex, insertData);
+        // std::cerr << "index: " << insertIndex << '\n';
         insertIndex++;
         return;
     }
@@ -53,26 +60,32 @@ void CLLObject::drawInsertIndicator(sf::RenderWindow &window) {
     remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds());
     myCLL.drawInsertNodeIndicator(window, insertIndex, gotoIndex, 
                                   getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));
-    // CLLCodeBlock.drawInsertCodeBlock(window);
+    // std::cerr << "insert index: " << insertIndex << '\n';
+    if (insertIndex == 1)
+        CLLCodeBlock.drawInsertBeginCodeBlock(window);
+    else
+        CLLCodeBlock.drawInsertCodeBlock(window);
     if (!markFirst) {
         if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
             gotoIndex++;
             flashTimer.restart();
-            // CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 2);
+            if (insertIndex > 1)
+                CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 2);
         }
         else {
-            // CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 1);
+            if (insertIndex > 1)    
+                CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 1);
         }
     }
     else {
         markFirst = 0;
         flashTimer.restart();
-        // CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+        if (insertIndex > 1)
+            CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
     }
-    if (gotoIndex > insertIndex) {
+    if (gotoIndex == insertIndex) {
         drawType = insertCLL1;
         myCLL.insertAtMiddle(insertIndex, insertData);
-        insertIndex++;
         markFirst = 1;
     }
 }
@@ -83,8 +96,17 @@ void CLLObject::drawListWhenInsert(sf::RenderWindow &window) {
     }
     myCLL.drawListWhenInsert(window, insertIndex, 
                              opacity, nodePositionXAfterInsert);
-    // CLLCodeBlock.drawInsertCodeBlock(window);
-    // CLLCodeBlock.drawInsertCodeBlockMultiLine(window, 3, 4);
+    if (insertIndex > 1) {
+        CLLCodeBlock.drawInsertCodeBlock(window);
+        CLLCodeBlock.drawInsertCodeBlockMultiLine(window, 3, 4);
+    }
+    else {
+        CLLCodeBlock.drawInsertBeginCodeBlock(window);
+        if (myCLL.getNumberOfNode() == 1)
+            CLLCodeBlock.drawInsertBeginCodeBlockMultiLine(window, 1, 2);
+        else
+            CLLCodeBlock.drawInsertBeginCodeBlockMultiLine(window, 4, 5);
+    }
     if (nodePositionXAfterInsert >= nodeConstants::nodeDistance) {
         drawType = insertCLL2;
         flashTimer.restart();
@@ -94,8 +116,17 @@ void CLLObject::drawListWhenInsert(sf::RenderWindow &window) {
     }
 }
 void CLLObject::drawInsertNode(sf::RenderWindow &window) {
-    // CLLCodeBlock.drawInsertCodeBlock(window);
-    // CLLCodeBlock.drawInsertCodeBlockMultiLine(window, 5, 6);
+    if (insertIndex > 1) {
+        CLLCodeBlock.drawInsertCodeBlock(window);
+        CLLCodeBlock.drawInsertCodeBlockMultiLine(window, 5, 6);
+    }
+    else {
+        CLLCodeBlock.drawInsertBeginCodeBlock(window);
+        if (myCLL.getNumberOfNode() == 1)
+            CLLCodeBlock.drawInsertBeginCodeBlockMultiLine(window, 1, 2);
+        else
+            CLLCodeBlock.drawInsertBeginCodeBlockMultiLine(window, 4, 5);
+    }
     if (insertIndex == myCLL.getNumberOfNode())
         myCLL.drawInsertNode(window, insertIndex, opacity,
                             nodeConstants::baseColor,
@@ -152,21 +183,34 @@ void CLLObject::drawDeleteNode(sf::RenderWindow &window) {
     }
     else {
         myCLL.deleteAtMiddle(deleteIndex);
+        std::cerr << "num node: " << myCLL.getNumberOfNode() << '\n';
         nodeOpacity = 255;
-        drawType = deleteCLL2;
+        if (myCLL.getNumberOfNode() == 0)
+            drawType = showcaseCLL;
+        else
+            drawType = deleteCLL2;
         flashTimer.restart();
     }
 }
 void CLLObject::drawDeleteNodeMove(sf::RenderWindow &window) {
+    // std::cerr << "node move\n";
     myCLL.drawDeleteNodeMove(window, deleteIndex, nodeOpacity, 
                              nodePositionDiffX, newArrowOpacity,
                              getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer));
     // CLLCodeBlock.drawDeleteCodeBlock(window);
     // CLLCodeBlock.drawDeleteCodeBlockSingleLine(window, 5);
     if (nodePositionDiffX > 0 || newArrowOpacity < 255) {
-        newArrowOpacity = std::min(255, newArrowOpacity + nodeConstants::fadeSpeed);
-        if (newArrowOpacity == 255)
+        if (deleteIndex != 1) {
+            newArrowOpacity = std::min(255, newArrowOpacity + nodeConstants::fadeSpeed);
+            if (newArrowOpacity == 255)
+                nodePositionDiffX = std::max(nodePositionDiffX - nodeConstants::insertMoveSpeed, 0);
+        }
+        else {
             nodePositionDiffX = std::max(nodePositionDiffX - nodeConstants::insertMoveSpeed, 0);
+            if (nodePositionDiffX == 0) {
+                newArrowOpacity = std::min(255, newArrowOpacity + nodeConstants::fadeSpeed);
+            }
+        }
     }
     else 
         drawType = showcaseCLL;
@@ -314,7 +358,7 @@ void CLLObject::drawUpdateRevert(sf::RenderWindow &window) {
 }
 
 void CLLObject::processType(sf::RenderWindow &window) {
-    if (drawType != chooseMakeCLL) {
+    if (theCLLscreen.isGeneralScreen()) {
         theCLLscreen.drawGeneralScreen(window);
     }
     else {
@@ -325,7 +369,6 @@ void CLLObject::processType(sf::RenderWindow &window) {
             processDrawList();
             break;
         case showcaseCLL:
-            std::cerr << "draw list\n";
             drawList(window);
             break;
         case chooseMakeCLL:
@@ -373,10 +416,11 @@ void CLLObject::processType(sf::RenderWindow &window) {
 
 void CLLObject::processMouseEvent(sf::RenderWindow &window) {
     // std::cerr << "event\n";
-    if (drawType == showcaseCLL) {
+    if (theCLLscreen.isGeneralScreen()) {
         if (theCLLscreen.theGeneralScreen.createButtonIsClick(window)) {
             theCLLscreen.theGeneralScreen.turnOffAllButton();
             drawType = chooseMakeCLL;
+            theCLLscreen.setCreate();
         }
         else if (theCLLscreen.theGeneralScreen.addButtonIsClick(window)) {
             theCLLscreen.theGeneralScreen.turnOffAllButton();
@@ -424,34 +468,44 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theCLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
               && theCLLscreen.theGeneralScreen.addButton.confirmButtonIsClick(window)) {
             if (!theCLLscreen.theGeneralScreen.addButton.inputIsEmpty()) {
-                drawType = insertCLL0;
                 std::pair <int, int> userInput = theCLLscreen.theGeneralScreen.addButton.getInputDataPair();
-                int inputIndex = userInput.first, inputElement = userInput.second;
-                insertNodeProcess(inputIndex, inputElement);
-                if (!inputIndex == myCLL.getNumberOfNode()) {
-                    // CLLCodeBlock.drawInsertCodeBlock(window);
-                    // CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+                if (insertIsValid(userInput.first, userInput.second)) {
+                    drawType = insertCLL0;
+                    int inputIndex = userInput.first, inputElement = userInput.second;
+                    inputIndex++;
+                    insertNodeProcess(inputIndex, inputElement);
+                    CLLCodeBlock.drawInsertCodeBlock(window);
+                    CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
                 }
             }
         }
         else if (theCLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
               && theCLLscreen.theGeneralScreen.addBeginning.buttonIsClick(window)) {
             if (!theCLLscreen.theGeneralScreen.addBeginningText.inputIsEmpty()) {
-                drawType = insertCLL0;
                 int userInput = theCLLscreen.theGeneralScreen.addBeginningText.getInputDataInt();
-                int inputIndex = 0, inputElement = userInput;
-                insertNodeProcess(inputIndex, inputElement);
-                // CLLCodeBlock.drawInsertCodeBlock(window);
-                // CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+                if (insertIsValid(0, userInput)) {
+                    drawType = insertCLL0;
+                    int inputIndex = 1, inputElement = userInput;
+                    insertNodeProcess(inputIndex, inputElement);
+                    CLLCodeBlock.drawInsertBeginCodeBlock(window);
+                    if (myCLL.getNumberOfNode() == 0)
+                        CLLCodeBlock.drawInsertBeginCodeBlockSingleLine(window, 0);
+                    else 
+                        CLLCodeBlock.drawInsertBeginCodeBlockSingleLine(window, 3);
+                }
             }
         }
         else if (theCLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
               && theCLLscreen.theGeneralScreen.addEnding.buttonIsClick(window)) {
             if (!theCLLscreen.theGeneralScreen.addEndingText.inputIsEmpty()) {
-                drawType = insertCLL0;
-                int userInput = theCLLscreen.theGeneralScreen.addBeginningText.getInputDataInt();
-                int inputIndex = myCLL.getNumberOfNode(), inputElement = userInput;
-                insertNodeProcess(inputIndex, inputElement);
+                int userInput = theCLLscreen.theGeneralScreen.addEndingText.getInputDataInt();
+                if (insertIsValid(myCLL.getNumberOfNode(), userInput)) {
+                    drawType = insertCLL0;
+                    int inputIndex = myCLL.getNumberOfNode(), inputElement = userInput;
+                    insertNodeProcess(inputIndex, inputElement);
+                    insertNodePosition.x += nodeConstants::nodeDistance;
+                }
+                // std::cerr << "ending index: " << insertIndex << "  " << insertNodePosition.x << "  " << myCLL.getNumberOfNode() << '\n';
                 // CLLCodeBlock.drawInsertCodeBlock(window);
                 // CLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
             }
@@ -459,23 +513,29 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theCLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theCLLscreen.theGeneralScreen.deleteButton.confirmButtonIsClick(window)) {
             if (!theCLLscreen.theGeneralScreen.deleteButton.inputIsEmpty()) {
-                drawType = deleteCLL0;
                 int userInput = theCLLscreen.theGeneralScreen.deleteButton.getInputDataInt();
-                deleteIndex = userInput + 1;
-                deleteNodeProcess(deleteIndex);
+                if (deleteIsValid(userInput)) {
+                    drawType = deleteCLL0;
+                    deleteIndex = userInput + 1;
+                    deleteNodeProcess(deleteIndex);
+                }
             }
         }
         else if (theCLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theCLLscreen.theGeneralScreen.delBeginning.buttonIsClick(window)) {
-            drawType = deleteCLL0;
-            deleteIndex = 1;
-            deleteNodeProcess(deleteIndex);
+                if (deleteIsValid(0)) {
+                    drawType = deleteCLL0;
+                    deleteIndex = 1;
+                    deleteNodeProcess(deleteIndex);
+                }
         }
         else if (theCLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theCLLscreen.theGeneralScreen.delEnding.buttonIsClick(window)) {
-            drawType = deleteCLL0;
-            deleteIndex = myCLL.getNumberOfNode();
-            deleteNodeProcess(deleteIndex);
+            if (deleteIsValid((int) myCLL.getNumberOfNode() - 1)) {
+                drawType = deleteCLL0;
+                deleteIndex = myCLL.getNumberOfNode();
+                deleteNodeProcess(deleteIndex);
+            }
         }
         else if (theCLLscreen.theGeneralScreen.searchButton.buttonIsChoose() 
               && theCLLscreen.theGeneralScreen.searchButton.confirmButtonIsClick(window)) {
@@ -489,15 +549,17 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theCLLscreen.theGeneralScreen.updateButton.buttonIsChoose() 
               && theCLLscreen.theGeneralScreen.updateButton.confirmButtonIsClick(window)) {
             if (!theCLLscreen.theGeneralScreen.updateButton.inputIsEmpty()) {
-                drawType = updateCLL0;
                 std::pair <int, int> userInput = theCLLscreen.theGeneralScreen.updateButton.getInputDataPair();
-                updateIndex = userInput.first, updateData = userInput.second;
-                updateIndex++;
-                updateNodeProcess(updateIndex, updateData);
+                if (updateIsValid(userInput.first, userInput.second)) {
+                    drawType = updateCLL0;
+                    updateIndex = userInput.first, updateData = userInput.second;
+                    updateIndex++;
+                    updateNodeProcess(updateIndex, updateData);
+                }
             }
         }
     }
-    else if (drawType == chooseMakeCLL) {
+    else {
         if (theCLLscreen.theCreateScreen.userInputButtonIsClick(window)) {
             theCLLscreen.theCreateScreen.flipInputButtonState();
         }
@@ -507,6 +569,7 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
         }
         else if (theCLLscreen.theCreateScreen.backButtonIsClick(window)) {
             drawType = showcaseCLL;
+            theCLLscreen.setGeneral();
         }
         else if (theCLLscreen.theCreateScreen.userInputButtonGetState()) {
             if (theCLLscreen.theCreateScreen.textBoxIsClick(window)) {
@@ -580,6 +643,12 @@ void CLLObject::processKeyboardOtherActionEvent(sf::RenderWindow &window, sf::Ev
     else if (theCLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theCLLscreen.theGeneralScreen.addButton.textBoxIsChoose()) {
         theCLLscreen.theGeneralScreen.addButton.processKeyboardEvent(event);
     }
+    else if (theCLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theCLLscreen.theGeneralScreen.addBeginningTextIsChoose()) {
+        theCLLscreen.theGeneralScreen.addBeginningText.processKeyboardEvent(event);
+    }
+    else if (theCLLscreen.theGeneralScreen.addButton.buttonIsChoose() && theCLLscreen.theGeneralScreen.addEndingTextIsChoose()) {
+        theCLLscreen.theGeneralScreen.addEndingText.processKeyboardEvent(event);
+    }
     else if (theCLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() && theCLLscreen.theGeneralScreen.deleteButton.textBoxIsChoose()) {
         theCLLscreen.theGeneralScreen.deleteButton.processKeyboardEvent(event);
     }
@@ -600,10 +669,26 @@ void CLLObject::processMouseHoverEvent(sf::RenderWindow &window) {
 }
 
 
+bool CLLObject::insertIsValid(int addIndex, int addData) {
+    if (0 <= addIndex && addIndex <= myCLL.getNumberOfNode() && 0 <= addData && addData <= 99 && myCLL.getNumberOfNode() < 10)
+        return true;
+    return false;
+}
+bool CLLObject::deleteIsValid(int delIndex) {
+    if (0 <= delIndex && delIndex < myCLL.getNumberOfNode() && myCLL.getNumberOfNode() > 0)
+        return true;
+    return false;
+}
+bool CLLObject::updateIsValid(int updIndex, int updData){
+    if (0 <= updIndex && updIndex < myCLL.getNumberOfNode() && 0 <= updData && updData <= 99)
+        return true;
+    return false;
+}
+
 void CLLObject::insertNodeProcess(int insertIndex, int insertData) {
     this->insertIndex = insertIndex;
     this->insertData = insertData;
-    this->insertNodePosition.x = nodeConstants::firstNodePositionX * (insertIndex + 1);
+    this->insertNodePosition.x = nodeConstants::firstNodePositionX * (insertIndex);
     this->insertNodePosition.y = nodeConstants::firstNodePositionY + nodeConstants::initialInsertNodeY;
     this->gotoIndex = 1;
     this->nodePositionXAfterInsert = 0;
@@ -676,7 +761,6 @@ void CLLObject::drawCLLScreen(sf::RenderWindow &window) {
     drawBackground(window);
     processMouseHoverEvent(window);
     processType(window);
-    std::cerr << "done\n";
 }
 
 void CLLObject::inputValue(int &value) {

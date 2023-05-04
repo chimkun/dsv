@@ -1,16 +1,19 @@
-#ifndef DLLCODEBLOCK_H
-#define DLLCODEBLOCK_H
+#ifndef CLLCODEBLOCK_H
+#define CLLCODEBLOCK_H
 
 #include "codeblock.h"
 
-class DLLscreenCodeBlock {
+class CLLscreenCodeBlock {
 private:
     codeBlock insertCodeBlock;
     codeBlock deleteCodeBlock;
     codeBlock searchCodeBlock;
     codeBlock updateCodeBlock;
+
+    codeBlock insertBeginBlock;
+    codeBlock deleteBeginBlock;
 public:
-    DLLscreenCodeBlock();
+    CLLscreenCodeBlock();
     void drawInsertCodeBlock(sf::RenderWindow &window);
     void drawInsertCodeBlockSingleLine(sf::RenderWindow &window, int lineNumber);
     void drawInsertCodeBlockMultiLine(sf::RenderWindow &window, int lineNumberLow, int lineNumberHigh);
@@ -26,6 +29,14 @@ public:
     void drawUpdateCodeBlock(sf::RenderWindow &window);
     void drawUpdateCodeBlockSingleLine(sf::RenderWindow &window, int lineNumber);
     void drawUpdateCodeBlockMultiLine(sf::RenderWindow &window, int lineNumberLow, int lineNumberHigh);
+
+    void drawInsertBeginCodeBlock(sf::RenderWindow &window);
+    void drawInsertBeginCodeBlockSingleLine(sf::RenderWindow &window, int lineNumber);
+    void drawInsertBeginCodeBlockMultiLine(sf::RenderWindow &window, int lineNumberLow, int lineNumberHigh);
+    
+    void drawDeleteBeginCodeBlock(sf::RenderWindow &window);
+    void drawDeleteBeginCodeBlockSingleLine(sf::RenderWindow &window, int lineNumber);
+    void drawDeleteBeginCodeBlockMultiLine(sf::RenderWindow &window, int lineNumberLow, int lineNumberHigh);
 };
 
 #endif

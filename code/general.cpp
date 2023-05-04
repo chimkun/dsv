@@ -106,6 +106,9 @@ bool generalScreen::backToMenuIsClick(sf::RenderWindow &window) {
 }
 
 void generalScreen::initData(int numberOfNode) {
+    if (numberOfNode == 1) {
+        return;
+    }
     int addIndex = rand() % (numberOfNode - 1) + 1, addData = rand() % 100;
     int deleteIndex = rand() % (numberOfNode - 1) + 1;
     int searchData = rand() % 100;
@@ -151,6 +154,19 @@ void generalScreen::turnOffAddTextBox() {
     addBeginningText.offTextBoxState();
     addEndingText.offTextBoxState();
 }
+void generalScreen::addBeginningTextIsClick(sf::RenderWindow &window) {
+    addBeginningText.textBoxButtonIsClick(window);
+}
+void generalScreen::addEndingTextIsClick(sf::RenderWindow &window) {
+    addEndingText.textBoxButtonIsClick(window);
+}
+bool generalScreen::addBeginningTextIsChoose() {
+    return addBeginningText.textBoxIsClick();
+}
+bool generalScreen::addEndingTextIsChoose() {
+    return addEndingText.textBoxIsClick();
+}
+
 
 void generalScreen::moveButtonWhenHover(sf::RenderWindow &window) {
     this->createButton.moveButtonWhenHover(window);
@@ -376,6 +392,13 @@ void allScreen::drawGeneralScreen(sf::RenderWindow &window) {
 void allScreen::drawCreateScreen(sf::RenderWindow &window) {
     theCreateScreen.drawChooseCreateScreen(window);
 }
+void allScreen::setGeneral() {
+    currentScreenType = general;
+}
+void allScreen::setCreate() {
+    currentScreenType = create;
+}
+
 
 std::string normalize(std::string &inputString) {
     int startIndex = 0;

@@ -5,7 +5,7 @@
 #include <vector>
 #include "general.h"
 #include "CLLscreen.h"
-// #include "CLLscreenCodeBlock.h"
+#include "CLLCodeBlock.h"
 #include "browse.h"
 #include "fadecolor.h"
 
@@ -48,7 +48,7 @@ private:
     // BG
         background screenBackground;
     // Code Block
-        // CLLscreenCodeBlock CLLCodeBlock;
+        CLLscreenCodeBlock CLLCodeBlock;
     // exit
         bool backToMenu;
 public:
@@ -83,12 +83,15 @@ public:
     void processKeyboardOtherActionEvent(sf::RenderWindow &window, sf::Event &event);
     void processMouseHoverEvent(sf::RenderWindow &window);
 
-
     void insertNodeProcess(int insertIndex, int insertData);
     void deleteNodeProcess(int deleteIndex);
     void searchNodeProcess(int searchData);
     void updateNodeProcess(int updateIndex, int updateData);
     void deleteCLL();
+
+    bool insertIsValid(int addIndex, int addData);
+    bool deleteIsValid(int delIndex);
+    bool updateIsValid(int updIndex, int updData);
 
     CLLdrawType getType();
     void inputValue(int &value);

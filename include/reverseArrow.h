@@ -7,10 +7,12 @@
 
 class reverseArrow {
 private:
-    sf::Texture arrowShaft, arrowLeft, arrowRight;
+    sf::RectangleShape AB, BC, CD, DE;
+    sf::Texture arrowHead;
 public:
     reverseArrow();
-    void drawReverseArrow();
+    void drawReverseArrow(sf::RenderWindow &window, sf::Vector2f firstNode, sf::Vector2f lastNode, 
+                          sf::Color arrowColor = sf::Color::White, int opacity = 255);
 };
 
 #endif

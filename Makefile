@@ -13,7 +13,7 @@ all: compile link
 compile: $(OBJS)
 
 %.o: $(CODE_DIR)/%.cpp
-	g++ -c $< -o $@ -I $(INCLUDE) -I $(INCLUDE_DIR)
+	g++ -c $< -o $@ -I $(INCLUDE) -I $(INCLUDE_DIR) -g
 
 link:
 	g++ $(OBJS) -o main.exe -L $(LIBRARY) $(SFMLFLAGS) $(SFML_INCLUDE) -mwindows

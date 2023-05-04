@@ -436,12 +436,15 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theDLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
               && theDLLscreen.theGeneralScreen.addButton.confirmButtonIsClick(window)) {
             if (!theDLLscreen.theGeneralScreen.addButton.inputIsEmpty()) {
-                drawType = prevType = insertDLL0;
                 std::pair <int, int> userInput = theDLLscreen.theGeneralScreen.addButton.getInputDataPair();
-                int inputIndex = userInput.first, inputElement = userInput.second;
-                insertNodeProcess(inputIndex, inputElement);
-                DLLCodeBlock.drawInsertCodeBlock(window);
-                DLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+                if (insertIsValid(userInput.first, userInput.second)) {
+                    drawType = prevType = insertDLL0;
+                    int inputIndex = userInput.first, inputElement = userInput.second;
+                    inputIndex++;
+                    insertNodeProcess(inputIndex, inputElement);
+                    DLLCodeBlock.drawInsertCodeBlock(window);
+                    DLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+                }
             }
         }
         else if (theDLLscreen.theGeneralScreen.addButton.buttonIsChoose() 
@@ -656,6 +659,22 @@ void DLLObject::updateNodeProcess(int updateIndex, int updateData) {
     this->flashTimer.restart();
     this->remTime = sf::milliseconds(0);
     this->markFirst = 1;
+}
+
+bool DLLObject::insertIsValid(int addIndex, int addData) {
+    if (0 <= addIndex && addIndex <= myDLL.getNumberOfNode() && 0 <= addData && addData <= 99 && myDLL.getNumberOfNode() < 10)
+        return true;
+    return false;
+}
+bool DLLObject::deleteIsValid(int delIndex) {
+    if (0 <= delIndex && delIndex < myDLL.getNumberOfNode() && myDLL.getNumberOfNode() > 0)
+        return true;
+    return false;
+}
+bool DLLObject::updateIsValid(int updIndex, int updData){
+    if (0 <= updIndex && updIndex < myDLL.getNumberOfNode() && 0 <= updData && updData <= 99)
+        return true;
+    return false;
 }
 
 void DLLObject::drawBackground(sf::RenderWindow &window) {

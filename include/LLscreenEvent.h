@@ -90,11 +90,14 @@ public:
     void updateNodeProcess(int updateIndex, int updateData);
     void deleteSLL();
 
-    void drawBackground(sf::RenderWindow &window);
+    bool insertIsValid(int addIndex, int addData);
+    bool deleteIsValid(int delIndex);
+    bool updateIsValid(int updIndex, int updData);
 
     bool exitSLLScreen();
     void setExitToFalse();
     void processAllEvent(sf::RenderWindow &window, sf::Event &event);
+    void drawBackground(sf::RenderWindow &window);
     void drawLLScreen(sf::RenderWindow &window);
 
     LLdrawType getType();

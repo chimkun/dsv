@@ -182,6 +182,7 @@
 #include "DLLScreen.h"
 #include "arrow.h"
 #include "stackScreenEvent.h"
+#include "reverseArrow.h"
 
 int main()
 {   
@@ -213,10 +214,10 @@ int main()
 
     screenType ScreenType = CLL;
 
-    StackObject myStackObject;
-    std::cerr << "init cll\n";
+    // StackObject myStackObject;
+    // std::cerr << "init cll\n";
     CLLObject myCLLObject;
-    std::cerr << "start loop\n";
+    // std::cerr << "start loop\n";
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -229,10 +230,22 @@ int main()
         window.clear();
         switch (ScreenType) {
             case CLL:
-                std::cerr << "draw cll\n";
                 myCLLObject.drawCLLScreen(window);
                 break;
         }
+        window.display();
+    }
+    sf::Vector2f nodeL = nodeConstants::firstNodePosition, nodeR = nodeConstants::firstNodePosition;
+    nodeR.x += nodeConstants::nodeDistance;
+    reverseArrow myArrow;
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+        window.clear();
+        myArrow.drawReverseArrow(window, nodeL, nodeR);
         window.display();
     }
 

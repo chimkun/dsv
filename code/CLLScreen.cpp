@@ -26,7 +26,7 @@ void CLL::build(std::vector <int> input) {
         pTail = cur;
         cur->nxt = nullptr;
     }
-    cur->nxt = pHead;
+    pTail->nxt = pHead;
     numberOfNode = (int) input.size();
 }
 void CLL::printList() {
@@ -35,16 +35,13 @@ void CLL::printList() {
         std::cout << cur->data << " ";
         cur = cur->nxt;
     } while (cur != pHead);
+    // std::cerr << "head: " << pHead->data << '\n';
+    // std::cerr << "tail: " << pTail->data << '\n';
     std::cout << "\n\n";
 }
 void CLL::deleteList() {
-    CLLNode *cur = pHead;
-    while (cur != nullptr) {
-        CLLNode *temp = cur;
-        cur = cur->nxt;
-        delete temp;
-        temp = nullptr;
-    }
+    while (pHead != nullptr)
+        deleteAtBeginning();
 }
 int CLL::getNumberOfNode() {
     return numberOfNode;
@@ -72,13 +69,14 @@ void CLL::insertAtEnding(int data) {
     }
     pTail->nxt = newNode;
     newNode->nxt = pHead;
+    pTail = newNode;
 }
 void CLL::insertAtMiddle(int index, int data) {
-    if (index == 0) {
+    if (index == 1) {
         insertAtBeginning(data);
         return;
     }
-    if (index == numberOfNode - 1) {
+    if (index == numberOfNode) {
         insertAtEnding(data);
         return;
     }
@@ -97,7 +95,7 @@ void CLL::deleteAtBeginning() {
         return;
     if (pHead->nxt == pHead) {
         delete pHead;
-        pHead = nullptr;
+        pHead = pTail = nullptr;
         numberOfNode--;
         return;
     }
@@ -105,7 +103,7 @@ void CLL::deleteAtBeginning() {
     CLLNode *temp = pHead;
     pHead = pHead->nxt;
     delete temp;
-    pTail = pHead;
+    pTail->nxt = pHead;
 }
 void CLL::deleteAtEnding() {
     if (pHead == nullptr)
@@ -126,11 +124,11 @@ void CLL::deleteAtEnding() {
     delete temp;
 }
 void CLL::deleteAtMiddle(int index) {
-    if (index == 0) {
+    if (index == 1) {
         deleteAtBeginning();
         return;
     }
-    if (index == numberOfNode - 1) {
+    if (index == numberOfNode) {
         deleteAtEnding();
         return;
     }
@@ -154,7 +152,7 @@ void CLL::updateIndex(int index, int newElement) {
 }
 int CLL::searchValue(int value) {
     CLLNode *cur = pHead;
-    for (int i = 1; i < numberOfNode; i++) {
+    for (int i = 1; i <= numberOfNode; i++) {
         if (cur->data == value)
             return i;
         cur = cur->nxt;
@@ -162,10 +160,14 @@ int CLL::searchValue(int value) {
     return -1;
 }
 void CLL::drawList(sf::RenderWindow &window, int opacity) {
+    if (pHead == nullptr)
+        return;
     CLLNode *cur = pHead;
     int countNode = 1;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
     do {
+        pTailPos = nodePosition;
         NodeTexture.drawCLLNode(window, nodePosition, cur->data);
         
         if (countNode == 1) {
@@ -189,6 +191,7 @@ void CLL::drawList(sf::RenderWindow &window, int opacity) {
         countNode++;
         cur = cur->nxt;
     } while (cur != pHead);
+    NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);
 }
 
 void CLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int gotoIndex, sf::Color fadeColor) {
@@ -196,7 +199,9 @@ void CLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     int maxOpacity = 255;
     gotoIndex = std::min(gotoIndex, insertIndex);
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
     for (int i = 1; i <= numberOfNode; i++) {
+        pTailPos = nodePosition;
         if (i < gotoIndex)
             NodeTexture.drawCLLNode(window, nodePosition, cur->data, nodeConstants::flashColor);
         else if (i == gotoIndex)
@@ -242,6 +247,7 @@ void CLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
         nodePosition.x += nodeConstants::nodeDistance;
         cur = cur->nxt;
     }
+    NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);
 }
 
 void CLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex, 
@@ -249,7 +255,9 @@ void CLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex,
     CLLNode *cur = pHead;
     int countNode = 1, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
     do {
+        pTailPos = nodePosition;
         if (countNode < insertIndex) {
             NodeTexture.drawCLLNode(window, nodePosition, cur->data, nodeConstants::flashColor);
         }
@@ -300,6 +308,10 @@ void CLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex,
         countNode++;
         cur = cur->nxt;
     } while (cur != pHead);
+    if (insertIndex != numberOfNode && insertIndex != 1)
+        NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);
+    // else 
+    //     NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos, sf::Color::White, );
 }
 
 void CLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity, sf::Color fadeColor,
@@ -307,7 +319,11 @@ void CLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity,
     CLLNode *cur = pHead;
     int countNode = 1, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
+    if (insertIndex == 1)
+        pHeadPos = insertNodePosition;
     do {
+        pTailPos = nodePosition;
         if (countNode < insertIndex) {
             NodeTexture.drawCLLNode(window, nodePosition, cur->data, fadeColor);
         }
@@ -366,6 +382,12 @@ void CLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity,
         countNode++;
         cur = cur->nxt;
     } while (cur != pHead);
+    if (insertIndex != numberOfNode)
+        NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);
+    else if (insertIndex == 1)
+        NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos, fadeColor, insertNodeOpacity);
+    else if (insertIndex != 1)
+        NodeTexture.drawReverseArrow(window, pHeadPos, insertNodePosition);
 }
 
 void CLL::drawDeleteNodeIndicator(sf::RenderWindow &window, int deleteIndex, int gotoIndex, sf::Color fadeColor) {
@@ -373,7 +395,9 @@ void CLL::drawDeleteNodeIndicator(sf::RenderWindow &window, int deleteIndex, int
     CLLNode *cur = pHead;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     int maxOpacity = 255;
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
     for (int i = 1; i <= numberOfNode; i++) {
+        pTailPos = nodePosition;
         if (i < gotoIndex)
             NodeTexture.drawCLLNode(window, nodePosition, cur->data, nodeConstants::flashColor);
         else if (i == gotoIndex)
@@ -434,13 +458,16 @@ void CLL::drawDeleteNodeIndicator(sf::RenderWindow &window, int deleteIndex, int
         nodePosition.x += nodeConstants::nodeDistance;
         cur = cur->nxt;
     }
+    NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);
 }
 
 void CLL::drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity, int deleteNodeOpacity) {
     CLLNode *cur = pHead;
     int countNode = 1, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
     do {
+        pTailPos = nodePosition;
         if (countNode < removeIndex) {
             NodeTexture.drawCLLNode(window, nodePosition, cur->data, nodeConstants::flashColor);
         }
@@ -480,7 +507,7 @@ void CLL::drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity,
         sf::Vector2f nodePositionLeft = nodePosition;
         sf::Vector2f nodePositionRight = nodePosition;    
         nodePositionRight.x += nodeConstants::nodeDistance;
-        if (countNode == 1 && removeIndex == 1) {
+        if (countNode == 1 && removeIndex == 1 && countNode < numberOfNode) {
             NodeTexture.drawArrowBetweenNode(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, deleteNodeOpacity);
         }
         else if (countNode == removeIndex - 1 && removeIndex - 1 > 0 && countNode < numberOfNode) {
@@ -499,17 +526,22 @@ void CLL::drawDeleteNode(sf::RenderWindow &window, int removeIndex, int opacity,
         cur = cur->nxt;
         countNode++;
     } while (cur != pHead);
+    if (removeIndex == numberOfNode || removeIndex == 1) 
+        NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos, sf::Color::White, deleteNodeOpacity);
+    else     
+        NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);
 }
 
 void CLL::drawDeleteNodeMove(sf::RenderWindow &window, int removeIndex, int nodeOpacity, 
-                             int nodePositionDiffX, int newArrowOpacity, sf::Color fadeColor) {
-                            
+                             int nodePositionDiffX, int newArrowOpacity, sf::Color fadeColor) { 
     CLLNode *cur = pHead;
     int countNode = 1, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     if (removeIndex == 1)
         nodePosition.x += nodePositionDiffX;
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
     do {
+        pTailPos = nodePosition;
         if (countNode < removeIndex)
             NodeTexture.drawCLLNode(window, nodePosition, cur->data, fadeColor);
         else 
@@ -558,6 +590,10 @@ void CLL::drawDeleteNodeMove(sf::RenderWindow &window, int removeIndex, int node
         cur = cur->nxt;
         countNode++;
     } while (cur != pHead);
+    if (removeIndex == numberOfNode + 1 || removeIndex == 1)
+        NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos, sf::Color::White, newArrowOpacity);
+    else 
+        NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);    
 }
 
 void CLL::drawSearchIndicator(sf::RenderWindow &window, int searchIndex, int gotoIndex, sf::Color fadeColor) {
@@ -567,7 +603,9 @@ void CLL::drawSearchIndicator(sf::RenderWindow &window, int searchIndex, int got
     int maxOpacity = 255, tempSearchIndex = searchIndex;
     if (searchIndex == -1)
         tempSearchIndex = numberOfNode;
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
     for (int i = 1; i <= numberOfNode; i++) {
+        pTailPos = nodePosition;
         if (i < gotoIndex)
             NodeTexture.drawCLLNode(window, nodePosition, cur->data, nodeConstants::flashColor);
         else if (i == gotoIndex)
@@ -600,6 +638,7 @@ void CLL::drawSearchIndicator(sf::RenderWindow &window, int searchIndex, int got
         nodePosition.x += nodeConstants::nodeDistance;
         cur = cur->nxt;
     }
+    NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);  
 }
 void CLL::drawSearchHighlight(sf::RenderWindow &window, int searchIndex, sf::Color fadeColor, 
                              sf::Color textFadeColor, int infoTextOpacity) {
@@ -609,7 +648,9 @@ void CLL::drawSearchHighlight(sf::RenderWindow &window, int searchIndex, sf::Col
     if (searchIndex == -1)
         tempSearchIndex = numberOfNode;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
     do {
+        pTailPos = nodePosition;
         if (countNode < tempSearchIndex)
             NodeTexture.drawCLLNode(window, nodePosition, cur->data, nodeConstants::flashColor);
         else if (countNode > tempSearchIndex)
@@ -651,6 +692,7 @@ void CLL::drawSearchHighlight(sf::RenderWindow &window, int searchIndex, sf::Col
         cur = cur->nxt;
         nodePosition.x += nodeConstants::nodeDistance;
     } while (cur != pHead);
+    NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);  
 }
 void CLL::drawSearchRevert(sf::RenderWindow &window, int searchIndex, 
                            sf::Color fadeColor, sf::Color textFadeColor, int infoTextOpacity) {
@@ -660,7 +702,9 @@ void CLL::drawSearchRevert(sf::RenderWindow &window, int searchIndex,
     if (searchIndex == -1)
         tempSearchIndex = numberOfNode;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
     do {
+        pTailPos = nodePosition;
         if (countNode < tempSearchIndex)
             NodeTexture.drawCLLNode(window, nodePosition, cur->data, fadeColor);
         else if (countNode > tempSearchIndex)
@@ -702,13 +746,16 @@ void CLL::drawSearchRevert(sf::RenderWindow &window, int searchIndex,
         cur = cur->nxt;
         nodePosition.x += nodeConstants::nodeDistance;
     } while (cur != pHead);
+    NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);  
 }
 void CLL::drawUpdateIndicator(sf::RenderWindow &window, int updateIndex, 
                               int gotoIndex, sf::Color fadeColor) {
     CLLNode *cur = pHead;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     int maxOpacity = 255;
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
     for (int i = 1; i <= numberOfNode; i++) {
+        pTailPos = nodePosition;
         if (i < gotoIndex)
             NodeTexture.drawCLLNode(window, nodePosition, cur->data, nodeConstants::flashColor);
             // cur->drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White);
@@ -742,13 +789,16 @@ void CLL::drawUpdateIndicator(sf::RenderWindow &window, int updateIndex,
         nodePosition.x += nodeConstants::nodeDistance;
         cur = cur->nxt;
     }
+    NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);  
 }
 void CLL::drawUpdateChangeNum(sf::RenderWindow &window, int updateIndex, int updateData, 
                               int numberOpacity, sf::Color fadeColor) {
     CLLNode *cur = pHead;
     int countNode = 1, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
     do {
+        pTailPos = nodePosition;
         if (countNode < updateIndex)
             NodeTexture.drawCLLNode(window, nodePosition, cur->data, nodeConstants::flashColor);
         else if (countNode > updateIndex)
@@ -787,13 +837,16 @@ void CLL::drawUpdateChangeNum(sf::RenderWindow &window, int updateIndex, int upd
         cur = cur->nxt;   
         nodePosition.x += nodeConstants::nodeDistance;
     } while (cur != pHead);
+    NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);  
 }
 void CLL::drawUpdateRevert(sf::RenderWindow &window, int updateIndex, 
                            sf::Color fadeOutlineColor, sf::Color fadeNumberColor) {
     CLLNode *cur = pHead;
     int countNode = 1, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
+    sf::Vector2f pHeadPos = nodePosition, pTailPos;
     do {
+        pTailPos = nodePosition;
         if (countNode < updateIndex)
             NodeTexture.drawCLLNode(window, nodePosition, cur->data, fadeOutlineColor);
         else if (countNode > updateIndex)
@@ -832,4 +885,5 @@ void CLL::drawUpdateRevert(sf::RenderWindow &window, int updateIndex,
         cur = cur->nxt;
         nodePosition.x += nodeConstants::nodeDistance;
     } while (cur != pHead);
+    NodeTexture.drawReverseArrow(window, pHeadPos, pTailPos);  
 }

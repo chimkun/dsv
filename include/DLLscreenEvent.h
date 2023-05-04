@@ -90,6 +90,10 @@ public:
     void searchNodeProcess(int searchData);
     void updateNodeProcess(int updateIndex, int updateData);
     void deleteDLL();
+    
+    bool insertIsValid(int addIndex, int addData);
+    bool deleteIsValid(int delIndex);
+    bool updateIsValid(int updIndex, int updData);
 
     void drawBackground(sf::RenderWindow &window);
     bool exitDLLScreen();

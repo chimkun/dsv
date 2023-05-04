@@ -1,216 +1,221 @@
 [
     {
-        "command": "g++ -c ..\\Menu\\code/CLLNode.cpp -o CLLNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/CLLCodeBlock.cpp -o CLLCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\CLLCodeBlock.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/CLLNode.cpp -o CLLNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\CLLNode.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/CLLScreen.cpp -o CLLScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/CLLScreen.cpp -o CLLScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\CLLScreen.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/CLLScreenEvent.cpp -o CLLScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/CLLScreenEvent.cpp -o CLLScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\CLLScreenEvent.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/DLLCodeBlock.cpp -o DLLCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/DLLCodeBlock.cpp -o DLLCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\DLLCodeBlock.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/DLLNode.cpp -o DLLNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/DLLNode.cpp -o DLLNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\DLLNode.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/DLLScreen.cpp -o DLLScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/DLLScreen.cpp -o DLLScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\DLLScreen.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/DLLScreenEvent.cpp -o DLLScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/DLLScreenEvent.cpp -o DLLScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\DLLScreenEvent.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/LLscreen.cpp -o LLscreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/LLscreen.cpp -o LLscreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreen.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/LLscreenCodeBlock.cpp -o LLscreenCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/LLscreenCodeBlock.cpp -o LLscreenCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreenCodeBlock.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/LLscreenEvent.cpp -o LLscreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/LLscreenEvent.cpp -o LLscreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreenEvent.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/arrayScreen.cpp -o arrayScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/arrayScreen.cpp -o arrayScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\arrayScreen.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/arrow.cpp -o arrow.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/arrow.cpp -o arrow.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\arrow.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/background.cpp -o background.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/background.cpp -o background.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\background.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/browse.cpp -o browse.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/browse.cpp -o browse.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\browse.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/button.cpp -o button.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/button.cpp -o button.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\button.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/buttonAndTextBox.cpp -o buttonAndTextBox.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/buttonAndTextBox.cpp -o buttonAndTextBox.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\buttonAndTextBox.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/chooseDataStructureScreen.cpp -o chooseDataStructureScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/chooseDataStructureScreen.cpp -o chooseDataStructureScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\chooseDataStructureScreen.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/codeblock.cpp -o codeblock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/codeblock.cpp -o codeblock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\codeblock.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/codetext.cpp -o codetext.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/codetext.cpp -o codetext.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\codetext.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/constants.cpp -o constants.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/constants.cpp -o constants.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\constants.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/fadecolor.cpp -o fadecolor.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/fadecolor.cpp -o fadecolor.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\fadecolor.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/general.cpp -o general.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/general.cpp -o general.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\general.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/main.cpp -o main.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/main.cpp -o main.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\main.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/menu.cpp -o menu.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/menu.cpp -o menu.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menu.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/menuChooseArray.cpp -o menuChooseArray.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/menuChooseArray.cpp -o menuChooseArray.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menuChooseArray.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/menuChooseLLScreen.cpp -o menuChooseLLScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/menuChooseLLScreen.cpp -o menuChooseLLScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menuChooseLLScreen.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/menuChooseOther.cpp -o menuChooseOther.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/menuChooseOther.cpp -o menuChooseOther.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menuChooseOther.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/menuInitialScreen.cpp -o menuInitialScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/menuInitialScreen.cpp -o menuInitialScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\menuInitialScreen.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/node.cpp -o node.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/node.cpp -o node.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\node.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/nodeTextureHolder.cpp -o nodeTextureHolder.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/nodeTextureHolder.cpp -o nodeTextureHolder.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\nodeTextureHolder.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/queueCodeBlock.cpp -o queueCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/queueCodeBlock.cpp -o queueCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\queueCodeBlock.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/queueNode.cpp -o queueNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/queueNode.cpp -o queueNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\queueNode.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/queueScreen.cpp -o queueScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/queueScreen.cpp -o queueScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\queueScreen.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/queueScreenEvent.cpp -o queueScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/queueScreenEvent.cpp -o queueScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\queueScreenEvent.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/queueUI.cpp -o queueUI.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/queueUI.cpp -o queueUI.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\queueUI.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/reverseArrow.cpp -o reverseArrow.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/reverseArrow.cpp -o reverseArrow.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\reverseArrow.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/stackCodeBlock.cpp -o stackCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/stackCodeBlock.cpp -o stackCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\stackCodeBlock.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/stackNode.cpp -o stackNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/stackNode.cpp -o stackNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\stackNode.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/stackScreen.cpp -o stackScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/stackScreen.cpp -o stackScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\stackScreen.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/stackScreenEvent.cpp -o stackScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/stackScreenEvent.cpp -o stackScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\stackScreenEvent.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/stackUI.cpp -o stackUI.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/stackUI.cpp -o stackUI.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\stackUI.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/text.cpp -o text.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/text.cpp -o text.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\text.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/textbox.cpp -o textbox.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include\r",
+        "command": "g++ -c ..\\Menu\\code/textbox.cpp -o textbox.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\textbox.cpp"
     }

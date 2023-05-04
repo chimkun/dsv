@@ -27,6 +27,11 @@ struct generalScreen {
 
     void turnOffAllButton();
     void turnOffAddTextBox();
+
+    void addBeginningTextIsClick(sf::RenderWindow &window);
+    void addEndingTextIsClick(sf::RenderWindow &window);
+    bool addBeginningTextIsChoose();
+    bool addEndingTextIsChoose();
     
     void moveButtonWhenHover(sf::RenderWindow &window);
 
@@ -81,6 +86,9 @@ public:
     createScreen theCreateScreen;
     allScreen();
     bool isGeneralScreen();
+    void setGeneral();
+    void setCreate();
+    
     void drawGeneralScreen(sf::RenderWindow &window);
     void drawCreateScreen(sf::RenderWindow &window);
 };
