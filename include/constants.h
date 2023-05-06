@@ -3,6 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 
+class colorConstants {
+public:
+    static sf::Color nodeColor[4];
+    static void initializeConstants();
+};
+
 class nodeConstants {
 public:
     static int nodeDistance;
@@ -118,6 +124,16 @@ public:
     static sf::Vector2f leftQueue;
     static int xDistance;
     static int xMoveSpeed;
+    static int fadeSpeed;
+    static void initializeConstants();
+};
+
+class arrayConstants {
+public:
+    static sf::Vector2f leftArray;
+    static int xDistance;
+    static int swapXSpeed;
+    static int unusedNodeOpacity;
     static int fadeSpeed;
     static void initializeConstants();
 };

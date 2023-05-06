@@ -1,5 +1,14 @@
 #include "constants.h"
 
+sf::Color colorConstants::nodeColor[4];
+
+void colorConstants::initializeConstants() {
+    nodeColor[0] = sf::Color(151, 42, 179);
+    nodeColor[1] = sf::Color(67, 211, 25);
+    nodeColor[2] = sf::Color(23, 153, 216);
+    nodeColor[3] = sf::Color(238, 34, 145);
+}
+
 int nodeConstants::nodeDistance;
 int nodeConstants::firstNodePositionX;
 int nodeConstants::initialInsertNodeY;
@@ -181,7 +190,22 @@ void queueConstants::initializeConstants() {
     xMoveSpeed = 3;
 }
 
+int arrayConstants::unusedNodeOpacity;
+int arrayConstants::xDistance;
+int arrayConstants::swapXSpeed;
+int arrayConstants::fadeSpeed;
+sf::Vector2f arrayConstants::leftArray;
+
+void arrayConstants::initializeConstants() {
+    leftArray = sf::Vector2f(180, 174);
+    xDistance = 130;
+    swapXSpeed = 4;
+    fadeSpeed = 13;
+    unusedNodeOpacity = 100;
+}
+
 void initializeConstants() {
+    colorConstants::initializeConstants();
     nodeConstants::initializeConstants();
     arrowConstants::initializeConstants();
     mathConstants::initializeConstants();
@@ -192,5 +216,6 @@ void initializeConstants() {
     menuButtonConstants::initializeConstants();
     stackConstants::initializeConstants();
     queueConstants::initializeConstants();
+    arrayConstants::initializeConstants();
 }
 

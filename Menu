@@ -55,9 +55,19 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreenEvent.cpp"
     },
     {
+        "command": "g++ -c ..\\Menu\\code/arrayNode.cpp -o arrayNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\arrayNode.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/arrayScreen.cpp -o arrayScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\arrayScreen.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/arrayScreenEvent.cpp -o arrayScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\arrayScreenEvent.cpp"
     },
     {
         "command": "g++ -c ..\\Menu\\code/arrow.cpp -o arrow.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",

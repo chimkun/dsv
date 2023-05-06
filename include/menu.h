@@ -21,7 +21,7 @@ private:
     };
     enum dataStructureType {
         none, SLL, DLL, CLL,
-        array, sArray, dArray,
+        sArray, dArray,
         Stack, Queue
     };
 
