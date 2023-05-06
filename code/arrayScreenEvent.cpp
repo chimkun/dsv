@@ -14,7 +14,7 @@ void SArrayObject::createList(int numberOfNode, std::vector <int> &a) {
     theSArrayscreen.theGeneralScreen.initData(numberOfNode);
 }
 void SArrayObject::createRandomList() {
-    int numberOfNode = rand() % 4 + 4;  
+    int numberOfNode = rand() % 6 + 5;  
     std::vector <int> a;
     std::string sampleInput;
     for (int i = 0; i < numberOfNode; i++) {
@@ -35,7 +35,6 @@ void SArrayObject::createDefinedList(std::vector <int> &userInput) {
 void SArrayObject::drawList(sf::RenderWindow &window) {
     opacity = std::min(nodeConstants::fadeSpeed + opacity, 255);
     mySArray.drawArray(window, opacity);
-    mySArray.printArray();
 }
 void SArrayObject::processDrawList() {
     opacity = 0;
@@ -65,7 +64,7 @@ void SArrayObject::drawInsertNodeSwap(sf::RenderWindow &window) {
             markFirst = 1;
             insertSwapDistance = 0;
             insertSwapIndex--;
-            if (insertSwapIndex == 0) {
+            if (insertSwapIndex == insertIndex - 1) {
                 mySArray.insertAtMiddle(insertIndex, insertData);
                 drawType = showcaseSArray;
             }
@@ -110,176 +109,78 @@ void SArrayObject::drawDeleteNodeSwap(sf::RenderWindow &window) {
         }
     }
 }
-void SArrayObject::drawDeleteNodeMove(sf::RenderWindow &window) {
-    // // std::cerr << "node move\n";
-    // mySArray.drawDeleteNodeMove(window, deleteIndex, nodeOpacity, 
-    //                          nodePositionDiffX, newArrowOpacity,
-    //                          getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer));
-    // if (deleteIndex == 1) {
-    //     SArrayCodeBlock.drawDeleteBeginCodeBlock(window);
-    //     SArrayCodeBlock.drawDeleteBeginCodeBlockMultiLine(window, 3, 4);
-    // }
-    // else {
-    //     SArrayCodeBlock.drawDeleteCodeBlock(window);
-    //     SArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 5);
-    // }
-    // if (nodePositionDiffX > 0 || newArrowOpacity < 255) {
-    //     if (deleteIndex != 1) {
-    //         newArrowOpacity = std::min(255, newArrowOpacity + nodeConstants::fadeSpeed);
-    //         if (newArrowOpacity == 255)
-    //             nodePositionDiffX = std::max(nodePositionDiffX - nodeConstants::insertMoveSpeed, 0);
-    //     }
-    //     else {
-    //         nodePositionDiffX = std::max(nodePositionDiffX - nodeConstants::insertMoveSpeed, 0);
-    //         if (nodePositionDiffX == 0) {
-    //             newArrowOpacity = std::min(255, newArrowOpacity + nodeConstants::fadeSpeed);
-    //         }
-    //     }
-    // }
-    // else 
-    //     drawType = showcaseSArray;
+void SArrayObject::drawSearchIndicator(sf::RenderWindow &window) {
+    int searchIndex = mySArray.searchValue(searchData);
+    int drawIterateIndex = searchIndex;
+    if (searchIndex == -1) 
+        drawIterateIndex = mySArray.getArrayLength() - 1;
+    // std::cerr << "indicate " << searchIterateTarget << " " << drawIterateIndex << '\n';
+    sf::Color fadeColor = getFadeColorOptionalDuration(sf::Color::White, nodeConstants::flashColor, flashTimer, arrayConstants::flashDuration);
+    mySArray.drawSearchIndicator(window, fadeColor, searchIterateTarget);
+    // std::cerr << "drawn\n";
+    if (flashTimer.getElapsedTime().asSeconds() >= arrayConstants::flashDuration.asSeconds()) {
+        searchIterateTarget++;
+        flashTimer.restart();
+    }
+    if (searchIterateTarget > drawIterateIndex) {
+        drawType = searchSArray1;
+        flashTimer.restart();
+    }
 }
-
-// void SArrayObject::drawSearchIndicator(sf::RenderWindow &window) {
-//     if (flashTimer.getElapsedTime().asMilliseconds() < remTime.asMilliseconds()) {
-//         sf::sleep(sf::milliseconds(500));
-//     }
-//     int tempSearchIndex = searchIndex;
-//     if (searchIndex == -1)
-//         tempSearchIndex = mySArray.getNumberOfNode();
-//     mySArray.drawSearchIndicator(window, searchIndex, gotoIndex, 
-//                               getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));   
-//     remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds()); 
-//     SArrayCodeBlock.drawSearchCodeBlock(window);
-//     if (!markFirst) {
-//         if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
-//             gotoIndex++;
-//             flashTimer.restart();
-//             if (gotoIndex <= tempSearchIndex)
-//                 SArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 4);
-//         }
-//         else {
-//             SArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 1);
-//         }
-//     }
-//     else {
-//         markFirst = 0;
-//         flashTimer.restart();
-//         SArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
-//     }
-//     if (gotoIndex > tempSearchIndex) {
-//         drawType = searchSArray1;
-//         flashTimer.restart();
-//         markFirst = 1;
-//     }
-// }
-// void SArrayObject::drawSearchHighlight(sf::RenderWindow &window) {
-//     mySArray.drawSearchHighlight(window, searchIndex, 
-//                               getFadeColor(nodeConstants::flashColor, nodeConstants::searchFoundColor, flashTimer), 
-//                               getFadeColor(nodeConstants::baseColor, nodeConstants::searchFoundColor, flashTimer),
-//                               infoTextOpacity);
-//     infoTextOpacity = std::min(255, infoTextOpacity + nodeConstants::fadeSpeed);
-//     SArrayCodeBlock.drawSearchCodeBlock(window);
-//     if (searchIndex == -1) {
-//         SArrayCodeBlock.drawSearchCodeBlockSingleLine(window, 5);
-//     }
-//     else {
-//         SArrayCodeBlock.drawSearchCodeBlockMultiLine(window, 2, 3);
-//     }
-//     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
-//         drawType = searchSArray2;
-//         sf::sleep(sf::seconds(3.0f));
-//         flashTimer.restart();
-//     }
-// }
-// void SArrayObject::drawSearchRevert(sf::RenderWindow &window) {
-//     mySArray.drawSearchRevert(window, searchIndex, 
-//                            getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer),
-//                            getFadeColor(nodeConstants::searchFoundColor, nodeConstants::baseColor, flashTimer),
-//                            infoTextOpacity);
-//     SArrayCodeBlock.drawSearchCodeBlock(window);
-//     if (searchIndex == -1) {
-//         SArrayCodeBlock.drawSearchCodeBlockSingleLine(window, 5);
-//     }
-//     else {
-//         SArrayCodeBlock.drawSearchCodeBlockMultiLine(window, 2, 3);
-//     }
-//     infoTextOpacity = std::max(0, infoTextOpacity - nodeConstants::fadeSpeed);
-//     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
-//         drawType = showcaseSArray;
-//         flashTimer.restart();
-//     }
-// }
-// void SArrayObject::drawUpdateIndicator(sf::RenderWindow &window) {
-//     // std::cerr << "update index, data: " << updateIndex << " " << updateData << '\n';
-//     if (flashTimer.getElapsedTime().asMilliseconds() < remTime.asMilliseconds()) {
-//         sf::sleep(sf::milliseconds(500));
-//     }
-//     mySArray.drawUpdateIndicator(window, updateIndex, gotoIndex, 
-//                               getFadeColor(nodeConstants::baseColor, nodeConstants::flashColor, flashTimer));
-//     remTime = sf::milliseconds(flashTimer.getElapsedTime().asMilliseconds()); 
-//     SArrayCodeBlock.drawUpdateCodeBlock(window);
-//     if (!markFirst) {
-//         if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
-//             gotoIndex++;
-//             flashTimer.restart();
-//             if (gotoIndex <= updateIndex)
-//                 SArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 5);
-//         }
-//         else {
-//             SArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 1);
-//         }
-//     }
-//     else {
-//         markFirst = 0;
-//         flashTimer.restart();
-//         SArrayCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
-//     }
-//     if (gotoIndex > updateIndex) {
-//         drawType = updateSArray1;
-//         flashTimer.restart();
-//     }
-// }
-// void SArrayObject::drawUpdateChangeNum(sf::RenderWindow &window) {
-//     sf::Color fadeColor;
-//     if (opacityMultiplier == -1)
-//         fadeColor = nodeConstants::baseColor;
-//     else 
-//         fadeColor = nodeConstants::searchFoundColor;
-//     mySArray.drawUpdateChangeNum(window, updateIndex, updateData, numberOpacity, fadeColor);
-//     SArrayCodeBlock.drawUpdateCodeBlock(window);
-//     SArrayCodeBlock.drawUpdateCodeBlockMultiLine(window, 2, 4);
-//     if (opacityMultiplier == -1) {
-//         numberOpacity = std::max(0, numberOpacity - nodeConstants::fadeSpeed);
-//         if (numberOpacity == 0) {
-//             opacityMultiplier = 1;
-//             mySArray.updateIndex(updateIndex, updateData);
-//         }
-//     }
-//     else {
-//         if (numberOpacity == 0)
-//             sf::sleep(sf::seconds(0.1));
-//         numberOpacity = std::min(255, numberOpacity + nodeConstants::fadeSpeed);
-//     }
-
-//     if (opacityMultiplier == 1 && numberOpacity == 255) {
-//         sf::sleep(sf::seconds(1));
-//         flashTimer.restart();
-//         drawType = updateSArray2;
-//     }
-// }
-// void SArrayObject::drawUpdateRevert(sf::RenderWindow &window) {
-//     sf::Color fadeOutlineColor, fadeNumberColor;
-//     fadeOutlineColor = getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer);
-//     fadeNumberColor = getFadeColor(nodeConstants::searchFoundColor, nodeConstants::baseColor, flashTimer);
-//     mySArray.drawUpdateRevert(window, updateIndex, fadeOutlineColor, fadeNumberColor);
-//     SArrayCodeBlock.drawUpdateCodeBlock(window);
-//     SArrayCodeBlock.drawUpdateCodeBlockMultiLine(window, 2, 4);
-//     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
-//         drawType = showcaseSArray;
-//         flashTimer.restart();
-//     }
-// }
+void SArrayObject::drawSearchHighlight(sf::RenderWindow &window) {
+    int searchIndex = mySArray.searchValue(searchData);
+    int drawIterateIndex = searchIndex;
+    if (searchIndex == -1) 
+        drawIterateIndex = 69;
+    sf::Color fadeColor = getFadeColorOptionalDuration(nodeConstants::flashColor, nodeConstants::searchFoundColor, flashTimer, arrayConstants::flashDuration);
+    mySArray.drawSearchIndicator(window, fadeColor, drawIterateIndex);
+    if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
+        drawType = searchSArray2;
+        sf::sleep(sf::seconds(0.5));
+        flashTimer.restart();
+    }
+}
+void SArrayObject::drawSearchRevert(sf::RenderWindow &window) {
+    int searchIndex = mySArray.searchValue(searchData);
+    int drawIterateIndex = searchIndex;
+    if (searchIndex == -1) 
+        drawIterateIndex = 69;
+    sf::Color fadeFlashColor = getFadeColorOptionalDuration(nodeConstants::flashColor, sf::Color::White, flashTimer, arrayConstants::flashDuration);
+    sf::Color fadeFoundColor = getFadeColorOptionalDuration(nodeConstants::searchFoundColor, sf::Color::White, flashTimer, arrayConstants::flashDuration);
+    mySArray.drawSearchRevert(window, fadeFlashColor, fadeFoundColor, drawIterateIndex);
+    if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
+        drawType = showcaseSArray;
+        flashTimer.restart();
+    }
+}
+void SArrayObject::drawUpdateIndicator(sf::RenderWindow &window) {
+    sf::Color fadeColor = getFadeColor(sf::Color::White, nodeConstants::searchFoundColor, flashTimer);
+    updateNumberOpacity = std::max(0, updateNumberOpacity - nodeConstants::fadeSpeed);
+    mySArray.drawUpdateIndicator(window, fadeColor, updateIndex, updateNumberOpacity);
+    if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()
+     && updateNumberOpacity == 0) {
+        drawType = updateSArray1;
+        mySArray.updateIndex(updateIndex, updateData);
+        flashTimer.restart();
+    }
+}
+void SArrayObject::drawUpdateChangeNum(sf::RenderWindow &window) {
+    updateNumberOpacity = std::min(255, updateNumberOpacity + 6);
+    mySArray.drawUpdateIndicator(window, nodeConstants::searchFoundColor, updateIndex, updateNumberOpacity);
+    if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()
+     && updateNumberOpacity == 255) {
+        drawType = updateSArray2;
+        flashTimer.restart();
+    }
+}
+void SArrayObject::drawUpdateRevert(sf::RenderWindow &window) {
+    sf::Color fadeColor = getFadeColor(nodeConstants::searchFoundColor, sf::Color::White, flashTimer);
+    mySArray.drawUpdateRevert(window, fadeColor, updateIndex);
+    if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
+        drawType = showcaseSArray;
+        flashTimer.restart();
+    }
+}
 
 void SArrayObject::processType(sf::RenderWindow &window) {
     if (theSArrayscreen.isGeneralScreen()) {
@@ -304,36 +205,30 @@ void SArrayObject::processType(sf::RenderWindow &window) {
         case insertSArray1:
             drawInsertNodeSwap(window);
             break;
-        // case insertSArray2:
-        //     drawInsertNode(window);
-        //     break;
         case deleteSArray0:
             drawDeleteIndicator(window);
             break;
         case deleteSArray1:
             drawDeleteNodeSwap(window);
             break;
-        // case deleteSArray2:
-        //     drawDeleteNodeMove(window);
-        //     break;
-        // case searchSArray0:
-        //     drawSearchIndicator(window);
-        //     break;
-        // case searchSArray1:
-        //     drawSearchHighlight(window);
-        //     break;
-        // case searchSArray2:
-        //     drawSearchRevert(window);
-        //     break;
-        // case updateSArray0:
-        //     drawUpdateIndicator(window);
-        //     break;
-        // case updateSArray1:
-        //     drawUpdateChangeNum(window);
-        //     break;
-        // case updateSArray2:
-        //     drawUpdateRevert(window);
-        //     break;
+        case searchSArray0:
+            drawSearchIndicator(window);
+            break;
+        case searchSArray1:
+            drawSearchHighlight(window);
+            break;
+        case searchSArray2:
+            drawSearchRevert(window);
+            break;
+        case updateSArray0:
+            drawUpdateIndicator(window);
+            break;
+        case updateSArray1:
+            drawUpdateChangeNum(window);
+            break;
+        case updateSArray2:
+            drawUpdateRevert(window);
+            break;
     }
 }
 
@@ -396,7 +291,6 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
                 if (insertIsValid(userInput.first, userInput.second)) {
                     drawType = insertSArray0;
                     int inputIndex = userInput.first, inputElement = userInput.second;
-                    inputIndex++;
                     insertNodeProcess(inputIndex, inputElement);
                     // SArrayCodeBlock.drawInsertCodeBlock(window);
                     // SArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
@@ -406,30 +300,28 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theSArrayscreen.theGeneralScreen.addButton.buttonIsChoose() 
               && theSArrayscreen.theGeneralScreen.addBeginning.buttonIsClick(window)) {
             if (!theSArrayscreen.theGeneralScreen.addBeginningText.inputIsEmpty()) {
-                // int userInput = theSArrayscreen.theGeneralScreen.addBeginningText.getInputDataInt();
-                // if (insertIsValid(0, userInput)) {
-                //     drawType = insertSArray0;
-                //     int inputIndex = 1, inputElement = userInput;
-                //     insertNodeProcess(inputIndex, inputElement);
-                //     SArrayCodeBlock.drawInsertBeginCodeBlock(window);
-                //     if (mySArray.getNumberOfNode() == 0)
-                //         SArrayCodeBlock.drawInsertBeginCodeBlockSingleLine(window, 0);
-                //     else 
-                //         SArrayCodeBlock.drawInsertBeginCodeBlockSingleLine(window, 3);
-                // }
+                int userInput = theSArrayscreen.theGeneralScreen.addBeginningText.getInputDataInt();
+                if (insertIsValid(0, userInput)) {
+                    drawType = insertSArray0;
+                    int inputIndex = 0, inputElement = userInput;
+                    insertNodeProcess(inputIndex, inputElement);
+                    // SArrayCodeBlock.drawInsertBeginCodeBlock(window);
+                    // if (mySArray.getNumberOfNode() == 0)
+                    //     SArrayCodeBlock.drawInsertBeginCodeBlockSingleLine(window, 0);
+                    // else 
+                    //     SArrayCodeBlock.drawInsertBeginCodeBlockSingleLine(window, 3);
+                }
             }
         }
         else if (theSArrayscreen.theGeneralScreen.addButton.buttonIsChoose() 
               && theSArrayscreen.theGeneralScreen.addEnding.buttonIsClick(window)) {
             if (!theSArrayscreen.theGeneralScreen.addEndingText.inputIsEmpty()) {
-                // int userInput = theSArrayscreen.theGeneralScreen.addEndingText.getInputDataInt();
-                // if (insertIsValid(mySArray.getNumberOfNode(), userInput)) {
-                //     drawType = insertSArray0;
-                //     int inputIndex = mySArray.getNumberOfNode(), inputElement = userInput;
-                //     insertNodeProcess(inputIndex, inputElement);
-                //     insertNodePosition.x += nodeConstants::nodeDistance;
-                // }
-                // std::cerr << "ending index: " << insertIndex << "  " << insertNodePosition.x << "  " << mySArray.getNumberOfNode() << '\n';
+                int userInput = theSArrayscreen.theGeneralScreen.addEndingText.getInputDataInt();
+                if (insertIsValid(mySArray.getArrayLength(), userInput)) {
+                    drawType = insertSArray0;
+                    int inputIndex = mySArray.getArrayLength(), inputElement = userInput;
+                    insertNodeProcess(inputIndex, inputElement);
+                }
                 // SArrayCodeBlock.drawInsertCodeBlock(window);
                 // SArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
             }
@@ -447,39 +339,38 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
         }
         else if (theSArrayscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theSArrayscreen.theGeneralScreen.delBeginning.buttonIsClick(window)) {
-                // if (deleteIsValid(0)) {
-                //     drawType = deleteSArray0;
-                //     deleteIndex = 1;
-                //     deleteNodeProcess(deleteIndex);
-                // }
+                if (deleteIsValid(0)) {
+                    drawType = deleteSArray0;
+                    deleteIndex = 0;
+                    deleteNodeProcess(deleteIndex);
+                }
         }
         else if (theSArrayscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theSArrayscreen.theGeneralScreen.delEnding.buttonIsClick(window)) {
-            // if (deleteIsValid((int) mySArray.getNumberOfNode() - 1)) {
-            //     drawType = deleteSArray0;
-            //     deleteIndex = mySArray.getNumberOfNode();
-            //     deleteNodeProcess(deleteIndex);
-            // }
+            if (deleteIsValid((int) mySArray.getArrayLength() - 1)) {
+                drawType = deleteSArray0;
+                deleteIndex = mySArray.getArrayLength() - 1;
+                deleteNodeProcess(deleteIndex);
+            }
         }
         else if (theSArrayscreen.theGeneralScreen.searchButton.buttonIsChoose() 
               && theSArrayscreen.theGeneralScreen.searchButton.confirmButtonIsClick(window)) {
             if (!theSArrayscreen.theGeneralScreen.searchButton.inputIsEmpty()) {
-                // drawType = searchSArray0;
-                // int userInput = theSArrayscreen.theGeneralScreen.searchButton.getInputDataInt();
-                // searchData = userInput;
-                // searchNodeProcess(searchData);
+                drawType = searchSArray0;
+                int userInput = theSArrayscreen.theGeneralScreen.searchButton.getInputDataInt();
+                searchData = userInput;
+                searchNodeProcess(searchData);
             }
         }
         else if (theSArrayscreen.theGeneralScreen.updateButton.buttonIsChoose() 
               && theSArrayscreen.theGeneralScreen.updateButton.confirmButtonIsClick(window)) {
             if (!theSArrayscreen.theGeneralScreen.updateButton.inputIsEmpty()) {
-                // std::pair <int, int> userInput = theSArrayscreen.theGeneralScreen.updateButton.getInputDataPair();
-                // if (updateIsValid(userInput.first, userInput.second)) {
-                //     drawType = updateSArray0;
-                //     updateIndex = userInput.first, updateData = userInput.second;
-                //     updateIndex++;
-                //     updateNodeProcess(updateIndex, updateData);
-                // }
+                std::pair <int, int> userInput = theSArrayscreen.theGeneralScreen.updateButton.getInputDataPair();
+                if (updateIsValid(userInput.first, userInput.second)) {
+                    drawType = updateSArray0;
+                    updateIndex = userInput.first, updateData = userInput.second;
+                    updateNodeProcess(updateIndex, updateData);
+                }
             }
         }
     }
@@ -500,21 +391,21 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
                 theSArrayscreen.theCreateScreen.onInputBoxState();
             }
             else if (theSArrayscreen.theCreateScreen.confirmButtonIsClick(window)) {
-                // if (!theSArrayscreen.theCreateScreen.inputIsEmpty()) {
-                //     drawType = makeSArray;
-                //     std::vector <int> userInput = theSArrayscreen.theCreateScreen.getInputData();
-                //     createDefinedList(userInput);
-                // }
+                if (!theSArrayscreen.theCreateScreen.inputIsEmpty()) {
+                    drawType = makeSArray;
+                    std::vector <int> userInput = theSArrayscreen.theCreateScreen.getInputData();
+                    createDefinedList(userInput);
+                }
             }
             else if (theSArrayscreen.theCreateScreen.browseButtonIsClick(window)) {
-                // std::string fileRead;
-                // if (browseForFile(fileRead)) {
-                //     std::vector <int> userInput = getInputData(fileRead);
-                //     if ((int) userInput.size() > 0) {
-                //         drawType = makeSArray;
-                //         createDefinedList(userInput);
-                //     }
-                // }
+                std::string fileRead;
+                if (browseForFile(fileRead)) {
+                    std::vector <int> userInput = getInputData(fileRead);
+                    if ((int) userInput.size() > 0) {
+                        drawType = makeSArray;
+                        createDefinedList(userInput);
+                    }
+                }
             }
             else {
                 theSArrayscreen.theCreateScreen.offInputBoxState();
@@ -604,8 +495,8 @@ bool SArrayObject::deleteIsValid(int delIndex) {
     return false;
 }
 bool SArrayObject::updateIsValid(int updIndex, int updData){
-    // if (0 <= updIndex && updIndex < mySArray.getNumberOfNode() && 0 <= updData && updData <= 99)
-    //     return true;
+    if (0 <= updIndex && updIndex < mySArray.getArrayLength() && 0 <= updData && updData <= 99)
+        return true;
     return false;
 }
 
@@ -629,14 +520,13 @@ void SArrayObject::deleteNodeProcess(int deleteIndex) {
 }
 void SArrayObject::searchNodeProcess(int searchData) {
     this->searchIndex = mySArray.searchValue(searchData);
-    this->infoTextOpacity = 0;
+    this->searchIterateTarget = 0;
     this->flashTimer.restart();
     this->remTime = sf::milliseconds(0);
     this->markFirst = 1;
 }
 void SArrayObject::updateNodeProcess(int updateIndex, int updateData) {
-    this->numberOpacity = 255;
-    this->opacityMultiplier = -1;
+    this->updateNumberOpacity = 255;
     this->flashTimer.restart();
     this->remTime = sf::milliseconds(0);
     this->markFirst = 1;

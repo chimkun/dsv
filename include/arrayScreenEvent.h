@@ -35,9 +35,9 @@ private:
         int deleteIndex, deleteSwapDistance, deleteSwapIndex, deleteNumberOpacity;
         sf::Clock deleteSwapTime;
         //search data
-        int searchIndex, searchData, infoTextOpacity;
+        int searchIndex, searchData, searchIterateTarget;
         //update data
-        int updateIndex, updateData, numberOpacity, opacityMultiplier;
+        int updateIndex, updateData, updateNumberOpacity;
         //mark first time
         bool markFirst;
     //SArray mode

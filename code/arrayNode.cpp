@@ -13,7 +13,7 @@ arrayNode::arrayNode() {
     numberText.setFont(0);
 }
 
-void arrayNode::drawArrayNode(sf::RenderWindow &window, sf::Vector2f nodePosition, int data, int opacity, sf::Color nodeColor) {
+void arrayNode::drawArrayNode(sf::RenderWindow &window, sf::Vector2f nodePosition, int data, int opacity, sf::Color nodeColor, int innerOpacity) {
     sf::Sprite circleSprite(nodeCircleTexture), outlineSprite(nodeOutlineTexture);
     sf::IntRect circleBound = circleSprite.getTextureRect(), outlineBound = outlineSprite.getTextureRect();
 
@@ -40,14 +40,19 @@ void arrayNode::drawArrayNode(sf::RenderWindow &window, sf::Vector2f nodePositio
     outlineSprite.setPosition(nodePosition);
     outlineSprite.setColor(nodeColor);
     sf::Color circleCol = circleSprite.getColor(), outlineCol = outlineSprite.getColor();
+    int numberOpacity = 255;
     circleCol.a = opacity, outlineCol.a = opacity;
+    if (innerOpacity != 255) {
+        numberOpacity = innerOpacity;
+        circleCol.a = innerOpacity;
+    }
     circleSprite.setColor(circleCol);
     outlineSprite.setColor(outlineCol);
 
     window.draw(circleSprite);
     window.draw(outlineSprite);
     std::string dataString = std::to_string(data);
-    numberText.drawOptionalTextMid(window, dataString, nodePosition, opacity);
+    numberText.drawOptionalTextMid(window, dataString, nodePosition, numberOpacity);
 }
 void arrayNode::drawUnusedNode(sf::RenderWindow &window, sf::Vector2f nodePosition, 
                                int data, int numberOpacity, sf::Color nodeColor) {
@@ -58,7 +63,6 @@ void arrayNode::drawUnusedNode(sf::RenderWindow &window, sf::Vector2f nodePositi
     outlineSprite.setOrigin(outlineBound.width/2, outlineBound.height/2);
     circleSprite.setPosition(nodePosition);
     outlineSprite.setPosition(nodePosition);
-    outlineSprite.setColor(nodeColor);
 
     window.draw(circleSprite);
     window.draw(outlineSprite);

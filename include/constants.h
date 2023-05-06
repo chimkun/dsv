@@ -135,6 +135,7 @@ public:
     static int swapXSpeed;
     static int unusedNodeOpacity;
     static int fadeSpeed;
+    static sf::Time flashDuration;
     static void initializeConstants();
 };
 

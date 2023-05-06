@@ -195,9 +195,11 @@ int arrayConstants::xDistance;
 int arrayConstants::swapXSpeed;
 int arrayConstants::fadeSpeed;
 sf::Vector2f arrayConstants::leftArray;
+sf::Time arrayConstants::flashDuration;
 
 void arrayConstants::initializeConstants() {
     leftArray = sf::Vector2f(180, 174);
+    flashDuration = sf::Time(sf::seconds(0.6));
     xDistance = 130;
     swapXSpeed = 4;
     fadeSpeed = 13;
