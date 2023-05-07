@@ -47,6 +47,8 @@ void SArrayObject::drawInsertIndicator(sf::RenderWindow &window) {
     sf::Color fadeColor = getFadeColor(sf::Color::White, nodeColor, flashTimer);
     insertNumberOpacity = std::min(255, insertNumberOpacity + arrayConstants::fadeSpeed);
     mySArray.drawInsertNodeIndicator(window, fadeColor, insertNumberOpacity, insertData);
+    SArrayCodeBlock.drawInsertCodeBlock(window);
+    SArrayCodeBlock.drawInsertCodeBlockMultiLine(window, 1, 2);
     if (insertNumberOpacity == 255) {
         drawType = insertSArray1;
     }
@@ -54,12 +56,13 @@ void SArrayObject::drawInsertIndicator(sf::RenderWindow &window) {
 void SArrayObject::drawInsertNodeSwap(sf::RenderWindow &window) {
     insertSwapDistance = std::min(arrayConstants::xDistance, insertSwapDistance + arrayConstants::swapXSpeed);
     mySArray.drawInsertNodeSwap(window, insertSwapIndex, insertData, insertSwapDistance);
+    SArrayCodeBlock.drawInsertCodeBlock(window);
     if (insertSwapDistance == arrayConstants::xDistance) {
         if (markFirst) {
             markFirst = 0;
             insertSwapTime.restart();
         }
-        sf::Time duration = sf::milliseconds(100);
+        sf::Time duration = sf::milliseconds(400);
         if (insertSwapTime.getElapsedTime().asMilliseconds() > duration.asMilliseconds()) {
             markFirst = 1;
             insertSwapDistance = 0;
@@ -69,6 +72,15 @@ void SArrayObject::drawInsertNodeSwap(sf::RenderWindow &window) {
                 drawType = showcaseSArray;
             }
         }
+
+        if (insertSwapIndex > insertIndex)
+            SArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 3);
+        else {
+            SArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 2);
+        }
+    }
+    else {
+        SArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 4);
     }
 }
 
@@ -78,6 +90,10 @@ void SArrayObject::drawDeleteIndicator(sf::RenderWindow &window) {
     sf::Color fadeColor = getFadeColor(nodeColor, sf::Color::White, flashTimer);
     deleteNumberOpacity = std::max(0, deleteNumberOpacity - arrayConstants::fadeSpeed);
     mySArray.drawDeleteNodeIndicator(window, fadeColor, deleteIndex, deleteNumberOpacity);
+    SArrayCodeBlock.drawDeleteCodeBlock(window);
+    if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()/2.0) {
+        SArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
+    }
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = deleteSArray1;
         markFirst = 1;
@@ -92,12 +108,13 @@ void SArrayObject::drawDeleteNodeSwap(sf::RenderWindow &window) {
     }
     deleteSwapDistance = std::min(arrayConstants::swapXSpeed + deleteSwapDistance, arrayConstants::xDistance);
     mySArray.drawDeleteNodeSwap(window, deleteIndex, deleteSwapIndex, deleteSwapDistance); 
+    SArrayCodeBlock.drawDeleteCodeBlock(window);
     if (deleteSwapDistance == arrayConstants::xDistance) {
         if (markFirst) {
             markFirst = 0;
             deleteSwapTime.restart();
         }
-        sf::Time duration = sf::milliseconds(100);
+        sf::Time duration = sf::milliseconds(400);
         if (deleteSwapTime.getElapsedTime().asMilliseconds() > duration.asMilliseconds()) {
             markFirst = 1;
             deleteSwapDistance = 0;
@@ -107,6 +124,15 @@ void SArrayObject::drawDeleteNodeSwap(sf::RenderWindow &window) {
                 drawType = showcaseSArray;
             }
         }
+        if (deleteSwapIndex < mySArray.getArrayLength() - 1) {
+            SArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
+        }
+        else {
+            SArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 2);
+        }
+    }
+    else {
+        SArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 1);
     }
 }
 void SArrayObject::drawSearchIndicator(sf::RenderWindow &window) {
@@ -117,6 +143,8 @@ void SArrayObject::drawSearchIndicator(sf::RenderWindow &window) {
     // std::cerr << "indicate " << searchIterateTarget << " " << drawIterateIndex << '\n';
     sf::Color fadeColor = getFadeColorOptionalDuration(sf::Color::White, nodeConstants::flashColor, flashTimer, arrayConstants::flashDuration);
     mySArray.drawSearchIndicator(window, fadeColor, searchIterateTarget);
+    SArrayCodeBlock.drawSearchCodeBlock(window);
+    SArrayCodeBlock.drawSearchCodeBlockSingleLine(window, 0);
     // std::cerr << "drawn\n";
     if (flashTimer.getElapsedTime().asSeconds() >= arrayConstants::flashDuration.asSeconds()) {
         searchIterateTarget++;
@@ -134,6 +162,13 @@ void SArrayObject::drawSearchHighlight(sf::RenderWindow &window) {
         drawIterateIndex = 69;
     sf::Color fadeColor = getFadeColorOptionalDuration(nodeConstants::flashColor, nodeConstants::searchFoundColor, flashTimer, arrayConstants::flashDuration);
     mySArray.drawSearchIndicator(window, fadeColor, drawIterateIndex);
+    SArrayCodeBlock.drawSearchCodeBlock(window);
+    if (searchIndex == -1) {
+        SArrayCodeBlock.drawSearchCodeBlockSingleLine(window, 3);
+    }
+    else {
+        SArrayCodeBlock.drawSearchCodeBlockMultiLine(window, 1, 2);
+    }
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = searchSArray2;
         sf::sleep(sf::seconds(0.5));
@@ -148,6 +183,13 @@ void SArrayObject::drawSearchRevert(sf::RenderWindow &window) {
     sf::Color fadeFlashColor = getFadeColorOptionalDuration(nodeConstants::flashColor, sf::Color::White, flashTimer, arrayConstants::flashDuration);
     sf::Color fadeFoundColor = getFadeColorOptionalDuration(nodeConstants::searchFoundColor, sf::Color::White, flashTimer, arrayConstants::flashDuration);
     mySArray.drawSearchRevert(window, fadeFlashColor, fadeFoundColor, drawIterateIndex);
+    SArrayCodeBlock.drawSearchCodeBlock(window);
+    if (searchIndex == -1) {
+        SArrayCodeBlock.drawSearchCodeBlockSingleLine(window, 3);
+    }
+    else {
+        SArrayCodeBlock.drawSearchCodeBlockMultiLine(window, 1, 2);
+    }
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = showcaseSArray;
         flashTimer.restart();
@@ -157,6 +199,8 @@ void SArrayObject::drawUpdateIndicator(sf::RenderWindow &window) {
     sf::Color fadeColor = getFadeColor(sf::Color::White, nodeConstants::searchFoundColor, flashTimer);
     updateNumberOpacity = std::max(0, updateNumberOpacity - nodeConstants::fadeSpeed);
     mySArray.drawUpdateIndicator(window, fadeColor, updateIndex, updateNumberOpacity);
+    SArrayCodeBlock.drawUpdateCodeBlock(window);
+    SArrayCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()
      && updateNumberOpacity == 0) {
         drawType = updateSArray1;
@@ -167,6 +211,8 @@ void SArrayObject::drawUpdateIndicator(sf::RenderWindow &window) {
 void SArrayObject::drawUpdateChangeNum(sf::RenderWindow &window) {
     updateNumberOpacity = std::min(255, updateNumberOpacity + 6);
     mySArray.drawUpdateIndicator(window, nodeConstants::searchFoundColor, updateIndex, updateNumberOpacity);
+    SArrayCodeBlock.drawUpdateCodeBlock(window);
+    SArrayCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()
      && updateNumberOpacity == 255) {
         drawType = updateSArray2;
@@ -176,6 +222,8 @@ void SArrayObject::drawUpdateChangeNum(sf::RenderWindow &window) {
 void SArrayObject::drawUpdateRevert(sf::RenderWindow &window) {
     sf::Color fadeColor = getFadeColor(nodeConstants::searchFoundColor, sf::Color::White, flashTimer);
     mySArray.drawUpdateRevert(window, fadeColor, updateIndex);
+    SArrayCodeBlock.drawUpdateCodeBlock(window);
+    SArrayCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = showcaseSArray;
         flashTimer.restart();

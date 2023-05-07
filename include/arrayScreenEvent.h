@@ -5,7 +5,7 @@
 #include <vector>
 #include "general.h"
 #include "arrayScreen.h"
-// #include "SArrayCodeBlock.h"
+#include "arrayCodeBlock.h"
 #include "browse.h"
 #include "fadecolor.h"
 
@@ -49,7 +49,7 @@ private:
     // BG
         background screenBackground;
     // Code Block
-        // SArrayscreenCodeBlock SArrayCodeBlock;
+        arrayScreenCodeBlock SArrayCodeBlock;
     // exit
         bool backToMenu;
 public:

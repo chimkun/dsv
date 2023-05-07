@@ -117,7 +117,6 @@ int main()
         }
         window.clear();
         int dsType = myMenuScreen.getDSType();
-        // std::cerr << "dsType: " << dsType << '\n';
         switch (dsType) {
             case 1:
                 ScreenType = SLL;
@@ -255,19 +254,19 @@ int main()
 //     sf::Vector2f nodeL = nodeConstants::firstNodePosition, nodeR = nodeConstants::firstNodePosition;
 //     nodeR.x += nodeConstants::nodeDistance;
 //     reverseArrow myArrow;
-//     while (window.isOpen()) {
-//         sf::Event event;
-//         while (window.pollEvent(event)) {
-//             if (event.type == sf::Event::Closed)
-//                 window.close();
-//         }
-//         window.clear();
-//         myArrow.drawReverseArrow(window, nodeL, nodeR);
-//         window.display();
-//     }
+//     // while (window.isOpen()) {
+//     //     sf::Event event;
+//     //     while (window.pollEvent(event)) {
+//     //         if (event.type == sf::Event::Closed)
+//     //             window.close();
+//     //     }
+//     //     window.clear();
+//     //     myArrow.drawReverseArrow(window, nodeL, nodeR);
+//     //     window.display();
+//     // }
 
-//     std::cout.rdbuf(coutbuf);
-//     std::cerr.rdbuf(cerrbuf);
+//     // std::cout.rdbuf(coutbuf);
+//     // std::cerr.rdbuf(cerrbuf);
 
 //     // Close the output file
 //     out.close();
