@@ -15,6 +15,7 @@
 #include "DLLscreenEvent.h"
 #include "CLLScreenEvent.h"
 #include "arrayScreenEvent.h"
+#include "dArrayScreenEvent.h"
 #include "stackScreenEvent.h"
 #include "queueScreenEvent.h"
 #include "LLscreen.h"
@@ -55,6 +56,7 @@ int main()
     // std::cerr << "DSAJKFL\n";
     CLLObject myCLLObject;
     SArrayObject myStaticArrayObject;
+    DArrayObject myDynamicArrayObject;
     StackObject myStackObject;
     QueueObject myQueueObject;
     
@@ -98,6 +100,14 @@ int main()
                         myMenuScreen.backToMenu();
                     }
                     break;
+                case dArray:
+                    myDynamicArrayObject.processAllEvent(window, event);
+                    if (myDynamicArrayObject.exitDArrayScreen()) {
+                        ScreenType = menu;
+                        myDynamicArrayObject.setExitToFalse();
+                        myMenuScreen.backToMenu();
+                    }
+                    break;
                 case Stack:
                     myStackObject.processAllEvent(window, event);
                     if (myStackObject.exitStackScreen()) {
@@ -130,6 +140,9 @@ int main()
             case 4:
                 ScreenType = sArray;
                 break;
+            case 5:
+                ScreenType = dArray;
+                break;
             case 6:
                 ScreenType = Stack;
                 break;
@@ -155,6 +168,9 @@ int main()
                 break;
             case sArray:
                 myStaticArrayObject.drawSArrayScreen(window);
+                break;
+            case dArray:
+                myDynamicArrayObject.drawDArrayScreen(window);
                 break;
             case Stack:
                 myStackObject.drawStackScreen(window);

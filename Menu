@@ -55,6 +55,11 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreenEvent.cpp"
     },
     {
+        "command": "g++ -c ..\\Menu\\code/arrayCodeBlock.cpp -o arrayCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\arrayCodeBlock.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/arrayNode.cpp -o arrayNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\arrayNode.cpp"
@@ -113,6 +118,21 @@
         "command": "g++ -c ..\\Menu\\code/constants.cpp -o constants.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\constants.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/dArrayNode.cpp -o dArrayNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\dArrayNode.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/dArrayScreen.cpp -o dArrayScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\dArrayScreen.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/dArrayScreenEvent.cpp -o dArrayScreenEvent.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\dArrayScreenEvent.cpp"
     },
     {
         "command": "g++ -c ..\\Menu\\code/fadecolor.cpp -o fadecolor.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",

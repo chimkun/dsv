@@ -173,7 +173,7 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                     offLogo();
                     DSType = sArray;
                 }
-                else if (MenuChooseArrayScreen.staticButtonIsClick(window)) {
+                else if (MenuChooseArrayScreen.dynamicButtonIsClick(window)) {
                     MenuType = initial;
                     offAllScreen();
                     offLogo();
