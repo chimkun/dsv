@@ -13,7 +13,7 @@ enum dynamicArrayDrawType {
     DArrayback,
     chooseMakeDArray, makeDArray, inputDArray,
     showcaseDArray, 
-    insertDArray0, insertDArray1, insertDArray2, 
+    insertDArray0, insertDArray1, insertDArray2, insertDArray3,
     deleteDArray0, deleteDArray1, deleteDArray2,
     searchDArray0, searchDArray1, searchDArray2,
     updateDArray0, updateDArray1, updateDArray2
@@ -29,7 +29,8 @@ private:
         sf::Clock flashTimer;
         sf::Time remTime;
         //insert data
-        int insertIndex, insertData, insertNumberOpacity, insertSwapIndex, insertSwapDistance;
+        int insertIndex, insertData, insertNumberOpacity, 
+            insertSwapIndex, insertSwapDistance, newArrayOpacity, yDistance;
         sf::Clock insertSwapTime;
         //delete data
         int deleteIndex, deleteSwapDistance, deleteSwapIndex, deleteNumberOpacity;
@@ -60,14 +61,17 @@ public:
     void drawList(sf::RenderWindow &window);
     void processDrawList();
 
+    void drawInsertCreate(sf::RenderWindow &window);
     void drawInsertIndicator(sf::RenderWindow &window);
-    void processInsert(sf::RenderWindow &window);
+    void drawInsertSwapArray(sf::RenderWindow &window);
     void drawInsertNodeSwap(sf::RenderWindow &window);
+    void processInsert(sf::RenderWindow &window);
 
     void drawDeleteIndicator(sf::RenderWindow &window);
     void processDelete(sf::RenderWindow &window);
     void drawDeleteNodeSwap(sf::RenderWindow &window);
     void drawDeleteNodeMove(sf::RenderWindow &window);
+    void drawDeleteResize(sf::RenderWindow &window);
 
     void drawSearchIndicator(sf::RenderWindow &window);
     void drawSearchHighlight(sf::RenderWindow &window);

@@ -120,9 +120,9 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\constants.cpp"
     },
     {
-        "command": "g++ -c ..\\Menu\\code/dArrayNode.cpp -o dArrayNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
+        "command": "g++ -c ..\\Menu\\code/dArrayCodeBlock.cpp -o dArrayCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
-        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\dArrayNode.cpp"
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\dArrayCodeBlock.cpp"
     },
     {
         "command": "g++ -c ..\\Menu\\code/dArrayScreen.cpp -o dArrayScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",

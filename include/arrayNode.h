@@ -15,6 +15,8 @@ public:
                        int innerOpacity = 255);
     void drawUnusedNode(sf::RenderWindow &window, sf::Vector2f nodePosition, int data = -1,
                         int numberOpacity = 255, sf::Color nodeColor = sf::Color::White);
+    void drawUnusedNodeOpacity(sf::RenderWindow &window, sf::Vector2f nodePosition, int data = -1,
+                        int numberOpacity = 255, sf::Color nodeColor = sf::Color::White, int nodeOpacity = 255, int innerOpacity = 255);
 };
 
 #endif

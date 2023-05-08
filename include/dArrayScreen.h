@@ -32,12 +32,17 @@ public:
     void drawArray(sf::RenderWindow &window, int opacity);
     void drawArrayIndex(sf::RenderWindow &window, int opacity);
 
-    void drawInsertNodeIndicator(sf::RenderWindow &window, sf::Color newNodeColor, int insertNumberOpacity, int insertData);
+    void drawExtraIndex(sf::RenderWindow &window, int index, int opacity);
+    void drawInsertCreate(sf::RenderWindow &window, int newArrayOpacity);
+    void drawInsertNodeIndicator(sf::RenderWindow &window, sf::Color newNodeColor, 
+                                 int yDistance, int insertNumberOpacity, int insertData);
+    void drawInsertSwapArray(sf::RenderWindow &window, int yMoveUpDistance, int initArrayOpacity, int insertData);
     void drawInsertNodeSwap(sf::RenderWindow &window, int swapIndex, 
                             int insertData, int insertDistance);
     
     void drawDeleteNodeIndicator(sf::RenderWindow &window, sf::Color fadeColor, int deleteIndex, int numberOpacity);
     void drawDeleteNodeSwap(sf::RenderWindow &window, int deleteIndex, int swapIndex, int swapDistance);
+    void drawDeleteNodeResize(sf::RenderWindow &window, int deleteNodeOpacity);
     
     void drawSearchIndicator(sf::RenderWindow &window, sf::Color fadeColor, int searchIndex);
     void drawSearchRevert(sf::RenderWindow &window, sf::Color fadeColor, sf::Color foundNodeColor, int searchIndex);
