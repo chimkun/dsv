@@ -40,9 +40,9 @@ public:
     void drawInsertNodeSwap(sf::RenderWindow &window, int swapIndex, 
                             int insertData, int insertDistance);
     
-    void drawDeleteNodeIndicator(sf::RenderWindow &window, sf::Color fadeColor, int deleteIndex, int numberOpacity);
-    void drawDeleteNodeSwap(sf::RenderWindow &window, int deleteIndex, int swapIndex, int swapDistance);
-    void drawDeleteNodeResize(sf::RenderWindow &window, int deleteNodeOpacity);
+    void drawDeleteCreate(sf::RenderWindow &window, int newArrayOpacity);
+    void drawDeleteNodeIndicator(sf::RenderWindow &window, int deleteIndex, int curIndex, int delMoveX, int delMoveY);
+    void drawDeleteArraySwap(sf::RenderWindow &window, int deleteIndex, int delMoveY, int initArrayOpacity);
     
     void drawSearchIndicator(sf::RenderWindow &window, sf::Color fadeColor, int searchIndex);
     void drawSearchRevert(sf::RenderWindow &window, sf::Color fadeColor, sf::Color foundNodeColor, int searchIndex);

@@ -39,9 +39,11 @@ void DArrayObject::processDrawList() {
 }
 
 void DArrayObject::drawInsertCreate(sf::RenderWindow &window) {
-    newArrayOpacity = std::min(255, newArrayOpacity + arrayConstants::fadeSpeed);
+    newArrayOpacity = std::min(100, newArrayOpacity + arrayConstants::fadeSpeed);
     myDArray.drawInsertCreate(window, newArrayOpacity);
-    if (newArrayOpacity == 255) {
+    DArrayCodeBlock.drawInsertCodeBlock(window);
+    DArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
+    if (newArrayOpacity == 100) {
         drawType = insertDArray1;
     }
 }
@@ -51,10 +53,9 @@ void DArrayObject::drawInsertIndicator(sf::RenderWindow &window) {
     sf::Color fadeColor = getFadeColor(sf::Color::White, nodeColor, flashTimer);
     insertNumberOpacity = std::min(255, insertNumberOpacity + arrayConstants::fadeSpeed - 1);
     yDistance = std::min(arrayConstants::yNewArray, yDistance + arrayConstants::yMoveSpeed);
-    // myDArray.drawInsertNodeIndicator(window, fadeColor, insertNumberOpacity, insertData);
-    myDArray.drawInsertNodeIndicator(window, fadeColor, yDistance, insertNumberOpacity, insertData);
-    // DArrayCodeBlock.drawInsertCodeBlock(window);
-    // DArrayCodeBlock.drawInsertCodeBlockMultiLine(window, 1, 2);
+    myDArray.drawInsertNodeIndicator(window, fadeColor, yDistance, insertNumberOpacity, insertData);   
+    DArrayCodeBlock.drawInsertCodeBlock(window);
+    DArrayCodeBlock.drawInsertCodeBlockMultiLine(window, 1, 3);
     if (insertNumberOpacity == 255 && yDistance == arrayConstants::yNewArray) {
         drawType = insertDArray2;
         newArrayOpacity = 255;
@@ -70,16 +71,25 @@ void DArrayObject::drawInsertSwapArray(sf::RenderWindow &window) {
     newArrayOpacity = std::max(0, newArrayOpacity - arrayConstants::fadeSpeed + 2);
     yDistance = std::min(arrayConstants::yNewArray, yDistance + arrayConstants::yMoveSpeed - 1);
     myDArray.drawInsertSwapArray(window, yDistance, newArrayOpacity, insertData);
+
+    DArrayCodeBlock.drawInsertCodeBlock(window);
     if (yDistance == arrayConstants::yNewArray && newArrayOpacity == 0) {
         drawType = insertDArray3;
         sf::sleep(sf::seconds(0.2));
         markFirst = 1;
+        DArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 5);
     }
+    else 
+        DArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 4);
 }
 void DArrayObject::drawInsertNodeSwap(sf::RenderWindow &window) {
+    if (markFirst) {
+        markFirst = 0;
+        sf::sleep(sf::seconds(0.2));
+    }
     insertSwapDistance = std::min(arrayConstants::xDistance, insertSwapDistance + arrayConstants::swapXSpeed);
     myDArray.drawInsertNodeSwap(window, insertSwapIndex, insertData, insertSwapDistance);
-    // DArrayCodeBlock.drawInsertCodeBlock(window);
+    DArrayCodeBlock.drawInsertCodeBlock(window);
     if (insertSwapDistance == arrayConstants::xDistance) {
         if (markFirst) {
             markFirst = 0;
@@ -96,75 +106,65 @@ void DArrayObject::drawInsertNodeSwap(sf::RenderWindow &window) {
             }
         }
 
-        if (insertSwapIndex > insertIndex) {
-            // DArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 3);
-        }
-        else {
-            // DArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 2);
+        if (insertSwapIndex >= insertIndex) {
+            DArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 5);
         }
     }
     else {
-        // DArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 4);
+        DArrayCodeBlock.drawInsertCodeBlockSingleLine(window, 6);
     }
 }
 
-void DArrayObject::drawDeleteIndicator(sf::RenderWindow &window) {
-    int deleteData = myDArray.accessIndex(deleteIndex);
-    sf::Color nodeColor = colorConstants::nodeColor[deleteData % 4];
-    sf::Color fadeColor = getFadeColor(nodeColor, sf::Color::White, flashTimer);
-    deleteNumberOpacity = std::max(0, deleteNumberOpacity - arrayConstants::fadeSpeed);
-    myDArray.drawDeleteNodeIndicator(window, fadeColor, deleteIndex, deleteNumberOpacity);
-    // DArrayCodeBlock.drawDeleteCodeBlock(window);
-    if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()/2.0) {
-        // DArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
-    }
-    if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
+void DArrayObject::drawDeleteCreate(sf::RenderWindow &window) {
+    newDelArrayOpacity = std::min(100, arrayConstants::fadeSpeed + newDelArrayOpacity);
+    myDArray.drawDeleteCreate(window, newDelArrayOpacity);
+    DArrayCodeBlock.drawDeleteCodeBlock(window);
+    if (newDelArrayOpacity == 100) {
         drawType = deleteDArray1;
         markFirst = 1;
-        flashTimer.restart();
+        DArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 1);
+    }
+    else 
+        DArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
+}
+void DArrayObject::drawDeleteIndicator(sf::RenderWindow &window) {
+    if (markFirst) {
+        markFirst = 0;
+        sf::sleep(sf::seconds(0.2));
+    }
+    int deleteData = myDArray.accessIndex(deleteIndex);
+    deleteMoveY = std::min(arrayConstants::yNewArray, deleteMoveY + arrayConstants::yMoveSpeed);
+    if (deleteCurIndex > deleteIndex)
+        deleteMoveX = std::max(0, deleteMoveX - arrayConstants::swapXSpeed);
+    myDArray.drawDeleteNodeIndicator(window, deleteIndex, deleteCurIndex, deleteMoveX, deleteMoveY);
+    DArrayCodeBlock.drawDeleteCodeBlock(window);
+    DArrayCodeBlock.drawDeleteCodeBlockMultiLine(window, 3, 4);
+    if (deleteMoveY == arrayConstants::yNewArray && deleteMoveX == 0) {
+        deleteCurIndex++;
+        if (deleteCurIndex == deleteIndex) {
+            deleteCurIndex++;
+        }
+        deleteMoveY = 0;
+        if (deleteCurIndex < deleteIndex)
+            deleteMoveX = 0;
+        else
+            deleteMoveX = arrayConstants::xDistance;
+    }
+    if (deleteCurIndex == myDArray.getArrayLength()) {
+        drawType = deleteDArray2;
+        newDelArrayOpacity = 255;
+        deleteMoveY = arrayConstants::yNewArray;
     }
 }
-void DArrayObject::drawDeleteNodeSwap(sf::RenderWindow &window) {
-    if (deleteSwapIndex == myDArray.getArrayLength()) {
+void DArrayObject::drawDeleteArraySwap(sf::RenderWindow &window) {
+    newDelArrayOpacity = std::max(0, newDelArrayOpacity - arrayConstants::fadeSpeed);
+    deleteMoveY = std::max(0, deleteMoveY - arrayConstants::yMoveSpeed);
+    myDArray.drawDeleteArraySwap(window, deleteIndex, deleteMoveY, newDelArrayOpacity);
+    DArrayCodeBlock.drawDeleteCodeBlock(window);
+    DArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 5);
+    if (newDelArrayOpacity == 0 && deleteMoveY == 0) {
+        drawType = showcaseDArray;
         myDArray.deleteAtMiddle(deleteIndex);
-        drawType = showcaseDArray;
-        return;
-    }
-    deleteSwapDistance = std::min(arrayConstants::swapXSpeed + deleteSwapDistance, arrayConstants::xDistance);
-    myDArray.drawDeleteNodeSwap(window, deleteIndex, deleteSwapIndex, deleteSwapDistance); 
-    // DArrayCodeBlock.drawDeleteCodeBlock(window);
-    if (deleteSwapDistance == arrayConstants::xDistance) {
-        if (markFirst) {
-            markFirst = 0;
-            deleteSwapTime.restart();
-        }
-        sf::Time duration = sf::milliseconds(400);
-        if (deleteSwapTime.getElapsedTime().asMilliseconds() > duration.asMilliseconds()) {
-            markFirst = 1;
-            deleteSwapDistance = 0;
-            deleteSwapIndex++;
-            if (deleteSwapIndex == myDArray.getArrayLength()) {
-                myDArray.deleteAtMiddle(deleteIndex);
-                drawType = deleteDArray2;
-                deleteNumberOpacity = 255;
-            }
-        }
-        if (deleteSwapIndex < myDArray.getArrayLength() - 1) {
-            // DArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
-        }
-        else {
-            // DArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 2);
-        }
-    }
-    else {
-        // DArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 1);
-    }
-}
-void DArrayObject::drawDeleteResize(sf::RenderWindow &window) {
-    deleteNumberOpacity = std::max(0, deleteNumberOpacity - arrayConstants::fadeSpeed);
-    myDArray.drawDeleteNodeResize(window, deleteNumberOpacity);
-    if (deleteNumberOpacity == 0) {
-        drawType = showcaseDArray;
     }
 }
 
@@ -293,13 +293,13 @@ void DArrayObject::processType(sf::RenderWindow &window) {
             drawInsertNodeSwap(window);
             break;
         case deleteDArray0:
-            drawDeleteIndicator(window);
+            drawDeleteCreate(window);
             break;
         case deleteDArray1:
-            drawDeleteNodeSwap(window);
+            drawDeleteIndicator(window);
             break;
         case deleteDArray2:
-            drawDeleteResize(window);
+            drawDeleteArraySwap(window);
             break;
         case searchDArray0:
             drawSearchIndicator(window);
@@ -605,9 +605,11 @@ void DArrayObject::deleteNodeProcess(int deleteIndex) {
     this->flashTimer.restart();
     this->remTime = sf::milliseconds(0);
     this->markFirst = 1;
-    this->deleteSwapDistance = 0;
-    this->deleteSwapIndex = deleteIndex + 1;
+    this->deleteMoveX = 0;
+    this->deleteMoveY = 0;
     this->deleteNumberOpacity = 255;
+    this->newDelArrayOpacity = 0;
+    this->deleteCurIndex = 0;
 }
 void DArrayObject::searchNodeProcess(int searchData) {
     this->searchIndex = myDArray.searchValue(searchData);

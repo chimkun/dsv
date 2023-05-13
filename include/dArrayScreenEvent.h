@@ -5,7 +5,7 @@
 #include <vector>
 #include "general.h"
 #include "dArrayScreen.h"
-// #include "arrayCodeBlock.h"
+#include "dArrayCodeBlock.h"
 #include "browse.h"
 #include "fadecolor.h"
 
@@ -33,7 +33,8 @@ private:
             insertSwapIndex, insertSwapDistance, newArrayOpacity, yDistance;
         sf::Clock insertSwapTime;
         //delete data
-        int deleteIndex, deleteSwapDistance, deleteSwapIndex, deleteNumberOpacity;
+        int deleteIndex, deleteMoveX, deleteMoveY, 
+            deleteNumberOpacity, newDelArrayOpacity, deleteCurIndex;
         sf::Clock deleteSwapTime;
         //search data
         int searchIndex, searchData, searchIterateTarget;
@@ -50,7 +51,7 @@ private:
     // BG
         background screenBackground;
     // Code Block
-        // arrayScreenCodeBlock DArrayCodeBlock;
+        dArrayScreenCodeBlock DArrayCodeBlock;
     // exit
         bool backToMenu;
 public:
@@ -67,11 +68,10 @@ public:
     void drawInsertNodeSwap(sf::RenderWindow &window);
     void processInsert(sf::RenderWindow &window);
 
+    void drawDeleteCreate(sf::RenderWindow &window);
     void drawDeleteIndicator(sf::RenderWindow &window);
+    void drawDeleteArraySwap(sf::RenderWindow &window);
     void processDelete(sf::RenderWindow &window);
-    void drawDeleteNodeSwap(sf::RenderWindow &window);
-    void drawDeleteNodeMove(sf::RenderWindow &window);
-    void drawDeleteResize(sf::RenderWindow &window);
 
     void drawSearchIndicator(sf::RenderWindow &window);
     void drawSearchHighlight(sf::RenderWindow &window);

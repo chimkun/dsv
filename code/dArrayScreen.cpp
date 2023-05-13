@@ -191,55 +191,51 @@ void DynamicArray::drawInsertNodeSwap(sf::RenderWindow &window, int swapIndex, i
     drawExtraIndex(window, (int) DArray.size(), 255);
 }
 
-void DynamicArray::drawDeleteNodeIndicator(sf::RenderWindow &window, sf::Color fadeColor, int deleteIndex, int numberOpacity) {
+void DynamicArray::drawDeleteCreate(sf::RenderWindow &window, int newArrayOpacity) {
     for (int i = 0; i < (int) DArray.size(); i++) {
         sf::Vector2f nodePosition = arrayConstants::leftArray;
         nodePosition += sf::Vector2f(arrayConstants::xDistance * i, 0);
-        if (i == deleteIndex)
-            node.drawUnusedNode(window, nodePosition, DArray[i], numberOpacity);
-        else
-            node.drawArrayNode(window, nodePosition, DArray[i]);
+        node.drawArrayNode(window, nodePosition, DArray[i]);
+        if (i < (int) DArray.size() - 1) {
+            node.drawUnusedNodeOpacity(window, nodePosition + sf::Vector2f(0, arrayConstants::yNewArray), -1, newArrayOpacity, sf::Color::White, newArrayOpacity, 0);
+        }
     }
     drawArrayIndex(window, 255);
 }
-void DynamicArray::drawDeleteNodeSwap(sf::RenderWindow &window, int deleteIndex, int swapIndex, int swapDistance) {
-    int dataIndex = 0;
-    if (swapIndex == (int) DArray.size() || swapIndex == 0)
-        return;
+void DynamicArray::drawDeleteNodeIndicator(sf::RenderWindow &window, int deleteIndex, int curIndex, int delMoveX, int delMoveY) {
     sf::Vector2f nodePosition = arrayConstants::leftArray;
     for (int i = 0; i < (int) DArray.size(); i++) {
+        sf::Vector2f initNodePos = arrayConstants::leftArray + sf::Vector2f(arrayConstants::xDistance * i, 0);
+        node.drawArrayNode(window, initNodePos, DArray[i]);
+        if (i < (int) DArray.size() - 1)
+            node.drawUnusedNodeOpacity(window, initNodePos + sf::Vector2f(0, arrayConstants::yNewArray), -1, 255, sf::Color::White, 100, 0);
         if (i == deleteIndex) {
-            dataIndex++;
             continue;
         }
-        if (i == swapIndex) {
-            nodePosition.x += arrayConstants::xDistance * 2;
-            dataIndex++;
-            continue;
+        if (i < curIndex) {
+            node.drawArrayNode(window, nodePosition + sf::Vector2f(0, arrayConstants::yNewArray), DArray[i]);
         }
-        node.drawArrayNode(window, nodePosition, DArray[dataIndex]);
-        nodePosition += sf::Vector2f(arrayConstants::xDistance, 0);
-        dataIndex++;
+        else if (i == curIndex) {
+            node.drawArrayNode(window, nodePosition + sf::Vector2f(delMoveX, delMoveY), DArray[i]);
+        }
+
+        nodePosition.x += arrayConstants::xDistance;
     }
-    sf::Vector2f nodePositionL = arrayConstants::leftArray;
-    nodePositionL += sf::Vector2f(arrayConstants::xDistance * (swapIndex - 1) + swapDistance, 0);
-    node.drawUnusedNode(window, nodePositionL);
-    sf::Vector2f nodePositionR = arrayConstants::leftArray;
-    nodePositionR += sf::Vector2f(arrayConstants::xDistance * swapIndex - swapDistance, 0);
-    node.drawArrayNode(window, nodePositionR, DArray[swapIndex]);
     drawArrayIndex(window, 255);
 }
-void DynamicArray::drawDeleteNodeResize(sf::RenderWindow &window, int deleteNodeOpacity) {
-    for (int i = 0; i <= (int) DArray.size(); i++) {
-        sf::Vector2f nodePosition = arrayConstants::leftArray;
-        nodePosition += sf::Vector2f(arrayConstants::xDistance * i, 0);
-        if (i < DArray.size())
-            node.drawArrayNode(window, nodePosition, DArray[i]);
-        else 
-            node.drawUnusedNodeOpacity(window, nodePosition, -1, 255, sf::Color::White, deleteNodeOpacity);
+void DynamicArray::drawDeleteArraySwap(sf::RenderWindow &window, int deleteIndex, int delMoveY, int initArrayOpacity) {
+    for (int i = 0; i < (int) DArray.size(); i++) {
+        sf::Vector2f nodePosition = arrayConstants::leftArray + sf::Vector2f(arrayConstants::xDistance * i, 0);
+        node.drawArrayNode(window, nodePosition, DArray[i], initArrayOpacity, sf::Color::White, initArrayOpacity);
+    }
+    sf::Vector2f nodePosition = arrayConstants::leftArray + sf::Vector2f(0, delMoveY);
+    for (int i = 0; i < (int) DArray.size(); i++) {
+        if (i == deleteIndex)
+            continue;
+        node.drawArrayNode(window, nodePosition, DArray[i]);
+        nodePosition.x += arrayConstants::xDistance;
     }
     drawArrayIndex(window, 255);
-    drawExtraIndex(window, (int) DArray.size(), deleteNodeOpacity);
 }
 
 
