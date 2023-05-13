@@ -45,7 +45,6 @@ void SLLObject::drawInsertIndicator(sf::RenderWindow &window) {
                                       nodeConstants::baseColor, nodeText);
         drawType = insertLL2;
         mySLL.insertAfterIndex(insertData, insertIndex);
-        insertIndex++;
         return;
     }
     if (flashTimer.getElapsedTime().asMilliseconds() < remTime.asMilliseconds())
@@ -69,10 +68,9 @@ void SLLObject::drawInsertIndicator(sf::RenderWindow &window) {
         flashTimer.restart();
         LLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
     }
-    if (gotoIndex > insertIndex) {
+    if (gotoIndex >= insertIndex) {
         drawType = insertLL1;
         mySLL.insertAfterIndex(insertData, insertIndex);
-        insertIndex++;
         markFirst = 1;
     }
 }
@@ -314,8 +312,9 @@ void SLLObject::drawUpdateRevert(sf::RenderWindow &window) {
 }
 
 void SLLObject::processType(sf::RenderWindow &window) {
-    if (drawType != chooseMakeLL)
+    if (drawType != chooseMakeLL) {
         theLLscreen.drawGeneralScreen(window);
+    }
     else {
         theLLscreen.drawCreateScreen(window);
     }
@@ -441,7 +440,7 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
                 int userInput = theLLscreen.theGeneralScreen.addBeginningText.getInputDataInt();
                 if (insertIsValid(0, userInput)) {
                     drawType = insertLL0;
-                    int inputIndex = 1, inputElement = userInput;
+                    int inputIndex = 0, inputElement = userInput;
                     insertNodeProcess(inputIndex, inputElement);
                     LLCodeBlock.drawInsertCodeBlock(window);
                     LLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
@@ -614,7 +613,7 @@ void SLLObject::processMouseHoverEvent(sf::RenderWindow &window) {
 void SLLObject::insertNodeProcess(int insertIndex, int insertData) {
     this->insertIndex = insertIndex;
     this->insertData = insertData;
-    this->insertNodePosition.x = nodeConstants::firstNodePositionX * (insertIndex + 1);
+    this->insertNodePosition.x = nodeConstants::firstNodePositionX * (insertIndex);
     this->insertNodePosition.y = nodeConstants::firstNodePositionY + nodeConstants::initialInsertNodeY;
     this->gotoIndex = 1;
     this->nodePositionXAfterInsert = 0;

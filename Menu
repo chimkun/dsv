@@ -248,5 +248,10 @@
         "command": "g++ -c ..\\Menu\\code/textbox.cpp -o textbox.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\textbox.cpp"
+    },
+    {
+        "command": "g++ -c ..\\Menu\\code/textureNode.cpp -o textureNode.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\textureNode.cpp"
     }
 ]

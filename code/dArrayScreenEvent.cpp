@@ -176,8 +176,8 @@ void DArrayObject::drawSearchIndicator(sf::RenderWindow &window) {
     // std::cerr << "indicate " << searchIterateTarget << " " << drawIterateIndex << '\n';
     sf::Color fadeColor = getFadeColorOptionalDuration(sf::Color::White, nodeConstants::flashColor, flashTimer, arrayConstants::flashDuration);
     myDArray.drawSearchIndicator(window, fadeColor, searchIterateTarget);
-    // DArrayCodeBlock.drawSearchCodeBlock(window);
-    // DArrayCodeBlock.drawSearchCodeBlockSingleLine(window, 0);
+    DArrayCodeBlock.drawSearchCodeBlock(window);
+    DArrayCodeBlock.drawSearchCodeBlockSingleLine(window, 0);
     // std::cerr << "drawn\n";
     if (flashTimer.getElapsedTime().asSeconds() >= arrayConstants::flashDuration.asSeconds()) {
         searchIterateTarget++;
@@ -195,12 +195,12 @@ void DArrayObject::drawSearchHighlight(sf::RenderWindow &window) {
         drawIterateIndex = 69;
     sf::Color fadeColor = getFadeColorOptionalDuration(nodeConstants::flashColor, nodeConstants::searchFoundColor, flashTimer, arrayConstants::flashDuration);
     myDArray.drawSearchIndicator(window, fadeColor, drawIterateIndex);
-    // DArrayCodeBlock.drawSearchCodeBlock(window);
+    DArrayCodeBlock.drawSearchCodeBlock(window);
     if (searchIndex == -1) {
-        // DArrayCodeBlock.drawSearchCodeBlockSingleLine(window, 3);
+        DArrayCodeBlock.drawSearchCodeBlockSingleLine(window, 3);
     }
     else {
-        // DArrayCodeBlock.drawSearchCodeBlockMultiLine(window, 1, 2);
+        DArrayCodeBlock.drawSearchCodeBlockMultiLine(window, 1, 2);
     }
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = searchDArray2;
@@ -216,12 +216,12 @@ void DArrayObject::drawSearchRevert(sf::RenderWindow &window) {
     sf::Color fadeFlashColor = getFadeColorOptionalDuration(nodeConstants::flashColor, sf::Color::White, flashTimer, arrayConstants::flashDuration);
     sf::Color fadeFoundColor = getFadeColorOptionalDuration(nodeConstants::searchFoundColor, sf::Color::White, flashTimer, arrayConstants::flashDuration);
     myDArray.drawSearchRevert(window, fadeFlashColor, fadeFoundColor, drawIterateIndex);
-    // DArrayCodeBlock.drawSearchCodeBlock(window);
+    DArrayCodeBlock.drawSearchCodeBlock(window);
     if (searchIndex == -1) {
-        // DArrayCodeBlock.drawSearchCodeBlockSingleLine(window, 3);
+        DArrayCodeBlock.drawSearchCodeBlockSingleLine(window, 3);
     }
     else {
-        // DArrayCodeBlock.drawSearchCodeBlockMultiLine(window, 1, 2);
+        DArrayCodeBlock.drawSearchCodeBlockMultiLine(window, 1, 2);
     }
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = showcaseDArray;
@@ -232,8 +232,8 @@ void DArrayObject::drawUpdateIndicator(sf::RenderWindow &window) {
     sf::Color fadeColor = getFadeColor(sf::Color::White, nodeConstants::searchFoundColor, flashTimer);
     updateNumberOpacity = std::max(0, updateNumberOpacity - nodeConstants::fadeSpeed);
     myDArray.drawUpdateIndicator(window, fadeColor, updateIndex, updateNumberOpacity);
-    // DArrayCodeBlock.drawUpdateCodeBlock(window);
-    // DArrayCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
+    DArrayCodeBlock.drawUpdateCodeBlock(window);
+    DArrayCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()
      && updateNumberOpacity == 0) {
         drawType = updateDArray1;
@@ -244,8 +244,8 @@ void DArrayObject::drawUpdateIndicator(sf::RenderWindow &window) {
 void DArrayObject::drawUpdateChangeNum(sf::RenderWindow &window) {
     updateNumberOpacity = std::min(255, updateNumberOpacity + 6);
     myDArray.drawUpdateIndicator(window, nodeConstants::searchFoundColor, updateIndex, updateNumberOpacity);
-    // DArrayCodeBlock.drawUpdateCodeBlock(window);
-    // DArrayCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
+    DArrayCodeBlock.drawUpdateCodeBlock(window);
+    DArrayCodeBlock.drawUpdateCodeBlockSingleLine(window, 0);
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()
      && updateNumberOpacity == 255) {
         drawType = updateDArray2;

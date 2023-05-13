@@ -2,7 +2,7 @@
 
 LLscreenCodeBlock::LLscreenCodeBlock() {
     std::string insertCodeString = "Node cur = head\n"
-                                    "for (k = 0; k < i; k++)\n"
+                                    "for (k = 0; k < idx - 1; k++)\n"
                                     "    cur = cur->next\n"
                                     "Node rightNode = cur->next\n"
                                     "Node newNode = new Node(data)\n"

@@ -68,6 +68,8 @@ void initialScreen::buttonIsHover(sf::RenderWindow &window) {
     }
 }
 
+/// @brief 
+/// @param window 
 void initialScreen::drawInitialScreen(sf::RenderWindow &window) {
     if (initialScreenIsChosen) {
         moveDistance = std::min(moveDistance + menuButtonConstants::moveSpeed, menuButtonConstants::maxMoveDistance);

@@ -6,14 +6,16 @@
 #include <vector>
 #include "node.h"
 #include "text.h"
+#include "textureNode.h"
 
 class SLL {
 private:
     Node *pHead;
     int numberOfNode;
+    TextureNode nodeTexture;
 public:
     SLL ();
-    void build(int inputNumberOfNode, std::vector <int> &a);
+    void build(int inputNumberOfNode, std::vector <int> &input);
     void insertAtBeginning(int newData);
     void insertAtEnding(int newData);
     void insertAfterIndex(int newData, int idx);

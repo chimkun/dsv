@@ -7,6 +7,7 @@
 #include <algorithm>
 #include "text.h"
 #include "DLLNode.h"
+#include "textureNode.h"
 #include "constants.h"
 
 class DLL {
@@ -14,6 +15,7 @@ private:
     DLLNode *pHead;
     int numberOfNode;
     textInfo nodeText;
+    TextureNode nodeTexture;
 public:
     DLL();
     void build(std::vector <int> &inputValue);
