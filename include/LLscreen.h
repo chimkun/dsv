@@ -18,7 +18,8 @@ public:
     void build(int inputNumberOfNode, std::vector <int> &input);
     void insertAtBeginning(int newData);
     void insertAtEnding(int newData);
-    void insertAfterIndex(int newData, int idx);
+    void insertAtIndex(int newData, int idx);
+    
     void deleteAtBeginning();
     void deleteAtEnding();
     void deleteAtIndex(int idx);

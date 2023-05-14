@@ -51,7 +51,7 @@ void SLL::insertAtEnding(int newData) {
     return;
 }
 
-void SLL::insertAfterIndex(int newData, int idx) {
+void SLL::insertAtIndex(int newData, int idx) {
     if (idx < 0 || idx > numberOfNode)
         return;
     if (idx == 0) {
@@ -63,7 +63,7 @@ void SLL::insertAfterIndex(int newData, int idx) {
         return;
     }
     Node *cur = pHead;
-    for (int i = 1; i < idx - 1; i++) {
+    for (int i = 0; i < idx - 1; i++) {
         cur = cur->pNext;
     }
     Node *newNode = new Node(newData);
@@ -137,10 +137,10 @@ void SLL::deleteAtIndex(int idx) {
 }
 
 void SLL::updateAtIndex(int newData, int idx) {
-    if (idx < 1 || idx > numberOfNode)
+    if (idx < 0 || idx >= numberOfNode)
         return;
     Node *cur = pHead;
-    for (int i = 1; i <= numberOfNode; i++) {
+    for (int i = 0; i < numberOfNode; i++) {
         if (i == idx) {
             cur->data = newData;
             break;
@@ -187,12 +187,12 @@ void SLL::printList() {
 
 void SLL::drawList(sf::RenderWindow &window, int opacity, textInfo &nodeText) {
     Node *cur = pHead;
-    int countNode = 1;
+    int countNode = 0;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
         nodeTexture.drawNode(nodePosition, window, opacity, cur->data);
         
-        if (countNode == 1) {
+        if (countNode == 0) {
             if (numberOfNode == 1) {
                 nodeText.drawText(window, nodePosition, textConstants::typeHeadAndTail, opacity);
             }
@@ -200,11 +200,11 @@ void SLL::drawList(sf::RenderWindow &window, int opacity, textInfo &nodeText) {
                 nodeText.drawText(window, nodePosition, textConstants::typeHead, opacity);
             }
         }
-        else if (countNode == numberOfNode) {
+        else if (countNode == numberOfNode - 1) {
             nodeText.drawText(window, nodePosition, textConstants::typeTail, opacity);
         }
 
-        if (countNode < numberOfNode) {
+        if (countNode < numberOfNode - 1) {
             sf::Vector2f nodePositionRight = nodePosition;
             nodePositionRight.x += nodeConstants::nodeDistance;
             nodeTexture.drawArrowBetweenNodeSLL(window, nodePosition, nodePositionRight, nodeConstants::baseColor, opacity);
@@ -220,7 +220,7 @@ void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     int maxOpacity = 255;
     gotoIndex = std::min(gotoIndex, insertIndex);
-    for (int i = 1; i <= numberOfNode; i++) {
+    for (int i = 0; i < numberOfNode; i++) {
         if (i < gotoIndex)
             nodeTexture.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White, cur->data);
         else if (i == gotoIndex)
@@ -229,13 +229,13 @@ void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
             nodeTexture.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor, cur->data);
         
         if (insertIndex == 0 || insertIndex == numberOfNode) {
-            if (i == 1)
+            if (i == 0)
                 nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
-            else if (i == numberOfNode)
+            else if (i == numberOfNode - 1)
                 nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
         }
         else {
-            if (i == 1) {
+            if (i == 0) {
                 if (numberOfNode == 1)
                     nodeText.drawText(window, nodePosition, textConstants::typeHeadAndTail, nodeConstants::textOpacity);
                 else if (i == gotoIndex)
@@ -243,7 +243,7 @@ void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
                 else 
                     nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             }
-            else if (i == numberOfNode) {
+            else if (i == numberOfNode - 1) {
                 if (i == gotoIndex)
                     nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, nodeConstants::textOpacity);
                 else if (numberOfNode > 1)
@@ -257,11 +257,11 @@ void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
         sf::Vector2f nodePositionLeft = nodePosition;
         sf::Vector2f nodePositionRight = nodePosition;
         nodePositionRight.x += nodeConstants::nodeDistance;
-        if (i < gotoIndex - 1 && i < numberOfNode)
+        if (i < gotoIndex - 1 && i < numberOfNode - 1)
             nodeTexture.drawArrowBetweenNodeSLL(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
-        else if (i > gotoIndex - 1 && i < numberOfNode) 
+        else if (i > gotoIndex - 1 && i < numberOfNode - 1) 
             nodeTexture.drawArrowBetweenNodeSLL(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
-        else if (i == gotoIndex - 1 && i < numberOfNode)
+        else if (i == gotoIndex - 1 && i < numberOfNode - 1)
             nodeTexture.drawArrowBetweenNodeSLL(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
         nodePosition.x += nodeConstants::nodeDistance;
         cur = cur->pNext;
@@ -271,10 +271,8 @@ void SLL::drawInsertNodeIndicator(sf::RenderWindow &window, int insertIndex, int
 void SLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex, 
                              int opacity, int nodePositionXAfterInsert, textInfo &nodeText) {
     Node *cur = pHead;
-    int countNode = 1, maxOpacity = 255;
+    int countNode = 0, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
-    if (insertIndex == 0)
-        nodePosition.x += nodePositionXAfterInsert;
     while (cur != nullptr) {
         if (countNode < insertIndex) {
             nodeTexture.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, nodeConstants::baseColor, cur->data);
@@ -289,32 +287,32 @@ void SLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex,
             nodeTexture.drawNode(nodePosition, window, opacity, cur->data);
         }
 
-        if (insertIndex == 1) {
-            if (countNode == insertIndex + 1) {
+        if (insertIndex == 0) {
+            if (countNode == insertIndex) {
                 nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             }
-            else if (countNode == numberOfNode) {
+            else if (countNode == numberOfNode - 1) {
                 nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
         }
         else {
             if (countNode == insertIndex - 1) {
-                if (countNode == 1)
+                if (countNode == 0)
                     nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
                 else if (countNode == numberOfNode - 1)
                     nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, nodeConstants::textOpacity);
                 else 
                     nodeText.drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
             }
-            else if (countNode == 1) {
+            else if (countNode == 0) {
                 nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             }
-            else if (countNode == numberOfNode) {
+            else if (countNode == numberOfNode - 1) {
                 nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
         }
         
-        if (countNode != insertIndex && countNode != insertIndex - 1 && countNode < numberOfNode) {
+        if (countNode != insertIndex && countNode != insertIndex - 1 && countNode < numberOfNode - 1) {
             sf::Vector2f nodePositionRight = nodePosition;
             nodePositionRight.x += nodeConstants::nodeDistance;
             if (countNode >= insertIndex)
@@ -331,7 +329,7 @@ void SLL::drawListWhenInsert(sf::RenderWindow &window, int insertIndex,
 void SLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity, sf::Color fadeColor,
                          sf::Vector2f insertNodePosition, int insertNodeOpacity, textInfo &nodeText) {
     Node *cur = pHead;
-    int countNode = 1, maxOpacity = 255;
+    int countNode = 0, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
         if (countNode < insertIndex) {
@@ -343,7 +341,7 @@ void SLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity,
         else {
             nodeTexture.drawNode2(insertNodePosition, window, maxOpacity, maxOpacity, maxOpacity, 
                            fadeColor, nodeConstants::baseColor, cur->data);
-            if (insertIndex < numberOfNode) {
+            if (insertIndex < numberOfNode - 1) {
                 sf::Vector2f nodePositionLeft = insertNodePosition;
                 sf::Vector2f nodePositionRight = nodePosition;
                 nodePositionRight.x += nodeConstants::nodeDistance;
@@ -351,33 +349,33 @@ void SLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity,
             }
         }
 
-        if (insertIndex == 1) {
+        if (insertIndex == 0) {
             if (countNode == insertIndex + 1)
                 nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
-            else if (countNode == numberOfNode && numberOfNode > 1)
+            else if (countNode == numberOfNode - 1 && numberOfNode > 1)
                 nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
         }
         else {
             if (countNode == insertIndex - 1) {
-                if (countNode == 1)
+                if (countNode == 0)
                     nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, nodeConstants::textOpacity);
                 else if (countNode == numberOfNode - 1)
                     nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, nodeConstants::textOpacity);
                 else 
                     nodeText.drawText(window, nodePosition, textConstants::typeCur, nodeConstants::textOpacity);
             }
-            else if (countNode == 1) {
+            else if (countNode == 0) {
                 nodeText.drawText(window, nodePosition, textConstants::typeHead, nodeConstants::textOpacity);
             }
-            else if (countNode == numberOfNode - 1 && insertIndex == numberOfNode) {
-                nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
+            else if (countNode == numberOfNode - 1 && insertIndex == numberOfNode - 1) {
+                nodeText.drawText(window, insertNodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
-            else if (countNode == numberOfNode && insertIndex != numberOfNode) {
+            else if (countNode == numberOfNode - 1) {
                 nodeText.drawText(window, nodePosition, textConstants::typeTail, nodeConstants::textOpacity);
             }
         }
 
-        if (countNode != insertIndex && countNode != insertIndex - 1 && countNode < numberOfNode) {
+        if (countNode != insertIndex && countNode != insertIndex - 1 && countNode < numberOfNode - 1) {
             sf::Vector2f nodePositionRight = nodePosition;
             nodePositionRight.x += nodeConstants::nodeDistance;
             if (countNode > insertIndex)
@@ -385,7 +383,7 @@ void SLL::drawInsertNode(sf::RenderWindow &window, int insertIndex, int opacity,
             else 
                 nodeTexture.drawArrowBetweenNodeSLL(window, nodePosition, nodePositionRight, fadeColor, opacity);
         }
-        else if (countNode == insertIndex - 1 && insertIndex > 1) {
+        else if (countNode == insertIndex - 1 && insertIndex > 0 && countNode < numberOfNode - 1) {
             sf::Vector2f nodePositionLeft = nodePosition;
             sf::Vector2f nodePositionRight = insertNodePosition;
             nodeTexture.drawArrowBetweenNodeSLL(window, nodePositionLeft, nodePositionRight, fadeColor, insertNodeOpacity);
@@ -745,7 +743,7 @@ void SLL::drawUpdateIndicator(sf::RenderWindow &window, int updateIndex,
     Node *cur = pHead;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     int maxOpacity = 255;
-    for (int i = 1; i <= numberOfNode; i++) {
+    for (int i = 0; i < numberOfNode; i++) {
         if (i < gotoIndex)
             nodeTexture.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::flashColor, sf::Color::White, cur->data);
         else if (i == gotoIndex)
@@ -754,26 +752,26 @@ void SLL::drawUpdateIndicator(sf::RenderWindow &window, int updateIndex,
             nodeTexture.drawNode2(nodePosition, window, maxOpacity, maxOpacity, maxOpacity, nodeConstants::baseColor, nodeConstants::baseColor, cur->data);
         
         if (i == gotoIndex) {
-            if (gotoIndex == 1)
+            if (gotoIndex == 0)
                 nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, maxOpacity);
             else if (gotoIndex == numberOfNode)
                 nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, maxOpacity);
             else 
                 nodeText.drawText(window, nodePosition, textConstants::typeCur, maxOpacity);
         }
-        else if (i == 1)
+        else if (i == 0)
             nodeText.drawText(window, nodePosition, textConstants::typeHead, maxOpacity);
-        else if (i == numberOfNode)
+        else if (i == numberOfNode - 1)
             nodeText.drawText(window, nodePosition, textConstants::typeTail, maxOpacity);
         
         sf::Vector2f nodePositionLeft = nodePosition;
         sf::Vector2f nodePositionRight = nodePosition;
         nodePositionRight.x += nodeConstants::nodeDistance;
-        if (i < gotoIndex - 1 && i < numberOfNode)
+        if (i < gotoIndex - 1 && i < numberOfNode - 1)
             nodeTexture.drawArrowBetweenNodeSLL(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
-        else if (i > gotoIndex - 1 && i < numberOfNode) 
+        else if (i > gotoIndex - 1 && i < numberOfNode - 1) 
             nodeTexture.drawArrowBetweenNodeSLL(window, nodePositionLeft, nodePositionRight, nodeConstants::baseColor, maxOpacity);
-        else if (i == gotoIndex - 1 && i < numberOfNode)
+        else if (i == gotoIndex - 1 && i < numberOfNode - 1)
             nodeTexture.drawArrowBetweenNodeSLL(window, nodePositionLeft, nodePositionRight, fadeColor, maxOpacity);
         nodePosition.x += nodeConstants::nodeDistance;
         cur = cur->pNext;
@@ -782,7 +780,7 @@ void SLL::drawUpdateIndicator(sf::RenderWindow &window, int updateIndex,
 void SLL::drawUpdateChangeNum(sf::RenderWindow &window, int updateIndex, int updateData, 
                               int numberOpacity, sf::Color fadeColor, textInfo &nodeText) {
     Node *cur = pHead;
-    int countNode = 1, maxOpacity = 255;
+    int countNode = 0, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
         if (countNode < updateIndex)
@@ -796,7 +794,7 @@ void SLL::drawUpdateChangeNum(sf::RenderWindow &window, int updateIndex, int upd
         }
 
         if (countNode == updateIndex) {
-            if (countNode == 1)
+            if (countNode == 0)
                 nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, maxOpacity);
             else if (countNode == numberOfNode) 
                 nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, maxOpacity);
@@ -804,9 +802,9 @@ void SLL::drawUpdateChangeNum(sf::RenderWindow &window, int updateIndex, int upd
                 nodeText.drawText(window, nodePosition, textConstants::typeCur, maxOpacity);
         }
         else {
-            if (countNode == 1)
+            if (countNode == 0)
                 nodeText.drawText(window, nodePosition, textConstants::typeHead, maxOpacity);
-            else if (countNode == numberOfNode)
+            else if (countNode == numberOfNode - 1)
                 nodeText.drawText(window, nodePosition, textConstants::typeTail, maxOpacity);
         }
 
@@ -814,7 +812,7 @@ void SLL::drawUpdateChangeNum(sf::RenderWindow &window, int updateIndex, int upd
         sf::Vector2f nodePositionRight = nodePosition;
         nodePositionRight.x += nodeConstants::nodeDistance;
 
-        if (countNode < numberOfNode) {
+        if (countNode < numberOfNode - 1) {
             if (countNode < updateIndex)
                 nodeTexture.drawArrowBetweenNodeSLL(window, nodePositionLeft, nodePositionRight, nodeConstants::flashColor, maxOpacity);
             else 
@@ -829,7 +827,7 @@ void SLL::drawUpdateChangeNum(sf::RenderWindow &window, int updateIndex, int upd
 void SLL::drawUpdateRevert(sf::RenderWindow &window, int updateIndex, 
                            sf::Color fadeOutlineColor, sf::Color fadeNumberColor, textInfo &nodeText) {
     Node *cur = pHead;
-    int countNode = 1, maxOpacity = 255;
+    int countNode = 0, maxOpacity = 255;
     sf::Vector2f nodePosition = nodeConstants::firstNodePosition;
     while (cur != nullptr) {
         if (countNode < updateIndex)
@@ -843,17 +841,17 @@ void SLL::drawUpdateRevert(sf::RenderWindow &window, int updateIndex,
         }
 
         if (countNode == updateIndex) {
-            if (countNode == 1)
+            if (countNode == 0)
                 nodeText.drawText(window, nodePosition, textConstants::typeHeadAndCur, maxOpacity);
-            else if (countNode == numberOfNode) 
+            else if (countNode == numberOfNode - 1) 
                 nodeText.drawText(window, nodePosition, textConstants::typeTailAndCur, maxOpacity);
             else 
                 nodeText.drawText(window, nodePosition, textConstants::typeCur, maxOpacity);
         }
         else {
-            if (countNode == 1)
+            if (countNode == 0)
                 nodeText.drawText(window, nodePosition, textConstants::typeHead, maxOpacity);
-            else if (countNode == numberOfNode)
+            else if (countNode == numberOfNode - 1)
                 nodeText.drawText(window, nodePosition, textConstants::typeTail, maxOpacity);
         }
 
@@ -861,7 +859,7 @@ void SLL::drawUpdateRevert(sf::RenderWindow &window, int updateIndex,
         sf::Vector2f nodePositionRight = nodePosition;
         nodePositionRight.x += nodeConstants::nodeDistance;
 
-        if (countNode < numberOfNode) {
+        if (countNode < numberOfNode - 1) {
             if (countNode < updateIndex)
                 nodeTexture.drawArrowBetweenNodeSLL(window, nodePositionLeft, nodePositionRight, fadeOutlineColor, maxOpacity);
             else 

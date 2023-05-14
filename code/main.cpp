@@ -18,12 +18,10 @@
 #include "dArrayScreenEvent.h"
 #include "stackScreenEvent.h"
 #include "queueScreenEvent.h"
-#include "LLscreen.h"
 #include "menu.h"
 
 int main()
 {   
-    
     std::ofstream out("output.txt");
     std::streambuf* coutbuf = std::cout.rdbuf();
     std::streambuf* cerrbuf = std::cerr.rdbuf();
@@ -51,9 +49,7 @@ int main()
     screenType ScreenType = menu;
     menuScreen myMenuScreen;
     SLLObject mySLLObject;
-    // std::cerr << "SLL\n";
     DLLObject myDLLObject;
-    // std::cerr << "DSAJKFL\n";
     CLLObject myCLLObject;
     SArrayObject myStaticArrayObject;
     DArrayObject myDynamicArrayObject;
@@ -182,6 +178,8 @@ int main()
         window.display();
     }
     mySLLObject.deleteSLL();
+    myDLLObject.deleteDLL();
+    myCLLObject.deleteCLL();
 
     std::cout.rdbuf(coutbuf);
     std::cerr.rdbuf(cerrbuf);

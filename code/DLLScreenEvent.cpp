@@ -12,6 +12,9 @@ void DLLObject::createList(int numberOfNode, std::vector <int> &a) {
     theDLLscreen.theGeneralScreen.initData(numberOfNode);
     processDrawList();
 }
+void DLLObject::deleteDLL() {
+    myDLL.deleteList();
+}
 void DLLObject::createRandomList() {
     int numberOfNode = rand() % 5 + 1;
     std::vector <int> a;

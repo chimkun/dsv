@@ -12,7 +12,7 @@ void SLLObject::createList(int numberOfNode, std::vector <int> &a) {
     theLLscreen.theGeneralScreen.initData(numberOfNode);
 }
 void SLLObject::createRandomList() {
-    int numberOfNode = rand() % 5 + 1;
+    int numberOfNode = rand() % 4 + 4;
     std::vector <int> a;
     std::string sampleInput;
     for (int i = 0; i < numberOfNode; i++) {
@@ -44,7 +44,14 @@ void SLLObject::drawInsertIndicator(sf::RenderWindow &window) {
         mySLL.drawInsertNodeIndicator(window, insertIndex, gotoIndex, 
                                       nodeConstants::baseColor, nodeText);
         drawType = insertLL2;
-        mySLL.insertAfterIndex(insertData, insertIndex);
+        mySLL.insertAtIndex(insertData, insertIndex);
+        return;
+    }
+    else if (insertIndex == 0) {
+        mySLL.drawInsertNodeIndicator(window, insertIndex, gotoIndex, 
+                                      nodeConstants::baseColor, nodeText);
+        drawType = insertLL1;
+        mySLL.insertAtIndex(insertData, insertIndex);
         return;
     }
     if (flashTimer.getElapsedTime().asMilliseconds() < remTime.asMilliseconds())
@@ -70,7 +77,7 @@ void SLLObject::drawInsertIndicator(sf::RenderWindow &window) {
     }
     if (gotoIndex >= insertIndex) {
         drawType = insertLL1;
-        mySLL.insertAfterIndex(insertData, insertIndex);
+        mySLL.insertAtIndex(insertData, insertIndex);
         markFirst = 1;
     }
 }
@@ -282,8 +289,9 @@ void SLLObject::drawUpdateChangeNum(sf::RenderWindow &window) {
         numberOpacity = std::max(0, numberOpacity - nodeConstants::fadeSpeed);
         if (numberOpacity == 0) {
             opacityMultiplier = 1;
-            mySLL.deleteAtIndex(updateIndex);
-            mySLL.insertAfterIndex(updateData, updateIndex - 1);
+            mySLL.updateAtIndex(updateData, updateIndex);
+            // mySLL.deleteAtIndex(updateIndex);
+            // mySLL.insertAtIndex(updateData, updateIndex);
         }
     }
     else {
@@ -425,7 +433,6 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
                 if (insertIsValid(userInput.first, userInput.second) && userInput.first > 0) {
                     drawType = insertLL0;
                     int inputIndex = userInput.first, inputElement = userInput.second;
-                    inputIndex++;
                     insertNodeProcess(inputIndex, inputElement);
                     if (!inputIndex == mySLL.getNumberOfNode()) {
                         LLCodeBlock.drawInsertCodeBlock(window);
@@ -502,7 +509,6 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
             if (updateIsValid(userInput.first, userInput.second)) {
                 drawType = updateLL0;
                 updateIndex = userInput.first, updateData = userInput.second;
-                updateIndex++;
                 updateNodeProcess(updateIndex, updateData);
             }
         }
@@ -613,9 +619,9 @@ void SLLObject::processMouseHoverEvent(sf::RenderWindow &window) {
 void SLLObject::insertNodeProcess(int insertIndex, int insertData) {
     this->insertIndex = insertIndex;
     this->insertData = insertData;
-    this->insertNodePosition.x = nodeConstants::firstNodePositionX * (insertIndex);
+    this->insertNodePosition.x = nodeConstants::firstNodePositionX * (insertIndex + 1);
     this->insertNodePosition.y = nodeConstants::firstNodePositionY + nodeConstants::initialInsertNodeY;
-    this->gotoIndex = 1;
+    this->gotoIndex = 0;
     this->nodePositionXAfterInsert = 0;
     this->insertNodeOpacity = 0;
     this->insertNodeColor = rand() % 4;
@@ -641,7 +647,7 @@ void SLLObject::searchNodeProcess(int searchData) {
     this->markFirst = 1;
 }
 void SLLObject::updateNodeProcess(int updateIndex, int updateData) {
-    this->gotoIndex = 1;
+    this->gotoIndex = 0;
     this->numberOpacity = 255;
     this->opacityMultiplier = -1;
     this->flashTimer.restart();
