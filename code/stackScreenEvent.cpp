@@ -83,7 +83,7 @@ void StackObject::drawPop(sf::RenderWindow &window) {
                 myStack.popStack();
         }
         else if (drawType == stackClear) {
-            if (myStack.getStackSize() == 1) {
+            if (myStack.getStackSize() <= 1) {
                 drawType = stackShowcase;
                 isPop = 0;
             }

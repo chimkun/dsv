@@ -83,7 +83,7 @@ void QueueObject::drawPop(sf::RenderWindow &window) {
                 myQueue.popQueue();
         }
         else if (drawType == queueClear) {
-            if (myQueue.getQueueSize() == 1) {
+            if (myQueue.getQueueSize() <= 1) {
                 drawType = queueShowcase;
                 isPop = 0;
             }
