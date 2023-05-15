@@ -21,7 +21,7 @@ public:
     void build(std::vector <int> &inputValue);
     void insertAtBeginning(int value);
     void insertAtEnding(int value);
-    void insertAfterIndex(int index, int value);
+    void insertAtIndex(int index, int value);
 
     void deleteAtBeginning();
     void deleteAtEnding();

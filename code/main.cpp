@@ -18,6 +18,7 @@
 #include "dArrayScreenEvent.h"
 #include "stackScreenEvent.h"
 #include "queueScreenEvent.h"
+#include "aboutScreen.h"
 #include "menu.h"
 
 int main()
@@ -43,11 +44,13 @@ int main()
     enum screenType {
         menu, SLL, DLL, CLL,
         sArray, dArray,
-        Stack, Queue
+        Stack, Queue,
+        about
     };
 
     screenType ScreenType = menu;
     menuScreen myMenuScreen;
+    aboutScreen myAboutScreen;
     SLLObject mySLLObject;
     DLLObject myDLLObject;
     CLLObject myCLLObject;
@@ -60,6 +63,8 @@ int main()
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
             switch (ScreenType) {
                 case menu:
                     myMenuScreen.processAllEvent(window, event);
@@ -119,6 +124,13 @@ int main()
                         myQueueObject.setExitToFalse();
                         myMenuScreen.backToMenu();
                     }
+                    break;
+                case about:
+                    if (myAboutScreen.backButtonIsClick(window)) {
+                        ScreenType = menu;
+                        myMenuScreen.backToMenu();
+                    }
+                    break;
             }
         }
         window.clear();
@@ -144,6 +156,9 @@ int main()
                 break;
             case 7:
                 ScreenType = Queue;
+                break;
+            case 8:
+                ScreenType = about;
                 break;
             default:
                 ScreenType = menu;
@@ -173,6 +188,9 @@ int main()
                 break;
             case Queue:
                 myQueueObject.drawQueueScreen(window);
+                break;
+            case about:
+                myAboutScreen.drawAboutScreen(window);
                 break;
         }
         window.display();

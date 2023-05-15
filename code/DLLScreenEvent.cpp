@@ -16,7 +16,7 @@ void DLLObject::deleteDLL() {
     myDLL.deleteList();
 }
 void DLLObject::createRandomList() {
-    int numberOfNode = rand() % 5 + 1;
+    int numberOfNode = rand() % 4 + 4;
     std::vector <int> a;
     std::string sampleInput;
     for (int i = 0; i < numberOfNode; i++) {
@@ -48,8 +48,7 @@ void DLLObject::drawInsertIndicator(sf::RenderWindow &window) {
         drawType = insertDLL2;
         myDLL.drawInsertNodeIndicator(window, insertIndex, gotoIndex, 
                                      nodeConstants::baseColor);
-        myDLL.insertAfterIndex(insertIndex, insertData);
-        insertIndex++;
+        myDLL.insertAtIndex(insertIndex, insertData);
         return;
     }
     if (flashTimer.getElapsedTime().asMilliseconds() < remTime.asMilliseconds())
@@ -73,10 +72,9 @@ void DLLObject::drawInsertIndicator(sf::RenderWindow &window) {
         flashTimer.restart();
         DLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
     }
-    if (gotoIndex > insertIndex) {
+    if (gotoIndex >= insertIndex) {
         drawType = insertDLL1;
-        myDLL.insertAfterIndex(insertIndex, insertData);
-        insertIndex++;
+        myDLL.insertAtIndex(insertIndex, insertData);
         markFirst = 1;
     }
 }
@@ -103,8 +101,8 @@ void DLLObject::drawInsertNode(sf::RenderWindow &window) {
     DLLCodeBlock.drawInsertCodeBlockMultiLine(window, 5, 6);
     if (insertIndex == myDLL.getNumberOfNode())
         myDLL.drawInsertNode(window, insertIndex, opacity,
-                            nodeConstants::baseColor,
-                            insertNodePosition, insertNodeOpacity);
+                             nodeConstants::baseColor,
+                             insertNodePosition, insertNodeOpacity);
     else
         myDLL.drawInsertNode(window, insertIndex, opacity,
                             getFadeColor(nodeConstants::flashColor, nodeConstants::baseColor, flashTimer),
@@ -443,7 +441,6 @@ void DLLObject::processMouseEvent(sf::RenderWindow &window) {
                 if (insertIsValid(userInput.first, userInput.second) && userInput.first > 0) {
                     drawType = prevType = insertDLL0;
                     int inputIndex = userInput.first, inputElement = userInput.second;
-                    inputIndex++;
                     insertNodeProcess(inputIndex, inputElement);
                     DLLCodeBlock.drawInsertCodeBlock(window);
                     DLLCodeBlock.drawInsertCodeBlockSingleLine(window, 0);
@@ -643,7 +640,7 @@ void DLLObject::insertNodeProcess(int insertIndex, int insertData) {
     this->insertData = insertData;
     this->insertNodePosition.x = nodeConstants::firstNodePositionX * (insertIndex + 1);
     this->insertNodePosition.y = nodeConstants::firstNodePositionY + nodeConstants::initialInsertNodeY;
-    this->gotoIndex = 1;
+    this->gotoIndex = 0;
     this->nodePositionXAfterInsert = 0;
     this->insertNodeOpacity = 0;
     this->insertNodeColor = rand() % 4;

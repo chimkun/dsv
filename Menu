@@ -55,6 +55,11 @@
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\LLscreenEvent.cpp"
     },
     {
+        "command": "g++ -c ..\\Menu\\code/aboutScreen.cpp -o aboutScreen.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
+        "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
+        "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\aboutScreen.cpp"
+    },
+    {
         "command": "g++ -c ..\\Menu\\code/arrayCodeBlock.cpp -o arrayCodeBlock.o -I \"..\\Menu\\src\\include\" -I ..\\Menu\\include -g\r",
         "directory": "d:/Study/college/1stYear/CSC10002/Project/Menu",
         "file": "d:\\Study\\college\\1stYear\\CSC10002\\Project\\Menu\\code\\arrayCodeBlock.cpp"

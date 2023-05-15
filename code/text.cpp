@@ -41,7 +41,7 @@ void textInfo::setFont(int fontMode) {
         }
     }
     if (fontMode == 3) {
-        if (!textFont.loadFromFile("src//font//consolas.ttf")) {
+        if (!textFont.loadFromFile("src//font//CONSOLA.ttf")) {
             std::cout << "font not found\n";
             exit(-1);
         }

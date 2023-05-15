@@ -22,7 +22,8 @@ private:
     enum dataStructureType {
         none, SLL, DLL, CLL,
         sArray, dArray,
-        Stack, Queue
+        Stack, Queue,
+        about
     };
 
     menuButtonType MenuType;

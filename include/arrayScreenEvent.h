@@ -41,7 +41,7 @@ private:
         //mark first time
         bool markFirst;
     //SArray mode
-        staticArrayDrawType drawType;
+        staticArrayDrawType drawType, prevType;
     // Text
         textInfo nodeText;
     // UI

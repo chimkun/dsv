@@ -1,7 +1,7 @@
 #include "dArrayScreenEvent.h"
 
 DArrayObject::DArrayObject() {
-    drawType = showcaseDArray;
+    drawType = prevType = showcaseDArray;
     backToMenu = 0;
     createRandomList();
 }
@@ -270,6 +270,20 @@ void DArrayObject::processType(sf::RenderWindow &window) {
     else {
         theDArrayscreen.drawCreateScreen(window);
     }
+    switch (prevType) {
+        case insertDArray0:
+            DArrayCodeBlock.drawInsertCodeBlock(window);
+            break;
+        case deleteDArray0:
+            DArrayCodeBlock.drawDeleteCodeBlock(window);
+            break;
+        case searchDArray0:
+            DArrayCodeBlock.drawSearchCodeBlock(window);
+            break;
+        case updateDArray0:
+            DArrayCodeBlock.drawUpdateCodeBlock(window);
+            break;
+    }
     switch (drawType) {
         case makeDArray:
             processDrawList();
@@ -379,7 +393,7 @@ void DArrayObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theDArrayscreen.theGeneralScreen.addButton.inputIsEmpty()) {
                 std::pair <int, int> userInput = theDArrayscreen.theGeneralScreen.addButton.getInputDataPair();
                 if (insertIsValid(userInput.first, userInput.second)) {
-                    drawType = insertDArray0;
+                    drawType = prevType = insertDArray0;
                     int inputIndex = userInput.first, inputElement = userInput.second;
                     insertNodeProcess(inputIndex, inputElement);
                     // // DArrayCodeBlock.drawInsertCodeBlock(window);
@@ -392,7 +406,7 @@ void DArrayObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theDArrayscreen.theGeneralScreen.addBeginningText.inputIsEmpty()) {
                 int userInput = theDArrayscreen.theGeneralScreen.addBeginningText.getInputDataInt();
                 if (insertIsValid(0, userInput)) {
-                    drawType = insertDArray0;
+                    drawType = prevType = insertDArray0;
                     int inputIndex = 0, inputElement = userInput;
                     insertNodeProcess(inputIndex, inputElement);
                     // // DArrayCodeBlock.drawInsertBeginCodeBlock(window);
@@ -408,7 +422,7 @@ void DArrayObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theDArrayscreen.theGeneralScreen.addEndingText.inputIsEmpty()) {
                 int userInput = theDArrayscreen.theGeneralScreen.addEndingText.getInputDataInt();
                 if (insertIsValid(myDArray.getArrayLength(), userInput)) {
-                    drawType = insertDArray0;
+                    drawType = prevType = insertDArray0;
                     int inputIndex = myDArray.getArrayLength(), inputElement = userInput;
                     insertNodeProcess(inputIndex, inputElement);
                 }
@@ -421,7 +435,7 @@ void DArrayObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theDArrayscreen.theGeneralScreen.deleteButton.inputIsEmpty()) {
                 int userInput = theDArrayscreen.theGeneralScreen.deleteButton.getInputDataInt();
                 if (deleteIsValid(userInput)) {
-                    drawType = deleteDArray0;
+                    drawType = prevType = deleteDArray0;
                     deleteIndex = userInput;
                     deleteNodeProcess(deleteIndex);
                 }
@@ -430,7 +444,7 @@ void DArrayObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theDArrayscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theDArrayscreen.theGeneralScreen.delBeginning.buttonIsClick(window)) {
                 if (deleteIsValid(0)) {
-                    drawType = deleteDArray0;
+                    drawType = prevType = deleteDArray0;
                     deleteIndex = 0;
                     deleteNodeProcess(deleteIndex);
                 }
@@ -438,7 +452,7 @@ void DArrayObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theDArrayscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theDArrayscreen.theGeneralScreen.delEnding.buttonIsClick(window)) {
             if (deleteIsValid((int) myDArray.getArrayLength() - 1)) {
-                drawType = deleteDArray0;
+                drawType = prevType = deleteDArray0;
                 deleteIndex = myDArray.getArrayLength() - 1;
                 deleteNodeProcess(deleteIndex);
             }
@@ -446,7 +460,7 @@ void DArrayObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theDArrayscreen.theGeneralScreen.searchButton.buttonIsChoose() 
               && theDArrayscreen.theGeneralScreen.searchButton.confirmButtonIsClick(window)) {
             if (!theDArrayscreen.theGeneralScreen.searchButton.inputIsEmpty()) {
-                drawType = searchDArray0;
+                drawType = prevType = searchDArray0;
                 int userInput = theDArrayscreen.theGeneralScreen.searchButton.getInputDataInt();
                 searchData = userInput;
                 searchNodeProcess(searchData);
@@ -457,7 +471,7 @@ void DArrayObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theDArrayscreen.theGeneralScreen.updateButton.inputIsEmpty()) {
                 std::pair <int, int> userInput = theDArrayscreen.theGeneralScreen.updateButton.getInputDataPair();
                 if (updateIsValid(userInput.first, userInput.second)) {
-                    drawType = updateDArray0;
+                    drawType = prevType = updateDArray0;
                     updateIndex = userInput.first, updateData = userInput.second;
                     updateNodeProcess(updateIndex, updateData);
                 }
@@ -469,11 +483,11 @@ void DArrayObject::processMouseEvent(sf::RenderWindow &window) {
             theDArrayscreen.theCreateScreen.flipInputButtonState();
         }
         else if (theDArrayscreen.theCreateScreen.randomButtonIsClick(window)) {
-            drawType = showcaseDArray;
+            drawType = prevType = showcaseDArray;
             createRandomList();
         }
         else if (theDArrayscreen.theCreateScreen.backButtonIsClick(window)) {
-            drawType = showcaseDArray;
+            drawType = prevType = showcaseDArray;
             theDArrayscreen.setGeneral();
         }
         else if (theDArrayscreen.theCreateScreen.userInputButtonGetState()) {
@@ -482,7 +496,7 @@ void DArrayObject::processMouseEvent(sf::RenderWindow &window) {
             }
             else if (theDArrayscreen.theCreateScreen.confirmButtonIsClick(window)) {
                 if (!theDArrayscreen.theCreateScreen.inputIsEmpty()) {
-                    drawType = makeDArray;
+                    drawType = prevType = makeDArray;
                     std::vector <int> userInput = theDArrayscreen.theCreateScreen.getInputData();
                     createDefinedList(userInput);
                 }
@@ -492,7 +506,7 @@ void DArrayObject::processMouseEvent(sf::RenderWindow &window) {
                 if (browseForFile(fileRead)) {
                     std::vector <int> userInput = getInputData(fileRead);
                     if ((int) userInput.size() > 0) {
-                        drawType = makeDArray;
+                        drawType = prevType = makeDArray;
                         createDefinedList(userInput);
                     }
                 }

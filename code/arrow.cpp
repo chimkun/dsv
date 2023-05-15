@@ -3,7 +3,7 @@
 Arrow::Arrow () {
     sf::Texture arrowShaftTexture, arrowHeadTexture;
     // 19 x 23
-    if (!arrowShaftTexture.loadFromFile("src//include//texture//arrowShaft.png")) {
+    if (!arrowShaftTexture.loadFromFile("src//include//texture//arrowShaft2.png")) {
         std::cout << "Texture file not found! (arrowShaft)";
         exit(-1);
     }
@@ -11,6 +11,7 @@ Arrow::Arrow () {
         std::cout << "Texture file not found! (arrowHead)";
         exit(-1);
     }
+    ArrowShaft.setSize(sf::Vector2f(97, 3));
     this->arrowShaft = arrowShaftTexture;
     this->arrowHead = arrowHeadTexture;
 }

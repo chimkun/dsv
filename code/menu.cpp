@@ -103,6 +103,11 @@ void menuScreen::processMouseEvent(sf::RenderWindow &window) {
                     onLogo();
                     MenuChooseDSScreen.onScreen();
                 }
+                if (MenuInitialScreen.aboutButtonIsClick(window)) {
+                    offAllScreen();
+                    onLogo();
+                    DSType = about;
+                }
                 if (MenuInitialScreen.exitButtonIsClick(window)) {
                     offAllScreen();
                     window.close();

@@ -1,7 +1,7 @@
 #include "CLLscreenEvent.h"
 
 CLLObject::CLLObject() {
-    drawType = showcaseCLL;
+    drawType = prevType = showcaseCLL;
     backToMenu = 0;
     createRandomList();
 }
@@ -15,7 +15,7 @@ void CLLObject::createList(int numberOfNode, std::vector <int> &a) {
     theCLLscreen.theGeneralScreen.initData(numberOfNode);
 }
 void CLLObject::createRandomList() {
-    int numberOfNode = rand() % 4 + 2;  
+    int numberOfNode = rand() % 4 + 4;  
     std::vector <int> a;
     std::string sampleInput;
     for (int i = 0; i < numberOfNode; i++) {
@@ -382,6 +382,20 @@ void CLLObject::processType(sf::RenderWindow &window) {
     else {
         theCLLscreen.drawCreateScreen(window);
     }
+    switch (prevType) {
+        case insertCLL0:
+            CLLCodeBlock.drawInsertCodeBlock(window);
+            break;
+        case deleteCLL0:
+            CLLCodeBlock.drawDeleteCodeBlock(window);
+            break;
+        case searchCLL0:
+            CLLCodeBlock.drawSearchCodeBlock(window);
+            break;
+        case updateCLL0:
+            CLLCodeBlock.drawUpdateCodeBlock(window);
+            break;
+    }
     switch (drawType) {
         case makeCLL:
             processDrawList();
@@ -488,7 +502,7 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theCLLscreen.theGeneralScreen.addButton.inputIsEmpty()) {
                 std::pair <int, int> userInput = theCLLscreen.theGeneralScreen.addButton.getInputDataPair();
                 if (insertIsValid(userInput.first, userInput.second) && userInput.first > 0) {
-                    drawType = insertCLL0;
+                    drawType = prevType = insertCLL0;
                     int inputIndex = userInput.first, inputElement = userInput.second;
                     inputIndex++;
                     insertNodeProcess(inputIndex, inputElement);
@@ -502,7 +516,7 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theCLLscreen.theGeneralScreen.addBeginningText.inputIsEmpty()) {
                 int userInput = theCLLscreen.theGeneralScreen.addBeginningText.getInputDataInt();
                 if (insertIsValid(0, userInput)) {
-                    drawType = insertCLL0;
+                    drawType = prevType = insertCLL0;
                     int inputIndex = 1, inputElement = userInput;
                     insertNodeProcess(inputIndex, inputElement);
                     CLLCodeBlock.drawInsertBeginCodeBlock(window);
@@ -518,7 +532,7 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theCLLscreen.theGeneralScreen.addEndingText.inputIsEmpty()) {
                 int userInput = theCLLscreen.theGeneralScreen.addEndingText.getInputDataInt();
                 if (insertIsValid(myCLL.getNumberOfNode(), userInput)) {
-                    drawType = insertCLL0;
+                    drawType = prevType = insertCLL0;
                     int inputIndex = myCLL.getNumberOfNode(), inputElement = userInput;
                     insertNodeProcess(inputIndex, inputElement);
                     insertNodePosition.x += nodeConstants::nodeDistance;
@@ -533,7 +547,7 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theCLLscreen.theGeneralScreen.deleteButton.inputIsEmpty()) {
                 int userInput = theCLLscreen.theGeneralScreen.deleteButton.getInputDataInt();
                 if (deleteIsValid(userInput)) {
-                    drawType = deleteCLL0;
+                    drawType = prevType = deleteCLL0;
                     deleteIndex = userInput + 1;
                     deleteNodeProcess(deleteIndex);
                 }
@@ -542,7 +556,7 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theCLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theCLLscreen.theGeneralScreen.delBeginning.buttonIsClick(window)) {
                 if (deleteIsValid(0)) {
-                    drawType = deleteCLL0;
+                    drawType = prevType = deleteCLL0;
                     deleteIndex = 1;
                     deleteNodeProcess(deleteIndex);
                 }
@@ -550,7 +564,7 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theCLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theCLLscreen.theGeneralScreen.delEnding.buttonIsClick(window)) {
             if (deleteIsValid((int) myCLL.getNumberOfNode() - 1)) {
-                drawType = deleteCLL0;
+                drawType = prevType = deleteCLL0;
                 deleteIndex = myCLL.getNumberOfNode();
                 deleteNodeProcess(deleteIndex);
             }
@@ -558,7 +572,7 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theCLLscreen.theGeneralScreen.searchButton.buttonIsChoose() 
               && theCLLscreen.theGeneralScreen.searchButton.confirmButtonIsClick(window)) {
             if (!theCLLscreen.theGeneralScreen.searchButton.inputIsEmpty()) {
-                drawType = searchCLL0;
+                drawType = prevType = searchCLL0;
                 int userInput = theCLLscreen.theGeneralScreen.searchButton.getInputDataInt();
                 searchData = userInput;
                 searchNodeProcess(searchData);
@@ -569,7 +583,7 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theCLLscreen.theGeneralScreen.updateButton.inputIsEmpty()) {
                 std::pair <int, int> userInput = theCLLscreen.theGeneralScreen.updateButton.getInputDataPair();
                 if (updateIsValid(userInput.first, userInput.second)) {
-                    drawType = updateCLL0;
+                    drawType = prevType = updateCLL0;
                     updateIndex = userInput.first, updateData = userInput.second;
                     updateIndex++;
                     updateNodeProcess(updateIndex, updateData);
@@ -582,11 +596,11 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
             theCLLscreen.theCreateScreen.flipInputButtonState();
         }
         else if (theCLLscreen.theCreateScreen.randomButtonIsClick(window)) {
-            drawType = showcaseCLL;
+            drawType = prevType = showcaseCLL;
             createRandomList();
         }
         else if (theCLLscreen.theCreateScreen.backButtonIsClick(window)) {
-            drawType = showcaseCLL;
+            drawType = prevType = showcaseCLL;
             theCLLscreen.setGeneral();
         }
         else if (theCLLscreen.theCreateScreen.userInputButtonGetState()) {
@@ -595,7 +609,7 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
             }
             else if (theCLLscreen.theCreateScreen.confirmButtonIsClick(window)) {
                 if (!theCLLscreen.theCreateScreen.inputIsEmpty()) {
-                    drawType = makeCLL;
+                    drawType = prevType = makeCLL;
                     std::vector <int> userInput = theCLLscreen.theCreateScreen.getInputData();
                     createDefinedList(userInput);
                 }
@@ -605,7 +619,7 @@ void CLLObject::processMouseEvent(sf::RenderWindow &window) {
                 if (browseForFile(fileRead)) {
                     std::vector <int> userInput = getInputData(fileRead);
                     if ((int) userInput.size() > 0) {
-                        drawType = makeCLL;
+                        drawType = prevType = makeCLL;
                         createDefinedList(userInput);
                     }
                 }

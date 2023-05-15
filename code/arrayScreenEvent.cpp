@@ -1,7 +1,7 @@
 #include "arrayScreenEvent.h"
 
 SArrayObject::SArrayObject() {
-    drawType = showcaseSArray;
+    drawType = prevType = showcaseSArray;
     backToMenu = 0;
     createRandomList();
 }
@@ -50,12 +50,18 @@ void SArrayObject::drawInsertIndicator(sf::RenderWindow &window) {
     SArrayCodeBlock.drawInsertCodeBlock(window);
     SArrayCodeBlock.drawInsertCodeBlockMultiLine(window, 1, 2);
     if (insertNumberOpacity == 255) {
-        drawType = insertSArray1;
+        if (insertIndex == mySArray.getArrayLength()) {
+            drawType = showcaseSArray;
+            mySArray.insertAtEnding(insertData);
+            sf::sleep(sf::seconds(0.2));
+        }
+        else
+            drawType = insertSArray1;
     }
 }
 void SArrayObject::drawInsertNodeSwap(sf::RenderWindow &window) {
-    insertSwapDistance = std::min(arrayConstants::xDistance, insertSwapDistance + arrayConstants::swapXSpeed);
     mySArray.drawInsertNodeSwap(window, insertSwapIndex, insertData, insertSwapDistance);
+    insertSwapDistance = std::min(arrayConstants::xDistance, insertSwapDistance + arrayConstants::swapXSpeed);
     SArrayCodeBlock.drawInsertCodeBlock(window);
     if (insertSwapDistance == arrayConstants::xDistance) {
         if (markFirst) {
@@ -67,7 +73,7 @@ void SArrayObject::drawInsertNodeSwap(sf::RenderWindow &window) {
             markFirst = 1;
             insertSwapDistance = 0;
             insertSwapIndex--;
-            if (insertSwapIndex == insertIndex - 1) {
+            if (insertSwapIndex <= insertIndex) {
                 mySArray.insertAtMiddle(insertIndex, insertData);
                 drawType = showcaseSArray;
             }
@@ -92,7 +98,10 @@ void SArrayObject::drawDeleteIndicator(sf::RenderWindow &window) {
     mySArray.drawDeleteNodeIndicator(window, fadeColor, deleteIndex, deleteNumberOpacity);
     SArrayCodeBlock.drawDeleteCodeBlock(window);
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()/2.0) {
-        SArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
+        if (deleteIndex == mySArray.getArrayLength() - 1)   
+            SArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 2);
+        else 
+            SArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
     }
     if (flashTimer.getElapsedTime().asSeconds() >= nodeConstants::flashDuration.asSeconds()) {
         drawType = deleteSArray1;
@@ -124,7 +133,7 @@ void SArrayObject::drawDeleteNodeSwap(sf::RenderWindow &window) {
                 drawType = showcaseSArray;
             }
         }
-        if (deleteSwapIndex < mySArray.getArrayLength() - 1) {
+        if (deleteSwapIndex < mySArray.getArrayLength() - 1 && deleteSwapIndex != mySArray.getArrayLength() - 1) {
             SArrayCodeBlock.drawDeleteCodeBlockSingleLine(window, 0);
         }
         else {
@@ -237,6 +246,20 @@ void SArrayObject::processType(sf::RenderWindow &window) {
     else {
         theSArrayscreen.drawCreateScreen(window);
     }
+    switch (prevType) {
+        case insertSArray0:
+            SArrayCodeBlock.drawInsertCodeBlock(window);
+            break;
+        case deleteSArray0:
+            SArrayCodeBlock.drawDeleteCodeBlock(window);
+            break;
+        case searchSArray0:
+            SArrayCodeBlock.drawSearchCodeBlock(window);
+            break;
+        case updateSArray0:
+            SArrayCodeBlock.drawUpdateCodeBlock(window);
+            break;
+    }
     switch (drawType) {
         case makeSArray:
             processDrawList();
@@ -337,7 +360,7 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theSArrayscreen.theGeneralScreen.addButton.inputIsEmpty()) {
                 std::pair <int, int> userInput = theSArrayscreen.theGeneralScreen.addButton.getInputDataPair();
                 if (insertIsValid(userInput.first, userInput.second)) {
-                    drawType = insertSArray0;
+                    drawType = prevType = insertSArray0;
                     int inputIndex = userInput.first, inputElement = userInput.second;
                     insertNodeProcess(inputIndex, inputElement);
                     // SArrayCodeBlock.drawInsertCodeBlock(window);
@@ -350,7 +373,7 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theSArrayscreen.theGeneralScreen.addBeginningText.inputIsEmpty()) {
                 int userInput = theSArrayscreen.theGeneralScreen.addBeginningText.getInputDataInt();
                 if (insertIsValid(0, userInput)) {
-                    drawType = insertSArray0;
+                    drawType = prevType = insertSArray0;
                     int inputIndex = 0, inputElement = userInput;
                     insertNodeProcess(inputIndex, inputElement);
                     // SArrayCodeBlock.drawInsertBeginCodeBlock(window);
@@ -366,7 +389,7 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theSArrayscreen.theGeneralScreen.addEndingText.inputIsEmpty()) {
                 int userInput = theSArrayscreen.theGeneralScreen.addEndingText.getInputDataInt();
                 if (insertIsValid(mySArray.getArrayLength(), userInput)) {
-                    drawType = insertSArray0;
+                    drawType = prevType = insertSArray0;
                     int inputIndex = mySArray.getArrayLength(), inputElement = userInput;
                     insertNodeProcess(inputIndex, inputElement);
                 }
@@ -379,7 +402,7 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theSArrayscreen.theGeneralScreen.deleteButton.inputIsEmpty()) {
                 int userInput = theSArrayscreen.theGeneralScreen.deleteButton.getInputDataInt();
                 if (deleteIsValid(userInput)) {
-                    drawType = deleteSArray0;
+                    drawType = prevType = deleteSArray0;
                     deleteIndex = userInput;
                     deleteNodeProcess(deleteIndex);
                 }
@@ -388,7 +411,7 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theSArrayscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theSArrayscreen.theGeneralScreen.delBeginning.buttonIsClick(window)) {
                 if (deleteIsValid(0)) {
-                    drawType = deleteSArray0;
+                    drawType = prevType = deleteSArray0;
                     deleteIndex = 0;
                     deleteNodeProcess(deleteIndex);
                 }
@@ -396,7 +419,7 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theSArrayscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theSArrayscreen.theGeneralScreen.delEnding.buttonIsClick(window)) {
             if (deleteIsValid((int) mySArray.getArrayLength() - 1)) {
-                drawType = deleteSArray0;
+                drawType = prevType = deleteSArray0;
                 deleteIndex = mySArray.getArrayLength() - 1;
                 deleteNodeProcess(deleteIndex);
             }
@@ -404,7 +427,7 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theSArrayscreen.theGeneralScreen.searchButton.buttonIsChoose() 
               && theSArrayscreen.theGeneralScreen.searchButton.confirmButtonIsClick(window)) {
             if (!theSArrayscreen.theGeneralScreen.searchButton.inputIsEmpty()) {
-                drawType = searchSArray0;
+                drawType = prevType = searchSArray0;
                 int userInput = theSArrayscreen.theGeneralScreen.searchButton.getInputDataInt();
                 searchData = userInput;
                 searchNodeProcess(searchData);
@@ -415,7 +438,7 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theSArrayscreen.theGeneralScreen.updateButton.inputIsEmpty()) {
                 std::pair <int, int> userInput = theSArrayscreen.theGeneralScreen.updateButton.getInputDataPair();
                 if (updateIsValid(userInput.first, userInput.second)) {
-                    drawType = updateSArray0;
+                    drawType = prevType = updateSArray0;
                     updateIndex = userInput.first, updateData = userInput.second;
                     updateNodeProcess(updateIndex, updateData);
                 }
@@ -427,11 +450,11 @@ void SArrayObject::processMouseEvent(sf::RenderWindow &window) {
             theSArrayscreen.theCreateScreen.flipInputButtonState();
         }
         else if (theSArrayscreen.theCreateScreen.randomButtonIsClick(window)) {
-            drawType = showcaseSArray;
+            drawType = prevType = showcaseSArray;
             createRandomList();
         }
         else if (theSArrayscreen.theCreateScreen.backButtonIsClick(window)) {
-            drawType = showcaseSArray;
+            drawType = prevType = showcaseSArray;
             theSArrayscreen.setGeneral();
         }
         else if (theSArrayscreen.theCreateScreen.userInputButtonGetState()) {

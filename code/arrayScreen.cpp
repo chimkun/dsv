@@ -131,7 +131,7 @@ void StaticArray::drawInsertNodeIndicator(sf::RenderWindow &window, sf::Color ne
         if (i < (int) SArray.size())
             node.drawArrayNode(window, nodePosition, SArray[i]);
         else 
-            node.drawArrayNode(window, nodePosition, insertData, 255, newNodeColor);
+            node.drawArrayNode(window, nodePosition, insertData);
     }
     for (int i = SArray.size() + 1; i < arrayLength; i++) {
         sf::Vector2f nodePosition = arrayConstants::leftArray;

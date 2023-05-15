@@ -40,7 +40,7 @@ private:
         //mark first time
         bool markFirst;
     //LL mode
-        LLdrawType drawType;
+        LLdrawType drawType, prevType;
     // Text
         textInfo nodeText;
     // UI

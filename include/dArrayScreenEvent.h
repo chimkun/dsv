@@ -43,7 +43,7 @@ private:
         //mark first time
         bool markFirst;
     //DArray mode
-        dynamicArrayDrawType drawType;
+        dynamicArrayDrawType drawType, prevType;
     // Text
         textInfo nodeText;
     // UI

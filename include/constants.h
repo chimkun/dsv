@@ -141,6 +141,14 @@ public:
     static void initializeConstants();
 };
 
+class aboutScreenConstants {
+public:
+    static int blendOpacity;
+    static int blendFadeSpeed;
+    static int textFadeSpeed;
+    static void initializeConstants();
+};
+
 void initializeConstants();
 
 #endif

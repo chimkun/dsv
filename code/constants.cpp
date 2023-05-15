@@ -210,6 +210,16 @@ void arrayConstants::initializeConstants() {
     yMoveSpeed = 5;
 }
 
+int aboutScreenConstants::blendFadeSpeed;
+int aboutScreenConstants::blendOpacity;
+int aboutScreenConstants::textFadeSpeed;
+
+void aboutScreenConstants::initializeConstants() {
+    blendFadeSpeed = 10;
+    textFadeSpeed = 5;
+    blendOpacity = 150;
+}
+
 void initializeConstants() {
     colorConstants::initializeConstants();
     nodeConstants::initializeConstants();
@@ -223,5 +233,5 @@ void initializeConstants() {
     stackConstants::initializeConstants();
     queueConstants::initializeConstants();
     arrayConstants::initializeConstants();
+    aboutScreenConstants::initializeConstants();
 }
-

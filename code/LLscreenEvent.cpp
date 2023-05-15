@@ -1,7 +1,7 @@
 #include "LLscreenEvent.h"
 
 SLLObject::SLLObject() {
-    drawType = showcaseLL;
+    drawType = prevType = showcaseLL;
     backToMenu = 0;
     createRandomList();
 }
@@ -326,6 +326,20 @@ void SLLObject::processType(sf::RenderWindow &window) {
     else {
         theLLscreen.drawCreateScreen(window);
     }
+    switch (prevType) {
+        case insertLL0:
+            LLCodeBlock.drawInsertCodeBlock(window);
+            break;
+        case deleteLL0:
+            LLCodeBlock.drawDeleteCodeBlock(window);
+            break;
+        case searchLL0:
+            LLCodeBlock.drawSearchCodeBlock(window);
+            break;
+        case updateLL0:
+            LLCodeBlock.drawUpdateCodeBlock(window);
+            break;
+    }
     switch (drawType) {
         case makeLL:
             processDrawList();
@@ -431,7 +445,7 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theLLscreen.theGeneralScreen.addButton.inputIsEmpty()) {
                 std::pair <int, int> userInput = theLLscreen.theGeneralScreen.addButton.getInputDataPair();
                 if (insertIsValid(userInput.first, userInput.second) && userInput.first > 0) {
-                    drawType = insertLL0;
+                    drawType = prevType = insertLL0;
                     int inputIndex = userInput.first, inputElement = userInput.second;
                     insertNodeProcess(inputIndex, inputElement);
                     if (!inputIndex == mySLL.getNumberOfNode()) {
@@ -446,7 +460,7 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theLLscreen.theGeneralScreen.addBeginningText.inputIsEmpty()) {
                 int userInput = theLLscreen.theGeneralScreen.addBeginningText.getInputDataInt();
                 if (insertIsValid(0, userInput)) {
-                    drawType = insertLL0;
+                    drawType = prevType = insertLL0;
                     int inputIndex = 0, inputElement = userInput;
                     insertNodeProcess(inputIndex, inputElement);
                     LLCodeBlock.drawInsertCodeBlock(window);
@@ -459,7 +473,7 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theLLscreen.theGeneralScreen.addEndingText.inputIsEmpty()) {
                 int userInput = theLLscreen.theGeneralScreen.addEndingText.getInputDataInt();
                 if (insertIsValid(mySLL.getNumberOfNode(), userInput)) {
-                    drawType = insertLL0;
+                    drawType = prevType = insertLL0;
                     int inputIndex = mySLL.getNumberOfNode(), inputElement = userInput;
                     insertNodeProcess(inputIndex, inputElement);
                     LLCodeBlock.drawInsertCodeBlock(window);
@@ -472,7 +486,7 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
             if (!theLLscreen.theGeneralScreen.deleteButton.inputIsEmpty()) {
                 int userInput = theLLscreen.theGeneralScreen.deleteButton.getInputDataInt();
                 if (deleteIsValid(userInput)) {
-                    drawType = deleteLL0;
+                    drawType = prevType = deleteLL0;
                     deleteIndex = userInput + 1;
                     deleteNodeProcess(deleteIndex);
                 }
@@ -481,7 +495,7 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theLLscreen.theGeneralScreen.delBeginning.buttonIsClick(window)) {
             if (deleteIsValid(0)) {
-                drawType = deleteLL0;
+                drawType = prevType = deleteLL0;
                 deleteIndex = 1;
                 deleteNodeProcess(deleteIndex);
             }
@@ -489,7 +503,7 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theLLscreen.theGeneralScreen.deleteButton.buttonIsChoose() 
               && theLLscreen.theGeneralScreen.delEnding.buttonIsClick(window)) {
             if (deleteIsValid((int) mySLL.getNumberOfNode() - 1)) {
-                drawType = deleteLL0;
+                drawType = prevType = deleteLL0;
                 deleteIndex = mySLL.getNumberOfNode();
                 deleteNodeProcess(deleteIndex);
             }
@@ -497,7 +511,7 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
         else if (theLLscreen.theGeneralScreen.searchButton.buttonIsChoose() 
               && theLLscreen.theGeneralScreen.searchButton.confirmButtonIsClick(window)) {
             if (!theLLscreen.theGeneralScreen.searchButton.inputIsEmpty()) {
-                drawType = searchLL0;
+                drawType = prevType = searchLL0;
                 int userInput = theLLscreen.theGeneralScreen.searchButton.getInputDataInt();
                 searchData = userInput;
                 searchNodeProcess(searchData);
@@ -507,7 +521,7 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
               && theLLscreen.theGeneralScreen.updateButton.confirmButtonIsClick(window)) {
             std::pair <int, int> userInput = theLLscreen.theGeneralScreen.updateButton.getInputDataPair();
             if (updateIsValid(userInput.first, userInput.second)) {
-                drawType = updateLL0;
+                drawType = prevType = updateLL0;
                 updateIndex = userInput.first, updateData = userInput.second;
                 updateNodeProcess(updateIndex, updateData);
             }
@@ -518,11 +532,11 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
             theLLscreen.theCreateScreen.flipInputButtonState();
         }
         else if (theLLscreen.theCreateScreen.randomButtonIsClick(window)) {
-            drawType = showcaseLL;
+            drawType = prevType = showcaseLL;
             createRandomList();
         }
         else if (theLLscreen.theCreateScreen.backButtonIsClick(window)) {
-            drawType = showcaseLL;
+            drawType = prevType = showcaseLL;
         }
         else if (theLLscreen.theCreateScreen.userInputButtonGetState()) {
             if (theLLscreen.theCreateScreen.textBoxIsClick(window)) {
@@ -530,7 +544,7 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
             }
             else if (theLLscreen.theCreateScreen.confirmButtonIsClick(window)) {
                 if (!theLLscreen.theCreateScreen.inputIsEmpty()) {
-                    drawType = makeLL;
+                    drawType = prevType = makeLL;
                     std::vector <int> userInput = theLLscreen.theCreateScreen.getInputData();
                     createDefinedList(userInput);
                 }
@@ -540,7 +554,7 @@ void SLLObject::processMouseEvent(sf::RenderWindow &window) {
                 if (browseForFile(fileRead)) {
                     std::vector <int> userInput = getInputData(fileRead);
                     if ((int) userInput.size() > 0) {
-                        drawType = makeLL;
+                        drawType = prevType = makeLL;
                         createDefinedList(userInput);
                     }
                 }
