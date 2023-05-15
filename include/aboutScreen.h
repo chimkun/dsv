@@ -17,9 +17,6 @@ private:
     background aboutBg;
 public:
     aboutScreen();
-    bool aboutScreenIsOn();
-    void aboutScreenSetOn();
-    void aboutScreenSetOff();
     bool backButtonIsClick(sf::RenderWindow &window);
     void drawAboutScreen(sf::RenderWindow &window);
 };

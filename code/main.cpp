@@ -34,7 +34,7 @@ int main()
     // array (4), dArray (5),
     // stack (6), queue (7)
     srand(time(NULL));
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "DS Visualizer");
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "dsv!");
     window.setFramerateLimit(60);
     window.clear(sf::Color::Black);
 
