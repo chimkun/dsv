@@ -35,6 +35,14 @@ int main()
     // stack (6), queue (7)
     srand(time(NULL));
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "dsv!");
+
+    sf::Image icon;
+    if (!icon.loadFromFile("src//include//texture//icon.png")) {
+        std::cout << "icon not found!\n";
+        exit(-1);
+    }
+    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+
     window.setFramerateLimit(60);
     window.clear(sf::Color::Black);
 
