@@ -1,7 +1,7 @@
 #include "background.h"
 
 background::background() {
-    bgCode = rand() % 17 + 1;
+    bgCode = rand() % 15 + 1;
     std::string bgFile = std::to_string(bgCode) + ".jpg";
     if (!bgTexture.loadFromFile("src//include//texture//bg//" + bgFile)) {
         std::cout << "Background texture not found!\n";
