@@ -14,7 +14,7 @@ background::background() {
 void background::setBackground() {
     int u = bgCode;
     while (u == bgCode)
-        u = rand() % 17 + 1;
+        u = rand() % 15 + 1;
     std::string bgFile = std::to_string(bgCode) + ".jpg";
     if (!bgTexture.loadFromFile("src//include//texture//bg//" + bgFile)) {
         std::cout << "Background texture not found!\n";

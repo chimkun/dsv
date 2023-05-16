@@ -16,11 +16,6 @@ menuScreen::menuScreen() {
     backgroundOpacity = 255;
     isChosen = 0;
 
-    sf::Texture backButtonTexture;
-    if (!backButtonTexture.loadFromFile("src//include//texture//menuBackButton.png")) {
-        std::cout << "texture file not found!\n";
-        exit(-1);
-    }
     backHighlight.setPosition(menuButtonConstants::backButtonPosition);
     backHighlight.setSize(sf::Vector2f(311.523, 148.574));
     sf::Color backHighlightColor = sf::Color(130, 130, 130, 100);
